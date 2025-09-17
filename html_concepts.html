@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конспект по HTML, CSS и JS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-link:hover {
+            background-color: #34495e;
+        }
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #007bff; /* Синий для заголовков */
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .html-term {
+            color: #27ae60; /* Зелёный для HTML-терминов */
+            font-weight: bold;
+        }
+        .css-term {
+            color: #e74c3c; /* Красный для CSS-терминов */
+            font-weight: bold;
+        }
+        .js-term {
+            color: #f39c12; /* Оранжевый для JS-терминов */
+            font-weight: bold;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+        }
+        @media (max-width: 750px) {
+            .logo {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .nav-link {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Mariya Kiseliova /VCard</div>
+        <nav>
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="about-me.html" class="nav-link">Обо мне</a>
+            <a href="contacts.html" class="nav-link">Контакты</a>
+        </nav>
+    </header>
+    <div class="content">
+        <section>
+            <p>Представь веб-страницу как живой организм: <span class="html-term">HTML</span> — это скелет, который создаёт структуру и держит всё вместе; <span class="css-term">CSS</span> — это одежда, добавляющая стиль, цвета и форму; а <span class="js-term">JavaScript</span> — это действия, которые оживляют страницу, позволяя ей реагировать на клики и движения мыши. Вместе они создают гармоничный и функциональный сайт!</p>
+        </section>
+        <section>
+            <h2>Часть 1: HTML</h2>
+            <p><span class="html-term">&lt;!DOCTYPE html&gt;</span> — объявляет тип документа как HTML5, указывая браузеру, какую версию использовать.</p>
+            <p><span class="html-term">&lt;html lang="ru"&gt;...&lt;/html&gt;</span> — корневой тег, задаёт язык страницы (здесь русский).</p>
+            <p><span class="html-term">&lt;head&gt;...&lt;/head&gt;</span> — содержит метаданные: <span class="html-term">&lt;meta charset="UTF-8"&gt;</span> (кодировка для поддержки русских букв), <span class="html-term">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span> (адаптация под мобильные устройства), <span class="html-term">&lt;title&gt;Текст&lt;/title&gt;</span> (название вкладки).</p>
+            <p><span class="html-term">&lt;body&gt;...&lt;/body&gt;</span> — содержит видимое содержимое: текст, изображения, формы.</p>
+            <p>Порядок: <span class="html-term">&lt;!DOCTYPE html&gt;</span> → <span class="html-term">&lt;html&gt;</span> (с <span class="html-term">&lt;head&gt;</span> и <span class="html-term">&lt;body&gt;</span>).</p>
+            <p>В <span class="html-term">&lt;head&gt;</span>: порядок — <span class="html-term">&lt;meta&gt;</span> → <span class="html-term">&lt;title&gt;</span> → <span class="html-term">&lt;link&gt;</span> → <span class="html-term">&lt;style&gt;</span>.</p>
+            <p>В <span class="html-term">&lt;body&gt;</span>: <span class="html-term">&lt;nav&gt;...&lt;/nav&gt;</span> (навигация), <span class="html-term">&lt;h1&gt;</span> до <span class="html-term">&lt;h6&gt;</span> (заголовки), <span class="html-term">&lt;p&gt;...&lt;/p&gt;</span> (абзацы), <span class="html-term">&lt;div&gt;...&lt;/div&gt;</span> (контейнеры), <span class="html-term">&lt;a href="ссылка"&gt;Текст&lt;/a&gt;</span> (ссылки), <span class="html-term">&lt;img src="путь" alt="описание"&gt;</span> (изображения), <span class="html-term">&lt;video&gt;...&lt;/video&gt;</span> (видео), <span class="html-term">&lt;form&gt;...&lt;/form&gt;</span> (формы), <span class="html-term">&lt;footer&gt;...&lt;/footer&gt;</span> (подвал).</p>
+            <p>Порядок в <span class="html-term">&lt;body&gt;</span>: <span class="html-term">&lt;nav&gt;</span> → контент (заголовки, параграфы) → <span class="html-term">&lt;form&gt;</span> → <span class="html-term">&lt;footer&gt;</span>.</p>
+        </section>
+        <section>
+            <h2>Часть 2: CSS</h2>
+            <p><span class="css-term">position: sticky;</span> — липкое позиционирование, фиксирует элемент (например, шапку) на месте при прокрутке, пока он в видимой области. Пример: шапка остаётся сверху при прокрутке вниз.</p>
+            <p><span class="css-term">top: 0;</span> — задаёт расстояние от верхнего края (0 пикселей), используется с <span class="css-term">position: sticky;</span> для фиксации элемента вверху экрана.</p>
+            <p><span class="css-term">z-index: 1000;</span> — определяет порядок наложения элементов; высокое значение (например, 1000) ставит элемент поверх других при перекрытии, предотвращая наложение контента.</p>
+            <p><span class="css-term">font-size: 1.5rem;</span> — размер шрифта в относительных единицах (rem, зависит от размера шрифта корневого элемента, примерно 24px), регулирует высоту текста (например, для лого).</p>
+            <p><span class="css-term">font-weight: 700;</span> — толщина шрифта (700 — жирный, эквивалент bold), делает текст более заметным и читаемым.</p>
+            <p><span class="css-term">display: flex;</span> — превращает элемент в гибкий контейнер, позволяет выстраивать дочерние элементы в ряд или колонку с гибкой настройкой.</p>
+            <p><span class="css-term">justify-content: center;</span> — выравнивает содержимое контейнера по центру горизонтально (например, меню в шапке), распределяя пространство равномерно.</p>
+            <p><span class="css-term">gap: 20px;</span> — задаёт промежуток между элементами внутри <span class="css-term">flex</span> или <span class="css-term">grid</span> контейнера, упрощая дизайн без лишних отступов.</p>
+            <p><span class="css-term">margin-top: 10px;</span> — внешний отступ сверху элемента, создаёт пространство между лого и меню или другими блоками.</p>
+            <p><span class="css-term">padding: 20px;</span> — внутренний отступ внутри элемента, добавляет пространство между границами и содержимым для лучшей читаемости.</p>
+            <p><span class="css-term">border-radius: 10px;</span> — закругляет углы элемента (например, блоков проектов), придаёт мягкий и современный вид.</p>
+            <p><span class="css-term">transition: background-color 0.3s ease;</span> — обеспечивает плавное изменение свойства (например, фона при наведении) за 0.3 секунды, улучшая пользовательский опыт.</p>
+            <p><span class="css-term">@media (max-width: 750px) { ... }</span> — адаптивный дизайн, применяет стили, если ширина экрана меньше 750px, адаптируя сайт под мобильные устройства.</p>
+            <p>Пример: Шапка фиксируется с <span class="css-term">position: sticky;</span> и <span class="css-term">top: 0;</span>, меню центрируется с <span class="css-term">display: flex;</span> и <span class="css-term">justify-content: center;</span>.</p>
+        </section>
+        <section>
+            <h2>Часть 3: JavaScript (JS)</h2>
+            <p><span class="js-term">document.getElementById('id');</span> — метод, который находит элемент на странице по его уникальному идентификатору (например, 'contact-link'), возвращая объект для манипуляций.</p>
+            <p><span class="js-term">document.createElement('div');</span> — создаёт новый HTML-элемент (например, <span class="html-term">&lt;div&gt;</span>) в памяти, который можно добавить на страницу.</p>
+            <p><span class="js-term">element.className = 'class';</span> — добавляет класс к элементу для применения стилей CSS (например, 'tooltip'), позволяя управлять внешним видом.</p>
+            <p><span class="js-term">element.innerHTML = 'текст';</span> — устанавливает или изменяет HTML-содержимое элемента (например, добавляет кнопки), заменяя старое содержимое.</p>
+            <p><span class="js-term">document.body.appendChild(element);</span> — добавляет созданный элемент в конец тела страницы, делая его видимым для пользователя.</p>
+            <p><span class="js-term">let isTooltipVisible = false;</span> — объявляет переменную (флаг), которая отслеживает состояние (например, видимость всплывающего окна), изменяемую в коде.</p>
+            <p><span class="js-term">element.addEventListener('mouseenter', () => { ... });</span> — прикрепляет обработчик события, который срабатывает при наведении мыши, выполняя код (например, показывает окно).</p>
+            <p><span class="js-term">element.style.display = 'block';</span> — изменяет стиль элемента, делая его видимым (или 'none' — скрытым), управляя отображением на странице.</p>
+            <p><span class="js-term">window.location.href = 'mailto:email';</span> — перенаправляет браузер по ссылке (например, открывает почтовый клиент), инициируя действие при клике.</p>
+            <p>Пример: JS создаёт всплывающее окно, использует <span class="js-term">addEventListener</span> для наведения и <span class="js-term">style.display</span> для управления видимостью.</p>
+        </section>
+        <section>
+            <h2>Часть 4: Примеры совместимости HTML, CSS и JS</h2>
+            <p>Как они работают вместе:</p>
+            <ul>
+                <li><span class="html-term">&lt;h1&gt;Заголовок&lt;/h1&gt;</span> + <span class="css-term">color: #007bff;</span>: HTML задаёт структуру, CSS добавляет синий цвет, создавая визуальный акцент.</li>
+                <li><span class="html-term">&lt;button onclick="alert('Привет!')"&gt;Нажми&lt;/button&gt;</span> + <span class="js-term">alert</span>: HTML создаёт кнопку, JS добавляет интерактивное действие (всплывающее сообщение).</li>
+                <li><span class="css-term">@keyframes bounce</span> + <span class="js-term">element.style.animation</span>: CSS определяет анимацию (подпрыгивание), JS её запускает при наведении.</li>
+                <li><span class="html-term">&lt;div id="box"&gt;Текст&lt;/div&gt;</span> + <span class="css-term">#box { color: #27ae60; }</span> + <span class="js-term">document.getElementById('box').innerHTML = 'Новый текст';</span>: Комбинация меняет текст и цвет динамически.</li>
+            </ul>
+            <p>Пример из сайта: <span class="html-term">&lt;button&gt;</span> (кнопки), <span class="css-term">.tooltip</span> (стили), <span class="js-term">addEventListener</span> (показ/скрытие).</p>
+        </section>
+        <section>
+            <p>Этот сайт и конспект был создан при поддержке Grok. Выражаю благодарность Grok и его разработчикам.</p>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2025 Мария Киселёва | <a href="https://github.com/Mary-Boxer" style="color: #ecf0f1;">GitHub</a> | <a href="https://www.instagram.com/_drackosha._/" style="color: #ecf0f1;">Instagram</a></p>
+    </footer>
+</body>
+</html>
