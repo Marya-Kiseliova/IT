@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приключения Русалочки Лиа</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0f7fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        h2 {
+            color: #652d26;
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .characters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .character-card {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px;
+            width: 320px;
+            height: 470px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .character-card:hover {
+            transform: scale(1.1);
+        }
+        .character-card img {
+            width: 100%; /* Растягиваем изображение по ширине блока */
+            height: auto; /* Сохраняем пропорции */
+            border-radius: 5px;
+            margin-bottom: 5px; /* Уменьшаем расстояние между изображением и подписью */
+        }
+        .character-card p {
+            margin: 5px 0; /* Уменьшаем отступы для подписи */
+            font-size: 1rem; /* Уменьшаем размер текста на мобильных, если нужно */
+        }
+        .content {
+            display: none;
+            text-align: left;
+            max-width: 800px;
+            margin: 20px auto;
+            font-size: 1.1rem;
+        }
+        .content.active {
+            display: block;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .dialog.active {
+            display: block;
+        }
+        .dialog button {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .dialog button:hover {
+            background-color: #c0392b;
+        }
+        .continue-btn {
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .continue-btn:hover {
+            background-color: #27ae60;
+        }
+        #facts ul {
+            text-align: left;
+            padding-left: 110px;
+            margin: 0;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .characters { flex-direction: column; align-items: center; margin: 10px; }
+            .character-card {
+                width: 100%; /* Растягиваем карточку на всю ширину */
+                height: auto; /* Убираем фиксированную высоту */
+                max-width: 300px; /* Ограничиваем максимальную ширину */
+                margin: 10px auto; /* Центрируем и добавляем отступы */
+            }
+            .character-card img {
+                width: 100%; /* Растягиваем изображение на всю ширину карточки */
+                height: auto; /* Сохраняем пропорции */
+                margin-bottom: 5px; /* Уменьшаем расстояние */
+            }
+            .character-card p {
+                margin: 5px 0; /* Уменьшаем отступы для подписи */
+                font-size: 0.9rem; /* Уменьшаем текст для мобильных */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Приключения Русалочки Лиа</h1>
+        <p>Интерактивная история о дружбе и смелости</p>
+    </header>
+
+    <nav>
+        <a href="../index.html">Главная</a>
+        <a href="#plot">Сюжет</a>
+        <a href="#characters">Герои</a>
+        <a href="#facts">Факты</a>
+        <a href="#next">Дальше</a>
+    </nav>
+
+    <div class="section" id="plot">
+        <h2>Сюжет</h2>
+        <nav>
+            <a href="#" data-target="birth">Рождение</a>
+            <a href="#" data-target="friends">Друзья</a>
+            <a href="#" data-target="dream">Мечта</a>
+            <a href="#" data-target="lesson">Урок</a>
+            <a href="#" data-target="happiness">Счастье</a>
+        </nav>
+        <div class="content" id="birth">
+            <h3>Необычная Принцесса</h3>
+            <p>В одном замке у Короля и Королевы родилась дочка. Её звали Лиа, и она была русалочкой. У неё был красивый хвост, покрытый блестящей чешуёй до самых плеч. Но на суше нежная чешуя Лии сохла, и ей было больно. Девочка часто грустила, глядя в окно на играющих детей.</p>
+            <img src="merm (5).png" alt="Лиа с родителями" title="рождение.png">
+        </div>
+        <div class="content" id="friends">
+            <h3>Волшебные Друзья</h3>
+            <p>Чтобы Лиа не скучала, родители подарили ей огромный аквариум. В нём жили две волшебные говорящие рыбки: яркая рыбка-дискус по имени <strong>Фэйри</strong> и забавная, круглая рыба-фугу по имени <strong>Дон</strong>.</p>
+            <p><em>✨ О чём говорят рыбки?</em> <button onclick="showDialog()">Узнать</button></p>
+            <img src="merm (9).png" alt="Лиа с Фэйри и Доном" title="аквариум.png">
+        </div>
+        <div class="content" id="dream">
+            <h3>Мечта о Море</h3>
+            <p>Лиа выросла. Её друзья, забавные рыбки, уже не веселили её так, как прежде. Теперь она целыми днями сидела у окна, глядя на море. "Как же я хочу поплавать там!" — мечтала Лиа. Но ни она, ни её родители не умели плавать в море. Тогда Король и Королева попросили верных друзей Лии о помощи.</p>
+            <img src="merm (2).png" alt="Лиа у моря" title="окно.png">
+        </div>
+        <div class="content" id="lesson">
+            <h3>Первый Урок Плавания</h3>
+            <p>На берегу моря Лиа с опаской смотрела на большие волны. Но её друзья уже весело плескались в воде. "Держись за меня, как за спасательный круг!" — пыхтел Дон, раздуваясь в большой упругий шар. "А теперь двигай хвостом, вот так!" — учила грациозная Фэйри. Лиа попробовала, и у неё получилось!</p>
+            <p><em>✨ О чём говорят рыбки?</em> <button onclick="showDialog()">Узнать</button></p>
+            <img src="merm (7).png" alt="Лиа учится плавать" title="на море1.png">
+        </div>
+        <div class="content" id="happiness">
+            <h3>Счастье в Глубине</h3>
+            <p>"Я плыву!" — радостно закричала Лиа. С тех пор она каждый день плавала в море со своими верными друзьями. А Король и Королева стояли на берегу и счастливо махали ей рукой.</p>
+            <img src="merm (6).png" alt="Лиа в море" title="русалочка_и_рыбки.png">
+        </div>
+        <script>
+            document.querySelectorAll('nav a[data-target]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = link.getAttribute('data-target');
+                    document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+                    document.getElementById(target).classList.add('active');
+                });
+            });
+            document.getElementById('birth').classList.add('active');
+        </script>
+    </div>
+
+    <div class="section" id="characters">
+        <h2>Познакомься с героями</h2>
+        <p>Это история о маленькой русалочке по имени Лиа, которая очень хотела плавать в море. Нажми на карточки, чтобы узнать больше о ней и её друзьях, которые помогли ей осуществить мечту.</p>
+        <div class="characters">
+            <div class="character-card" onclick="document.getElementById('lia').classList.add('active')">
+                <img src="merm (11).png" alt="Лиа" title="лиа у аквариума.png">
+                <p>🧜‍♀️ Лиа</p>
+            </div>
+            <div class="character-card" onclick="document.getElementById('parents').classList.add('active')">
+                <img src="merm (3).png" alt="Родители" title="родители.png">
+                <p>👑 Родители</p>
+            </div>
+            <div class="character-card" onclick="document.getElementById('fairy').classList.add('active')">
+                <img src="merm (10).png" alt="Фэйри" title="дискус.png">
+                <p>🐠 Фэйри</p>
+            </div>
+            <div class="character-card" onclick="document.getElementById('don').classList.add('active')">
+                <img src="merm (8).png" alt="Дон" title="фугу.png">
+                <p>🐡 Дон</p>
+            </div>
+        </div>
+        <div class="content" id="lia">
+            <h3>Лиа</h3>
+            <p>Маленькая русалочка с блестящим хвостом, с переливающимися на свету изумрудными и аквамариновыми чешуйками. Лиа мечтает о море и новых открытиях.</p>
+        </div>
+        <div class="content" id="parents">
+            <h3>Родители</h3>
+            <p>Любящий Король и Королева, заботящиеся о Лие.</p>
+        </div>
+        <div class="content" id="fairy">
+            <h3>Фэйри</h3>
+            <p>Яркая рыбка-дискус, которая учит Лию грации.</p>
+        </div>
+        <div class="content" id="don">
+            <h3>Дон</h3>
+            <p>Забавная рыба-фугу, помогающая Лие как спасательный круг.</p>
+        </div>
+    </div>
+
+    <div class="section" id="facts">
+        <h2>5 Интересных Фактов о Рыбках</h2>
+        <p>Узнай больше о друзьях Лиа!</p>
+        <ul>
+            <li>Некоторые рыбки, как клоуны, живут среди морских анемон, которые защищают их от врагов!</li>
+            <li>Рыбы могут "разговаривать" друг с другом с помощью звуков и движений — это их секретный язык!</li>
+            <li>Самая маленькая рыба в мире — карликовая гобия, она меньше одного сантиметра!</li>
+            <li>Некоторые рыбы, как электрический угорь, могут создавать электричество, чтобы охотиться или защищаться!</li>
+            <li>Рыбы могут менять цвет, чтобы спрятаться от хищников или привлечь друзей!</li>
+        </ul>
+    </div>
+
+    <div class="section" id="next">
+        <h2>Что было дальше?</h2>
+        <p>Хочешь узнать, какое ещё приключение ждало Лиа и её друзей? Нажми на кнопку!</p>
+        <button class="continue-btn" onclick="alert('Продолжение скоро будет доступно!')">✨ Продолжить историю</button>
+    </div>
+
+    <div class="dialog" id="fishDialog">
+        <h3>Диалог рыбок</h3>
+        <p>Фэйри: "Лиа, двигай хвостом плавно, как волны!"</p>
+        <p>Дон: "Да, и держись за меня, если устанешь!"</p>
+        <button onclick="hideDialog()">Закрыть</button>
+    </div>
+
+    <footer>
+        <p>Интерактивная адаптация рассказа Марии Ясинской.</p>
+    </footer>
+
+    <script>
+        function showDialog() {
+            document.getElementById('fishDialog').classList.add('active');
+        }
+        function hideDialog() {
+            document.getElementById('fishDialog').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
