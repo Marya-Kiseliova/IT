@@ -147,14 +147,17 @@
         }
         .project img, .project video {
             width: 100%;
-            height: auto;
+            height: 280px; /* Фиксированная высота для всех — унифицирует контейнеры */
             border-radius: 5px;
             margin-bottom: 15px;
+            object-fit: contain; /* Заполняет контейнер без искажений; если пустоты — смени на contain */
         }
-        . watch-video {
-            height: 250px !important;
-            width: 100%;
-            object-fit: cover;
+        
+        .spirit-video, .watch-video { /* Объединяем классы для "Духи" и "Часы" */
+            width: 100% !important; /* Полная ширина */
+            height: auto; /* Одинаковая высота */
+            object-fit: cover; /* Или contain, если хочешь избежать обрезки */
+        }
         }
         .spirit-video {
             height: 290px !important;
@@ -371,6 +374,7 @@
     </script>
 </body>
 </html>
+
 
 
 
