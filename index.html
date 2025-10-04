@@ -1,382 +1,369 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VDQ8GQCBC4"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-VDQ8GQCBC4');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Портфолио Марии Киселёвой, промт инженера, питон разработчика и веб-разработчика из Бреста. Откройте мультимедиа и проекты с ИИ!">
-    <meta name="keywords" content="Мария Киселёва, промт инженер, сделать сайт в Бресте, создание сайтов, Беларусь, сделать сайт, программист, питон разработчик, Брест, портфолио, веб-разработка, ИИ, мультимедиа, проекты">
-    <meta name="google-site-verification" content="google-site-verification: googleaaedd8ba43c73c48.html" />
-    <!-- Open Graph теги -->
-    <meta property="og:title" content="Мария Киселёва — Промт Инженер и Питон Разработчик">
-    <meta property="og:description" content="Портфолио Марии Киселёвой: веб-разработка, промт-инженерия и проекты с ИИ из Бреста. Ознакомьтесь с моими работами!">
-    <meta property="og:video" content="logo.mp4"> <!-- Исправлено: правильный путь к логотипу -->
-    <meta property="og:url" content="https://marya-kiseliova.github.io/IT/"> <!-- Реальный URL -->
-    <meta property="og:type" content="website">
-    <title>Мария Киселёва — Промт Инженер и Питон Разработчик из Бреста</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-        }
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 100px;
-        }
-        .logo-link {
-            display: inline-block;
-            line-height: 0;
-        }
-        .logo-video {
-          width: 100px; /* Задай одинаковую ширину */
-          height: 100px; /* и высоту для идеального круга */
-          background-color: #333; /* Цвет фона контейнера */
-          display: flex; /* Чтобы отцентрировать лого внутри */
-          justify-content: center;
-          align-items: center;
-          /* 👇 Свойство для формы */
-          border-radius: 50%; /* Сделает контейнер круглым */
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        .nav-link {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .nav-link:hover {
-            background-color: #34495e;
-        }
-        .styled-link {
-            font-family: 'Open Sans', sans-serif;
-            color: #2c3e50;
-        }
-        a {
-            color: #3498db;
-            text-decoration: none;
-            transition: color 0.3s ease, border-bottom-color 0.3s ease;
-        }
-        .content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .hero {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        .hero h1 {
-            color: #2c3e50;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .hero p {
-            font-size: 1.1rem;
-            color: #7f8c8d;
-        }
-        .skills {
-            padding: 20px;
-            border-radius: 0;
-            margin-bottom: 0;
-        }
-        .skills h2 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        .skills ul {
-            list-style: none;
-            text-align: left;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .skills li {
-            margin: 5px 0;
-            color: #34495e;
-        }
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 20px;
-        }
-        .project {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        #projects a {
-            color: #0d7881;
-            text-decoration: none;
-        }
-        #projects a:hover {
-            transform: scale(1.1);
-        }
-        .project:hover {
-            transform: translateY(-5px);
-        }
-        .project img, .project video {
-            width: 100%;
-            height: 280px; /* Фиксированная высота для всех — унифицирует контейнеры */
-            border-radius: 5px;
-            margin-bottom: 15px;
-            object-fit: cover; /* Заполняет контейнер без искажений; если пустоты — смени на contain */
-        }
-        
-        .spirit-video, .watch-video { /* Объединяем классы для "Духи" и "Часы" */
-            width: 100% !important; /* Полная ширина */
-            object-fit: cover; /* Или contain, если хочешь избежать обрезки */
-        }
-        }
-        .shop-app-container {
-            grid-column: span 2;
-            width: 600px;
-            margin: 0 auto;
-        }
-        .shop-app-img {
-            width: 550px !important;
-            height: 220px !important;
-            object-fit: cover;
-            max-width: none !important;
-        }
-        .project-overlay {
-            position: relative;
-            color: #2c3e50;
-            text-align: center;
-            width: 500px;
-        }
-        .project-overlay a {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 15px;
-            background-color: #3498db;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .project-overlay a:hover {
-            background-color: #2980b9;
-        }
-        .contacts {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        .contacts ul {
-            list-style: none;
-            padding: 0;
-        }
-        .contacts li {
-            margin: 10px 0;
-        }
-        .contacts a {
-            color: #3498db;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .contacts a:hover {
-            color: #2980b9;
-        }
-        footer {
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 15px;
-            border-radius: 10px 10px 0 0;
-        }
-        @media (max-width: 750px) {
-            header {
-                padding: 0.5rem;
-                flex-direction: column;
-                align-items: center;
-            }
-            .logo-img {
-                width: 120px; /* Увеличено для соответствия новой высоте шапки на мобильных */
-                height: 60px;
-            }
-            nav {
-                flex-direction: column;
-                gap: 10px;
-                margin-top: 10px;
-            }
-            .nav-link {
-                padding: 8px 12px;
-                font-size: 0.9rem;
-            }
-            .shop-app-img {
-                width: 100% !important;
-                height: auto !important;
-            }
-            .shop-app-container {
-                grid-column: span 1;
-                width: 100%;
-                margin: 0 auto;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .projects {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VDQ8GQCBC4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VDQ8GQCBC4');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Портфолио Марии Киселёвой, промт инженера, питон разработчика и веб-разработчика из Бреста. Откройте мультимедиа и проекты с ИИ!">
+    <meta name="keywords" content="Мария Киселёва, промт инженер, сделать сайт в Бресте, создание сайтов, Беларусь, сделать сайт, программист, питон разработчик, Брест, портфолио, веб-разработка, ИИ, мультимедиа, проекты">
+    <meta name="google-site-verification" content="google-site-verification: googleaaedd8ba43c73c48.html" />
+        <meta property="og:title" content="Мария Киселёва — Промт Инженер и Питон Разработчик">
+    <meta property="og:description" content="Портфолио Марии Киселёвой: веб-разработка, промт-инженерия и проекты с ИИ из Бреста. Ознакомьтесь с моими работами!">
+    <meta property="og:video" content="logo.mp4">     <meta property="og:url" content="https://marya-kiseliova.github.io/IT/">     <meta property="og:type" content="website">
+    <title>Мария Киселёва — Промт Инженер и Питон Разработчик из Бреста</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+        }
+        .logo-link {
+            display: inline-block;
+            line-height: 0;
+        }
+        /* --- ИСПРАВЛЕНИЕ ЛОГОТИПА: Удалили flex и добавили object-fit: cover --- */
+        .logo-video {
+          width: 100px;
+          height: 100px;
+          background-color: #333;
+          border-radius: 50%; /* Сделает контейнер круглым */
+          object-fit: cover; /* КЛЮЧ: Растягивает видео, чтобы оно заполняло круглое пространство */
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-link:hover {
+            background-color: #34495e;
+        }
+        .styled-link {
+            font-family: 'Open Sans', sans-serif;
+            color: #2c3e50;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+        }
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .hero {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+        }
+        .skills {
+            padding: 20px;
+            border-radius: 0;
+            margin-bottom: 0;
+        }
+        .skills h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .skills ul {
+            list-style: none;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .skills li {
+            margin: 5px 0;
+            color: #34495e;
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        .project {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        #projects a {
+            color: #0d7881;
+            text-decoration: none;
+        }
+        #projects a:hover {
+            transform: scale(1.1);
+        }
+        .project:hover {
+            transform: translateY(-5px);
+        }
+        .project img, .project video {
+            width: 100%;
+            height: 280px; /* Фиксированная высота для всех — унифицирует контейнеры */
+            border-radius: 5px;
+            margin-bottom: 15px;
+            object-fit: cover; /* Заполняет контейнер без искажений */
+        }
+        
+        .spirit-video, .watch-video { /* Объединяем классы для "Духи" и "Часы" */
+            width: 100% !important; /* Полная ширина */
+            object-fit: cover; /* Или contain, если хочешь избежать обрезки */
+        }
+        /* Удалили лишнюю закрывающую скобку '}' */
+        
+        /* --- ИСПРАВЛЕНИЕ СКЕЛЕТА И СЛИЯНИЯ --- */
+        .shop-app-container {
+            grid-column: span 2;
+            /* УДАЛЕНЫ: width: 600px; и margin: 0 auto; */
+            margin: 0; 
+        }
+        .shop-app-img {
+            width: 100% !important; /* КЛЮЧ: Растягиваем изображение на всю ширину 2-х колонок */
+            height: 220px !important;
+            object-fit: cover;
+            max-width: none !important;
+        }
+        .project-overlay {
+            position: relative;
+            color: #2c3e50;
+            text-align: center;
+            /* УДАЛЕНА: width: 500px; */
+        }
+        .project-overlay a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .project-overlay a:hover {
+            background-color: #2980b9;
+        }
+        .contacts {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .contacts ul {
+            list-style: none;
+            padding: 0;
+        }
+        .contacts li {
+            margin: 10px 0;
+        }
+        .contacts a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contacts a:hover {
+            color: #2980b9;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+        }
+        @media (max-width: 750px) {
+            header {
+                padding: 0.5rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo-img {
+                width: 120px; /* Увеличено для соответствия новой высоте шапки на мобильных */
+                height: 60px;
+            }
+            nav {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            .nav-link {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            .shop-app-img {
+                width: 100% !important;
+                height: auto !important;
+            }
+            .shop-app-container {
+                grid-column: span 1;
+                width: 100%;
+                margin: 0 auto;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo-link">
-            <video src="logo.mp4" alt="Mariya Kiseliova Logo" class="logo-video">
-        </a>
-        <nav>
-            <a href="my_projects.html" class="nav-link">Проекты</a>
-            <a href="about-me.html" class="nav-link">Обо мне</a>
-            <a href="contacts.html" class="nav-link">Контакты</a>
-        </nav>
-    </header>
-    <div class="content">
-        <div class="hero">
-            <h1>Добро пожаловать!</h1>
-            <p>Для меня работа с ИИ — это возможность не просто идти в ногу со временем, а тестировать и использовать инструменты будущего, применяя спектр возможностей для создания визуального контента и рабочих приложений, улучшаемых ИИ. Я нацелена на результат и всегда стремлюсь, чтобы мои проекты были не просто хорошими, а исключительными. Я готова к любым экспериментам и вызовам, ведь каждый новый день для меня — это шанс стать лучше в своем деле, каждый новый проект — возможность удивить и заинтересовать.</p>
-            <div id="skills" class="skills">
-                <h2>Мои навыки:</h2>
-                <ul>
-                    <li>Веб-разработка (создание и поддержка сайтов с использованием HTML, CSS, JavaScript)</li>
-                    <li>Промт-инженерия (работа с ИИ)</li>
-                    <li>Программирование на Python</li>
-                    <li>Создание мультимедиа-контента</li>
-                    <li>Создание маркетинговых видео и банеров</li>
-                </ul>
-            </div>
-        </div>
-        <h2 id="projects">Вот некоторые из моих проектов, но больше — здесь: <a href="my_projects.html" class="styled-link" alt="Проекты"> проекты </a></h2>
-        <div class="projects">
-            <div class="project">
-                <img src="mermaid1.png" alt="Детская книга 'Принцесса-Русалочка'" width="300" height="400">
-                <h3>Детская книга "Принцесса-Русалочка"</h3>
-                <p>Сгенерированная с помощью Gemini детская книга с иллюстрациями и моралью.</p>
-                <div class="project-overlay">
-                    <a href="merm (1).html" class="nav-link">Посмотреть</a>
-                </div>
-            </div>
-            <div class="project">
-                <img src="cat.jpg" alt="Мультик про котёнка" width="300" height="280">
-                <h3>Мультик про котёнка</h3>
-                <p>Мой первый мультик, созданный с помощью ИИ.</p>
-                <div class="project-overlay">
-                    <a href="https://youtu.be/ok0J8rVUA1c?si=aU_uw0zTAYFQjYqO" class="nav-link">Посмотреть</a>
-                </div>
-            </div>
-            <div class="project">
-                <img src="game.png" alt="Смотреть" width="300" height="400">
-                <h3>Game-clip</h3>
-                <p>Видео, созданное с помощью бесплатных ИИ-инструментов.</p>
-                <div class="project-overlay">
-                    <a href="https://youtube.com/shorts/500ywmW3ivk?feature=share" class="nav-link">Посмотреть</a>
-                </div>
-            </div>
-            <div class="project shop-app-container">
-                <img src="бар4.png" alt="Интерактивное приложение для магазина" width="700" height="320" class="shop-app-img">
-                <h3>Интерактивное приложение для магазина</h3>
-                <div class="project-overlay">
-                    <a href="https://www.youtube.com/watch?v=V9gFIPHuxeg" class="nav-link">Посмотреть, как работает приложение (код в моем профиле на GitHub и в описании к видео)</a>
-                </div>
-            </div>
-        </div>
-        <div class="projects">
-            <div class="project">
-                <video controls autoplay muted loop class="spirit-video">
-                    <source src="видео_духи.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                </video>
-                <h3>Пример рекламы: Духи</h3>
-                <p>Анимация и фото созданы ИИ.</p>
-            </div>
-            <div class="project">
-                <video controls autoplay muted loop class="watch-video">
-                    <source src="1004.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                </video>
-                <h3>Короткий рекламный ролик "Часы"</h3>
-            </div>
-            <div class="project">
-                <video controls autoplay muted loop>
-                    <source src="Мама на море.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                </video>
-                <h3>Когда был в лесу, а хочется видео с моря</h3>
-                <p>Видео из личного архива, сделанное из селфи.</p>
-            </div>
-            <div class="project">
-                <video controls autoplay muted loop>
-                    <source src="Hailuo_Video_движение мотоциклиста справа н_403604194641735680.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                </video>
-                <h3>Трюки мотоциклиста в 'slow motion'</h3>
-                <p>Видео-трюк, созданный из текста.</p>
-            </div>
-        </div>
-        <div id="contacts" class="contacts">
-            <h2>Контакты</h2>
-            <ul>
-                <li><a href="tel:+375291155818">Телефон: +375 29 115-58-18</a> (Telegram, WhatsApp, Viber)</li>
-                <li><a href="mailto:m.yasinskaya12@gmail.com">Email: m.yasinskaya12@gmail.com</a></li>
-                <li><a href="https://github.com/Marya-Kiseliova">GitHub</a></li>
-                <li><a href="https://www.instagram.com/_drackosha._/">Instagram</a></li>
-            </ul>
-        </div>
-    </div>
-    <footer>
-        <p>&copy; 2025 Мария Киселёва | <a href="https://github.com/Marya-Kiseliova" style="color: #ecf0f1;">GitHub</a> | <a href="https://www.instagram.com/_drackosha._/" style="color: #ecf0f1;">Instagram</a></p>
-    </footer>
-    <script>
-        document.querySelectorAll('.project').forEach(project => {
-            project.addEventListener('mouseover', () => project.style.transform = 'translateY(-5px)');
-            project.addEventListener('mouseout', () => project.style.transform = 'translateY(0)');
-        });
-    </script>
+    <header>
+        <a href="index.html" class="logo-link">
+                        <video src="logo.mp4" alt="Mariya Kiseliova Logo" class="logo-video" autoplay muted loop></video>
+        </a>
+        <nav>
+            <a href="my_projects.html" class="nav-link">Проекты</a>
+            <a href="about-me.html" class="nav-link">Обо мне</a>
+            <a href="contacts.html" class="nav-link">Контакты</a>
+        </nav>
+    </header>
+    <div class="content">
+        <div class="hero">
+            <h1>Добро пожаловать!</h1>
+            <p>Для меня работа с ИИ — это возможность не просто идти в ногу со временем, а тестировать и использовать инструменты будущего, применяя спектр возможностей для создания визуального контента и рабочих приложений, улучшаемых ИИ. Я нацелена на результат и всегда стремлюсь, чтобы мои проекты были не просто хорошими, а исключительными. Я готова к любым экспериментам и вызовам, ведь каждый новый день для меня — это шанс стать лучше в своем деле, каждый новый проект — возможность удивить и заинтересовать.</p>
+            <div id="skills" class="skills">
+                <h2>Мои навыки:</h2>
+                <ul>
+                    <li>Веб-разработка (создание и поддержка сайтов с использованием HTML, CSS, JavaScript)</li>
+                    <li>Промт-инженерия (работа с ИИ)</li>
+                    <li>Программирование на Python</li>
+                    <li>Создание мультимедиа-контента</li>
+                    <li>Создание маркетинговых видео и банеров</li>
+                </ul>
+            </div>
+        </div>
+        <h2 id="projects">Вот некоторые из моих проектов, но больше — здесь: <a href="my_projects.html" class="styled-link" alt="Проекты"> проекты </a></h2>
+        <div class="projects">
+            <div class="project">
+                <img src="mermaid1.png" alt="Детская книга 'Принцесса-Русалочка'" width="300" height="400">
+                <h3>Детская книга "Принцесса-Русалочка"</h3>
+                <p>Сгенерированная с помощью Gemini детская книга с иллюстрациями и моралью.</p>
+                <div class="project-overlay">
+                    <a href="merm (1).html" class="nav-link">Посмотреть</a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="cat.jpg" alt="Мультик про котёнка" width="300" height="280">
+                <h3>Мультик про котёнка</h3>
+                <p>Мой первый мультик, созданный с помощью ИИ.</p>
+                <div class="project-overlay">
+                    <a href="https://youtu.be/ok0J8rVUA1c?si=aU_uw0zTAYFQjYqO" class="nav-link">Посмотреть</a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="game.png" alt="Смотреть" width="300" height="400">
+                <h3>Game-clip</h3>
+                <p>Видео, созданное с помощью бесплатных ИИ-инструментов.</p>
+                <div class="project-overlay">
+                    <a href="https://youtube.com/shorts/500ywmW3ivk?feature=share" class="nav-link">Посмотреть</a>
+                </div>
+            </div>
+            <div class="project shop-app-container">
+                <img src="бар4.png" alt="Интерактивное приложение для магазина" width="700" height="320" class="shop-app-img">
+                <h3>Интерактивное приложение для магазина</h3>
+                <div class="project-overlay">
+                    <a href="https://www.youtube.com/watch?v=V9gFIPHuxeg" class="nav-link">Посмотреть, как работает приложение (код в моем профиле на GitHub и в описании к видео)</a>
+                </div>
+            </div>
+        </div>
+        <div class="projects">
+            <div class="project">
+                <video controls autoplay muted loop class="spirit-video">
+                    <source src="видео_духи.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+                <h3>Пример рекламы: Духи</h3>
+                <p>Анимация и фото созданы ИИ.</p>
+            </div>
+            <div class="project">
+                <video controls autoplay muted loop class="watch-video">
+                    <source src="1004.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+                <h3>Короткий рекламный ролик "Часы"</h3>
+            </div>
+            <div class="project">
+                <video controls autoplay muted loop>
+                    <source src="Мама на море.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+                <h3>Когда был в лесу, а хочется видео с моря</h3>
+                <p>Видео из личного архива, сделанное из селфи.</p>
+            </div>
+            <div class="project">
+                <video controls autoplay muted loop>
+                    <source src="Hailuo_Video_движение мотоциклиста справа н_403604194641735680.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+                <h3>Трюки мотоциклиста в 'slow motion'</h3>
+                <p>Видео-трюк, созданный из текста.</p>
+            </div>
+        </div>
+        <div id="contacts" class="contacts">
+            <h2>Контакты</h2>
+            <ul>
+                <li><a href="tel:+375291155818">Телефон: +375 29 115-58-18</a> (Telegram, WhatsApp, Viber)</li>
+                <li><a href="mailto:m.yasinskaya12@gmail.com">Email: m.yasinskaya12@gmail.com</a></li>
+                <li><a href="https://github.com/Marya-Kiseliova">GitHub</a></li>
+                <li><a href="https://www.instagram.com/_drackosha._/">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Мария Киселёва | <a href="https://github.com/Marya-Kiseliova" style="color: #ecf0f1;">GitHub</a> | <a href="https://www.instagram.com/_drackosha._/" style="color: #ecf0f1;">Instagram</a></p>
+    </footer>
+    <script>
+        document.querySelectorAll('.project').forEach(project => {
+            project.addEventListener('mouseover', () => project.style.transform = 'translateY(-5px)');
+            project.addEventListener('mouseout', () => project.style.transform = 'translateY(0)');
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
