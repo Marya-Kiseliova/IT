@@ -14,7 +14,7 @@
     <meta name="description" content="Проекты Марии Киселёвой: веб-разработка, промт-инженерия, Python и мультимедиа с ИИ из Бреста. Ознакомьтесь с моими работами!">
     <meta name="keywords" content="Мария Киселёва, проекты, промт инженер, Python, ИИ, мультимедиа, Брест, портфолио">
     <meta name="google-site-verification" content="google-site-verification: googleaaedd8ba43c73c48.html" />
-    <!-- Open Graph теги — для превью в соцсетях (как на главной) -->
+    <!-- Open Graph теги — для превью в соцсетях (аналогично главной) -->
     <meta property="og:title" content="Мои проекты — Портфолио Марии Киселёвой">
     <meta property="og:description" content="Проекты Марии Киселёвой: веб-разработка, промт-инженерия, Python и мультимедиа с ИИ из Бреста. Ознакомьтесь с моими работами!">
     <meta property="og:image" content="/logo3.png"> <!-- Твой логотип -->
@@ -25,7 +25,7 @@
     <meta property="og:site_name" content="Портфолио Марии Киселёвой">
     <meta property="og:locale" content="ru_RU">
     <title>Мои проекты — Портфолио Марии Киселёвой</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&family='Courier New', monospace&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -33,7 +33,7 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Open Sans', sans-serif; /* Как в index.html */
+            font-family: 'Open Sans', sans-serif;
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
@@ -46,26 +46,24 @@
             top: 0;
             z-index: 1000;
             display: flex;
-            justify-content: space-between; /* Лого слева, nav справа */
+            justify-content: space-between;
             align-items: center;
-            height: 110px; /* Выше на 20px */
+            height: 110px;
         }
         .logo-link {
             display: inline-block;
             line-height: 0;
         }
         .logo-img {
-            width: 110px; /* Под шапку 110px, квадрат для круга */
-            height: 110px;
-            object-fit: cover; /* Заполняет круг без искажений */
-            border-radius: 50%; /* Круглый логотип */
+            width: 160px;
+            height: 90px;
+            object-fit: contain;
             vertical-align: middle;
             display: block;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для объёма */
         }
-        nav {
+                nav {
             display: flex;
-            justify-content: flex-end; /* Справа */
+            justify-content: center;
             gap: 20px;
         }
         .nav-link {
@@ -74,76 +72,101 @@
             padding: 10px 15px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
-            font-family: 'Open Sans', sans-serif; /* Как в index.html */
         }
         .nav-link:hover {
             background-color: #34495e;
         }
+        .styled-link {
+            font-family: 'Open Sans', sans-serif;
+            color: #2c3e50;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
         .content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            display: flex; /* Row: единый блок слева-справа */
-            flex-wrap: nowrap; /* Не переносить — строго рядом */
-            gap: 20px;
-            align-items: flex-start; /* Выравнивание по верху */
-            background-color: #fff; /* Единый фон для всего блока */
+            display: flex;
+            gap: 20px; /* Расстояние между секцией и изображением */
+        }
+        section {
+            background-color: #fff;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень, чтобы "вписалась" девушка */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 2; /* Секция занимает 2/3 места */
+            margin-bottom: 20px;
         }
-        .projects-section { /* Секция списка — слева */
-            flex: 1 1 auto; /* Занимает место */
-            padding: 20px;
-        }
-        .image-section { /* Изображение — справа */
-            flex: 0 0 300px; /* Фиксированная ширина 300px */
-            text-align: center;
-            padding: 20px;
-            min-width: 300px; /* Держит позицию справа */
+        .image-section {
+            flex: 1; /* Изображение занимает 1/3 места */
+            min-width: 300px; /* Минимальная ширина для мобильных */
         }
         .image-section img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             display: block;
-            margin: 0 auto;
         }
         h2 {
             color: #2c3e50;
-            font-family: 'Roboto', sans-serif; /* Как в index.html */
             font-size: 2rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: center;
-            padding-left: 20px; /* Отступ слева */
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            position: relative;
+            min-height: 200px;
+        }
+        li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        li::before {
+            content: "▶"; /* Стрелочка для главного списка */
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+        /* Вложенные списки — разные маркеры для разделов */
+        ul ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+        ul ul li::before {
+            content: "•"; /* Точки для вложенных */
+            color: #2c3e50;
+            font-weight: normal;
+        }
+        /* Цветные блоки — через CSS, без div в ul */
+        ul ul:nth-child(2) li::before { /* Для "Видеопроекты" — синие точки */
+            content: "🔵";
+            color: #3498db;
+        }
+        ul ul:nth-child(3) li::before { /* Для "Другие проекты" — зелёные */
+            content: "🟢";
+            color: #27ae60;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
         }
         h3 {
             color: #2c3e50;
-            font-family: 'Roboto', sans-serif; /* Унифицировано */
-            margin-bottom: 15px; /* Отступ снизу */
+            margin-bottom: 5px;
             font-size: 1.2rem;
-            padding-left: 20px; /* Отступ слева для h3 */
-        }
-        ul {
-            list-style-type: none; /* Без маркеров */
-            padding-left: 20px; /* Общий отступ слева для списка */
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        /* Ссылки в теле: тонкий monospace шрифт */
-        a {
-            color: #2c3e50;
-            text-decoration: none;
-            font-weight: 300; /* Тонкий */
-            font-family: 'Courier New', monospace; /* Monospace, как просила */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-            transition: color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
-        }
-        a:hover {
-            color: #3498db;
-            transform: scale(1.05);
-            text-shadow: 1px 1px 3px rgba(52, 152, 219, 0.3);
         }
         footer {
             background-color: #2c3e50;
@@ -153,15 +176,6 @@
             border-radius: 10px 10px 0 0;
             margin-top: 20px;
         }
-        footer a {
-            color: #ecf0f1;
-            text-shadow: none;
-            font-family: 'Open Sans', sans-serif; /* Как в index.html для футера */
-        }
-        footer a:hover {
-            color: #3498db;
-            transform: none;
-        }
         @media (max-width: 750px) {
             header {
                 padding: 0.5rem;
@@ -170,41 +184,28 @@
                 height: auto;
             }
             .logo-img {
-                width: 80px;
-                height: 80px;
+                width: 120px;
+                height: 60px;
             }
             nav {
                 flex-direction: column;
                 gap: 10px;
                 margin-top: 10px;
-                justify-content: center;
             }
             .nav-link {
                 padding: 8px 12px;
                 font-size: 0.9rem;
             }
             .content {
-                flex-direction: column; /* Column на мобильных — изображение сверху */
-                flex-wrap: wrap;
+                flex-direction: column; /* На мобильных — столбец */
                 gap: 10px;
-                padding: 10px; /* Меньше padding на мобильных */
-            }
-            .projects-section, .image-section {
-                padding: 10px; /* Равномерные отступы */
-                flex: none; /* Полная ширина на мобильных */
             }
             .image-section {
-                order: -1; /* Изображение первым */
+                min-width: auto;
+                order: -1; /* Изображение сверху на мобильных */
             }
-            h2, h3 {
-                padding-left: 10px; /* Меньше отступ слева на мобильных */
-                margin-bottom: 12px;
-            }
-            a:hover {
-                transform: scale(1.02);
-            }
-            .image-section img {
-                max-width: 100%;
+            h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -212,27 +213,48 @@
 <body>
     <header>
         <a href="index.html" class="logo-link">
-            <img src="logo3.png" alt="Mariya Kiseliova Logo" class="logo-img"> <!-- Круглый логотип слева -->
+            <img src="logo3.png" alt="Mariya Kiseliova Logo" class="logo-img">
         </a>
-        <nav> <!-- Ссылки справа -->
+        <nav>
             <a href="index.html" class="nav-link">Главная</a>
             <a href="about-me.html" class="nav-link">Обо мне</a>
             <a href="contacts.html" class="nav-link">Контакты</a>
         </nav>
     </header>
     <div class="content">
-        <div class="projects-section"> <!-- Секция списка — слева -->
+        <section>
             <h2>Мои проекты</h2>
             <ul>
-                <li><h3>Конспект новичка:</h3>
+                <li><h3>Конспект новичка</h3>
                     <ul>
                         <li><a href="neural_analysis.html">Анализ нейросетей</a></li>
                         <li><a href="html_concepts.html">Конспект по HTML</a></li>
                         <li><a href="python_concepts.html">Конспект по Python</a></li>
                     </ul>
                 </li>
-                <li><h3>Видеопроекты:</h3>
+                <li><h3>Видеопроекты</h3>
                     <ul>
                         <li><a href="https://youtu.be/ok0J8rVUA1c">Мультик про котёнка</a></li>
                         <li><a href="clip.html">Клип</a></li>
-                        <li><a href="https://youtube.com/shorts/500ywmW3ivk?feature
+                        <li><a href="https://youtube.com/shorts/500ywmW3ivk?feature=share">Видео-гейм</a></li>
+                        <li><a href="merm (1).html">Интерактивная книга "Приключения русалочки Лии"</a></li>
+                    </ul>
+                </li>
+                <li><h3>Другие проекты</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/watch?v=V9gFIPHuxeg">Проект Python Мой магазин (помощник в малом бизнесе)</a></li>
+                        <li><a href="cook_bot.py">Телеграмм-бот в Python</a></li>
+                        <li><a href="mermaid.html">Книга про русалочку</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <div class="image-section">
+            <img src="notegirl.png" alt="Девушка с ноутбуком и нотами — символ творчества и программирования">
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Мария Киселёва | <a href="https://github.com/Marya-Kiseliova" style="color: #ecf0f1;">GitHub</a> | <a href="https://www.instagram.com/_drackosha._/" style="color: #ecf0f1;">Instagram</a></p>
+    </footer>
+</body>
+</html>
