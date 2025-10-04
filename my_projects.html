@@ -25,7 +25,7 @@
     <meta property="og:site_name" content="Портфолио Марии Киселёвой">
     <meta property="og:locale" content="ru_RU">
     <title>Мои проекты — Портфолио Марии Киселёвой</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&family='Courier New', monospace&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -48,15 +48,15 @@
             display: flex;
             justify-content: space-between; /* Лого слева, nav справа */
             align-items: center;
-            height: 90px;
+            height: 110px; /* Выше на 20px */
         }
         .logo-link {
             display: inline-block;
             line-height: 0;
         }
         .logo-img {
-            width: 90px; /* Квадрат для круга */
-            height: 90px;
+            width: 110px; /* Под шапку 110px, квадрат для круга */
+            height: 110px;
             object-fit: cover; /* Заполняет круг без искажений */
             border-radius: 50%; /* Круглый логотип */
             vertical-align: middle;
@@ -87,25 +87,24 @@
             flex-wrap: nowrap; /* Не переносить — строго рядом */
             gap: 20px;
             align-items: flex-start; /* Выравнивание по верху */
-        }
-        section {
-            background-color: #fff;
-            padding: 20px;
+            background-color: #fff; /* Единый фон для всего блока */
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            flex: 1 1 auto; /* Список занимает место, но не растягивается */
-            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень, чтобы "вписалась" девушка */
         }
-        .image-section {
-            flex: 0 0 300px; /* Фиксированная ширина 300px, чтобы держалось справа */
+        .projects-section { /* Секция списка — слева */
+            flex: 1 1 auto; /* Занимает место */
+            padding: 20px;
+        }
+        .image-section { /* Изображение — справа */
+            flex: 0 0 300px; /* Фиксированная ширина 300px */
             text-align: center;
-            min-width: 300px; /* Минимальная ширина — не падает под список */
+            padding: 20px;
+            min-width: 300px; /* Держит позицию справа */
         }
         .image-section img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             display: block;
             margin: 0 auto;
         }
@@ -113,31 +112,33 @@
             color: #2c3e50;
             font-family: 'Roboto', sans-serif; /* Как в index.html */
             font-size: 2rem;
-            margin-bottom: 20px; /* Отступ снизу */
+            margin-bottom: 20px;
             text-align: center;
+            padding-left: 20px; /* Отступ слева */
         }
         h3 {
             color: #2c3e50;
             font-family: 'Roboto', sans-serif; /* Унифицировано */
-            margin-bottom: 15px; /* Увеличенный отступ снизу для названий списков */
+            margin-bottom: 15px; /* Отступ снизу */
             font-size: 1.2rem;
+            padding-left: 20px; /* Отступ слева для h3 */
         }
         ul {
             list-style-type: none; /* Без маркеров */
-            padding-left: 0;
+            padding-left: 20px; /* Общий отступ слева для списка */
         }
         li {
             margin-bottom: 8px;
         }
-        /* Ссылки в теле: цвет шапки, тени, hover */
+        /* Ссылки в теле: тонкий monospace шрифт */
         a {
             color: #2c3e50;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 300; /* Тонкий */
+            font-family: 'Courier New', monospace; /* Monospace, как просила */
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
             transition: color 0.3s ease, transform 0.3s ease;
             display: inline-block;
-            font-family: 'Open Sans', sans-serif;
         }
         a:hover {
             color: #3498db;
@@ -155,6 +156,7 @@
         footer a {
             color: #ecf0f1;
             text-shadow: none;
+            font-family: 'Open Sans', sans-serif; /* Как в index.html для футера */
         }
         footer a:hover {
             color: #3498db;
@@ -183,20 +185,20 @@
             }
             .content {
                 flex-direction: column; /* Column на мобильных — изображение сверху */
-                flex-wrap: wrap; /* На мобильных можно переносить, если нужно */
+                flex-wrap: wrap;
                 gap: 10px;
+                padding: 10px; /* Меньше padding на мобильных */
+            }
+            .projects-section, .image-section {
+                padding: 10px; /* Равномерные отступы */
+                flex: none; /* Полная ширина на мобильных */
             }
             .image-section {
-                flex: none; /* На мобильных — полная ширина */
-                min-width: auto;
                 order: -1; /* Изображение первым */
             }
-            h2 {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-            }
-            h3 {
-                margin-bottom: 12px; /* Чуть меньше отступ на мобильных */
+            h2, h3 {
+                padding-left: 10px; /* Меньше отступ слева на мобильных */
+                margin-bottom: 12px;
             }
             a:hover {
                 transform: scale(1.02);
@@ -219,39 +221,18 @@
         </nav>
     </header>
     <div class="content">
-        <section>
+        <div class="projects-section"> <!-- Секция списка — слева -->
             <h2>Мои проекты</h2>
             <ul>
-                <li><h3>Конспект новичка:</h3> <!-- С отступом -->
+                <li><h3>Конспект новичка:</h3>
                     <ul>
                         <li><a href="neural_analysis.html">Анализ нейросетей</a></li>
                         <li><a href="html_concepts.html">Конспект по HTML</a></li>
                         <li><a href="python_concepts.html">Конспект по Python</a></li>
                     </ul>
                 </li>
-                <li><h3>Видеопроекты:</h3> <!-- С отступом -->
+                <li><h3>Видеопроекты:</h3>
                     <ul>
                         <li><a href="https://youtu.be/ok0J8rVUA1c">Мультик про котёнка</a></li>
                         <li><a href="clip.html">Клип</a></li>
-                        <li><a href="https://youtube.com/shorts/500ywmW3ivk?feature=share">Видео-гейм</a></li>
-                        <li><a href="merm (1).html">Интерактивная книга "Приключения русалочки Лии"</a></li>
-                    </ul>
-                </li>
-                <li><h3>Другие проекты:</h3> <!-- С отступом -->
-                    <ul>
-                        <li><a href="https://www.youtube.com/watch?v=V9gFIPHuxeg">Проект Python Мой магазин (помощник в малом бизнесе)</a></li>
-                        <li><a href="cook_bot.py">Телеграмм-бот в Python</a></li>
-                        <li><a href="mermaid.html">Книга про русалочку</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-        <div class="image-section">
-            <img src="notegirl.png" alt="Девушка с ноутбуком и нотами — символ творчества и программирования" onerror="this.src='https://via.placeholder.com/400x300/2c3e50/fff?text=Your+Image'"> <!-- Рядом со списком как единый блок -->
-        </div>
-    </div>
-    <footer>
-        <p>&copy; 2025 Мария Киселёва | <a href="https://github.com/Marya-Kiseliova">GitHub</a> | <a href="https://www.instagram.com/_drackosha._/">Instagram</a></p>
-    </footer>
-</body>
-</html>
+                        <li><a href="https://youtube.com/shorts/500ywmW3ivk?feature
