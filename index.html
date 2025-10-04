@@ -51,7 +51,7 @@
             line-height: 0;
         }
         .logo-img {
-            width: 160px;
+            width: 110px;
             height: 90px;
             object-fit: contain;
             vertical-align: middle;
@@ -150,19 +150,13 @@
             height: 280px; /* Фиксированная высота для всех — унифицирует контейнеры */
             border-radius: 5px;
             margin-bottom: 15px;
-            object-fit: contain; /* Заполняет контейнер без искажений; если пустоты — смени на contain */
+            object-fit: cover; /* Заполняет контейнер без искажений; если пустоты — смени на contain */
         }
         
         .spirit-video, .watch-video { /* Объединяем классы для "Духи" и "Часы" */
             width: 100% !important; /* Полная ширина */
-            height: auto; /* Одинаковая высота */
             object-fit: cover; /* Или contain, если хочешь избежать обрезки */
         }
-        }
-        .spirit-video {
-            height: 290px !important;
-            width: 110%;
-            object-fit: cover;
         }
         .shop-app-container {
             grid-column: span 2;
@@ -263,7 +257,7 @@
 <body>
     <header>
         <a href="index.html" class="logo-link">
-            <img src="IMG_0367.jpeg" alt="Mariya Kiseliova Logo" class="logo-img">
+            <img src="IMG_0363.png" alt="Mariya Kiseliova Logo" class="logo-img">
         </a>
         <nav>
             <a href="my_projects.html" class="nav-link">Проекты</a>
@@ -374,6 +368,7 @@
     </script>
 </body>
 </html>
+
 
 
 
