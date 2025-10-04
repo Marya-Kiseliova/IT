@@ -44,19 +44,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 90px;
+            height: 100px;
         }
         .logo-link {
             display: inline-block;
             line-height: 0;
         }
         .logo-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 20px;
-            object-fit: contain;
-            vertical-align: middle;
-            display: block;
+      width: 100px; /* Задай одинаковую ширину */
+      height: 100px; /* и высоту для идеального круга */
+      background-color: #333; /* Цвет фона контейнера */
+      display: flex; /* Чтобы отцентрировать лого внутри */
+      justify-content: center;
+      align-items: center;
+      /* 👇 Свойство для формы */
+      border-radius: 50%;
         }
         nav {
             display: flex;
@@ -377,3 +379,4 @@
     </script>
 </body>
 </html>
+
