@@ -25,7 +25,7 @@
     <meta property="og:site_name" content="Портфолио Марии Киселёвой">
     <meta property="og:locale" content="ru_RU">
     <title>Мои проекты — Портфолио Марии Киселёвой</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&family='Courier New', monospace&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -48,15 +48,15 @@
             display: flex;
             justify-content: space-between; /* Лого слева, nav справа */
             align-items: center;
-            height: 120px;
+            height: 110px; /* Выше на 20px */
         }
         .logo-link {
             display: inline-block;
             line-height: 0;
         }
         .logo-img {
-            width: 90px; /* Квадрат для круга */
-            height: 90px;
+            width: 110px; /* Под шапку 110px, квадрат для круга */
+            height: 110px;
             object-fit: cover; /* Заполняет круг без искажений */
             border-radius: 50%; /* Круглый логотип */
             vertical-align: middle;
@@ -65,7 +65,7 @@
         }
         nav {
             display: flex;
-            justify-content: flex-end; /* Справа, как просила */
+            justify-content: flex-end; /* Справа */
             gap: 20px;
         }
         .nav-link {
@@ -83,61 +83,67 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-        }
-        section {
-            background-color: #fff;
-            padding: 20px;
+            display: flex; /* Row: единый блок слева-справа */
+            flex-wrap: nowrap; /* Не переносить — строго рядом */
+            gap: 20px;
+            align-items: flex-start; /* Выравнивание по верху */
+            background-color: #fff; /* Единый фон для всего блока */
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень, чтобы "вписалась" девушка */
         }
-        .image-section {
-            text-align: center; /* Центрируем изображение */
-            margin-bottom: 20px;
+        .projects-section { /* Секция списка — слева */
+            flex: 1 1 auto; /* Занимает место */
+            padding: 20px;
+        }
+        .image-section { /* Изображение — справа */
+            flex: 0 0 300px; /* Фиксированная ширина 300px */
+            text-align: center;
+            padding: 20px;
+            min-width: 300px; /* Держит позицию справа */
         }
         .image-section img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             display: block;
             margin: 0 auto;
         }
         h2 {
             color: #2c3e50;
-            font-family: 'Roboto', sans-serif; /* Как в index.html для заголовков */
+            font-family: 'Roboto', sans-serif; /* Как в index.html */
             font-size: 2rem;
-            padding: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-align: center;
+            padding-left: 20px; /* Отступ слева */
         }
         h3 {
             color: #2c3e50;
             font-family: 'Roboto', sans-serif; /* Унифицировано */
-            margin-bottom: 10px;
+            margin-bottom: 15px; /* Отступ снизу */
             font-size: 1.2rem;
+            padding-left: 20px; /* Отступ слева для h3 */
         }
         ul {
             list-style-type: none; /* Без маркеров */
-            padding-left: 0;
+            padding-left: 20px; /* Общий отступ слева для списка */
         }
         li {
             margin-bottom: 8px;
         }
-        /* Ссылки в теле: как просила — цвет шапки, тени, hover с изменением цвета/размера */
+        /* Ссылки в теле: тонкий monospace шрифт */
         a {
-            color: #2c3e50; /* Цвет шапки */
+            color: #2c3e50;
             text-decoration: none;
-            font-weight: 600; /* Жирный шрифт */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Мягкая тень */
-            transition: color 0.3s ease, transform 0.3s ease; /* Плавный эффект */
-            display: inline-block; /* Для масштабирования */
-            font-family: 'Open Sans', sans-serif; /* Как в index.html */
+            font-weight: 300; /* Тонкий */
+            font-family: 'Courier New', monospace; /* Monospace, как просила */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
         }
         a:hover {
-            color: #3498db; /* Голубой на hover */
-            transform: scale(1.05); /* Увеличение размера */
-            text-shadow: 1px 1px 3px rgba(52, 152, 219, 0.3); /* Усиленная тень */
+            color: #3498db;
+            transform: scale(1.05);
+            text-shadow: 1px 1px 3px rgba(52, 152, 219, 0.3);
         }
         footer {
             background-color: #2c3e50;
@@ -149,11 +155,12 @@
         }
         footer a {
             color: #ecf0f1;
-            text-shadow: none; /* Без тени в футере */
+            text-shadow: none;
+            font-family: 'Open Sans', sans-serif; /* Как в index.html для футера */
         }
         footer a:hover {
             color: #3498db;
-            transform: none; /* Без масштаба в футере */
+            transform: none;
         }
         @media (max-width: 750px) {
             header {
@@ -163,23 +170,36 @@
                 height: auto;
             }
             .logo-img {
-                width: 80px; /* Уменьшено для мобильных */
+                width: 80px;
                 height: 80px;
             }
             nav {
                 flex-direction: column;
                 gap: 10px;
                 margin-top: 10px;
-                justify-content: center; /* Центр на мобильных */
+                justify-content: center;
             }
             .nav-link {
                 padding: 8px 12px;
                 font-size: 0.9rem;
             }
-            h2 {
-                font-size: 1.5rem;
+            .content {
+                flex-direction: column; /* Column на мобильных — изображение сверху */
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 10px; /* Меньше padding на мобильных */
             }
-            /* Ссылки на мобильных: меньше увеличение */
+            .projects-section, .image-section {
+                padding: 10px; /* Равномерные отступы */
+                flex: none; /* Полная ширина на мобильных */
+            }
+            .image-section {
+                order: -1; /* Изображение первым */
+            }
+            h2, h3 {
+                padding-left: 10px; /* Меньше отступ слева на мобильных */
+                margin-bottom: 12px;
+            }
             a:hover {
                 transform: scale(1.02);
             }
@@ -201,39 +221,18 @@
         </nav>
     </header>
     <div class="content">
-        <section>
+        <div class="projects-section"> <!-- Секция списка — слева -->
             <h2>Мои проекты</h2>
             <ul>
-                <li><h3>Конспект новичка</h3>
+                <li><h3>Конспект новичка:</h3>
                     <ul>
                         <li><a href="neural_analysis.html">Анализ нейросетей</a></li>
                         <li><a href="html_concepts.html">Конспект по HTML</a></li>
                         <li><a href="python_concepts.html">Конспект по Python</a></li>
                     </ul>
                 </li>
-                  <li><h3>Видеопроекты:</h3> <!-- С отступом -->
+                <li><h3>Видеопроекты:</h3>
                     <ul>
                         <li><a href="https://youtu.be/ok0J8rVUA1c">Мультик про котёнка</a></li>
                         <li><a href="clip.html">Клип</a></li>
-                        <li><a href="https://youtube.com/shorts/500ywmW3ivk?feature=share">Видео-гейм</a></li>
-                        <li><a href="merm (1).html">Интерактивная книга "Приключения русалочки Лии"</a></li>
-                    </ul>
-                </li>
-                <li><h3>Другие проекты:</h3> <!-- С отступом -->
-                    <ul>
-                        <li><a href="https://www.youtube.com/watch?v=V9gFIPHuxeg">Проект Python Мой магазин (помощник в малом бизнесе)</a></li>
-                        <li><a href="cook_bot.py">Телеграмм-бот в Python</a></li>
-                        <li><a href="mermaid.html">Книга про русалочку</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-        <div class="image-section">
-            <img src="notegirl.png" alt="Девушка с ноутбуком и нотами — символ творчества и программирования" onerror="this.src='https://via.placeholder.com/400x300/2c3e50/fff?text=Your+Image'"> <!-- Рядом со списком как единый блок -->
-        </div>
-    </div>
-    <footer>
-        <p>&copy; 2025 Мария Киселёва | <a href="https://github.com/Marya-Kiseliova">GitHub</a> | <a href="https://www.instagram.com/_drackosha._/">Instagram</a></p>
-    </footer>
-</body>
-</html>
+                        <li><a href="https://youtube.com/shorts/500ywmW3ivk?feature
