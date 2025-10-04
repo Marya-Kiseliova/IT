@@ -72,7 +72,6 @@
         .nav-link:hover {
             background-color: #34495e;
         }
-        /* Удалён стиль .nav-link.about-link — теперь все ссылки одинаковые */
         .styled-link {
             font-family: 'Open Sans', sans-serif;
             color: #2c3e50;
@@ -151,6 +150,11 @@
             height: auto;
             border-radius: 5px;
             margin-bottom: 15px;
+        }
+        . watch-video {
+            height: 250px !important;
+            width: 100%;
+            object-fit: cover;
         }
         .spirit-video {
             height: 290px !important;
@@ -323,7 +327,7 @@
                 <p>Анимация и фото созданы ИИ.</p>
             </div>
             <div class="project">
-                <video controls autoplay muted loop>
+                <video controls autoplay muted loop class="watch-video">
                     <source src="1004.mp4" type="video/mp4">
                     Ваш браузер не поддерживает видео.
                 </video>
@@ -367,5 +371,6 @@
     </script>
 </body>
 </html>
+
 
 
