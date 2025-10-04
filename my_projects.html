@@ -83,7 +83,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            display: flex; /* Row на десктопе — список слева, изображение справа */
+            display: flex; /* Row: единый блок слева-справа */
+            flex-wrap: nowrap; /* Не переносить — строго рядом */
             gap: 20px;
             align-items: flex-start; /* Выравнивание по верху */
         }
@@ -92,13 +93,13 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            flex: 1; /* Список занимает ~2/3 места */
+            flex: 1 1 auto; /* Список занимает место, но не растягивается */
             margin-bottom: 20px;
         }
         .image-section {
-            flex: 1; /* Изображение занимает ~1/3 места */
-            min-width: 250px; /* Минимальная ширина, чтобы не падало под список */
+            flex: 0 0 300px; /* Фиксированная ширина 300px, чтобы держалось справа */
             text-align: center;
+            min-width: 300px; /* Минимальная ширина — не падает под список */
         }
         .image-section img {
             max-width: 100%;
@@ -112,13 +113,13 @@
             color: #2c3e50;
             font-family: 'Roboto', sans-serif; /* Как в index.html */
             font-size: 2rem;
-            margin-bottom: 20px; /* Отступ снизу для заголовка */
+            margin-bottom: 20px; /* Отступ снизу */
             text-align: center;
         }
         h3 {
             color: #2c3e50;
             font-family: 'Roboto', sans-serif; /* Унифицировано */
-            margin-bottom: 10px; /* Отступ снизу для подзаголовков */
+            margin-bottom: 15px; /* Увеличенный отступ снизу для названий списков */
             font-size: 1.2rem;
         }
         ul {
@@ -182,18 +183,20 @@
             }
             .content {
                 flex-direction: column; /* Column на мобильных — изображение сверху */
+                flex-wrap: wrap; /* На мобильных можно переносить, если нужно */
                 gap: 10px;
             }
             .image-section {
+                flex: none; /* На мобильных — полная ширина */
                 min-width: auto;
-                order: -1; /* Изображение первым на мобильных */
+                order: -1; /* Изображение первым */
             }
             h2 {
                 font-size: 1.5rem;
-                margin-bottom: 15px; /* Меньше отступ на мобильных */
+                margin-bottom: 15px;
             }
             h3 {
-                margin-bottom: 8px;
+                margin-bottom: 12px; /* Чуть меньше отступ на мобильных */
             }
             a:hover {
                 transform: scale(1.02);
@@ -219,14 +222,14 @@
         <section>
             <h2>Мои проекты</h2>
             <ul>
-                <li><h3>Конспект новичка:</h3> <!-- Добавлено : -->
+                <li><h3>Конспект новичка:</h3> <!-- С отступом -->
                     <ul>
                         <li><a href="neural_analysis.html">Анализ нейросетей</a></li>
                         <li><a href="html_concepts.html">Конспект по HTML</a></li>
                         <li><a href="python_concepts.html">Конспект по Python</a></li>
                     </ul>
                 </li>
-                <li><h3>Видеопроекты:</h3> <!-- Добавлено : -->
+                <li><h3>Видеопроекты:</h3> <!-- С отступом -->
                     <ul>
                         <li><a href="https://youtu.be/ok0J8rVUA1c">Мультик про котёнка</a></li>
                         <li><a href="clip.html">Клип</a></li>
@@ -234,7 +237,7 @@
                         <li><a href="merm (1).html">Интерактивная книга "Приключения русалочки Лии"</a></li>
                     </ul>
                 </li>
-                <li><h3>Другие проекты:</h3> <!-- Добавлено : -->
+                <li><h3>Другие проекты:</h3> <!-- С отступом -->
                     <ul>
                         <li><a href="https://www.youtube.com/watch?v=V9gFIPHuxeg">Проект Python Мой магазин (помощник в малом бизнесе)</a></li>
                         <li><a href="cook_bot.py">Телеграмм-бот в Python</a></li>
@@ -244,7 +247,7 @@
             </ul>
         </section>
         <div class="image-section">
-            <img src="notegirl.png" alt="Девушка с ноутбуком и нотами — символ творчества и программирования" onerror="this.src='https://via.placeholder.com/400x300/2c3e50/fff?text=Your+Image'"> <!-- Рядом со списком, fallback если файл не загружен -->
+            <img src="notegirl.png" alt="Девушка с ноутбуком и нотами — символ творчества и программирования" onerror="this.src='https://via.placeholder.com/400x300/2c3e50/fff?text=Your+Image'"> <!-- Рядом со списком как единый блок -->
         </div>
     </div>
     <footer>
