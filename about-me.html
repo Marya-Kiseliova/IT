@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="/logo3.png">
     <meta name="description" content="О Марии Киселёвой - IT, промт-инженерия, веб-разработка">
     <title>Мария Киселёва - Обо мне</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
@@ -31,10 +32,21 @@
             z-index: 1000;
                 }
         p { margin: 20px; }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
+  
+        .logo-link {
+            display: inline-block;
+            line-height: 0;
+            }
+            .logo-img {
+          width: 100px; /* Задай одинаковую ширину */
+          height: 100px; /* и высоту для идеального круга */
+          background-color: #333; /* Цвет фона контейнера */
+          display: flex; /* Чтобы отцентрировать лого внутри */
+          justify-content: center;
+          align-items: center;
+          /* 👇 Свойство для формы */
+          border-radius: 50%;
+            }
         nav {
             display: flex;
             justify-content: center;
@@ -139,9 +151,9 @@
             border-radius: 10px 10px 0 0;
         }
         @media (max-width: 750px) {
-            .logo {
-                font-size: 1.2rem;
-                text-align: center;
+            .logo-img {
+                width: 80px;
+                height: 80px;
             }
             nav {
                 flex-direction: column;
@@ -169,8 +181,9 @@
 </head>
 <body>
     <header>
-        <div class="logo">Mariya Kiseliova /VCard</div>
-        <nav>
+        <a href="index.html" class="logo-link">
+            <img src="logo3.png" alt="Mariya Kiseliova Logo" class="logo-img">
+        </a>
             <a href="index.html" class="nav-link">Главная</a>
             <a href="about-me.html" class="nav-link">Обо мне</a>
             <a href="contacts.html" class="nav-link" id="contact-link">Контакты</a>
