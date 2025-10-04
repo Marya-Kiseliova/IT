@@ -46,7 +46,7 @@
             top: 0;
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Лого слева, nav справа */
             align-items: center;
             height: 90px;
         }
@@ -65,7 +65,7 @@
         }
         nav {
             display: flex;
-            justify-content: flex-end; /* По правому краю */
+            justify-content: flex-end; /* Справа */
             gap: 20px;
         }
         .nav-link {
@@ -83,17 +83,22 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            display: flex; /* Row на десктопе — список слева, изображение справа */
+            gap: 20px;
+            align-items: flex-start; /* Выравнивание по верху */
         }
         section {
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1; /* Список занимает ~2/3 места */
             margin-bottom: 20px;
         }
         .image-section {
-            text-align: center; /* Центрируем изображение */
-            margin-bottom: 20px;
+            flex: 1; /* Изображение занимает ~1/3 места */
+            min-width: 250px; /* Минимальная ширина, чтобы не падало под список */
+            text-align: center;
         }
         .image-section img {
             max-width: 100%;
@@ -105,15 +110,15 @@
         }
         h2 {
             color: #2c3e50;
-            font-family: 'Roboto', sans-serif; /* Как в index.html для заголовков */
+            font-family: 'Roboto', sans-serif; /* Как в index.html */
             font-size: 2rem;
-            margin-bottom: 15px;
+            margin-bottom: 20px; /* Отступ снизу для заголовка */
             text-align: center;
         }
         h3 {
             color: #2c3e50;
             font-family: 'Roboto', sans-serif; /* Унифицировано */
-            margin-bottom: 10px;
+            margin-bottom: 10px; /* Отступ снизу для подзаголовков */
             font-size: 1.2rem;
         }
         ul {
@@ -123,20 +128,20 @@
         li {
             margin-bottom: 8px;
         }
-        /* Ссылки в теле: как просила — цвет шапки, тени, hover с изменением цвета/размера */
+        /* Ссылки в теле: цвет шапки, тени, hover */
         a {
-            color: #2c3e50; /* Цвет шапки */
+            color: #2c3e50;
             text-decoration: none;
-            font-weight: 600; /* Жирный шрифт */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Мягкая тень */
-            transition: color 0.3s ease, transform 0.3s ease; /* Плавный эффект */
-            display: inline-block; /* Для масштабирования */
-            font-family: 'Open Sans', sans-serif; /* Как в index.html */
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            font-family: 'Open Sans', sans-serif;
         }
         a:hover {
-            color: #3498db; /* Голубой на hover */
-            transform: scale(1.05); /* Увеличение размера */
-            text-shadow: 1px 1px 3px rgba(52, 152, 219, 0.3); /* Усиленная тень */
+            color: #3498db;
+            transform: scale(1.05);
+            text-shadow: 1px 1px 3px rgba(52, 152, 219, 0.3);
         }
         footer {
             background-color: #2c3e50;
@@ -148,11 +153,11 @@
         }
         footer a {
             color: #ecf0f1;
-            text-shadow: none; /* Без тени в футере */
+            text-shadow: none;
         }
         footer a:hover {
             color: #3498db;
-            transform: none; /* Без масштаба в футере */
+            transform: none;
         }
         @media (max-width: 750px) {
             header {
@@ -162,23 +167,34 @@
                 height: auto;
             }
             .logo-img {
-                width: 80px; /* Уменьшено для мобильных */
+                width: 80px;
                 height: 80px;
             }
             nav {
                 flex-direction: column;
                 gap: 10px;
                 margin-top: 10px;
-                justify-content: center; /* Центр на мобильных */
+                justify-content: center;
             }
             .nav-link {
                 padding: 8px 12px;
                 font-size: 0.9rem;
             }
+            .content {
+                flex-direction: column; /* Column на мобильных — изображение сверху */
+                gap: 10px;
+            }
+            .image-section {
+                min-width: auto;
+                order: -1; /* Изображение первым на мобильных */
+            }
             h2 {
                 font-size: 1.5rem;
+                margin-bottom: 15px; /* Меньше отступ на мобильных */
             }
-            /* Ссылки на мобильных: меньше увеличение */
+            h3 {
+                margin-bottom: 8px;
+            }
             a:hover {
                 transform: scale(1.02);
             }
@@ -191,9 +207,9 @@
 <body>
     <header>
         <a href="index.html" class="logo-link">
-            <img src="logo3.png" alt="Mariya Kiseliova Logo" class="logo-img">
+            <img src="logo3.png" alt="Mariya Kiseliova Logo" class="logo-img"> <!-- Круглый логотип слева -->
         </a>
-        <nav>
+        <nav> <!-- Ссылки справа -->
             <a href="index.html" class="nav-link">Главная</a>
             <a href="about-me.html" class="nav-link">Обо мне</a>
             <a href="contacts.html" class="nav-link">Контакты</a>
@@ -203,14 +219,14 @@
         <section>
             <h2>Мои проекты</h2>
             <ul>
-                <li><h3>Конспект новичка</h3>
+                <li><h3>Конспект новичка:</h3> <!-- Добавлено : -->
                     <ul>
                         <li><a href="neural_analysis.html">Анализ нейросетей</a></li>
                         <li><a href="html_concepts.html">Конспект по HTML</a></li>
                         <li><a href="python_concepts.html">Конспект по Python</a></li>
                     </ul>
                 </li>
-                <li><h3>Видеопроекты</h3>
+                <li><h3>Видеопроекты:</h3> <!-- Добавлено : -->
                     <ul>
                         <li><a href="https://youtu.be/ok0J8rVUA1c">Мультик про котёнка</a></li>
                         <li><a href="clip.html">Клип</a></li>
@@ -218,7 +234,7 @@
                         <li><a href="merm (1).html">Интерактивная книга "Приключения русалочки Лии"</a></li>
                     </ul>
                 </li>
-                <li><h3>Другие проекты</h3>
+                <li><h3>Другие проекты:</h3> <!-- Добавлено : -->
                     <ul>
                         <li><a href="https://www.youtube.com/watch?v=V9gFIPHuxeg">Проект Python Мой магазин (помощник в малом бизнесе)</a></li>
                         <li><a href="cook_bot.py">Телеграмм-бот в Python</a></li>
@@ -228,7 +244,7 @@
             </ul>
         </section>
         <div class="image-section">
-            <img src="notegirl.png" alt="Девушка с ноутбуком и нотами — символ творчества и программирования" onerror="this.src='https://via.placeholder.com/400x300/2c3e50/fff?text=Your+Image'"> <!-- Fallback, если файл не загружен -->
+            <img src="notegirl.png" alt="Девушка с ноутбуком и нотами — символ творчества и программирования" onerror="this.src='https://via.placeholder.com/400x300/2c3e50/fff?text=Your+Image'"> <!-- Рядом со списком, fallback если файл не загружен -->
         </div>
     </div>
     <footer>
