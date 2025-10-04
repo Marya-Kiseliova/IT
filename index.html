@@ -14,11 +14,11 @@
     <meta name="description" content="Портфолио Марии Киселёвой, промт инженера, питон разработчика и веб-разработчика из Бреста. Откройте мультимедиа и проекты с ИИ!">
     <meta name="keywords" content="Мария Киселёва, промт инженер, сделать сайт в Бресте, создание сайтов, Беларусь, сделать сайт, программист, питон разработчик, Брест, портфолио, веб-разработка, ИИ, мультимедиа, проекты">
     <meta name="google-site-verification" content="google-site-verification: googleaaedd8ba43c73c48.html" />
-    <!-- Open Graph теги — для превью в соцсетях -->
+    <!-- Open Graph теги -->
     <meta property="og:title" content="Мария Киселёва — Промт Инженер и Питон Разработчик">
     <meta property="og:description" content="Портфолио Марии Киселёвой: веб-разработка, промт-инженерия и проекты с ИИ из Бреста. Ознакомьтесь с моими работами!">
-    <meta property="og:image" content="/logo3.png"> <!-- Логотип в корне репозитория -->
-    <meta property="og:url" content="https://marya-kiseliova.github.io/IT/"> <!-- Твой URL -->
+    <meta property="og:image" content="/logo3.png"> <!-- Путь к логотипу -->
+    <meta property="og:url" content="https://marya-kiseliova.github.io/IT/"> <!-- Реальный URL -->
     <meta property="og:type" content="website">
     <title>Мария Киселёва — Промт Инженер и Питон Разработчик из Бреста</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
@@ -44,20 +44,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 90px;
+            height: 100px;
         }
         .logo-link {
             display: inline-block;
             line-height: 0;
         }
         .logo-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: contain;
-            vertical-align: middle;
-            display: flex;
-            align-items: center;
+      width: 100px; /* Задай одинаковую ширину */
+      height: 100px; /* и высоту для идеального круга */
+      background-color: #333; /* Цвет фона контейнера */
+      display: flex; /* Чтобы отцентрировать лого внутри */
+      justify-content: center;
+      align-items: center;
+      /* 👇 Свойство для формы */
+      border-radius: 50%;
         }
         nav {
             display: flex;
@@ -147,16 +148,19 @@
         .project:hover {
             transform: translateY(-5px);
         }
+        /* Общий стиль для изображений и видео: унифицированная высота 280px */
         .project img, .project video {
             width: 100%;
-            height: auto;
+            height: 280px; /* Фиксированная высота — контейнеры теперь одинаковые */
             border-radius: 5px;
             margin-bottom: 15px;
+            object-fit: cover; /* Заполняет без искажений; смени на contain, если пустоты мешают */
         }
-        .spirit-video {
-            height: 290px !important;
-            width: 110%;
-            object-fit: cover;
+        /* Специальные классы для видео "Духи" и "Часы": теперь одинаковые с остальными */
+        .spirit-video, .watch-video {
+            height: 280px !important; /* Одинаковая высота */
+            width: 100% !important;
+            object-fit: cover; /* Или contain для полного видео без обрезки */
         }
         .shop-app-container {
             grid-column: span 2;
@@ -251,13 +255,20 @@
             .projects {
                 grid-template-columns: 1fr;
             }
+            /* На мобильных видео тоже фиксированная высота, но меньше */
+            .project img, .project video {
+                height: 200px; /* Меньше для мобильных */
+            }
+            .spirit-video, .watch-video {
+                height: 200px !important;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <a href="index.html" class="logo-link">
-            <img src="logo3.png" alt="Mariya Kiseliova Logo" class="logo-img"> <!-- Обновлено: используем logo3.png для унификации -->
+            <img src="logo3.png" alt="Mariya Kiseliova Logo" class="logo-img">
         </a>
         <nav>
             <a href="my_projects.html" class="nav-link">Проекты</a>
@@ -276,7 +287,7 @@
                     <li>Промт-инженерия (работа с ИИ)</li>
                     <li>Программирование на Python</li>
                     <li>Создание мультимедиа-контента</li>
-                    <li>Создание маркетинговых видео и баннеров</li>
+                    <li>Создание маркетинговых видео и банеров</li>
                 </ul>
             </div>
         </div>
@@ -324,7 +335,7 @@
                 <p>Анимация и фото созданы ИИ.</p>
             </div>
             <div class="project">
-                <video controls autoplay muted loop>
+                <video controls autoplay muted loop class="watch-video">
                     <source src="1004.mp4" type="video/mp4">
                     Ваш браузер не поддерживает видео.
                 </video>
@@ -369,3 +380,4 @@
 </body>
 </html>
 
+Добавь комментарии для css and us на русском пожалуйста 
