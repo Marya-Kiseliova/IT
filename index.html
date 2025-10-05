@@ -225,6 +225,7 @@
             header {
                 padding: 0.5rem;
                 height: 250px;
+                width: auto;
                 flex-direction: column;
                 align-items: center;
             }
@@ -260,7 +261,8 @@
             }
             /* На мобильных видео тоже фиксированная высота, но меньше */
             .project img, .project video {
-                height: 250px; /* Меньше для мобильных */
+                height: 250px; 
+                object-fit: cover;/* Меньше для мобильных */
             }
             .spirit-video, .watch-video {
                 height: 250px !important;
@@ -384,6 +386,7 @@
 </html>
 
 Добавь комментарии для css and us на русском пожалуйста 
+
 
 
 
