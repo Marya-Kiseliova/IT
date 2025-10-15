@@ -86,10 +86,22 @@
             border-radius: 10px 10px 0 0;
         }
         @media (max-width: 750px) {
+            .header {               
+            padding: 0.5rem;
+                min-height: 80px;
+                width: 100vw;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                overflow: visible;
+            }
             .logo-img {
-            width: 90px;
-            height: 90px;}
-            nav { flex-direction: column; gap: 10px; }
+                justify-content: right;
+                width: 60px;
+                height: 60px;
+                order: 2;
+            }
+                       nav { flex-direction: column; gap: 10px; }
             .nav-link { padding: 8px 12px; font-size: 0.9rem; }
             h2 { font-size: 1.5rem; }
             .content { flex-direction: column; }
@@ -147,4 +159,5 @@
         <p>&copy; 2025 Мария Киселёва </a></p>
     </footer>
 </body>
+
 </html>
