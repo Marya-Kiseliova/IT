@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:image" content="/logo3.png">
     <meta name="description" content="О Марии Киселёвой - IT, промт-инженерия, веб-разработка">
+    <meta name="keywords" content="Мария Киселёва, промт инженер, веб-разработчик, Python, Брест, IT специалист">
+    <!-- Open Graph теги -->
+    <meta property="og:title" content="Мария Киселёва - Обо мне">
+    <meta property="og:description" content="IT специалист, промт-инженер и веб-разработчик из Бреста. Узнайте больше о моём профессиональном пути и навыках.">
+    <meta property="og:image" content="https://marya-kiseliova.github.io/IT/logo3.png">
+    <meta property="og:url" content="https://marya-kiseliova.github.io/IT/about-me.html">
+    <meta property="og:type" content="website">
+    <!-- Schema.org микроразметка -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Мария Киселёва",
+      "jobTitle": "Промт инженер и веб-разработчик",
+      "url": "https://marya-kiseliova.github.io/IT/",
+      "image": "https://marya-kiseliova.github.io/IT/my-photo.jpg",
+      "description": "IT специалист, промт-инженер и веб-разработчик из Бреста"
+    }
+    </script>
     <title>Мария Киселёва - Обо мне</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
     <style>
@@ -18,32 +37,37 @@
             background-color: #2c3e50;
             color: #fefafa;
             padding: 1rem;
-            justify-content: space-between !important;
+            justify-content: space-between;
             position: sticky;
             top: 0;
             z-index: 1000;
-            text-align: center;
             display: flex;
             align-items: center;
+            height: 120px;
         }
+        
         .logo-link {
             display: inline-block;
             line-height: 0;
-                }
+        }
+        
         .logo-img {
-            width: 100px; /* Задай одинаковую ширину */
-            height: 100px; /* и высоту для идеального круга */
-            background-color: #333; /* Цвет фона контейнера */
-            display: flex; /* Чтобы отцентрировать лого внутри */
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+            display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 50%;
-                }
+        }
+        
         nav {
             display: flex;
-            justify-content: center; /* Центрирует ссылки внутри nav */
+            justify-content: center;
             margin-left: auto;
+            gap: 20px;
         }
+        
         .nav-link {
             color: #fff;
             text-decoration: none;
@@ -51,12 +75,10 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }        
+        
         .nav-link:hover {
             background-color: #34495e;
         }
-        .beginner { list-style-type: circle; padding-left: 20px; }
-        .video { list-style-type: square; padding-left: 20px; }
-        .other { list-style-type: disc; padding-left: 20px; }
         
         body {
             font-family: 'Open Sans', sans-serif;
@@ -64,19 +86,23 @@
             color: #333;
             line-height: 1.6;
         }
+        
         .content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
+        
         .about-image {
             float: left;
-            margin-right: 20px;
+            margin-right: 30px;
             margin-bottom: 20px;
-            max-width: 100%;
+            max-width: 300px;
             height: auto;
-            border-radius: 5px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+        
         .about {
             overflow: hidden;
             background-color: #fff;
@@ -85,67 +111,130 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
+        
         .about h1 {
             color: #2c3e50;
             font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
-        . p {margin: 20px;}
+        
         .about p {
             font-size: 1.1rem;
             color: #7f8c8d;
-            margin-bottom: 15px;
-            margin-left: 20px;
-         }
-        .about img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
             margin-bottom: 20px;
+            line-height: 1.8;
         }
+        
         .about a {
             display: inline-block;
             margin-top: 10px;
-            padding: 8px 15px;
+            padding: 12px 25px;
             background-color: #3498db;
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            font-weight: 600;
         }
+        
         .about a:hover {
             background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
         }
+        
         footer {
             background-color: #2c3e50;
             color: #fff;
             text-align: center;
-            padding: 15px;
+            padding: 20px;
             border-radius: 10px 10px 0 0;
         }
+        
+        footer a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Медиа-запрос для мобильных */
         @media (max-width: 750px) {
-            .logo-img {
-            width: 90px;
-            height: 90px;}
-            .nav { flex-direction: column; gap: 10px; 
+            header {
+                height: auto;
+                padding: 0.5rem;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
             }
+            
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-left: 0;
+            }
+            
             .nav-link {
                 padding: 8px 12px;
-                font-size: 0.9rem;
+                font-size: 0.8rem;
             }
+            
             .about h1 {
                 font-size: 2rem;
+                margin-bottom: 20px;
             }
+            
             .about p {
                 font-size: 1rem;
+                margin-bottom: 15px;
             }
+            
             .about-image {
                 float: none;
                 margin-right: 0;
+                margin-bottom: 20px;
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
+                max-width: 250px;
+            }
+            
+            .about {
+                padding: 25px;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+        }
+        
+        /* Для очень маленьких экранов */
+        @media (max-width: 480px) {
+            nav {
+                gap: 5px;
+            }
+            
+            .nav-link {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+            
+            .about-image {
+                max-width: 200px;
+            }
+            
+            .about h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -153,26 +242,32 @@
 <body>
     <header>
         <a href="index.html" class="logo-link">
-        <img src="logo3.png" alt="Mariya Kiseliova Logo" class="logo-img">
+            <img src="logo3.png" alt="Mariya Kiseliova Logo" class="logo-img" loading="lazy">
         </a>
         <nav>
             <a href="index.html" class="nav-link">Главная</a>
-            <a href="about-me.html" class="nav-link">Обо мне</a>
+            <a href="my_projects.html" class="nav-link">Проекты</a>
             <a href="contacts.html" class="nav-link">Контакты</a>
         </nav>
     </header>
+    
     <div class="content">
         <div class="about">
             <h1>Обо мне</h1>
-            <img src="my-photo.jpg" alt="Мария Киселёва" width="300" height="400" class="about-image">
+            <img src="my-photo.jpg" alt="Мария Киселёва - промт инженер и веб-разработчик" width="300" height="400" class="about-image" loading="lazy">
             <p>Привет! Меня зовут Мария Киселёва, и я начинающий специалист в IT. Моя страсть — создавать что-то новое с помощью технологий, особенно в промт-инженерии и веб-разработке. Я люблю экспериментировать с ИИ, создавать мультимедиа и учиться каждый день.</p>
-            <p>Мой интерес к IT начался с курса по изучению Python, а теперь я осваиваю HTML, CSS и JavaScript. Каждый проект — это вызов, который помогает мне расти. В будущем я хочу стать экспертом в создании интерактивных приложений и делиться своими знаниями с другими.</p>
-            <p>В свободное время я люблю читать художественные книги и статьи о развитии технологий, смотреть Marvel и Lost Film и путешествовать. Если у тебя есть идеи для сотрудничества или у тебя остались вопросы, пиши мне! Ниже можно подробнее узнать о моём образовании и профессиональном опыте:</p>
-            <a href="resume.pdf" target="_blank">Моё резюме (PDF)</a>
+            <p>Мой интерес к IT начался с курса по изучению Python, а теперь я создаю веб-сайты и проекты с HTML, CSS и JavaScript. Каждый проект — это вызов, который помогает мне расти. В будущем я хочу стать экспертом в создании интерактивных приложений и делиться своими знаниями с другими.</p>
+            <p>В свободное время я люблю читать художественные книги и статьи о развитии технологий, смотреть Marvel и Lost Film и путешествовать. Если у тебя есть идеи для сотрудничества или у тебя остались вопросы, пиши мне!</p>
+            <p>Ниже можно подробнее узнать о моём образовании и профессиональном опыте:</p>
+            <a href="resume.pdf" target="_blank" title="Скачать резюме Марии Киселёвой">Моё резюме (PDF)</a>
         </div>
     </div>
+    
     <footer>
-        <p>&copy; 2025 Мария Киселёва</p>
+        <p>&copy; 2025 Мария Киселёва | 
+            <a href="https://github.com/Marya-Kiseliova">GitHub</a> | 
+            <a href="https://www.instagram.com/_drackosha._/">Instagram</a>
+        </p>
     </footer>
-    </body>
+</body>
 </html>
