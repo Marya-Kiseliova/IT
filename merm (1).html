@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VDQ8GQCBC4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VDQ8GQCBC4');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Приключения Русалочки Лиа</title>
@@ -147,6 +138,11 @@
             padding-left: 110px;
             margin: 0;
         }
+        .continue-btn {
+            pointer-events: auto !important; /* Разрешает клики */
+            position: relative !important;
+            z-index: 10 !important;
+        }
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
             .characters { flex-direction: column; align-items: center; margin: 10px; }
@@ -175,7 +171,7 @@
     </header>
 
     <nav>
-        <a href="../index.html">Главная</a>
+        <a href="index.html">Главная</a>
         <a href="#plot">Сюжет</a>
         <a href="#characters">Герои</a>
         <a href="#facts">Факты</a>
@@ -285,7 +281,7 @@
     <div class="section" id="next">
         <h2>Что было дальше?</h2>
         <p>Хочешь узнать, какое ещё приключение ждало Лиа и её друзей? Нажми на кнопку!</p>
-        <button class="continue-btn" onclick="alert('Продолжение скоро будет доступно!')">✨ Продолжить историю</button>
+     <a class="continue-btn" href="Part2.html">✨ Продолжить историю</a>
     </div>
 
     <div class="dialog" id="fishDialog">
