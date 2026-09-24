@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-  <title>Проекты и Навыки | Мария Киселёва</title>
-  <meta name="description" content="Промт-инженер & UI/UX Designer из Бреста. Проекты: AI-фотосессии, видео-презентации, сайты, интерактивные книги. Навыки работы с ИИ." />
+  <title>Проекты | Мария Киселёва — Промт-инженер & UI/UX Designer</title>
+  <meta name="description" content="Промт-инженер & UI/UX Designer из Бреста. Проекты: AI-фотосессии, видео-презентации, сайты, интерактивные книги. Обучение работе с ИИ." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://ваш-сайт.ru/Projects.html" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Проекты и Навыки | Мария Киселёва" />
-  <meta property="og:description" content="Портфолио проектов и навыки: AI-фотосессии, веб-сайты, интерактивные книги, дизайн." />
+  <meta property="og:title" content="Проекты | Мария Киселёва" />
+  <meta property="og:description" content="Портфолио проектов: AI-фотосессии, веб-сайты, интерактивные книги, дизайн. Обучение промт-инженерингу." />
   <meta property="og:image" content="logo.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ваш-сайт.ru/Projects.html" />
@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== MOBILE FIRST RESET & BASE ===== */
+    /* ===== RESET & BASE ===== */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
@@ -41,7 +41,7 @@
     
     .container {
       width: 100%;
-      padding: 0 20px; /* Отступы, чтобы текст не лип к краям */
+      padding: 0 20px;
       margin: 0 auto;
     }
 
@@ -54,8 +54,8 @@
       --violet-light: #f3efff;
       --violet-soft: #e9e4f5;
       --border: rgba(0, 0, 0, 0.06);
-      --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
-      --shadow-hover: 0 30px 80px -20px rgba(118, 84, 189, 0.15);
+      --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 30px 80px -20px rgba(118, 84, 189, 0.12);
       --radius-lg: 32px;
       --radius-md: 20px;
       --radius-sm: 12px;
@@ -69,7 +69,7 @@
     }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-    /* ===== HEADER (Mobile) ===== */
+    /* ===== HEADER ===== */
     .site-header {
       position: fixed;
       inset: 0 0 auto;
@@ -89,14 +89,20 @@
       justify-content: space-between;
     }
     
+    /* Логотип и название: теперь как навигация */
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      color: var(--ink);
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: -0.02em;
+      gap: 10px;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+    .brand:hover {
+      color: var(--violet);
     }
     
     .logo-video {
@@ -170,15 +176,19 @@
       transform: translateY(0);
     }
     .nav-links a {
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 500;
-      color: var(--ink);
+      color: var(--muted);
       padding: 8px 0;
       border-bottom: 1px solid rgba(0,0,0,0.03);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
     }
+    .nav-links a:hover { color: var(--violet); }
     .nav-links a:last-child { border-bottom: none; }
 
-    /* ===== HERO SECTION (Mobile) ===== */
+    /* ===== HERO SECTION ===== */
     .hero {
       padding: 100px 0 40px;
       background: #fff;
@@ -202,14 +212,13 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr; /* Mobile: одна колонка */
+      grid-template-columns: 1fr;
       gap: 32px;
       align-items: center;
       position: relative;
       z-index: 1;
     }
 
-    /* Картинка первая (сверху на мобильных) */
     .hero-image {
       position: relative;
       border-radius: var(--radius-lg);
@@ -220,6 +229,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+    .hero-image:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
     }
     .hero-image img {
       width: 100%;
@@ -233,7 +247,6 @@
       max-width: 600px;
     }
 
-    /* Акцентный текст вместо кнопки */
     .eyebrow {
       display: inline-block;
       margin-bottom: 12px;
@@ -269,38 +282,63 @@
     .hero-role {
       font-size: 1rem;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.7;
       margin-bottom: 24px;
     }
 
-    /* ===== SERVICES (Замена навыков) ===== */
-    .services-wrapper {
-      margin-top: 40px;
-      padding: 24px 20px;
-      background: #f9fafb;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
+    /* ===== "ТРИ КИТА" ===== */
+    .pillars-wrapper {
+      margin-top: 48px;
+      padding: 32px 0; /* Убрал боковые отступы, чтобы контейнер держал */
     }
-    .services-grid {
+    
+    .pillars-title {
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 40px;
+      letter-spacing: -0.02em;
+    }
+    .pillars-title span {
+      color: var(--violet);
+    }
+
+    .pillars-grid {
       display: grid;
-      grid-template-columns: 1fr; /* Mobile: одна колонка */
-      gap: 16px;
+      grid-template-columns: 1fr;
+      gap: 32px;
     }
-    .service-card {
-      background: #fff;
-      padding: 20px;
-      border-radius: var(--radius-sm);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      border: 1px solid rgba(0,0,0,0.02);
+
+    /* Минималистичный дизайн "Трех китов" */
+    .pillar-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      position: relative;
     }
-    .service-card h3 {
+    /* Огромная цифра */
+    .pillar-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--violet);
+      opacity: 0.15;
+      margin-bottom: -10px; /* Наложение на заголовок */
+      font-variant-numeric: tabular-nums;
+      user-select: none;
+    }
+    .pillar-item h3 {
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--violet);
+      color: var(--ink);
       margin-bottom: 8px;
       line-height: 1.3;
+      position: relative;
+      z-index: 1;
     }
-    .service-card p {
+    .pillar-item p {
       font-size: 0.9rem;
       color: var(--muted);
       line-height: 1.6;
@@ -317,14 +355,14 @@
       border-radius: 100px;
       font-size: 14px;
       font-weight: 600;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
       box-shadow: 0 8px 24px rgba(118, 84, 189, 0.25);
       border: none;
       cursor: pointer;
       font-family: inherit;
     }
     .btn-primary:hover {
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.02);
       box-shadow: 0 12px 32px rgba(118, 84, 189, 0.35);
       background: #6541a8;
     }
@@ -345,9 +383,10 @@
     }
     .btn-outline:hover {
       background: var(--violet-light);
+      transform: translateY(-2px);
     }
 
-    /* ===== PROJECTS SECTION (Mobile) ===== */
+    /* ===== PROJECTS SECTION ===== */
     .projects-section {
       padding: 20px 0 60px;
     }
@@ -372,17 +411,16 @@
       margin: 0 auto;
     }
 
-    /* ===== PROJECT ROW (Mobile) ===== */
+    /* ===== PROJECT ROW ===== */
     .project-row {
       display: grid;
-      grid-template-columns: 1fr; /* Mobile: одна колонка */
+      grid-template-columns: 1fr;
       gap: 24px;
       margin-bottom: 60px;
       align-items: center;
       position: relative;
     }
 
-    /* Огромная цифра на фоне - УМЕНЬШЕНА ЯРКОСТЬ */
     .project-number {
       position: absolute;
       top: -10px;
@@ -391,15 +429,16 @@
       font-weight: 800;
       line-height: 1;
       color: var(--violet-light);
-      opacity: 0.2; /* Очень прозрачная */
+      opacity: 0.2;
       z-index: 0;
       pointer-events: none;
       font-variant-numeric: tabular-nums;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.4s ease, transform 0.4s ease;
       mix-blend-mode: multiply;
     }
     .project-row:hover .project-number {
       opacity: 0.35;
+      transform: scale(1.05);
     }
 
     .project-text {
@@ -437,11 +476,19 @@
       margin-bottom: 12px;
     }
 
-    .text-block {
+    /* Новый формат текста: Задача - Решение - Результат */
+    .project-meta {
+      margin-bottom: 20px;
+    }
+    .project-meta p {
       font-size: 0.9rem;
       color: var(--muted);
       line-height: 1.7;
-      margin-bottom: 20px;
+      margin-bottom: 8px;
+    }
+    .project-meta strong {
+      color: var(--ink);
+      font-weight: 600;
     }
 
     .project-media {
@@ -464,6 +511,11 @@
       background: #f9fafb;
       position: relative;
       box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .media-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
     }
     .media-item img {
       width: 100%;
@@ -481,7 +533,9 @@
       cursor: pointer;
       background: #f9fafb;
       box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease;
     }
+    .media-full:hover { transform: translateY(-4px); }
     .media-full img {
       width: 100%;
       height: auto;
@@ -496,7 +550,12 @@
       margin-bottom: 20px;
       cursor: pointer;
       background: #000;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .youtube-preview:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(118, 84, 189, 0.15);
     }
     .youtube-thumbnail {
       width: 100%;
@@ -519,11 +578,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.3s;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
     .play-icon svg { width: 20px; height: 20px; fill: var(--violet); margin-left: 3px; }
-    .youtube-preview:hover .play-icon { transform: translate(-50%, -50%) scale(1.1); }
+    .youtube-preview:hover .play-icon { transform: translate(-50%, -50%) scale(1.15); }
 
     /* Tech Tags */
     .tech-tags {
@@ -539,6 +598,11 @@
       background: #f3f4f6;
       padding: 5px 10px;
       border-radius: 100px;
+      transition: background 0.3s ease;
+    }
+    .tech-tag:hover {
+      background: var(--violet-light);
+      color: var(--violet);
     }
 
     /* Accordion */
@@ -547,6 +611,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       overflow: hidden;
+      background: #fff;
     }
     .sources-header {
       width: 100%;
@@ -584,11 +649,12 @@
     .arrow-icon { transition: transform 0.3s; }
     .sources-accordion.active .arrow-icon { transform: rotate(180deg); }
 
-    /* ===== FOOTER (Mobile) ===== */
+    /* ===== FOOTER (Светло-голубой градиент) ===== */
     .site-footer {
       padding: 60px 0 30px;
-      background: linear-gradient(135deg, #fdfbfb 0%, #f4f0fa 100%);
-      border-top: 1px solid rgba(118, 84, 189, 0.1);
+      /* Светло-голубой градиент */
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #eef2ff 100%);
+      border-top: 1px solid rgba(118, 84, 189, 0.08);
       color: var(--ink);
       position: relative;
       overflow: hidden;
@@ -601,10 +667,23 @@
       left: -50px;
       width: 200px;
       height: 200px;
-      background: var(--violet-light);
+      background: #bae6fd;
       border-radius: 50%;
       filter: blur(60px);
-      opacity: 0.6;
+      opacity: 0.4;
+      z-index: 0;
+    }
+    .site-footer::after {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: #ddd6fe;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.4;
       z-index: 0;
     }
 
@@ -614,7 +693,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 32px;
-      text-align: center;
+      text-align: center; /* Mobile: по центру */
     }
 
     .footer-brand h2 {
@@ -629,6 +708,7 @@
       font-size: 14px;
       max-width: 400px;
       margin: 0 auto;
+      line-height: 1.7;
     }
 
     .footer-links {
@@ -650,7 +730,7 @@
       font-weight: 600;
       color: var(--ink);
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
       width: 100%;
       max-width: 260px;
     }
@@ -659,14 +739,14 @@
       background: var(--violet);
       color: #fff;
       border-color: var(--violet);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(118, 84, 189, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(118, 84, 189, 0.2);
     }
 
     .footer-bottom {
       margin-top: 40px;
       padding-top: 20px;
-      border-top: 1px solid rgba(118, 84, 189, 0.1);
+      border-top: 1px solid rgba(118, 84, 189, 0.08);
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -681,12 +761,12 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.95);
+      background: rgba(0,0,0,0.92);
       z-index: 9999;
       justify-content: center;
       align-items: center;
       padding: 20px;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(8px);
     }
     .modal-content {
       position: relative;
@@ -699,7 +779,7 @@
       max-width: 100%;
       max-height: 90vh;
       object-fit: contain;
-      border-radius: 12px;
+      border-radius: 16px;
     }
     .close-modal {
       position: absolute;
@@ -713,14 +793,14 @@
       line-height: 1;
     }
 
-    /* ===== MEDIA QUERIES (Mobile First approach) ===== */
+    /* ===== MEDIA QUERIES ===== */
     
     /* Планшеты и выше (от 640px) */
     @media (min-width: 640px) {
       .container { padding: 0 32px; }
       
       .site-header { height: 72px; }
-      .brand { font-size: 14px; gap: 10px; }
+      .brand { font-size: 13px; gap: 12px; }
       .logo-video { width: 38px; height: 38px; }
       
       .menu-toggle { display: none; }
@@ -728,7 +808,7 @@
         position: static;
         display: flex;
         flex-direction: row;
-        gap: 24px;
+        gap: 32px;
         padding: 0;
         background: transparent;
         box-shadow: none;
@@ -740,11 +820,11 @@
       .nav-links a {
         padding: 0;
         border: none;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 500;
         color: var(--muted);
-        letter-spacing: 0.05em; /* Современный шрифт */
-        text-transform: uppercase; /* Современный шрифт */
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
         transition: color 0.2s;
       }
       .nav-links a:hover { color: var(--violet); }
@@ -755,15 +835,15 @@
         grid-template-columns: 1fr 1fr;
         gap: 40px;
       }
-      /* Картинка слева */
       .hero-image { order: -1; min-height: 300px; }
       
       .eyebrow { font-size: 13px; }
       .hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
       .hero-role { font-size: 1.05rem; }
 
-      /* Services: две колонки */
-      .services-grid { grid-template-columns: 1fr 1fr; }
+      /* "Три кита": три колонки */
+      .pillars-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+      .pillars-title { font-size: 1.5rem; }
 
       /* Projects: две колонки (шахматный порядок) */
       .project-row {
@@ -772,7 +852,6 @@
         margin-bottom: 80px;
       }
       
-      /* Четные элементы меняют порядок */
       .project-row:nth-child(even) .project-text { order: 2; }
       .project-row:nth-child(even) .project-media { order: 1; }
 
@@ -785,12 +864,13 @@
       .section-header { text-align: left; margin-bottom: 60px; }
       .section-header p { margin: 0; }
 
-      /* Footer: две колонки */
+      /* Footer: выравнивание */
       .footer-content {
         grid-template-columns: 1fr auto;
-        text-align: left;
+        text-align: left; /* Desktop: влево */
         align-items: center;
       }
+      .footer-brand p { margin: 0; }
       .footer-links { flex-direction: row; align-items: flex-end; }
       .footer-links a { width: auto; max-width: none; }
       .footer-bottom {
@@ -812,12 +892,13 @@
       .project-number { font-size: 14rem; top: -40px; left: -40px; }
       .project-title { font-size: 2rem; }
       .project-category { font-size: 12px; }
-      .text-block { font-size: 1rem; }
+      .project-meta p { font-size: 1rem; }
       
-      .services-grid { gap: 20px; }
-      .service-card { padding: 24px; }
-      .service-card h3 { font-size: 1.2rem; }
-      .service-card p { font-size: 0.95rem; }
+      .pillars-wrapper { padding: 48px 0; }
+      .pillars-title { font-size: 1.8rem; margin-bottom: 48px; }
+      .pillar-number { font-size: 4.5rem; }
+      .pillar-item h3 { font-size: 1.2rem; }
+      .pillar-item p { font-size: 0.95rem; }
     }
   </style>
 </head>
@@ -853,29 +934,33 @@
         </div>
 
         <div class="hero-text reveal is-visible">
-          <!-- Акцентный текст вместо кнопки -->
           <span class="eyebrow">Prompt Engineering</span>
-          <h1>Трансформация идеи в реальность</h1>
-          <p class="hero-role">Создание сайтов, брендбуков, AI-агентов и не только — с помощью искусственного интеллекта. Без навыков программирования.</p>
-          <a href="#projects" class="btn-primary">Посмотреть портфолио</a>
+          <!-- Новый заголовок: акцент на результате и обучении -->
+          <h1>Нейросети — это просто. Доказываю на своём примере</h1>
+          <p class="hero-role">Создаю сайты, брендбуки и AI-агентов с помощью промт-инженеринга. Учу превращать идеи в готовые решения без кода.</p>
+          <a href="#projects" class="btn-primary">Хочу так же</a>
         </div>
       </div>
       
-      <!-- Навыки (Заменены на 3 карточки) -->
+      <!-- "Три кита" -->
       <div class="container" id="skills">
-        <div class="services-wrapper reveal">
-          <div class="services-grid">
-            <article class="service-card">
-              <h3>Структура промта</h3>
-              <p>Раскрою секрет, как формулировать промты, чтобы результат был предсказуемым и полезным. Минимизируем энергозатраты и экономим время, увеличивая продуктивность.</p>
+        <div class="pillars-wrapper reveal">
+          <h2 class="pillars-title">Три кита, на которых строится <span>промт-инженеринг</span></h2>
+          <div class="pillars-grid">
+            <article class="pillar-item">
+              <div class="pillar-number">01</div>
+              <h3>Искусство промта</h3>
+              <p>Формулирую задачи так, чтобы нейросеть выдавала предсказуемый результат. Никакой магии — только структура и логика. Вы научитесь экономить часы работы.</p>
             </article>
-            <article class="service-card">
-              <h3>Выбор нейросети под задачу</h3>
-              <p>Аналитика, бизнес-планирование, изучение языков, создание сайтов и видеороликов, фотосессии товаров — для разных задач нужны разные нейросети. Помогу выбрать и настроить.</p>
+            <article class="pillar-item">
+              <div class="pillar-number">02</div>
+              <h3>Точный подбор инструмента</h3>
+              <p>Для аналитики, дизайна, видео или текстов нужны разные нейросети. Я помогу выбрать ту, что решит вашу задачу быстрее и качественнее.</p>
             </article>
-            <article class="service-card">
-              <h3>Персональный ИИ-помощник</h3>
-              <p>Научу превращать нейросеть в личного фотографа, юриста, диетолога или консультанта в любой сфере, использующих только проверенные данные. Вместе создадим ИИ-агента для автоматизации рутинных процессов.</p>
+            <article class="pillar-item">
+              <div class="pillar-number">03</div>
+              <h3>Ваш личный AI-эксперт</h3>
+              <p>Превращаю нейросеть в помощника, который знает вашу сферу. Юрист, маркетолог или фотограф — создаём AI-агента под ваши задачи.</p>
             </article>
           </div>
         </div>
@@ -899,7 +984,12 @@
               <span class="project-category">Product Photography • AI Enhancement</span>
               <h3 class="project-title">AI-фотосессии товаров</h3>
               <span class="project-year">2026</span>
-              <p class="text-block">Превращаю обычные снимки в премиальные визуалы с помощью нейросетей для соцсетей и маркетплейсов.</p>
+              <!-- Новый формат: Задача - Решение - Результат -->
+              <div class="project-meta">
+                <p><strong>Задача:</strong> Сделать товарные фото, которые продают.</p>
+                <p><strong>Решение:</strong> С помощью нейросетей превращаю обычные снимки в премиальные визуалы для соцсетей и маркетплейсов. Без студии, без сложного света — только AI и немного магии.</p>
+                <p><strong>Результат:</strong> Клиенты получают контент, который выделяет их товар на фоне конкурентов.</p>
+              </div>
               
               <div class="tech-tags">
                 <span class="tech-tag">Языковые модели</span>
@@ -907,7 +997,7 @@
                 <span class="tech-tag">Adobe Photoshop</span>
               </div>
               
-              <a href="#contact" class="btn-primary">Заказать фотосессию</a>
+              <a href="#contact" class="btn-primary">Обсудить проект</a>
             </div>
             <div class="project-media">
               <div class="media-grid">
@@ -934,7 +1024,12 @@
               <span class="project-category">Google AI Studios • 10+ источников</span>
               <h3 class="project-title">Видео презентация</h3>
               <span class="project-year">2025</span>
-              <p class="text-block">Google AI Studios синтезирует огромные объёмы информации в готовые видео-презентации.</p>
+              <!-- Новый формат -->
+              <div class="project-meta">
+                <p><strong>Задача:</strong> Упаковать сложную информацию в понятное видео.</p>
+                <p><strong>Решение:</strong> Google AI Studios синтезирует огромные объёмы данных в готовые видео-презентации. Я собрала 10+ источников в один убедительный ролик.</p>
+                <p><strong>Результат:</strong> Информация, которая работает и запоминается.</p>
+              </div>
               
               <div class="sources-accordion">
                 <button class="sources-header" onclick="toggleSources(this)">
@@ -974,7 +1069,12 @@
               <span class="project-category">Frontend</span>
               <h3 class="project-title">Коммерческий сайт для рекреационного бизнеса</h3>
               <span class="project-year">2025</span>
-              <p class="text-block">Создание сайта для агроусадебного бизнеса с нуля: от скелета до хостинга и регистрации в БелГИЭ.</p>
+              <!-- Новый формат -->
+              <div class="project-meta">
+                <p><strong>Задача:</strong> Разработать сайт для агроусадьбы, который привлекает гостей.</p>
+                <p><strong>Решение:</strong> Прошла путь от идеи и прототипа до хостинга и регистрации в БелГИЭ. Использовала HTML, CSS, JavaScript и генеративный AI для ускорения процесса.</p>
+                <p><strong>Результат:</strong> Готовый сайт, который работает и приносит заказы.</p>
+              </div>
               
               <div class="tech-tags">
                 <span class="tech-tag">HTML5</span>
@@ -983,7 +1083,7 @@
                 <span class="tech-tag">Generative AI</span>
               </div>
 
-              <a href="https://marya-kiseliova.github.io/Usadiba_U_Vodi/" class="btn-primary" target="_blank">Посмотреть сайт</a>
+              <a href="https://marya-kiseliova.github.io/Usadiba_U_Vodi/" class="btn-primary" target="_blank">Посмотреть в деле</a>
             </div>
             <div class="project-media">
               <div class="media-grid">
@@ -1002,7 +1102,12 @@
               <span class="project-category">EdTech • Interactive Design</span>
               <h3 class="project-title">Interactive book</h3>
               <span class="project-year">2025</span>
-              <p class="text-block">Адаптация детской книги в интерактивную версию для планшета, компьютера и мобильного.</p>
+              <!-- Новый формат -->
+              <div class="project-meta">
+                <p><strong>Задача:</strong> Оживить детскую книгу для цифрового поколения.</p>
+                <p><strong>Решение:</strong> Адаптировала историю в интерактивную версию для планшета, компьютера и мобильного. Добавила анимацию и звук.</p>
+                <p><strong>Результат:</strong> Книга, которую хочется читать снова и снова.</p>
+              </div>
               
               <div class="tech-tags">
                 <span class="tech-tag">HTML5</span>
@@ -1011,7 +1116,7 @@
                 <span class="tech-tag">Adobe Photoshop</span>
               </div>
 
-              <a href="project3/mermaid/mermaid1.html" class="btn-primary" target="_blank">Читать книгу</a>
+              <a href="project3/mermaid/mermaid1.html" class="btn-primary" target="_blank">Открыть книгу</a>
             </div>
             <div class="project-media">
               <div class="media-grid" style="grid-template-columns: repeat(3, 1fr);">
@@ -1029,7 +1134,12 @@
               <span class="project-category">Design</span>
               <h3 class="project-title">Почему акции Figma упали</h3>
               <span class="project-year">2025</span>
-              <p class="text-block">То, на что у дизайнера уходили часы, ИИ делает за минуты. В два промта я сделала для вас пример в виде веб-странички.</p>
+              <!-- Новый формат -->
+              <div class="project-meta">
+                <p><strong>Задача:</strong> Показать, как AI меняет рынок дизайна.</p>
+                <p><strong>Решение:</strong> В два промта создала веб-страницу, на которую у дизайнера ушли бы часы. Использовала Figma, Canva и генеративный AI.</p>
+                <p><strong>Результат:</strong> Наглядный пример того, как нейросети ускоряют работу и меняют правила игры.</p>
+              </div>
               
               <div class="tech-tags">
                 <span class="tech-tag">Figma</span>
@@ -1037,7 +1147,7 @@
                 <span class="tech-tag">Generative AI</span>
               </div>
 
-              <a href="figma_example.html" class="btn-primary" target="_blank">Смотреть пример</a>
+              <a href="figma_example.html" class="btn-primary" target="_blank">Вдохновиться примером</a>
             </div>
             <div class="project-media">
               <div class="media-grid">
@@ -1056,7 +1166,12 @@
               <span class="project-category">Товарный и бухгалтерский учёт</span>
               <h3 class="project-title">Store app</h3>
               <span class="project-year">2024</span>
-              <p class="text-block">Программа для учёта товаров и формирования отчётов для малого бизнеса (Python).</p>
+              <!-- Новый формат -->
+              <div class="project-meta">
+                <p><strong>Задача:</strong> Упростить учёт товаров для малого бизнеса.</p>
+                <p><strong>Решение:</strong> Написала программу на Python, которая автоматизирует отчёты и экономит время предпринимателя.</p>
+                <p><strong>Результат:</strong> Инструмент, который реально работает и помогает зарабатывать.</p>
+              </div>
               
               <div class="tech-tags">
                 <span class="tech-tag">Python</span>
@@ -1082,7 +1197,12 @@
               <span class="project-category">Educational Resource</span>
               <h3 class="project-title">HTML5 & CSS Конспект-шпаргалка</h3>
               <span class="project-year">2024</span>
-              <p class="text-block">Систематизированные знания по HTML5 и CSS в удобной форме.</p>
+              <!-- Новый формат -->
+              <div class="project-meta">
+                <p><strong>Задача:</strong> Систематизировать знания по вёрстке.</p>
+                <p><strong>Решение:</strong> Собрала все ключевые теги и свойства в удобную шпаргалку. Использовала HTML5, CSS3 и JavaScript.</p>
+                <p><strong>Результат:</strong> Инструмент, который экономит время на поиск информации.</p>
+              </div>
               
               <div class="tech-tags">
                 <span class="tech-tag">HTML5</span>
@@ -1092,7 +1212,7 @@
               </div>
 
               <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                <a href="Conspect.html" class="btn-primary">Смотреть шпору</a>
+                <a href="Conspect.html" class="btn-primary">Изучить шпаргалку</a>
                 <a href="https://github.com/Marya-Kiseliova/HTML5-conspect/blob/main/Conspect.html" class="btn-outline" target="_blank">Исходный код</a>
               </div>
             </div>
@@ -1110,7 +1230,12 @@
               <span class="project-category">Эксперимент • Mobile</span>
               <h3 class="project-title">AI video (киберпанк)</h3>
               <span class="project-year">2025</span>
-              <p class="text-block">Эксперимент в стиле киберпанка с генеративными ИИ и звуковым дизайном.</p>
+              <!-- Новый формат -->
+              <div class="project-meta">
+                <p><strong>Задача:</strong> Исследовать возможности генеративного видео.</p>
+                <p><strong>Решение:</strong> Создала ролик в стиле киберпанка с помощью AI и звукового дизайна. Эксперимент удался.</p>
+                <p><strong>Результат:</strong> Пример того, как AI оживляет даже самые смелые идеи.</p>
+              </div>
               
               <div class="tech-tags">
                 <span class="tech-tag">Generative AI</span>
@@ -1138,8 +1263,8 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-brand reveal">
-          <h2>Работа с AI — шаг в будущее</h2>
-          <p>Создаю решения, которые экономят время и открывают новые возможности для бизнеса и творчества.</p>
+          <h2>Давайте создавать будущее вместе</h2>
+          <p>Помогаю бизнесу и творческим людям использовать нейросети для роста. Без сложных терминов, с фокусом на результат.</p>
         </div>
         <div class="footer-links reveal">
           <a href="mailto:m.yasinskaya12@gmail.com">Email</a>
