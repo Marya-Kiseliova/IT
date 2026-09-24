@@ -209,12 +209,11 @@
       opacity: 0.5;
     }
 
-    /* Сетка Hero */
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr; /* Mobile: одна колонка */
+      grid-template-columns: 1fr;
       gap: 32px;
-      align-items: center; /* Выравнивание по центру */
+      align-items: center;
       position: relative;
       z-index: 1;
     }
@@ -230,7 +229,6 @@
       align-items: center;
       justify-content: center;
       transition: transform 0.5s ease, box-shadow 0.5s ease;
-      /* Убираем фиксированную высоту, чтобы тянулась */
       height: 100%; 
     }
     .hero-image:hover {
@@ -247,7 +245,6 @@
 
     .hero-text {
       max-width: 600px;
-      /* Центрируем текст на мобильных */
       text-align: center;
       margin: 0 auto;
     }
@@ -288,7 +285,7 @@
       font-size: 1rem;
       color: var(--muted);
       line-height: 1.7;
-      margin-bottom: 24px;
+      margin-bottom: 0; /* Убрал отступ снизу, так как кнопки нет */
     }
 
     /* ===== "ТРИ КИТА" ===== */
@@ -318,7 +315,7 @@
     .pillar-item {
       display: flex;
       flex-direction: column;
-      align-items: center; /* Центрируем на мобильных */
+      align-items: center;
       text-align: center;
       position: relative;
     }
@@ -394,6 +391,7 @@
       padding: 20px 0 60px;
     }
 
+    /* Заголовок по центру и фиолетовый */
     .section-header {
       margin-bottom: 40px;
       text-align: center;
@@ -402,7 +400,7 @@
     .section-header h2 {
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--ink);
+      color: var(--violet); /* Фиолетовый */
       margin-bottom: 12px;
       letter-spacing: -0.02em;
     }
@@ -592,7 +590,7 @@
       flex-wrap: wrap;
       gap: 6px;
       margin-bottom: 20px;
-      justify-content: center; /* Центрируем на мобильных */
+      justify-content: center;
     }
     .tech-tag {
       font-size: 11px;
@@ -651,6 +649,40 @@
     
     .arrow-icon { transition: transform 0.3s; }
     .sources-accordion.active .arrow-icon { transform: rotate(180deg); }
+
+    /* ===== БЛОК ЦИТАТЫ (Перенесён в конец) ===== */
+    .quote-section {
+      padding: 60px 0 40px;
+      background: #fff;
+    }
+    .quote-block {
+      position: relative;
+      padding: 32px 24px 32px 40px;
+      background: var(--violet-light);
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--violet);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .quote-block p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--ink);
+      font-weight: 500;
+      font-style: italic;
+    }
+    .quote-block::before {
+      content: '“';
+      position: absolute;
+      top: 0;
+      left: 12px;
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--violet);
+      opacity: 0.3;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
 
     /* ===== FOOTER ===== */
     .site-footer {
@@ -797,7 +829,6 @@
 
     /* ===== MEDIA QUERIES ===== */
     
-    /* Планшеты и выше (от 768px) */
     @media (min-width: 768px) {
       .container { padding: 0 32px; }
       
@@ -831,16 +862,15 @@
       }
       .nav-links a:hover { color: var(--violet); }
 
-      /* Hero: две колонки, выравнивание по высоте */
       .hero { padding: 120px 0 60px; }
       .hero-grid {
-        grid-template-columns: 1fr 1fr; /* Равные колонки */
+        grid-template-columns: 1fr 1fr;
         gap: 40px;
-        align-items: stretch; /* Растягиваем по высоте */
+        align-items: stretch;
       }
-      .hero-image { order: -1; min-height: 100%; } /* Картинка слева, на всю высоту */
+      .hero-image { order: -1; min-height: 100%; }
       .hero-text { 
-        text-align: left; /* Выравнивание текста влево */
+        text-align: left;
         margin: 0; 
         display: flex;
         flex-direction: column;
@@ -851,12 +881,10 @@
       .hero h1 { font-size: clamp(2.5rem, 4vw, 3.5rem); }
       .hero-role { font-size: 1.05rem; }
 
-      /* "Три кита": три колонки */
       .pillars-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
       .pillars-title { font-size: 1.5rem; }
-      .pillar-item { align-items: flex-start; text-align: left; } /* Выравнивание влево */
+      .pillar-item { align-items: flex-start; text-align: left; }
 
-      /* Projects: две колонки */
       .project-row {
         grid-template-columns: 1fr 1fr;
         gap: 40px;
@@ -873,8 +901,15 @@
         left: -30px;
       }
       
-      .section-header { text-align: left; margin-bottom: 60px; }
-      .section-header p { margin: 0; }
+      .section-header { text-align: center; margin-bottom: 60px; }
+      .section-header p { margin: 0 auto; }
+
+      /* Quote */
+      .quote-block {
+        padding: 48px 48px 48px 64px;
+      }
+      .quote-block p { font-size: 1.3rem; }
+      .quote-block::before { font-size: 6rem; left: 20px; }
 
       /* Footer */
       .footer-content {
@@ -892,7 +927,6 @@
       }
     }
 
-    /* Десктопы (от 1024px) */
     @media (min-width: 1024px) {
       .container { max-width: 1200px; margin: 0 auto; }
       
@@ -910,6 +944,8 @@
       .pillar-number { font-size: 4.5rem; }
       .pillar-item h3 { font-size: 1.2rem; }
       .pillar-item p { font-size: 0.95rem; }
+
+      .section-header h2 { font-size: 2.2rem; }
     }
   </style>
 </head>
@@ -917,8 +953,7 @@
   <!-- ===== ХЕДЕР ===== -->
   <header class="site-header" id="siteHeader">
     <div class="container nav">
-      <!-- Ссылка на YouTube Shorts -->
-      <a href="https://www.youtube.com/@Маря-Киселёва/shorts" target="_blank" class="brand" aria-label="Мария Киселёва — YouTube Shorts">
+      <a href="https://www.youtube.com/@%D0%9C%D0%B0%D1%80%D1%8F-%D0%9A%D0%B8%D1%81%D0%B5%D0%BB%D1%91%D0%B2%D0%B0/shorts" target="_blank" class="brand" aria-label="Мария Киселёва — YouTube Shorts">
         <video class="logo-video" autoplay muted loop playsinline aria-label="Логотип">
           <source src="logo.mp4" type="video/mp4" />
           <img src="logo.jpg" alt="Логотип" />
@@ -940,7 +975,6 @@
     <!-- ===== HERO SECTION ===== -->
     <section class="hero">
       <div class="container hero-grid">
-        <!-- Картинка слева -->
         <div class="hero-image reveal is-visible">
           <img src="assets/glass-sculpture.png" alt="Абстрактная стеклянная скульптура" />
         </div>
@@ -949,7 +983,6 @@
           <span class="eyebrow">Prompt Engineering</span>
           <h1>Нейросети — это просто. Доказываю на своём примере</h1>
           <p class="hero-role">Создаю сайты, брендбуки и AI-агентов с помощью промт-инженеринга. Учу превращать идеи в готовые решения без кода.</p>
-          <a href="#projects" class="btn-primary">Хочу так же</a>
         </div>
       </div>
       
@@ -983,7 +1016,6 @@
       <div class="container">
         <div class="section-header reveal">
           <h2>Мои проекты</h2>
-          <p>С самого начала изучения нейросетей я сознательно бралась не только за то, в чём уже разбиралась, но и за совершенно новые для себя направления. Я не прячу ранние работы — они показывают реальный путь.</p>
         </div>
 
         <div class="projects-list">
@@ -1143,7 +1175,7 @@
               <span class="project-year">2025</span>
               <div class="project-meta">
                 <p><strong>Задача:</strong> Показать, как AI меняет рынок дизайна.</p>
-                <p><strong>Решение:</strong> В два промта создала веб-страницу, на которую у дизайнера ушли бы часы. Использовала Figma, Canva и генеративный AI.</p>
+                <p><strong>Решение:</strong> Картинки — это мои работы в Figma. А по кнопке открывается веб-страница с описанием разных стилей дизайна, которую я создала с помощью AI всего за 15 минут.</p>
                 <p><strong>Результат:</strong> Наглядный пример того, как нейросети ускоряют работу и меняют правила игры.</p>
               </div>
               
@@ -1259,6 +1291,15 @@
         </div>
       </div>
     </section>
+
+    <!-- ===== БЛОК ЦИТАТЫ (Перенесён в конец) ===== -->
+    <section class="quote-section">
+      <div class="container reveal">
+        <div class="quote-block">
+          <p>Я не прячу ранние работы. Они показывают реальный путь — от долгого и мучительного к быстрому и системному.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- FOOTER -->
@@ -1303,7 +1344,6 @@
         nav.classList.toggle('is-open', !isOpen);
       });
 
-      // Закрываем меню при клике на ссылку
       nav.querySelectorAll('a').forEach(function(link) {
         link.addEventListener('click', () => {
           toggle.setAttribute('aria-expanded', 'false');
@@ -1311,7 +1351,6 @@
         });
       });
 
-      // Эффект тени при скролле
       window.addEventListener('scroll', function() {
         if (window.scrollY > 20) {
           header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
@@ -1354,7 +1393,7 @@
       const modalImage = document.getElementById('modalImage');
       modalImage.src = src;
       modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // Блокируем скролл
+      document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
@@ -1362,7 +1401,6 @@
       document.body.style.overflow = '';
     }
 
-    // Закрытие по Esc
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeModal();
     });
