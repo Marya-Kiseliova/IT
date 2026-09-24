@@ -391,14 +391,13 @@
       padding: 20px 0 60px;
     }
 
-    /* Заголовок "Мои проекты" — как в Hero */
     .section-header {
       margin-bottom: 40px;
       text-align: center;
     }
 
     .section-header h2 {
-      font-size: clamp(2rem, 8vw, 3.5rem); /* Размер как у Hero */
+      font-size: clamp(2rem, 8vw, 3.5rem);
       font-weight: 800;
       color: var(--violet);
       margin-bottom: 12px;
@@ -519,7 +518,7 @@
     }
     .media-item:hover img { transform: scale(1.05); }
 
-    /* Одиночное фото на всю ширину (для книги) */
+    /* Одиночное фото на всю ширину (растягивается по высоте) */
     .media-single {
       width: 100%;
       border-radius: var(--radius-md);
@@ -528,7 +527,6 @@
       background: #f9fafb;
       box-shadow: 0 4px 20px rgba(0,0,0,0.04);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      /* Растягиваем по высоте текстового блока */
       height: 100%;
       display: flex;
       align-items: center;
@@ -672,7 +670,7 @@
     .arrow-icon { transition: transform 0.3s; }
     .sources-accordion.active .arrow-icon { transform: rotate(180deg); }
 
-    /* ===== БЛОК ЦИТАТЫ (Обновлён) ===== */
+    /* ===== БЛОК ЦИТАТЫ ===== */
     .quote-section {
       padding: 40px 0 60px;
       background: #fff;
@@ -680,18 +678,18 @@
     .quote-block {
       position: relative;
       padding-left: 20px;
-      border-left: 3px solid var(--violet); /* Вертикальная линия */
+      border-left: 3px solid var(--violet);
       max-width: 700px;
       margin: 0 auto;
     }
     .quote-block p {
-      font-size: 0.85rem; /* Меньший размер */
+      font-size: 0.85rem;
       line-height: 1.6;
       color: var(--muted);
       font-weight: 500;
-      font-style: normal; /* Без курсива */
+      font-style: normal;
       letter-spacing: 0.05em;
-      text-transform: uppercase; /* Как в хедере */
+      text-transform: uppercase;
     }
 
     /* ===== FOOTER ===== */
@@ -899,13 +897,12 @@
         grid-template-columns: 1fr 1fr;
         gap: 40px;
         margin-bottom: 80px;
-        align-items: stretch; /* Растягиваем по высоте */
+        align-items: stretch;
       }
       
       .project-row:nth-child(even) .project-text { order: 2; }
       .project-row:nth-child(even) .project-media { order: 1; }
 
-      /* Для книги: фото на всю высоту */
       .project-row .project-media {
         display: flex;
         align-items: center;
@@ -1155,8 +1152,8 @@
               <h3 class="project-title">Interactive book</h3>
               <span class="project-year">2025</span>
               <div class="project-meta">
-                <p><strong>Задача:</strong> Оживить детскую книгу для цифрового поколения.</p>
-                <p><strong>Решение:</strong> Адаптировала историю в интерактивную версию для планшета, компьютера и мобильного. Добавила анимацию и звук.</p>
+                <p><strong>Задача:</strong> Придумать и создать интерактивную книгу с нуля.</p>
+                <p><strong>Решение:</strong> Разработала сюжет, дизайн и интерактивные элементы для детской книги. Адаптировала её для планшета, компьютера и мобильного. Добавила анимацию и звук.</p>
                 <p><strong>Результат:</strong> Книга, которую хочется читать снова и снова.</p>
               </div>
               
@@ -1170,7 +1167,6 @@
               <a href="project3/mermaid/mermaid1.html" class="btn-primary" target="_blank">Открыть книгу</a>
             </div>
             <div class="project-media">
-              <!-- Только одно фото, растянутое по высоте -->
               <div class="media-single" onclick="openModal('project3/book_cover.png')">
                 <img src="project3/book_cover.png" alt="Обложка книги" loading="lazy">
               </div>
@@ -1264,7 +1260,8 @@
               </div>
             </div>
             <div class="project-media">
-              <div class="media-full" onclick="openModal('conspect.webp')">
+              <!-- Теперь картинка растягивается по высоте текста -->
+              <div class="media-single" onclick="openModal('conspect.webp')">
                 <img src="conspect.webp" alt="Шпаргалка" loading="lazy">
               </div>
             </div>
@@ -1303,7 +1300,7 @@
       </div>
     </section>
 
-    <!-- ===== БЛОК ЦИТАТЫ (Обновлён) ===== -->
+    <!-- ===== БЛОК ЦИТАТЫ ===== -->
     <section class="quote-section">
       <div class="container reveal">
         <div class="quote-block">
