@@ -1,3 +1,12 @@
+Понял все замечания. Давайте вернемся к предыдущей версии (с шахматным порядком и картинкой слева), но внесем точечные улучшения:
+
+1.  **Футер:** Добавим светло-голубой градиент, сделаем выравнивание текста аккуратным (на десктопе — влево, на мобильных — по центру).
+2.  **Шапка:** Надпись "Мария Киселёва" сделаем тем же шрифтом, что и навигация (uppercase, letter-spacing).
+3.  **Блок с навыками:** Полностью переработаем. Вместо трех громоздких карточек сделаем элегантный блок "Три кита промт-инженеринга". Уберем перегруз текстом, сделаем аккуратные иконки или цифры, короткие заголовки и лаконичные описания.
+
+Вот обновленный код. Сохраните его как `Projects.html`.
+
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -21,7 +30,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== MOBILE FIRST RESET & BASE ===== */
+    /* ===== RESET & BASE ===== */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
@@ -41,7 +50,7 @@
     
     .container {
       width: 100%;
-      padding: 0 20px; /* Отступы, чтобы текст не лип к краям */
+      padding: 0 20px;
       margin: 0 auto;
     }
 
@@ -54,8 +63,8 @@
       --violet-light: #f3efff;
       --violet-soft: #e9e4f5;
       --border: rgba(0, 0, 0, 0.06);
-      --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
-      --shadow-hover: 0 30px 80px -20px rgba(118, 84, 189, 0.15);
+      --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 30px 80px -20px rgba(118, 84, 189, 0.12);
       --radius-lg: 32px;
       --radius-md: 20px;
       --radius-sm: 12px;
@@ -69,7 +78,7 @@
     }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-    /* ===== HEADER (Mobile) ===== */
+    /* ===== HEADER ===== */
     .site-header {
       position: fixed;
       inset: 0 0 auto;
@@ -95,8 +104,9 @@
       gap: 8px;
       color: var(--ink);
       font-weight: 700;
-      font-size: 13px;
-      letter-spacing: -0.02em;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase; /* Шрифт как у навигации */
     }
     
     .logo-video {
@@ -170,15 +180,17 @@
       transform: translateY(0);
     }
     .nav-links a {
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 500;
       color: var(--ink);
       padding: 8px 0;
       border-bottom: 1px solid rgba(0,0,0,0.03);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
     .nav-links a:last-child { border-bottom: none; }
 
-    /* ===== HERO SECTION (Mobile) ===== */
+    /* ===== HERO SECTION ===== */
     .hero {
       padding: 100px 0 40px;
       background: #fff;
@@ -202,14 +214,13 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr; /* Mobile: одна колонка */
+      grid-template-columns: 1fr;
       gap: 32px;
       align-items: center;
       position: relative;
       z-index: 1;
     }
 
-    /* Картинка первая (сверху на мобильных) */
     .hero-image {
       position: relative;
       border-radius: var(--radius-lg);
@@ -220,6 +231,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+    .hero-image:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
     }
     .hero-image img {
       width: 100%;
@@ -233,7 +249,6 @@
       max-width: 600px;
     }
 
-    /* Акцентный текст вместо кнопки */
     .eyebrow {
       display: inline-block;
       margin-bottom: 12px;
@@ -273,34 +288,79 @@
       margin-bottom: 24px;
     }
 
-    /* ===== SERVICES (Замена навыков) ===== */
-    .services-wrapper {
-      margin-top: 40px;
-      padding: 24px 20px;
-      background: #f9fafb;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
+    /* ===== "ТРИ КИТА" (Блок вместо навыков) ===== */
+    .pillars-wrapper {
+      margin-top: 48px;
+      padding: 32px 24px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.02);
     }
-    .services-grid {
+    
+    .pillars-title {
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 32px;
+      letter-spacing: -0.02em;
+    }
+    .pillars-title span {
+      color: var(--violet);
+    }
+
+    .pillars-grid {
       display: grid;
-      grid-template-columns: 1fr; /* Mobile: одна колонка */
-      gap: 16px;
+      grid-template-columns: 1fr;
+      gap: 24px;
     }
-    .service-card {
+
+    .pillar-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 24px 16px;
       background: #fff;
-      padding: 20px;
-      border-radius: var(--radius-sm);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      border-radius: var(--radius-md);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
       border: 1px solid rgba(0,0,0,0.02);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
     }
-    .service-card h3 {
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(118, 84, 189, 0.08);
+      border-color: rgba(118, 84, 189, 0.1);
+    }
+
+    /* Номер или иконка */
+    .pillar-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--violet-light);
+      color: var(--violet);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      flex-shrink: 0;
+    }
+
+    .pillar-card h3 {
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--violet);
+      color: var(--ink);
       margin-bottom: 8px;
       line-height: 1.3;
     }
-    .service-card p {
+    .pillar-card p {
       font-size: 0.9rem;
       color: var(--muted);
       line-height: 1.6;
@@ -317,14 +377,14 @@
       border-radius: 100px;
       font-size: 14px;
       font-weight: 600;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
       box-shadow: 0 8px 24px rgba(118, 84, 189, 0.25);
       border: none;
       cursor: pointer;
       font-family: inherit;
     }
     .btn-primary:hover {
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.02);
       box-shadow: 0 12px 32px rgba(118, 84, 189, 0.35);
       background: #6541a8;
     }
@@ -345,9 +405,10 @@
     }
     .btn-outline:hover {
       background: var(--violet-light);
+      transform: translateY(-2px);
     }
 
-    /* ===== PROJECTS SECTION (Mobile) ===== */
+    /* ===== PROJECTS SECTION ===== */
     .projects-section {
       padding: 20px 0 60px;
     }
@@ -372,17 +433,16 @@
       margin: 0 auto;
     }
 
-    /* ===== PROJECT ROW (Mobile) ===== */
+    /* ===== PROJECT ROW ===== */
     .project-row {
       display: grid;
-      grid-template-columns: 1fr; /* Mobile: одна колонка */
+      grid-template-columns: 1fr;
       gap: 24px;
       margin-bottom: 60px;
       align-items: center;
       position: relative;
     }
 
-    /* Огромная цифра на фоне - УМЕНЬШЕНА ЯРКОСТЬ */
     .project-number {
       position: absolute;
       top: -10px;
@@ -391,15 +451,16 @@
       font-weight: 800;
       line-height: 1;
       color: var(--violet-light);
-      opacity: 0.2; /* Очень прозрачная */
+      opacity: 0.2;
       z-index: 0;
       pointer-events: none;
       font-variant-numeric: tabular-nums;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.4s ease, transform 0.4s ease;
       mix-blend-mode: multiply;
     }
     .project-row:hover .project-number {
       opacity: 0.35;
+      transform: scale(1.05);
     }
 
     .project-text {
@@ -464,6 +525,11 @@
       background: #f9fafb;
       position: relative;
       box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .media-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
     }
     .media-item img {
       width: 100%;
@@ -481,7 +547,9 @@
       cursor: pointer;
       background: #f9fafb;
       box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease;
     }
+    .media-full:hover { transform: translateY(-4px); }
     .media-full img {
       width: 100%;
       height: auto;
@@ -496,7 +564,12 @@
       margin-bottom: 20px;
       cursor: pointer;
       background: #000;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .youtube-preview:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(118, 84, 189, 0.15);
     }
     .youtube-thumbnail {
       width: 100%;
@@ -519,11 +592,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.3s;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
     .play-icon svg { width: 20px; height: 20px; fill: var(--violet); margin-left: 3px; }
-    .youtube-preview:hover .play-icon { transform: translate(-50%, -50%) scale(1.1); }
+    .youtube-preview:hover .play-icon { transform: translate(-50%, -50%) scale(1.15); }
 
     /* Tech Tags */
     .tech-tags {
@@ -539,6 +612,11 @@
       background: #f3f4f6;
       padding: 5px 10px;
       border-radius: 100px;
+      transition: background 0.3s ease;
+    }
+    .tech-tag:hover {
+      background: var(--violet-light);
+      color: var(--violet);
     }
 
     /* Accordion */
@@ -547,6 +625,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       overflow: hidden;
+      background: #fff;
     }
     .sources-header {
       width: 100%;
@@ -584,11 +663,12 @@
     .arrow-icon { transition: transform 0.3s; }
     .sources-accordion.active .arrow-icon { transform: rotate(180deg); }
 
-    /* ===== FOOTER (Mobile) ===== */
+    /* ===== FOOTER (Светло-голубой градиент) ===== */
     .site-footer {
       padding: 60px 0 30px;
-      background: linear-gradient(135deg, #fdfbfb 0%, #f4f0fa 100%);
-      border-top: 1px solid rgba(118, 84, 189, 0.1);
+      /* Светло-голубой градиент */
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #eef2ff 100%);
+      border-top: 1px solid rgba(118, 84, 189, 0.08);
       color: var(--ink);
       position: relative;
       overflow: hidden;
@@ -601,10 +681,23 @@
       left: -50px;
       width: 200px;
       height: 200px;
-      background: var(--violet-light);
+      background: #bae6fd;
       border-radius: 50%;
       filter: blur(60px);
-      opacity: 0.6;
+      opacity: 0.4;
+      z-index: 0;
+    }
+    .site-footer::after {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: #ddd6fe;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.4;
       z-index: 0;
     }
 
@@ -614,7 +707,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 32px;
-      text-align: center;
+      text-align: center; /* Mobile: по центру */
     }
 
     .footer-brand h2 {
@@ -650,7 +743,7 @@
       font-weight: 600;
       color: var(--ink);
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
       width: 100%;
       max-width: 260px;
     }
@@ -659,14 +752,14 @@
       background: var(--violet);
       color: #fff;
       border-color: var(--violet);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(118, 84, 189, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(118, 84, 189, 0.2);
     }
 
     .footer-bottom {
       margin-top: 40px;
       padding-top: 20px;
-      border-top: 1px solid rgba(118, 84, 189, 0.1);
+      border-top: 1px solid rgba(118, 84, 189, 0.08);
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -681,12 +774,12 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.95);
+      background: rgba(0,0,0,0.92);
       z-index: 9999;
       justify-content: center;
       align-items: center;
       padding: 20px;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(8px);
     }
     .modal-content {
       position: relative;
@@ -699,7 +792,7 @@
       max-width: 100%;
       max-height: 90vh;
       object-fit: contain;
-      border-radius: 12px;
+      border-radius: 16px;
     }
     .close-modal {
       position: absolute;
@@ -713,14 +806,14 @@
       line-height: 1;
     }
 
-    /* ===== MEDIA QUERIES (Mobile First approach) ===== */
+    /* ===== MEDIA QUERIES ===== */
     
     /* Планшеты и выше (от 640px) */
     @media (min-width: 640px) {
       .container { padding: 0 32px; }
       
       .site-header { height: 72px; }
-      .brand { font-size: 14px; gap: 10px; }
+      .brand { font-size: 13px; gap: 10px; }
       .logo-video { width: 38px; height: 38px; }
       
       .menu-toggle { display: none; }
@@ -728,7 +821,7 @@
         position: static;
         display: flex;
         flex-direction: row;
-        gap: 24px;
+        gap: 32px;
         padding: 0;
         background: transparent;
         box-shadow: none;
@@ -740,11 +833,11 @@
       .nav-links a {
         padding: 0;
         border: none;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 500;
         color: var(--muted);
-        letter-spacing: 0.05em; /* Современный шрифт */
-        text-transform: uppercase; /* Современный шрифт */
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
         transition: color 0.2s;
       }
       .nav-links a:hover { color: var(--violet); }
@@ -755,15 +848,15 @@
         grid-template-columns: 1fr 1fr;
         gap: 40px;
       }
-      /* Картинка слева */
       .hero-image { order: -1; min-height: 300px; }
       
       .eyebrow { font-size: 13px; }
       .hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
       .hero-role { font-size: 1.05rem; }
 
-      /* Services: две колонки */
-      .services-grid { grid-template-columns: 1fr 1fr; }
+      /* "Три кита": три колонки */
+      .pillars-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .pillar-card { padding: 24px 20px; }
 
       /* Projects: две колонки (шахматный порядок) */
       .project-row {
@@ -772,7 +865,6 @@
         margin-bottom: 80px;
       }
       
-      /* Четные элементы меняют порядок */
       .project-row:nth-child(even) .project-text { order: 2; }
       .project-row:nth-child(even) .project-media { order: 1; }
 
@@ -785,12 +877,13 @@
       .section-header { text-align: left; margin-bottom: 60px; }
       .section-header p { margin: 0; }
 
-      /* Footer: две колонки */
+      /* Footer: выравнивание */
       .footer-content {
         grid-template-columns: 1fr auto;
-        text-align: left;
+        text-align: left; /* Desktop: влево */
         align-items: center;
       }
+      .footer-brand p { margin: 0; }
       .footer-links { flex-direction: row; align-items: flex-end; }
       .footer-links a { width: auto; max-width: none; }
       .footer-bottom {
@@ -814,10 +907,11 @@
       .project-category { font-size: 12px; }
       .text-block { font-size: 1rem; }
       
-      .services-grid { gap: 20px; }
-      .service-card { padding: 24px; }
-      .service-card h3 { font-size: 1.2rem; }
-      .service-card p { font-size: 0.95rem; }
+      .pillars-wrapper { padding: 48px 40px; }
+      .pillars-title { font-size: 1.6rem; margin-bottom: 40px; }
+      .pillar-card { padding: 32px 24px; }
+      .pillar-card h3 { font-size: 1.2rem; }
+      .pillar-card p { font-size: 0.95rem; }
     }
   </style>
 </head>
@@ -853,7 +947,6 @@
         </div>
 
         <div class="hero-text reveal is-visible">
-          <!-- Акцентный текст вместо кнопки -->
           <span class="eyebrow">Prompt Engineering</span>
           <h1>Трансформация идеи в реальность</h1>
           <p class="hero-role">Создание сайтов, брендбуков, AI-агентов и не только — с помощью искусственного интеллекта. Без навыков программирования.</p>
@@ -861,21 +954,25 @@
         </div>
       </div>
       
-      <!-- Навыки (Заменены на 3 карточки) -->
+      <!-- "Три кита" (Замена навыков) -->
       <div class="container" id="skills">
-        <div class="services-wrapper reveal">
-          <div class="services-grid">
-            <article class="service-card">
+        <div class="pillars-wrapper reveal">
+          <h2 class="pillars-title">Три кита, на которых строится <span>промт-инженеринг</span></h2>
+          <div class="pillars-grid">
+            <article class="pillar-card">
+              <div class="pillar-icon">01</div>
               <h3>Структура промта</h3>
-              <p>Раскрою секрет, как формулировать промты, чтобы результат был предсказуемым и полезным. Минимизируем энергозатраты и экономим время, увеличивая продуктивность.</p>
+              <p>Формулируем четко, получаем предсказуемый результат. Экономим время и энергию.</p>
             </article>
-            <article class="service-card">
-              <h3>Выбор нейросети под задачу</h3>
-              <p>Аналитика, бизнес-планирование, изучение языков, создание сайтов и видеороликов, фотосессии товаров — для разных задач нужны разные нейросети. Помогу выбрать и настроить.</p>
+            <article class="pillar-card">
+              <div class="pillar-icon">02</div>
+              <h3>Выбор нейросети</h3>
+              <p>Аналитика, сайты, видео или фото — для каждой задачи подбираем свой инструмент.</p>
             </article>
-            <article class="service-card">
+            <article class="pillar-card">
+              <div class="pillar-icon">03</div>
               <h3>Персональный ИИ-помощник</h3>
-              <p>Научу превращать нейросеть в личного фотографа, юриста, диетолога или консультанта в любой сфере, использующих только проверенные данные. Вместе создадим ИИ-агента для автоматизации рутинных процессов.</p>
+              <p>Превращаем нейросеть в личного эксперта для автоматизации рутинных процессов.</p>
             </article>
           </div>
         </div>
@@ -1241,3 +1338,4 @@
   </script>
 </body>
 </html>
+```
