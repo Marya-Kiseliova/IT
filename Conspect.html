@@ -1,1417 +1,2399 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-  <title>Проекты | Мария Киселёва — Промт-инженер & UI/UX Designer</title>
-  <meta name="description" content="Промт-инженер & UI/UX Designer из Бреста. Проекты: AI-фотосессии, видео-презентации, сайты, интерактивные книги. Обучение работе с ИИ." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://ваш-сайт.ru/Projects.html" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🎯 Шпаргалка верстальщика - HTML & CSS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== MOBILE FIRST STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Проекты | Мария Киселёва" />
-  <meta property="og:description" content="Портфолио проектов: AI-фотосессии, веб-сайты, интерактивные книги, дизайн. Обучение промт-инженерингу." />
-  <meta property="og:image" content="logo.jpg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ваш-сайт.ru/Projects.html" />
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5a67d8;
+            --secondary: #49b8d7a4;
+            --accent: #eac0a6f6;
+            --light: #f8f9fa;
+            --dark: #2d3748;
+            --text: #4a5568;
+            --text-light: #718096;
+            --white: #ffffff;
+            --success: #68d391;
+            --warning: #faf089;
+            --error: #9107075d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
 
-  <!-- Шрифты -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            width: 100%;
+        }
 
-  <style>
-    /* ===== RESET & BASE ===== */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    body {
-      min-width: 320px;
-      overflow-x: hidden;
-      color: #1F1D2B;
-      background: #ffffff;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-    }
-    
-    img, video { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    
-    .container {
-      width: 100%;
-      padding: 0 20px;
-      margin: 0 auto;
-    }
+        .container {
+            width: 100%;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
 
-    /* ===== VARIABLES ===== */
-    :root {
-      --bg: #ffffff;
-      --ink: #1F1D2B;
-      --muted: #6B7280;
-      --violet: #7654bd;
-      --violet-light: #f3efff;
-      --violet-soft: #e9e4f5;
-      --border: rgba(0, 0, 0, 0.06);
-      --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.06);
-      --shadow-hover: 0 30px 80px -20px rgba(118, 84, 189, 0.12);
-      --radius-lg: 32px;
-      --radius-md: 20px;
-      --radius-sm: 12px;
-    }
+        /* Header */
+        header {
+            background: linear-gradient(-45deg, var(--primary), var(--secondary), var(--accent), #7738eb);
+            background-size: 400% 400%;
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            animation: gradientShift 8s ease infinite;
+        }
 
-    /* ===== REVEAL ANIMATION ===== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
 
-    /* ===== HEADER ===== */
-    .site-header {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 100;
-      height: 64px;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0,0,0,0.04);
-      transition: all 0.3s ease;
-    }
-    
-    .nav {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--muted);
-      font-weight: 500;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: color 0.3s ease;
-    }
-    .brand:hover {
-      color: var(--violet);
-    }
-    
-    .logo-video {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      background: #f3efff;
-    }
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
 
-    /* Кнопка меню (Mobile) */
-    .menu-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      color: var(--ink);
-      padding: 0;
-    }
-    .menu-toggle span {
-      display: block;
-      width: 18px;
-      height: 2px;
-      background: currentColor;
-      position: relative;
-      transition: background 0.2s;
-    }
-    .menu-toggle span::before, .menu-toggle span::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: currentColor;
-      transition: transform 0.3s, top 0.3s;
-    }
-    .menu-toggle span::before { top: -5px; }
-    .menu-toggle span::after { top: 5px; }
-    
-    .menu-toggle[aria-expanded="true"] span { background: transparent; }
-    .menu-toggle[aria-expanded="true"] span::before { top: 0; transform: rotate(45deg); }
-    .menu-toggle[aria-expanded="true"] span::after { top: 0; transform: rotate(-45deg); }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    /* Навигация (Mobile) */
-    .nav-links {
-      position: absolute;
-      top: 64px;
-      left: 0;
-      right: 0;
-      background: #fff;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-10px);
-      transition: all 0.3s ease;
-      border-radius: 0 0 20px 20px;
-    }
-    .nav-links.is-open {
-      opacity: 1;
-      pointer-events: all;
-      transform: translateY(0);
-    }
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--muted);
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.03);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--violet); }
-    .nav-links a:last-child { border-bottom: none; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease;
+        }
 
-    /* ===== HERO SECTION ===== */
-    .hero {
-      padding: 100px 0 40px;
-      background: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 300px;
-      height: 300px;
-      background: var(--violet-light);
-      border-radius: 50%;
-      z-index: 0;
-      filter: blur(60px);
-      opacity: 0.5;
-    }
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 100%;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .hero-image {
-      position: relative;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      background: #f8f5f2;
-      min-height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
-      height: 100%; 
-    }
-    .hero-image:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-    }
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.7s ease;
-    }
-    .hero-image:hover img { transform: scale(1.03); }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .hero-text {
-      max-width: 600px;
-      text-align: center;
-      margin: 0 auto;
-    }
+        /* Table of Contents */
+        nav.toc {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--radius);
+            margin: 25px 0;
+            box-shadow: var(--shadow);
+        }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 12px;
-      color: var(--violet);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      position: relative;
-      padding-left: 12px;
-    }
-    .eyebrow::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 4px;
-      height: 4px;
-      background: var(--violet);
-      border-radius: 50%;
-    }
+        .toc h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 12px;
+        }
 
-    .hero h1 {
-      font-size: clamp(2rem, 8vw, 3.5rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.04em;
-      color: var(--ink);
-      margin-bottom: 20px;
-    }
+        .toc h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
 
-    .hero-role {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 0;
-    }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
 
-    /* ===== "ТРИ КИТА" ===== */
-    .pillars-wrapper {
-      margin-top: 48px;
-      padding: 32px 0;
-    }
-    
-    .pillars-title {
-      text-align: center;
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--ink);
-      margin-bottom: 40px;
-      letter-spacing: -0.02em;
-    }
-    .pillars-title span {
-      color: var(--violet);
-    }
+        .toc-item {
+            background: var(--light);
+            padding: 18px;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
 
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
+        .toc-item:hover {
+            transform: translateX(8px);
+            background: #e3f2fd;
+            box-shadow: var(--shadow);
+        }
 
-    .pillar-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-    }
-    .pillar-number {
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1;
-      color: var(--violet);
-      opacity: 0.15;
-      margin-bottom: -10px;
-      font-variant-numeric: tabular-nums;
-      user-select: none;
-    }
-    .pillar-item h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 8px;
-      line-height: 1.3;
-      position: relative;
-      z-index: 1;
-    }
-    .pillar-item p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+        .toc-item i {
+            color: var(--primary);
+            font-size: 1.3rem;
+            width: 25px;
+            text-align: center;
+        }
 
-    /* ===== BUTTONS ===== */
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 24px;
-      background: var(--violet);
-      color: #fff;
-      border-radius: 100px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
-      box-shadow: 0 8px 24px rgba(118, 84, 189, 0.25);
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 12px 32px rgba(118, 84, 189, 0.35);
-      background: #6541a8;
-    }
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 24px;
-      background: transparent;
-      color: var(--violet);
-      border: 1.5px solid var(--violet);
-      border-radius: 100px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      font-family: inherit;
-    }
-    .btn-outline:hover {
-      background: var(--violet-light);
-      transform: translateY(-2px);
-    }
+        /* Sections */
+        section {
+            background: var(--white);
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
 
-    /* ===== PROJECTS SECTION ===== */
-    .projects-section {
-      padding: 20px 0 60px;
-    }
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+        section:nth-child(5) { animation-delay: 0.4s; }
+        section:nth-child(6) { animation-delay: 0.5s; }
+        section:nth-child(7) { animation-delay: 0.6s; }
+        section:nth-child(8) { animation-delay: 0.7s; }
+        section:nth-child(9) { animation-delay: 0.8s; }
+        section:nth-child(10) { animation-delay: 0.9s; }
+        section:nth-child(11) { animation-delay: 1.0s; }
 
-    .section-header {
-      margin-bottom: 40px;
-      text-align: center;
-    }
+        h2 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #e3f2fd;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    .section-header h2 {
-      font-size: clamp(2rem, 8vw, 3.5rem);
-      font-weight: 800;
-      color: var(--violet);
-      margin-bottom: 12px;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-    }
+        h3 {
+            color: var(--primary-dark);
+            margin: 25px 0 15px 0;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    /* ===== PROJECT ROW ===== */
-    .project-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      margin-bottom: 60px;
-      align-items: center;
-      position: relative;
-    }
+        h3 i {
+            color: var(--secondary);
+        }
 
-    .project-number {
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      font-size: 6rem;
-      font-weight: 800;
-      line-height: 1;
-      color: var(--violet-light);
-      opacity: 0.2;
-      z-index: 0;
-      pointer-events: none;
-      font-variant-numeric: tabular-nums;
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      mix-blend-mode: multiply;
-    }
-    .project-row:hover .project-number {
-      opacity: 0.35;
-      transform: scale(1.05);
-    }
+        /* Tables */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            font-size: 0.95rem;
+        }
 
-    .project-text {
-      position: relative;
-      z-index: 1;
-      padding-top: 10px;
-    }
+        .info-table th {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1rem;
+        }
 
-    .project-category {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--violet);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 6px;
-      display: block;
-    }
+        .info-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #e3f2fd;
+        }
 
-    .project-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
+        .info-table tr:nth-child(even) {
+            background: var(--light);
+        }
 
-    .project-year {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--muted);
-      background: #f3f4f6;
-      padding: 3px 8px;
-      border-radius: 6px;
-      margin-bottom: 12px;
-    }
+        .info-table tr:hover {
+            background: #e3f2fd;
+        }
 
-    .project-meta {
-      margin-bottom: 20px;
-    }
-    .project-meta p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 8px;
-    }
-    .project-meta strong {
-      color: var(--ink);
-      font-weight: 600;
-    }
+        /* Code blocks */
+        .code-block {
+            background: var(--dark);
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            box-shadow: var(--shadow);
+        }
 
-    .project-media {
-      position: relative;
-      z-index: 1;
-    }
+        .tag { color: #63b3ed; }
+        .attribute { color: #fbb6ce; }
+        .value { color: var(--success); }
+        .comment { color: #a0aec0; }
 
-    /* Медиа-сетки внутри карточек */
-    .media-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+        /* Example grids */
+        .example-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
 
-    .media-item {
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      cursor: pointer;
-      background: #f9fafb;
-      position: relative;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .media-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-    }
-    .media-item img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-    .media-item:hover img { transform: scale(1.05); }
+        .example-card {
+            background: var(--light);
+            padding: 22px;
+            border-radius: 10px;
+            border: 2px solid #e3f2fd;
+            transition: var(--transition);
+        }
 
-    /* Одиночное фото на всю ширину (растягивается по высоте) */
-    .media-single {
-      width: 100%;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      cursor: pointer;
-      background: #f9fafb;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .media-single:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-    }
-    .media-single img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-    .media-single:hover img { transform: scale(1.05); }
+        .example-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
 
-    .media-full {
-      width: 100%;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      margin-bottom: 20px;
-      cursor: pointer;
-      background: #f9fafb;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      transition: transform 0.3s ease;
-    }
-    .media-full:hover { transform: translateY(-4px); }
-    .media-full img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+        /* Visual hierarchy */
+        .visual-hierarchy {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 25px;
+            border-radius: var(--radius);
+            margin: 25px 0;
+        }
 
-    /* YouTube Preview */
-    .youtube-preview {
-      position: relative;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      margin-bottom: 20px;
-      cursor: pointer;
-      background: #000;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .youtube-preview:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 50px rgba(118, 84, 189, 0.15);
-    }
-    .youtube-thumbnail {
-      width: 100%;
-      height: auto;
-      display: block;
-      opacity: 0.9;
-      transition: opacity 0.3s;
-    }
-    .youtube-preview:hover .youtube-thumbnail { opacity: 0.7; }
-    
-    .play-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 50px;
-      height: 50px;
-      background: rgba(255,255,255,0.95);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
-    .play-icon svg { width: 20px; height: 20px; fill: var(--violet); margin-left: 3px; }
-    .youtube-preview:hover .play-icon { transform: translate(-50%, -50%) scale(1.15); }
+        .hierarchy-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid var(--white);
+        }
 
-    /* Tech Tags */
-    .tech-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 20px;
-      justify-content: center;
-    }
-    .tech-tag {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--ink);
-      background: #f3f4f6;
-      padding: 5px 10px;
-      border-radius: 100px;
-      transition: background 0.3s ease;
-    }
-    .tech-tag:hover {
-      background: var(--violet-light);
-      color: var(--violet);
-    }
+        /* Animation demo section */
+        .animation-demo {
+            background: var(--dark);
+            padding: 25px;
+            border-radius: var(--radius);
+            margin: 25px 0;
+            color: var(--white);
+        }
 
-    /* Accordion */
-    .sources-accordion {
-      margin-bottom: 20px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      background: #fff;
-    }
-    .sources-header {
-      width: 100%;
-      padding: 10px 14px;
-      background: #f9fafb;
-      border: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--ink);
-      cursor: pointer;
-      font-family: inherit;
-    }
-    .sources-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      background: #fff;
-    }
-    .sources-accordion.active .sources-content { max-height: 300px; }
-    .sources-list {
-      list-style: none;
-      padding: 12px 14px;
-    }
-    .sources-list li { margin-bottom: 6px; }
-    .sources-list a {
-      font-size: 12px;
-      color: var(--violet);
-      text-decoration: underline;
-      text-decoration-color: rgba(118, 84, 189, 0.3);
-    }
-    
-    .arrow-icon { transition: transform 0.3s; }
-    .sources-accordion.active .arrow-icon { transform: rotate(180deg); }
+        .demo-box {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            margin: 20px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+            transition: var(--transition);
+        }
 
-    /* ===== БЛОК ЦИТАТЫ ===== */
-    .quote-section {
-      padding: 40px 0 60px;
-      background: #fff;
-    }
-    .quote-block {
-      position: relative;
-      padding-left: 20px;
-      border-left: 3px solid var(--violet);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .quote-block p {
-      font-size: 0.85rem;
-      line-height: 1.6;
-      color: var(--muted);
-      font-weight: 500;
-      font-style: normal;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
+        /* Animation classes */
+        .animate-hover {
+            transition: var(--transition);
+        }
 
-    /* ===== FOOTER ===== */
-    .site-footer {
-      padding: 60px 0 30px;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #eef2ff 100%);
-      border-top: 1px solid rgba(118, 84, 189, 0.08);
-      color: var(--ink);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .site-footer::before {
-      content: '';
-      position: absolute;
-      bottom: -50px;
-      left: -50px;
-      width: 200px;
-      height: 200px;
-      background: #bae6fd;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.4;
-      z-index: 0;
-    }
-    .site-footer::after {
-      content: '';
-      position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 200px;
-      height: 200px;
-      background: #ddd6fe;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.4;
-      z-index: 0;
-    }
+        .animate-hover:hover {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+        }
 
-    .footer-content {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
-      text-align: center;
-    }
+        .animate-spin {
+            animation: spin 2s linear infinite;
+        }
 
-    .footer-brand h2 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 12px;
-      color: var(--ink);
-    }
-    .footer-brand p {
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 400px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
 
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
-    }
-    
-    .footer-links a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 24px;
-      background: #fff;
-      border: 1px solid rgba(118, 84, 189, 0.15);
-      border-radius: 100px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--ink);
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-      width: 100%;
-      max-width: 260px;
-    }
-    
-    .footer-links a:hover {
-      background: var(--violet);
-      color: #fff;
-      border-color: var(--violet);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 24px rgba(118, 84, 189, 0.2);
-    }
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
 
-    .footer-bottom {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(118, 84, 189, 0.08);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      align-items: center;
-      color: var(--muted);
-      font-size: 12px;
-      text-align: center;
-    }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
 
-    /* ===== MODAL ===== */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      backdrop-filter: blur(8px);
-    }
-    .modal-content {
-      position: relative;
-      max-width: 90vw;
-      max-height: 90vh;
-    }
-    .modal-content img {
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 90vh;
-      object-fit: contain;
-      border-radius: 16px;
-    }
-    .close-modal {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      color: #fff;
-      font-size: 32px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      line-height: 1;
-    }
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
 
-    /* ===== MEDIA QUERIES ===== */
-    
-    @media (min-width: 768px) {
-      .container { padding: 0 32px; }
-      
-      .site-header { height: 72px; }
-      .brand { font-size: 13px; gap: 12px; }
-      .logo-video { width: 38px; height: 38px; }
-      
-      .menu-toggle { display: none; }
-      .nav-links {
-        position: static;
-        display: flex;
-        flex-direction: row;
-        gap: 32px;
-        padding: 0;
-        background: transparent;
-        box-shadow: none;
-        opacity: 1;
-        pointer-events: all;
-        transform: none;
-        width: auto;
-      }
-      .nav-links a {
-        padding: 0;
-        border: none;
-        font-size: 12px;
-        font-weight: 500;
-        color: var(--muted);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        transition: color 0.2s;
-      }
-      .nav-links a:hover { color: var(--violet); }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
 
-      .hero { padding: 120px 0 60px; }
-      .hero-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        align-items: stretch;
-      }
-      .hero-image { order: -1; min-height: 100%; }
-      .hero-text { 
-        text-align: left;
-        margin: 0; 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      
-      .eyebrow { font-size: 13px; }
-      .hero h1 { font-size: clamp(2.5rem, 4vw, 3.5rem); }
-      .hero-role { font-size: 1.05rem; }
+        .demo-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
 
-      .pillars-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
-      .pillars-title { font-size: 1.5rem; }
-      .pillar-item { align-items: flex-start; text-align: left; }
+        .demo-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-      .project-row {
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        margin-bottom: 80px;
-        align-items: stretch;
-      }
-      
-      .project-row:nth-child(even) .project-text { order: 2; }
-      .project-row:nth-child(even) .project-media { order: 1; }
+        .demo-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
 
-      .project-row .project-media {
-        display: flex;
-        align-items: center;
-      }
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
 
-      .project-number {
-        font-size: 10rem;
-        top: -30px;
-        left: -30px;
-      }
-      
-      .section-header { text-align: center; margin-bottom: 60px; }
+        .comparison-card {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #e3f2fd;
+            transition: var(--transition);
+        }
 
-      .quote-block {
-        padding-left: 32px;
-      }
-      .quote-block p { font-size: 0.95rem; }
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
 
-      .footer-content {
-        grid-template-columns: 1fr auto;
-        text-align: left;
-        align-items: center;
-      }
-      .footer-brand p { margin: 0; }
-      .footer-links { flex-direction: row; align-items: flex-end; }
-      .footer-links a { width: auto; max-width: none; }
-      .footer-bottom {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
-      }
-    }
+        .comparison-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
 
-    @media (min-width: 1024px) {
-      .container { max-width: 1200px; margin: 0 auto; }
-      
-      .hero { padding: 140px 0 80px; }
-      .hero-grid { gap: 60px; }
-      
-      .project-row { gap: 60px; }
-      .project-number { font-size: 14rem; top: -40px; left: -40px; }
-      .project-title { font-size: 2rem; }
-      .project-category { font-size: 12px; }
-      .project-meta p { font-size: 1rem; }
-      
-      .pillars-wrapper { padding: 48px 0; }
-      .pillars-title { font-size: 1.8rem; margin-bottom: 48px; }
-      .pillar-number { font-size: 4.5rem; }
-      .pillar-item h3 { font-size: 1.2rem; }
-      .pillar-item p { font-size: 0.95rem; }
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-light);
+            margin-top: 50px;
+            border-top: 1px solid #e3f2fd;
+        }
 
-      .section-header h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); }
-    }
-  </style>
+        /* Property details */
+        .property-details {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid var(--primary);
+        }
+
+        .property-group {
+            margin: 18px 0;
+            padding: 15px;
+            background: var(--white);
+            border-radius: 8px;
+        }
+
+        .property-name {
+            font-weight: bold;
+            color: var(--primary-dark);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .property-values {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .value-chip {
+            background: var(--white);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid #e3f2fd;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .value-chip:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Contact buttons */
+        .contact-buttons {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px;
+            background: var(--light);
+            border: 2px solid #e3f2fd;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            background: var(--white);
+        }
+
+        .contact-btn.telegram {
+            border-left: 5px solid #0088cc;
+        }
+
+        .contact-btn.whatsapp {
+            border-left: 5px solid #25D366;
+        }
+
+        .contact-btn.phone {
+            border-left: 5px solid var(--success);
+        }
+
+        .contact-btn i {
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-btn.telegram i { color: #0088cc; }
+        .contact-btn.whatsapp i { color: #25D366; }
+        .contact-btn.phone i { color: var(--success); }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            width: 90%;
+            max-width: 400px;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e3f2fd;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: var(--primary);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .close-btn:hover {
+            color: var(--error);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e3f2fd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .feedback-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .feedback-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Spacing visualization */
+        .spacing-demo {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px dashed #c3cfe2;
+        }
+
+        .spacing-box {
+            background: var(--primary);
+            color: var(--white);
+            padding: 20px;
+            margin: 15px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .spacing-label {
+            position: absolute;
+            background: var(--dark);
+            color: var(--white);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .margin-label { top: -10px; left: 10px; }
+        .border-label { top: 50%; left: -60px; transform: translateY(-50%); }
+        .padding-label { bottom: -10px; right: 10px; }
+
+        /* Button styles demo */
+        .button-demo {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-secondary:hover { background: var(--secondary); opacity: 0.9; }
+        .btn-outline:hover { background: var(--primary); color: var(--white); }
+        .btn-ghost:hover { background: var(--light); }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Link styles */
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+          
+        
+        /* ===== BURGER MENU STYLES ===== */
+        header {
+            position: relative;
+            z-index: 100;
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 5px;
+            z-index: 1001;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        .burger-line {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 999;
+            transition: right 0.4s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            padding: 60px 20px 20px;
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav-menu li {
+            margin: 10px 0;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.4s ease;
+        }
+
+        .mobile-nav.active .mobile-nav-menu li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .mobile-nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: block;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .mobile-nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .burger-menu.active .burger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .burger-menu.active .burger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active .burger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* ===== MOBILE STYLES ===== */
+        @media (max-width: 767px) {
+            .container {
+                width: 100%;
+                padding: 0 10px;
+                overflow-x: hidden;
+            }
+            
+            section {
+                padding: 20px 15px;
+                margin: 20px 0;
+            }
+            
+            .code-block {
+                font-size: 0.8rem;
+                padding: 15px;
+                overflow-x: auto;
+            }
+            
+            .info-table {
+                font-size: 0.85rem;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .info-table th,
+            .info-table td {
+                min-width: 120px;
+                padding: 10px 8px;
+            }
+            
+            .burger-menu {
+                display: flex;
+            }
+            
+            nav.toc {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ===== TABLET STYLES ===== */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+                padding: 0 20px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .toc-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .example-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .comparison-table {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .contact-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .button-demo {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ===== DESKTOP STYLES ===== */
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .toc-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            header {
+                padding: 50px 0;
+                margin-bottom: 40px;
+            }
+            
+            .contact-buttons {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .button-demo {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* ===== LARGE DESKTOP STYLES ===== */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- ===== ХЕДЕР ===== -->
-  <header class="site-header" id="siteHeader">
-    <div class="container nav">
-      <a href="https://www.youtube.com/@%D0%9C%D0%B0%D1%80%D1%8F-%D0%9A%D0%B8%D1%81%D0%B5%D0%BB%D1%91%D0%B2%D0%B0/shorts" target="_blank" class="brand" aria-label="Мария Киселёва — YouTube Shorts">
-        <video class="logo-video" autoplay muted loop playsinline aria-label="Логотип">
-          <source src="logo.mp4" type="video/mp4" />
-          <img src="logo.jpg" alt="Логотип" />
-        </video>
-        <span>Мария Киселёва</span>
-      </a>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Открыть меню">
-        <span></span>
-      </button>
-      <nav class="nav-links" id="navLinks" aria-label="Навигация">
-        <a href="#skills">Навыки</a>
-        <a href="#projects">Проекты</a>
-        <a href="#contact">Контакты</a>
-      </nav>
-    </div>
-  </header>
+    <!-- Остальной HTML код остается без изменений -->
+    <!-- Feedback Button -->
+    <button class="feedback-btn" onclick="openModal()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
 
-  <main>
-    <!-- ===== HERO SECTION ===== -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-image reveal is-visible">
-          <img src="assets/glass-sculpture.png" alt="Абстрактная стеклянная скульптура" />
-        </div>
-
-        <div class="hero-text reveal is-visible">
-          <span class="eyebrow">Prompt Engineering</span>
-          <h1>Нейросети — это просто. Доказываю на своём примере</h1>
-          <p class="hero-role">Создаю сайты, брендбуки и AI-агентов с помощью промт-инженеринга. Учу превращать идеи в готовые решения без кода.</p>
-        </div>
-      </div>
-      
-      <!-- "Три кита" -->
-      <div class="container" id="skills">
-        <div class="pillars-wrapper reveal">
-          <h2 class="pillars-title">Три кита, на которых строится <span>промт-инженеринг</span></h2>
-          <div class="pillars-grid">
-            <article class="pillar-item">
-              <div class="pillar-number">01</div>
-              <h3>Искусство промта</h3>
-              <p>Формулирую задачи так, чтобы нейросеть выдавала предсказуемый результат. Никакой магии — только структура и логика. Вы научитесь экономить часы работы.</p>
-            </article>
-            <article class="pillar-item">
-              <div class="pillar-number">02</div>
-              <h3>Точный подбор инструмента</h3>
-              <p>Для аналитики, дизайна, видео или текстов нужны разные нейросети. Я помогу выбрать ту, что решит вашу задачу быстрее и качественнее.</p>
-            </article>
-            <article class="pillar-item">
-              <div class="pillar-number">03</div>
-              <h3>Ваш личный AI-эксперт</h3>
-              <p>Превращаю нейросеть в помощника, который знает вашу сферу. Юрист, маркетолог или фотограф — создаём AI-агента под ваши задачи.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== БЛОК ПРОЕКТОВ ===== -->
-    <section class="projects-section" id="projects">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2>Мои проекты</h2>
-        </div>
-
-        <div class="projects-list">
-          
-          <!-- 1. AI-фотосессии -->
-          <article class="project-row reveal">
-            <div class="project-text">
-              <div class="project-number">01</div>
-              <span class="project-category">Product Photography • AI Enhancement</span>
-              <h3 class="project-title">AI-фотосессии товаров</h3>
-              <span class="project-year">2026</span>
-              <div class="project-meta">
-                <p><strong>Задача:</strong> Сделать товарные фото, которые продают.</p>
-                <p><strong>Решение:</strong> С помощью нейросетей превращаю обычные снимки в премиальные визуалы для соцсетей и маркетплейсов. Без студии, без сложного света — только AI и немного магии.</p>
-                <p><strong>Результат:</strong> Клиенты получают контент, который выделяет их товар на фоне конкурентов.</p>
-              </div>
-              
-              <div class="tech-tags">
-                <span class="tech-tag">Языковые модели</span>
-                <span class="tech-tag">Generative AI</span>
-                <span class="tech-tag">Adobe Photoshop</span>
-              </div>
-              
-              <a href="#contact" class="btn-primary">Обсудить проект</a>
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-headset"></i> Обратная связь</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
-            <div class="project-media">
-              <div class="media-grid">
-                <div class="media-item" onclick="openModal('ai-works/пост0.jpg')">
-                  <img src="ai-works/пост0.jpg" alt="Товарная съёмка" loading="lazy">
+            <form id="feedbackForm">
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> Ваше имя</label>
+                    <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
                 </div>
-                <div class="media-item" onclick="openModal('ai-works/пост1.jpg')">
-                  <img src="ai-works/пост1.jpg" alt="Креативная обработка" loading="lazy">
+                <div class="form-group">
+                    <label for="phone"><i class="fas fa-phone"></i> Номер телефона</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX">
                 </div>
-                <div class="media-item" onclick="openModal('ai-works/пост2.jpg')">
-                  <img src="ai-works/пост2.jpg" alt="Премиум-визуал" loading="lazy">
-                </div>
-                <div class="media-item" onclick="openModal('ai-works/пост3.jpg')">
-                  <img src="ai-works/пост3.jpg" alt="AI-улучшение" loading="lazy">
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 2. Видео презентация -->
-          <article class="project-row reveal">
-            <div class="project-text">
-              <div class="project-number">02</div>
-              <span class="project-category">Google AI Studios • 10+ источников</span>
-              <h3 class="project-title">Видео презентация</h3>
-              <span class="project-year">2025</span>
-              <div class="project-meta">
-                <p><strong>Задача:</strong> Упаковать сложную информацию в понятное видео.</p>
-                <p><strong>Решение:</strong> Google AI Studios синтезирует огромные объёмы данных в готовые видео-презентации. Я собрала 10+ источников в один убедительный ролик.</p>
-                <p><strong>Результат:</strong> Информация, которая работает и запоминается.</p>
-              </div>
-              
-              <div class="sources-accordion">
-                <button class="sources-header" onclick="toggleSources(this)">
-                  <span>Основные Источники</span>
-                  <svg class="arrow-icon" width="12" height="8" viewBox="0 0 12 8"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Отправить заявку
                 </button>
-                <div class="sources-content">
-                  <ul class="sources-list">
-                    <li><a href="https://vc.ru/design/1696542-samyi-svezhii-trend-v-dizaine-2025-mocha-mousse-glavnyi-cvet-goda-dlya-sovremennogo-interera" target="_blank">Самый свежий тренд в дизайне 2025</a></li>
-                    <li><a href="https://vobox.ru/publications/idei-dlya-doma-i-dachi/japandi/" target="_blank">Джапанди — новый стиль интерьера</a></li>
-                    <li><a href="https://www.archdaily.com/1024436/pantone-announces-mocha-mousse-as-color-of-the-year-2025" target="_blank">ArchDaily Mocha Mousse</a></li>
-                    <li><a href="https://hoff.ru/blog/tsvet-goda-2025-mocha-mousse-kak-on-smotritsya-v-interere/" target="_blank">Hoff Блог</a></li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="tech-tags">
-                <span class="tech-tag">Google AI Studios</span>
-                <span class="tech-tag">Photoshop</span>
-                <span class="tech-tag">Davinci Resolve</span>
-              </div>
-            </div>
-            <div class="project-media">
-              <div class="youtube-preview" onclick="openYouTubeVideo('7rnCqhda_HA')">
-                <img src="https://img.youtube.com/vi/7rnCqhda_HA/maxresdefault.jpg" alt="Превью видео" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/7rnCqhda_HA/hqdefault.jpg'">
-                <div class="play-icon">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 3. Коммерческий сайт -->
-          <article class="project-row reveal">
-            <div class="project-text">
-              <div class="project-number">03</div>
-              <span class="project-category">Frontend</span>
-              <h3 class="project-title">Коммерческий сайт для рекреационного бизнеса</h3>
-              <span class="project-year">2025</span>
-              <div class="project-meta">
-                <p><strong>Задача:</strong> Разработать сайт для агроусадьбы, который привлекает гостей.</p>
-                <p><strong>Решение:</strong> Прошла путь от идеи и прототипа до хостинга и регистрации в БелГИЭ. Использовала HTML, CSS, JavaScript и генеративный AI для ускорения процесса.</p>
-                <p><strong>Результат:</strong> Готовый сайт, который работает и приносит заказы.</p>
-              </div>
-              
-              <div class="tech-tags">
-                <span class="tech-tag">HTML5</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">Generative AI</span>
-              </div>
-
-              <a href="https://marya-kiseliova.github.io/Usadiba_U_Vodi/" class="btn-primary" target="_blank">Посмотреть в деле</a>
-            </div>
-            <div class="project-media">
-              <div class="media-grid">
-                <div class="media-item" onclick="openModal('project2/5.png')"><img src="project2/5.png" alt="Основная панель" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project2/6.png')"><img src="project2/6.png" alt="Карусель услуг" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project2/7.png')"><img src="project2/7.png" alt="Фрейм карты" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project2/8.png')"><img src="project2/8.png" alt="Мобильная версия" loading="lazy"></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 4. Interactive book -->
-          <article class="project-row reveal">
-            <div class="project-text">
-              <div class="project-number">04</div>
-              <span class="project-category">EdTech • Interactive Design</span>
-              <h3 class="project-title">Interactive book</h3>
-              <span class="project-year">2025</span>
-              <div class="project-meta">
-                <p><strong>Задача:</strong> Придумать и создать интерактивную книгу с нуля.</p>
-                <p><strong>Решение:</strong> ИИ-модель разработала сюжет, дизайн и интерактивные элементы для детской книги по моему запросу. Адаптировала её для планшета, компьютера и мобильного.</p>
-                <p><strong>Результат:</strong> Книга, которую современному ребёнку захочется прочесть.</p>
-              </div>
-              
-              <div class="tech-tags">
-                <span class="tech-tag">HTML5</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">Adobe Photoshop</span>
-              </div>
-
-              <a href="project3/mermaid/mermaid1.html" class="btn-primary" target="_blank">Открыть книгу</a>
-            </div>
-            <div class="project-media">
-              <div class="media-single" onclick="openModal('project3/book_cover.png')">
-                <img src="project3/book_cover.png" alt="Обложка книги" loading="lazy">
-              </div>
-            </div>
-          </article>
-
-          <!-- 5. Figma works -->
-          <article class="project-row reveal">
-            <div class="project-text">
-              <div class="project-number">05</div>
-              <span class="project-category">Design</span>
-              <h3 class="project-title">Почему акции Figma упали</h3>
-              <span class="project-year">2025</span>
-              <div class="project-meta">
-                <p><strong>Задача:</strong> Показать, как AI меняет рынок дизайна.</p>
-                <p><strong>Решение:</strong> Картинки — это мои работы в Figma. А по кнопке открывается веб-страница с описанием разных стилей дизайна, которую я создала с помощью AI всего за 15 минут.</p>
-                <p><strong>Результат:</strong> Наглядный пример того, как нейросети ускоряют работу и меняют правила игры.</p>
-              </div>
-              
-              <div class="tech-tags">
-                <span class="tech-tag">Figma</span>
-                <span class="tech-tag">Canva</span>
-                <span class="tech-tag">Generative AI</span>
-              </div>
-
-              <a href="figma_example.html" class="btn-primary" target="_blank">Вдохновиться примером</a>
-            </div>
-            <div class="project-media">
-              <div class="media-grid">
-                <div class="media-item" onclick="openModal('project4/figma1.png')"><img src="project4/figma1.png" alt="Дизайн сайта" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project4/figma2.png')"><img src="project4/figma2.png" alt="Рекламный баннер" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project4/figma3.png')"><img src="project4/figma3.png" alt="Пост в Instagram" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project4/figma4.png')"><img src="project4/figma4.png" alt="Настройки" loading="lazy"></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 6. Store app -->
-          <article class="project-row reveal">
-            <div class="project-text">
-              <div class="project-number">06</div>
-              <span class="project-category">Товарный и бухгалтерский учёт</span>
-              <h3 class="project-title">Store app</h3>
-              <span class="project-year">2024</span>
-              <div class="project-meta">
-                <p><strong>Задача:</strong> Упростить учёт товаров для малого бизнеса.</p>
-                <p><strong>Решение:</strong> Написала программу на Python, которая автоматизирует отчёты и экономит время предпринимателя.</p>
-                <p><strong>Результат:</strong> Инструмент, который реально работает и помогает зарабатывать.</p>
-              </div>
-              
-              <div class="tech-tags">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">Tkinter</span>
-                <span class="tech-tag">Pandas</span>
-                <span class="tech-tag">SQLite</span>
-              </div>
-            </div>
-            <div class="project-media">
-              <div class="youtube-preview" onclick="openYouTubeVideo('evA-V66w2rY')">
-                <img src="bar.webp" alt="Превью Store App" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/evA-V66w2rY/hqdefault.jpg'">
-                <div class="play-icon">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 7. HTML5 Cheatsheet -->
-          <article class="project-row reveal">
-            <div class="project-text">
-              <div class="project-number">07</div>
-              <span class="project-category">Educational Resource</span>
-              <h3 class="project-title">HTML5 & CSS Конспект-шпаргалка</h3>
-              <span class="project-year">2024</span>
-              <div class="project-meta">
-                <p><strong>Задача:</strong> Систематизировать знания по вёрстке.</p>
-                <p><strong>Решение:</strong> Собрала все ключевые теги и свойства в удобную шпаргалку. Использовала HTML5, CSS3 и JavaScript.</p>
-                <p><strong>Результат:</strong> Инструмент, который экономит время на поиск информации.</p>
-              </div>
-              
-              <div class="tech-tags">
-                <span class="tech-tag">HTML5</span>
-                <span class="tech-tag">CSS3</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">Mobile-First</span>
-              </div>
-
-              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                <a href="Conspect.html" class="btn-primary">Изучить шпаргалку</a>
-                <a href="https://github.com/Marya-Kiseliova/HTML5-conspect/blob/main/Conspect.html" class="btn-outline" target="_blank">Исходный код</a>
-              </div>
-            </div>
-            <div class="project-media">
-              <!-- Теперь картинка растягивается по высоте текста -->
-              <div class="media-single" onclick="openModal('conspect.webp')">
-                <img src="conspect.webp" alt="Шпаргалка" loading="lazy">
-              </div>
-            </div>
-          </article>
-
-          <!-- 8. AI video short -->
-          <article class="project-row reveal">
-            <div class="project-text">
-              <div class="project-number">08</div>
-              <span class="project-category">Эксперимент • Mobile</span>
-              <h3 class="project-title">AI video (киберпанк)</h3>
-              <span class="project-year">2025</span>
-              <div class="project-meta">
-                <p><strong>Задача:</strong> Исследовать возможности генеративного видео.</p>
-                <p><strong>Решение:</strong> Создала ролик в стиле киберпанка с помощью AI и звукового дизайна. Эксперимент удался.</p>
-                <p><strong>Результат:</strong> Пример того, как AI оживляет даже самые смелые идеи.</p>
-              </div>
-              
-              <div class="tech-tags">
-                <span class="tech-tag">Generative AI</span>
-                <span class="tech-tag">Cap-Cut</span>
-                <span class="tech-tag">Sound Design</span>
-              </div>
-            </div>
-            <div class="project-media">
-              <div class="youtube-preview" onclick="openYouTubeVideo('500ywmW3ivk')" style="max-width: 400px; margin-left: auto; margin-right: auto;">
-                <img src="project5/5.3.png" alt="Превью AI video" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/500ywmW3ivk/hqdefault.jpg'">
-                <div class="play-icon">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-            </div>
-          </article>
-
+            </form>
         </div>
-      </div>
-    </section>
+    </div>
 
-    <!-- ===== БЛОК ЦИТАТЫ ===== -->
-    <section class="quote-section">
-      <div class="container reveal">
-        <div class="quote-block">
-          <p>Я не прячу ранние работы. Они показывают реальный путь — от долгого и мучительного к быстрому и системному.</p>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                    <!-- Бургер кнопка> -->
+    <button class="burger-menu" aria-label="Открыть меню">
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+    </button>
+                <h1>Шпаргалка верстальщика</h1>
+                <p class="subtitle">HTML, CSS и всё, что нужно знать для создания современных сайтов</p>
+            </div>
         </div>
-      </div>
-    </section>
-  </main>
+    </header>
 
-  <!-- FOOTER -->
-  <footer class="site-footer" id="contact">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand reveal">
-          <h2>Давайте создавать будущее вместе</h2>
-          <p>Помогаю бизнесу и творческим людям использовать нейросети для роста. Без сложных терминов, с фокусом на результат.</p>
+        <nav class="toc">
+            <h2><i class="fas fa-bookmark"></i> Быстрая навигация</h2>
+            <div class="toc-grid">
+                <div class="toc-item" onclick="scrollToSection('html-basics')">
+                    <i class="fas fa-code"></i>
+                    <span>Основы HTML</span>
+                </div>
+                <div class="toc-item" onclick="scrollToSection('semantic-tags')">
+                    <i class="fas fa-sitemap"></i>
+                    <span>Семантика</span>
+                </div>
+                <div class="toc-item" onclick="scrollToSection('structure')">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Структура</span>
+                </div>
+                <div class="toc-item" onclick="scrollToSection('spacing')">
+                    <i class="fas fa-arrows-alt"></i>
+                    <span>Отступы</span>
+                </div>
+                <div class="toc-item" onclick="scrollToSection('css-basics')">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Основы CSS</span>
+                </div>
+                <div class="toc-item" onclick="scrollToSection('buttons')">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <span>Кнопки</span>
+                </div>
+                <div class="toc-item" onclick="scrollToSection('contacts')">
+                    <i class="fas fa-address-book"></i>
+                    <span>Контакты</span>
+                </div>
+                <div class="toc-item" onclick="scrollToSection('animations')">
+                    <i class="fas fa-magic"></i>
+                    <span>Анимации</span>
+                </div>
+                <div class="toc-item" onclick="scrollToSection('html-basics')">
+                    <i class="fas fa-code"></i>
+                    <span>Основы HTML</span>
+                </div>
+                <div class="toc-item" onclick="scrollToSection('inline-elements')">
+                    <i class="fas fa-text-width"></i>
+                    <span>Строчные элементы</span>
+                </div>
+                <div class="toc-item" onclick="scrollToSection('burger-menu')">
+                    <i class="fas fa-bars"></i>
+                    <span>Бургер-меню</span>
+                </div>
+                <div class="toc-item" onclick="scrollToSection('semantic-tags')">
+                    <i class="fas fa-sitemap"></i>
+                    <span>Семантика</span>
+                </div>
+                <div class="toc-item" onclick="scrollToSection('layouts')">
+                    <i class="fas fa-th-large"></i>
+                    <span>Layouts</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Основы HTML -->
+        <section id="html-basics">
+            <h2><i class="fas fa-code"></i> ОСНОВЫ HTML</h2>
+            
+            <h3><i class="fas fa-file-code"></i> Базовая структура документа</h3>
+            <div class="code-block">
+<span class="tag">&lt;!DOCTYPE html&gt;</span><br>
+<span class="tag">&lt;html</span> <span class="attribute">lang</span>=<span class="value">"ru"</span><span class="tag">&gt;</span><br>
+<span class="tag">&lt;head&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span><span class="tag">&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;title&gt;</span>Название страницы<span class="tag">&lt;/title&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"style.css"</span><span class="tag">&gt;</span><br>
+<span class="tag">&lt;/head&gt;</span><br>
+<span class="tag">&lt;body&gt;</span><br>
+&nbsp;&nbsp;<span class="comment">&lt;!-- Содержимое страницы --&gt;</span><br>
+<span class="tag">&lt;/body&gt;</span><br>
+<span class="tag">&lt;/html&gt;</span>
+            </div>
+
+            <h3><i class="fas fa-tags"></i> Основные HTML-теги</h3>
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>Тег</th>
+                        <th>Назначение</th>
+                        <th>Пример использования</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>&lt;div&gt;</code></td>
+                        <td>Универсальный контейнер без семантики</td>
+                        <td><code>&lt;div class="container"&gt;...&lt;/div&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;h1&gt;-&lt;h6&gt;</code></td>
+                        <td>Заголовки разного уровня важности</td>
+                        <td><code>&lt;h1&gt;Главный заголовок&lt;/h1&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;p&gt;</code></td>
+                        <td>Абзац текста</td>
+                        <td><code>&lt;p&gt;Текст абзаца...&lt;/p&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;a&gt;</code></td>
+                        <td>Гиперссылка</td>
+                        <td><code>&lt;a href="#section"&gt;Ссылка&lt;/a&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;img&gt;</code></td>
+                        <td>Изображение</td>
+                        <td><code>&lt;img src="photo.jpg" alt="Описание"&gt;</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Семантические теги -->
+<!-- Семантические теги -->
+<section id="semantic-tags">
+    <h2><i class="fas fa-sitemap"></i> СЕМАНТИЧЕСКИЕ ТЕГИ</h2>
+    
+    <h3><i class="fas fa-cubes"></i> Структурные семантические теги</h3>
+    <table class="info-table">
+        <thead>
+            <tr>
+                <th>Тег</th>
+                <th>Назначение</th>
+                <th>Пример использования</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>&lt;header&gt;</code></td>
+                <td>Шапка сайта или раздела</td>
+                <td><code>&lt;header&gt;Логотип и навигация&lt;/header&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;nav&gt;</code></td>
+                <td>Навигационное меню</td>
+                <td><code>&lt;nav&gt;&lt;a href="#"&gt;Главная&lt;/a&gt;&lt;/nav&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;main&gt;</code></td>
+                <td>Основное содержимое страницы</td>
+                <td><code>&lt;main&gt;Основной контент...&lt;/main&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;section&gt;</code></td>
+                <td>Тематический раздел</td>
+                <td><code>&lt;section&gt;&lt;h2&gt;О нас&lt;/h2&gt;...&lt;/section&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;article&gt;</code></td>
+                <td>Самостоятельный контент (статья)</td>
+                <td><code>&lt;article&gt;&lt;h2&gt;Заголовок статьи&lt;/h2&gt;...&lt;/article&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;aside&gt;</code></td>
+                <td>Боковая панель, дополнительный контент</td>
+                <td><code>&lt;aside&gt;Рекомендации...&lt;/aside&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;footer&gt;</code></td>
+                <td>Подвал сайта или раздела</td>
+                <td><code>&lt;footer&gt;Контакты и ссылки&lt;/footer&gt;</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3><i class="fas fa-file-alt"></i> Контентные семантические теги</h3>
+    <table class="info-table">
+        <thead>
+            <tr>
+                <th>Тег</th>
+                <th>Назначение</th>
+                <th>Пример использования</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>&lt;figure&gt;</code></td>
+                <td>Иллюстрации с подписью</td>
+                <td><code>&lt;figure&gt;&lt;img src="..."&gt;&lt;figcaption&gt;Описание&lt;/figcaption&gt;&lt;/figure&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;figcaption&gt;</code></td>
+                <td>Подпись для figure</td>
+                <td><code>&lt;figcaption&gt;Мое фото&lt;/figcaption&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;time&gt;</code></td>
+                <td>Дата и время</td>
+                <td><code>&lt;time datetime="2024-01-15"&gt;15 января&lt;/time&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;mark&gt;</code></td>
+                <td>Выделенный текст</td>
+                <td><code>Это &lt;mark&gt;важный&lt;/mark&gt; текст</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;strong&gt;</code></td>
+                <td>Важный текст (семантическое)</td>
+                <td><code>&lt;strong&gt;Внимание!&lt;/strong&gt; Это важно</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;em&gt;</code></td>
+                <td>Акцентированный текст (семантическое)</td>
+                <td><code>Это &lt;em&gt;очень&lt;/em&gt; интересно</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;blockquote&gt;</code></td>
+                <td>Блочная цитата</td>
+                <td><code>&lt;blockquote&gt;Цитата...&lt;/blockquote&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;cite&gt;</code></td>
+                <td>Цитирование источника</td>
+                <td><code>&lt;cite&gt;Название книги&lt;/cite&gt;</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3><i class="fas fa-code-branch"></i> DIV vs SECTION vs ARTICLE</h3>
+    <div class="property-details">
+        <div class="property-group">
+            <span class="property-name">&lt;div&gt; - Универсальный контейнер</span>
+            <span>Используется для группировки элементов без семантического значения. Идеален для стилизации и расположения элементов.</span>
+            <div class="code-block">
+<span class="tag">&lt;div class="user-card"&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;img src="avatar.jpg" alt="Аватар"&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;h3&gt;</span>Имя пользователя<span class="tag">&lt;/h3&gt;</span><br>
+<span class="tag">&lt;/div&gt;</span>
+            </div>
         </div>
-        <div class="footer-links reveal">
-          <a href="mailto:m.yasinskaya12@gmail.com">Email</a>
-          <a href="https://github.com/Marya-Kiseliova" target="_blank">GitHub</a>
-          <a href="https://www.youtube.com/@%D0%9C%D0%B0%D1%80%D1%8F-%D0%9A%D0%B8%D1%81%D0%B5%D0%BB%D1%91%D0%B2%D0%B0/shorts" target="_blank">YouTube</a>
+        
+        <div class="property-group">
+            <span class="property-name">&lt;section&gt; - Тематический раздел</span>
+            <span>Используется для логического разделения контента. Должен иметь заголовок. Улучшает SEO и доступность.</span>
+            <div class="code-block">
+<span class="tag">&lt;section class="services"&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span>Наши услуги<span class="tag">&lt;/h2&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;div class="service-card"&gt;</span>...<span class="tag">&lt;/div&gt;</span><br>
+<span class="tag">&lt;/section&gt;</span>
+            </div>
         </div>
-      </div>
-      <div class="footer-bottom reveal">
-        <p>Этот сайт — пример того, как можно собирать рабочие веб-страницы, опираясь на ИИ.</p>
-        <p>&copy; 2024 Мария Киселёва</p>
-      </div>
+        
+        <div class="property-group">
+            <span class="property-name">&lt;article&gt; - Независимый контент</span>
+            <span>Для самостоятельного контента, который может быть использован отдельно (статьи, посты, карточки товаров).</span>
+            <div class="code-block">
+<span class="tag">&lt;article class="blog-post"&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span>Заголовок поста<span class="tag">&lt;/h2&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>Содержание...<span class="tag">&lt;/p&gt;</span><br>
+<span class="tag">&lt;/article&gt;</span>
+            </div>
+        </div>
     </div>
-  </footer>
+</section>
 
-  <!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
-  <div id="imageModal" class="modal" onclick="closeModal()">
-    <div class="modal-content" onclick="event.stopPropagation();">
-      <button class="close-modal" onclick="closeModal()" aria-label="Закрыть">&times;</button>
-      <img id="modalImage" src="" alt="">
+        <!-- Структура и иерархия -->
+        <section id="structure">
+            <h2><i class="fas fa-project-diagram"></i> СТРУКТУРА И ИЕРАРХИЯ</h2>
+            
+            <div class="visual-hierarchy">
+                <h3 style="color: white;"><i class="fas fa-sitemap"></i> Иерархия HTML-документа</h3>
+                <div class="hierarchy-item">
+                    <strong>📄 HTML</strong> - Корневой элемент документа
+                </div>
+                <div class="hierarchy-item" style="margin-left: 20px;">
+                    <strong>👤 HEAD</strong> - Мета-информация (не видна пользователю)
+                </div>
+                <div class="hierarchy-item" style="margin-left: 20px;">
+                    <strong>🎨 BODY</strong> - Видимое содержимое страницы
+                </div>
+                <div class="hierarchy-item" style="margin-left: 40px;">
+                    <strong>🏠 HEADER</strong> - Шапка сайта
+                </div>
+                <div class="hierarchy-item" style="margin-left: 40px;">
+                    <strong>🧭 NAV</strong> - Навигационное меню
+                </div>
+                <div class="hierarchy-item" style="margin-left: 40px;">
+                    <strong>⭐ MAIN</strong> - Основной контент
+                </div>
+                <div class="hierarchy-item" style="margin-left: 60px;">
+                    <strong>📚 SECTION</strong> - Раздел "Услуги"
+                </div>
+                <div class="hierarchy-item" style="margin-left: 80px;">
+                    <strong>📦 ARTICLE</strong> - Карточка услуги
+                </div>
+                <div class="hierarchy-item" style="margin-left: 100px;">
+                    <strong>🎯 DIV</strong> - Внутренний блок карточки
+                </div>
+                <div class="hierarchy-item" style="margin-left: 40px;">
+                    <strong>🏠 FOOTER</strong> - Подвал сайта
+                </div>
+            </div>
+
+            <h3><i class="fas fa-rules"></i> Правила структуры</h3>
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>Правило</th>
+                        <th>Объяснение</th>
+                        <th>Пример</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Один H1 на страницу</td>
+                        <td>Главный заголовок должен быть единственным для SEO</td>
+                        <td><code>&lt;h1&gt;Усадьба У Воды&lt;/h1&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td>Логическая последовательность</td>
+                        <td>Заголовки должны идти по порядку: h1 → h2 → h3</td>
+                        <td><code>h1 → h2 → h3 → h2 → h3</code></td>
+                    </tr>
+                    <tr>
+                        <td>Семантика вместо DIV</td>
+                        <td>Используйте семантические теги для лучшего SEO</td>
+                        <td><code>&lt;section&gt;</code> вместо <code>&lt;div&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td>Вложенность по смыслу</td>
+                        <td>Элементы должны быть вложены логически</td>
+                        <td>header → nav → ul → li → a</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+               <!-- Отступы и spacing -->
+        <section id="spacing">
+            <h2><i class="fas fa-arrows-alt"></i> ОТСТУПЫ: MARGIN, PADDING, GAP</h2>
+            
+            <div class="spacing-demo">
+                <h3><i class="fas fa-box"></i> Визуализация отступов</h3>
+                <div class="spacing-box">
+                    <span class="spacing-label margin-label">MARGIN</span>
+                    <span class="spacing-label border-label">BORDER</span>
+                    <span class="spacing-label padding-label">PADDING</span>
+                    Контент элемента
+                </div>
+            </div>
+
+            <div class="comparison-table">
+                <div class="comparison-card">
+                    <h4><i class="fas fa-arrow-right"></i> MARGIN</h4>
+                    <p><strong>Внешние отступы</strong> - пространство ВНЕ элемента</p>
+                    <div class="code-block">
+<span class="tag">.element</span> {<br>
+&nbsp;&nbsp;<span class="attribute">margin</span>: <span class="value">20px</span>; <span class="comment">/* со всех сторон */</span><br>
+&nbsp;&nbsp;<span class="attribute">margin</span>: <span class="value">10px 20px</span>; <span class="comment">/* сверху-снизу | слева-справа */</span><br>
+&nbsp;&nbsp;<span class="attribute">margin-top</span>: <span class="value">15px</span>; <span class="comment">/* только сверху */</span><br>
+}
+                    </div>
+                    <ul>
+                        <li><strong>Особенность:</strong> margin'ы соседних элементов схлопываются</li>
+                        <li><strong>Отрицательные значения:</strong> Можно использовать</li>
+                        <li><strong>Auto:</strong> Центрирование по горизонтали</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-card">
+                    <h4><i class="fas fa-border-all"></i> PADDING</h4>
+                    <p><strong>Внутренние отступы</strong> - пространство ВНУТРИ элемента</p>
+                    <div class="code-block">
+<span class="tag">.element</span> {<br>
+&nbsp;&nbsp;<span class="attribute">padding</span>: <span class="value">20px</span>; <span class="comment">/* со всех сторон */</span><br>
+&nbsp;&nbsp;<span class="attribute">padding</span>: <span class="value">10px 20px 15px 5px</span>; <span class="comment">/* верх | право | низ | лево */</span><br>
+&nbsp;&nbsp;<span class="attribute">padding-left</span>: <span class="value">30px</span>; <span class="comment">/* только слева */</span><br>
+}
+                    </div>
+                    <ul>
+                        <li><strong>Особенность:</strong> Увеличивает размер элемента</li>
+                        <li><strong>Отрицательные значения:</strong> Нельзя использовать</li>
+                        <li><strong>Влияет на:</strong> Кликабельную область</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="property-details">
+                <h4><i class="fas fa-code"></i> GAP - современный способ</h4>
+                <div class="property-group">
+                    <span class="property-name">gap</span>
+                    <span>Отступы между элементами в Flexbox и Grid. Не влияет на отступы от краев контейнера.</span>
+                    <div class="code-block">
+<span class="tag">.container</span> {<br>
+&nbsp;&nbsp;<span class="attribute">display</span>: <span class="value">grid</span>;<br>
+&nbsp;&nbsp;<span class="attribute">gap</span>: <span class="value">20px</span>; <span class="comment">/* отступы между элементами */</span><br>
+&nbsp;&nbsp;<span class="attribute">padding</span>: <span class="value">30px</span>; <span class="comment">/* отступ от краев контейнера */</span><br>
+}
+                    </div>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-sort-amount-down"></i> Приоритет и взаимодействие</h3>
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>Ситуация</th>
+                        <th>Результат</th>
+                        <th>Пример</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Два элемента с margin</td>
+                        <td>Margin'ы <strong>схлопываются</strong> (берётся больший)</td>
+                        <td>margin-bottom: 20px + margin-top: 30px = 30px между элементами</td>
+                    </tr>
+                    <tr>
+                        <td>Margin + Padding</td>
+                        <td><strong>Суммируются</strong></td>
+                        <td>margin: 10px + padding: 15px = 25px отступа</td>
+                    </tr>
+                    <tr>
+                        <td>Gap + Margin</td>
+                        <td><strong>Суммируются</strong></td>
+                        <td>gap: 20px + margin: 10px = 30px между элементами</td>
+                    </tr>
+                    <tr>
+                        <td>Отрицательный margin</td>
+                        <td>Элементы <strong>перекрываются</strong></td>
+                        <td>margin-top: -10px поднимает элемент</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Основы CSS -->
+        <section id="css-basics">
+            <h2><i class="fas fa-paint-brush"></i> ОСНОВЫ CSS</h2>
+            
+            <h3><i class="fas fa-syntax"></i> Синтаксис CSS</h3>
+            <div class="code-block">
+<span class="comment">/* селектор { свойство: значение; } */</span><br>
+<span class="tag">.element</span> {<br>
+&nbsp;&nbsp;<span class="attribute">color</span>: <span class="value">blue</span>;<br>
+&nbsp;&nbsp;<span class="attribute">font-size</span>: <span class="value">16px</span>;<br>
+&nbsp;&nbsp;<span class="attribute">margin</span>: <span class="value">20px</span>;<br>
+}
+            </div>
+
+            <div class="property-details">
+                <h4><i class="fas fa-cog"></i> Основные свойства CSS</h4>
+                
+                <div class="property-group">
+                    <span class="property-name">color & background</span>
+                    <span>Цвет текста и фона элемента</span>
+                    <div class="property-values">
+                        <span class="value-chip">red</span>
+                        <span class="value-chip">#FF0000</span>
+                        <span class="value-chip">rgb(255,0,0)</span>
+                        <span class="value-chip">rgba(255,0,0,0.5)</span>
+                        <span class="value-chip">hsl(0,100%,50%)</span>
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <span class="property-name">font-size & font-family</span>
+                    <span>Размер и семейство шрифта</span>
+                    <div class="property-values">
+                        <span class="value-chip">16px</span>
+                        <span class="value-chip">1rem</span>
+                        <span class="value-chip">1.2em</span>
+                        <span class="value-chip">Arial, sans-serif</span>
+                        <span class="value-chip">'Segoe UI'</span>
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <span class="property-name">border & border-radius</span>
+                    <span>Граница и скругление углов</span>
+                    <div class="property-values">
+                        <span class="value-chip">1px solid #000</span>
+                        <span class="value-chip">2px dotted red</span>
+                        <span class="value-chip">none</span>
+                        <span class="value-chip">10px</span>
+                        <span class="value-chip">50%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-grid">
+                <div class="example-card">
+                    <h4><i class="fas fa-ruler-combined"></i> Размеры и позиционирование</h4>
+                    <ul>
+                        <li><code>width/height</code> - ширина/высота</li>
+                        <li><code>max-width/min-width</code> - ограничения</li>
+                        <li><code>position</code> - позиционирование</li>
+                        <li><code>z-index</code> - порядок слоёв</li>
+                        <li><code>display</code> - тип отображения</li>
+                    </ul>
+                </div>
+                <div class="example-card">
+                    <h4><i class="fas fa-eye"></i> Внешний вид</h4>
+                    <ul>
+                        <li><code>box-shadow</code> - тень элемента</li>
+                        <li><code>opacity</code> - прозрачность</li>
+                        <li><code>transform</code> - трансформации</li>
+                        <li><code>transition</code> - плавные переходы</li>
+                        <li><code>filter</code> - фильтры</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Кнопки и интерактив -->
+        <section id="buttons">
+            <h2><i class="fas fa-mouse-pointer"></i> КНОПКИ И ИНТЕРАКТИВ</h2>
+            
+            <h3><i class="fas fa-hand-pointer"></i> Типы кликабельных элементов</h3>
+            <div class="button-demo">
+                <button class="btn btn-primary">
+                    <i class="fas fa-check"></i> Основная кнопка
+                </button>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-star"></i> Вторичная кнопка
+                </button>
+                <button class="btn btn-outline">
+                    <i class="fas fa-plus"></i> Контурная кнопка
+                </button>
+                <button class="btn btn-ghost">
+                    <i class="fas fa-times"></i> Призрачная кнопка
+                </button>
+            </div>
+
+            <div class="property-details">
+                <h4><i class="fas fa-code"></i> Создание идеальной кнопки</h4>
+                
+                <div class="property-group">
+                    <span class="property-name">HTML структура</span>
+                    <span>Используйте семантический тег &lt;button&gt; для действий и &lt;a&gt; для переходов</span>
+                    <div class="code-block">
+<span class="comment">&lt;!-- Действие на странице --&gt;</span><br>
+<span class="tag">&lt;button class="btn btn-primary"&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;i class="fas fa-download"&gt;&lt;/i&gt;</span><br>
+&nbsp;&nbsp;Скачать файл<br>
+<span class="tag">&lt;/button&gt;</span><br><br>
+<span class="comment">&lt;!-- Переход на другую страницу --&gt;</span><br>
+<span class="tag">&lt;a href="/contact.html" class="btn btn-secondary"&gt;</span><br>
+&nbsp;&nbsp;Связаться с нами<br>
+<span class="tag">&lt;/a&gt;</span>
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <span class="property-name">Обязательные CSS свойства</span>
+                    <span>Для доступных и удобных кнопок</span>
+                    <div class="code-block">
+<span class="tag">.btn</span> {<br>
+&nbsp;&nbsp;<span class="attribute">display</span>: <span class="value">inline-block</span>; <span class="comment">/* правильное выравнивание */</span><br>
+&nbsp;&nbsp;<span class="attribute">padding</span>: <span class="value">12px 24px</span>; <span class="comment">/* удобный размер для клика */</span><br>
+&nbsp;&nbsp;<span class="attribute">border</span>: <span class="value">none</span>; <span class="comment">/* убираем стандартную рамку */</span><br>
+&nbsp;&nbsp;<span class="attribute">border-radius</span>: <span class="value">8px</span>; <span class="comment">/* современные скругления */</span><br>
+&nbsp;&nbsp;<span class="attribute">cursor</span>: <span class="value">pointer</span>; <span class="comment">/* курсор-указатель */</span><br>
+&nbsp;&nbsp;<span class="attribute">transition</span>: <span class="value">all 0.3s ease</span>; <span class="comment">/* плавные анимации */</span><br>
+&nbsp;&nbsp;<span class="attribute">text-decoration</span>: <span class="value">none</span>; <span class="comment">/* убираем подчёркивание у ссылок */</span><br>
+&nbsp;&nbsp;<span class="attribute">font-size</span>: <span class="value">1rem</span>; <span class="comment">/* читаемый размер текста */</span><br>
+&nbsp;&nbsp;<span class="attribute">font-weight</span>: <span class="value">600</span>; <span class="comment">/* жирный текст для важности */</span><br>
+}
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <span class="property-name">Состояния кнопки</span>
+                    <span>Обязательно стилизуйте все состояния для UX</span>
+                    <div class="code-block">
+<span class="tag">.btn:hover</span> {<br>
+&nbsp;&nbsp;<span class="attribute">transform</span>: <span class="value">translateY(-2px)</span>; <span class="comment">/* эффект поднятия */</span><br>
+&nbsp;&nbsp;<span class="attribute">box-shadow</span>: <span class="value">0 4px 12px rgba(0,0,0,0.15)</span>; <span class="comment">/* тень при наведении */</span><br>
+}<br><br>
+<span class="tag">.btn:active</span> {<br>
+&nbsp;&nbsp;<span class="attribute">transform</span>: <span class="value">translateY(0)</span>; <span class="comment">/* эффект нажатия */</span><br>
+}<br><br>
+<span class="tag">.btn:focus</span> {<br>
+&nbsp;&nbsp;<span class="attribute">outline</span>: <span class="value">3px solid rgba(102, 126, 234, 0.3)</span>; <span class="comment">/* доступность для клавиатуры */</span><br>
+&nbsp;&nbsp;<span class="attribute">outline-offset</span>: <span class="value">2px</span>;<br>
+}<br><br>
+<span class="tag">.btn:disabled</span> {<br>
+&nbsp;&nbsp;<span class="attribute">opacity</span>: <span class="value">0.6</span>; <span class="comment">/* визуальное состояние неактивности */</span><br>
+&nbsp;&nbsp;<span class="attribute">cursor</span>: <span class="value">not-allowed</span>;<br>
+}
+                    </div>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-mobile-alt"></i> Размеры для мобильных устройств</h3>
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>Рекомендация</th>
+                        <th>Размер</th>
+                        <th>Объяснение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Минимальная высота</td>
+                        <td>44px</td>
+                        <td>Apple Human Interface Guidelines</td>
+                    </tr>
+                    <tr>
+                        <td>Минимальная ширина</td>
+                        <td>44px</td>
+                        <td>Для удобного тапа пальцем</td>
+                    </tr>
+                    <tr>
+                        <td>Padding по бокам</td>
+                        <td>16-24px</td>
+                        <td>Достаточное пространство вокруг текста</td>
+                    </tr>
+                    <tr>
+                        <td>Расстояние между кнопками</td>
+                        <td>8-16px</td>
+                        <td>Чтобы не нажать две кнопки одновременно</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Контакты и формы -->
+        <section id="contacts">
+            <h2><i class="fas fa-address-book"></i> КОНТАКТЫ И ФОРМЫ</h2>
+            
+            <h3><i class="fas fa-share-alt"></i> Кликабельные контакты</h3>
+            <div class="contact-buttons">
+                <a href="tel:+79991234567" class="contact-btn phone">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong>+7 (999) 123-45-67</strong>
+                        <div class="contact-description">Позвонить нам</div>
+                    </div>
+                </a>
+                
+                <a href="https://t.me/username" class="contact-btn telegram" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                    <div>
+                        <strong>Telegram</strong>
+                        <div class="contact-description">Написать в Telegram</div>
+                    </div>
+                </a>
+                
+                <a href="https://wa.me/79991234567" class="contact-btn whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <strong>WhatsApp</strong>
+                        <div class="contact-description">Написать в WhatsApp</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="property-details">
+                <h4><i class="fas fa-link"></i> Ссылки для мгновенного открытия в приложениях</h4>
+                
+                <div class="property-group">
+                    <span class="property-name">Телефонный звонок</span>
+                    <span>Открывает приложение телефона с набранным номером</span>
+                    <div class="code-block">
+<span class="tag">&lt;a href="tel:+79991234567"&gt;</span>+7 (999) 123-45-67<span class="tag">&lt;/a&gt;</span>
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <span class="property-name">Email</span>
+                    <span>Открывает почтовое приложение с заполненным адресом</span>
+                    <div class="code-block">
+<span class="tag">&lt;a href="mailto:example@mail.com"&gt;</span>example@mail.com<span class="tag">&lt;/a&gt;</span>
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <span class="property-name">Telegram</span>
+                    <span>Открывает Telegram с готовым сообщением</span>
+                    <div class="code-block">
+<span class="comment">&lt;!-- Простой переход в профиль --&gt;</span><br>
+<span class="tag">&lt;a href="https://t.me/username" target="_blank"&gt;</span>Telegram<span class="tag">&lt;/a&gt;</span><br><br>
+<span class="comment">&lt;!-- С готовым сообщением --&gt;</span><br>
+<span class="tag">&lt;a href="https://t.me/share/url?url=site.com&text=Привет!" target="_blank"&gt;</span><br>
+&nbsp;&nbsp;Поделиться в Telegram<br>
+<span class="tag">&lt;/a&gt;</span>
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <span class="property-name">WhatsApp</span>
+                    <span>Открывает WhatsApp с готовым сообщением</span>
+                    <div class="code-block">
+<span class="comment">&lt;!-- Просто написать --&gt;</span><br>
+<span class="tag">&lt;a href="https://wa.me/79991234567" target="_blank"&gt;</span>WhatsApp<span class="tag">&lt;/a&gt;</span><br><br>
+<span class="comment">&lt;!-- С готовым сообщением --&gt;</span><br>
+<span class="tag">&lt;a href="https://wa.me/79991234567?text=Здравствуйте!" target="_blank"&gt;</span><br>
+&nbsp;&nbsp;Написать в WhatsApp<br>
+<span class="tag">&lt;/a&gt;</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-envelope"></i> Форма обратной связи</h3>
+            <div class="code-block">
+<span class="tag">&lt;form id="feedbackForm"&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;div class="form-group"&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label for="name"&gt;</span>Имя<span class="tag">&lt;/label&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input type="text" id="name" name="name" required&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/div&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;div class="form-group"&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label for="phone"&gt;</span>Телефон<span class="tag">&lt;/label&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input type="tel" id="phone" name="phone" required&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/div&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;button type="submit"&gt;</span>Отправить<span class="tag">&lt;/button&gt;</span><br>
+<span class="tag">&lt;/form&gt;</span>
+            </div>
+        </section>
+
+        <!-- Анимации -->
+        <section id="animations">
+            <h2><i class="fas fa-magic"></i> CSS АНИМАЦИИ</h2>
+            
+            <div class="animation-demo">
+                <h3 style="color: white;"><i class="fas fa-play-circle"></i> Демонстрация анимаций</h3>
+                
+                <div class="demo-controls">
+                    <button class="demo-btn" onclick="toggleAnimation('hover')">
+                        <i class="fas fa-hand-pointer"></i> Hover
+                    </button>
+                    <button class="demo-btn" onclick="toggleAnimation('spin')">
+                        <i class="fas fa-sync"></i> Spin
+                    </button>
+                    <button class="demo-btn" onclick="toggleAnimation('bounce')">
+                        <i class="fas fa-basketball-ball"></i> Bounce
+                    </button>
+                    <button class="demo-btn" onclick="toggleAnimation('pulse')">
+                        <i class="fas fa-heartbeat"></i> Pulse
+                    </button>
+                </div>
+
+                <div class="demo-box" id="animated-box">Анимация!</div>
+            </div>
+
+            <h3><i class="fas fa-film"></i> Типы CSS-анимаций</h3>
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>Тип анимации</th>
+                        <th>Свойства</th>
+                        <th>Применение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Transition</strong></td>
+                        <td><code>transition: all 0.3s ease</code></td>
+                        <td>Плавные переходы при наведении, фокусе</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Transform</strong></td>
+                        <td><code>transform: scale(1.1) rotate(5deg)</code></td>
+                        <td>Изменение размера, поворот, перемещение</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Keyframes</strong></td>
+                        <td><code>@keyframes name { ... }</code></td>
+                        <td>Сложные последовательности анимаций</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Animation</strong></td>
+                        <td><code>animation: name 2s infinite</code></td>
+                        <td>Управление ключевыми кадрами</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="property-details">
+                <h4><i class="fas fa-cogs"></i> Свойства анимаций</h4>
+                
+                <div class="property-group">
+                    <span class="property-name">animation-duration</span>
+                    <span>Продолжительность анимации</span>
+                    <div class="property-values">
+                        <span class="value-chip">1s</span>
+                        <span class="value-chip">500ms</span>
+                        <span class="value-chip">2.5s</span>
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <span class="property-name">animation-timing-function</span>
+                    <span>Кривая скорости анимации</span>
+                    <div class="property-values">
+                        <span class="value-chip">ease</span>
+                        <span class="value-chip">linear</span>
+                        <span class="value-chip">ease-in</span>
+                        <span class="value-chip">ease-out</span>
+                        <span class="value-chip">cubic-bezier()</span>
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <span class="property-name">animation-iteration-count</span>
+                    <span>Количество повторений</span>
+                    <div class="property-values">
+                        <span class="value-chip">1</span>
+                        <span class="value-chip">infinite</span>
+                        <span class="value-chip">3</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- Строчные элементы -->
+        <section id="inline-elements">
+            <h2><i class="fas fa-text-width"></i> СТРОЧНЫЕ ЭЛЕМЕНТЫ</h2>
+            
+            <h3><i class="fas fa-align-left"></i> Display: Inline элементы</h3>
+            <p>Строчные элементы используются для выделения, акцентирования или интерактивности внутри потока текста, не создавая при этом переноса строки.</p>
+            
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>Элемент</th>
+                        <th>Название</th>
+                        <th>Свойства по умолчанию</th>
+                        <th>Применение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>&lt;span&gt;</code></td>
+                        <td>Generic Inline Container</td>
+                        <td><code>display: inline</code></td>
+                        <td>Универсальный элемент для стилизации фрагмента текста. Не имеет семантического значения.</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;a&gt;</code></td>
+                        <td>Anchor</td>
+                        <td><code>display: inline</code></td>
+                        <td>Создание гиперссылок для перехода на другие страницы или части текущей страницы.</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;strong&gt;</code></td>
+                        <td>Strong Importance</td>
+                        <td><code>display: inline</code>, жирный шрифт</td>
+                        <td>Выделение текста с высокой важностью, серьёзностью или срочностью (семантическое).</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;em&gt;</code></td>
+                        <td>Emphasis</td>
+                        <td><code>display: inline</code>, курсив</td>
+                        <td>Выделение текста для придания акцента или изменения значения предложения (семантическое).</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;img&gt;</code></td>
+                        <td>Image</td>
+                        <td><code>display: inline-block</code> (часто)</td>
+                        <td>Вставка изображений. Позволяет задавать ширину/высоту как блочным элементам.</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;br&gt;</code></td>
+                        <td>Line Break</td>
+                        <td><code>display: inline</code></td>
+                        <td>Вставка принудительного перевода строки (самозакрывающийся тег).</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;label&gt;</code></td>
+                        <td>Label</td>
+                        <td><code>display: inline</code></td>
+                        <td>Связывание текста с элементом формы (чекбоксом, полем ввода).</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;input&gt;</code></td>
+                        <td>Input</td>
+                        <td><code>display: inline-block</code></td>
+                        <td>Элементы для ввода данных в формах. Похож на &lt;img&gt; по поведению.</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;q&gt;</code></td>
+                        <td>Short Quotation</td>
+                        <td><code>display: inline</code>, кавычки</td>
+                        <td>Для коротких цитат, которые находятся внутри абзаца.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3><i class="fas fa-code"></i> Примеры использования строчных элементов</h3>
+            <div class="code-block">
+<span class="tag">&lt;p&gt;</span><br>
+&nbsp;&nbsp;Это <span class="tag">&lt;strong&gt;</span>важный<span class="tag">&lt;/strong&gt;</span> текст,<br>
+&nbsp;&nbsp;и это <span class="tag">&lt;em&gt;</span>акцентированный<span class="tag">&lt;/em&gt;</span> текст.<br>
+&nbsp;&nbsp;<span class="tag">&lt;span class="highlight"&gt;</span>Выделенный фрагмент<span class="tag">&lt;/span&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;a href="#"&gt;</span>Ссылка<span class="tag">&lt;/a&gt;</span><br>
+&nbsp;&nbsp;Первая строка<span class="tag">&lt;br&gt;</span><br>
+&nbsp;&nbsp;Вторая строка<br>
+<span class="tag">&lt;/p&gt;</span>
+            </div>
+
+            <div class="property-details">
+                <h4><i class="fas fa-lightbulb"></i> Особенности строчных элементов</h4>
+                
+                <div class="property-group">
+                    <span class="property-name">Ширина и высота</span>
+                    <span>Не работают свойства width и height. Размер определяется содержимым.</span>
+                    <div class="code-block">
+<span class="comment">/* Не сработает */</span><br>
+<span class="tag">span</span> {<br>
+&nbsp;&nbsp;<span class="attribute">width</span>: <span class="value">100px</span>; <span class="comment">/* игнорируется */</span><br>
+&nbsp;&nbsp;<span class="attribute">height</span>: <span class="value">50px</span>; <span class="comment">/* игнорируется */</span><br>
+}
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <span class="property-name">Vertical-align</span>
+                    <span>Можно управлять вертикальным выравниванием относительно строки.</span>
+                    <div class="code-block">
+<span class="tag">.element</span> {<br>
+&nbsp;&nbsp;<span class="attribute">vertical-align</span>: <span class="value">middle</span>; <span class="comment">/* top | middle | bottom | baseline */</span><br>
+}
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <span class="property-name">Преобразование в inline-block</span>
+                    <span>Чтобы задать размеры, можно изменить display на inline-block</span>
+                    <div class="code-block">
+<span class="tag">.custom-span</span> {<br>
+&nbsp;&nbsp;<span class="attribute">display</span>: <span class="value">inline-block</span>;<br>
+&nbsp;&nbsp;<span class="attribute">width</span>: <span class="value">200px</span>;<br>
+&nbsp;&nbsp;<span class="attribute">height</span>: <span class="value">40px</span>;<br>
+&nbsp;&nbsp;<span class="attribute">padding</span>: <span class="value">10px</span>;<br>
+}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Бургер-меню -->
+<section id="burger-menu">
+    <h2><i class="fas fa-bars"></i> БУРГЕР-МЕНЮ</h2>
+    
+    <h3><i class="fas fa-mobile-alt"></i> Что такое бургер-меню?</h3>
+    <p>Бургер-меню — это иконка из трёх горизонтальных линий, которая открывает навигационное меню на мобильных устройствах. Название происходит от сходства с булочками гамбургера.</p>
+    
+    <h3><i class="fas fa-code"></i> HTML структура</h3>
+    <div class="code-block">
+<span class="comment">&lt;!-- Кнопка бургер-меню --&gt;</span><br>
+<span class="tag">&lt;button class="burger-menu" aria-label="Открыть меню"&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;div class="burger-line"&gt;&lt;/div&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;div class="burger-line"&gt;&lt;/div&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;div class="burger-line"&gt;&lt;/div&gt;</span><br>
+<span class="tag">&lt;/button&gt;</span><br><br>
+<span class="comment">&lt;!-- Мобильное меню --&gt;</span><br>
+<span class="tag">&lt;div class="mobile-nav"&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;button class="close-menu" aria-label="Закрыть меню"&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;i class="fas fa-times"&gt;&lt;/i&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/button&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;ul class="mobile-nav-menu"&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;&lt;a href="#section"&gt;Пункт меню&lt;/a&gt;&lt;/li&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/ul&gt;</span><br>
+<span class="tag">&lt;/div&gt;</span>
     </div>
-  </div>
 
-  <script>
-    // ===== ХЕДЕР =====
-    (function() {
-      const toggle = document.getElementById('menuToggle');
-      const nav = document.getElementById('navLinks');
-      const header = document.getElementById('siteHeader');
+    <h3><i class="fas fa-paint-brush"></i> Основные CSS свойства</h3>
+    <table class="info-table">
+        <thead>
+            <tr>
+                <th>Свойство</th>
+                <th>Значение</th>
+                <th>Назначение</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>position: fixed</code></td>
+                <td>-</td>
+                <td>Фиксирует меню относительно окна браузера</td>
+            </tr>
+            <tr>
+                <td><code>right: -100%</code></td>
+                <td>-</td>
+                <td>Скрывает меню за правым краем экрана</td>
+            </tr>
+            <tr>
+                <td><code>transition</code></td>
+                <td><code>right 0.4s ease-in-out</code></td>
+                <td>Плавная анимация появления</td>
+            </tr>
+            <tr>
+                <td><code>z-index</code></td>
+                <td><code>999</code></td>
+                <td>Размещает меню поверх других элементов</td>
+            </tr>
+        </tbody>
+    </table>
 
-      toggle.addEventListener('click', function() {
-        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!isOpen));
-        nav.classList.toggle('is-open', !isOpen);
-      });
+    <h3><i class="fas fa-cogs"></i> JavaScript логика</h3>
+    <div class="code-block">
+<span class="comment">// Открытие меню</span><br>
+<span class="tag">function openMenu()</span> {<br>
+&nbsp;&nbsp;mobileNav.classList.add('active');<br>
+&nbsp;&nbsp;burgerMenu.classList.add('active');<br>
+&nbsp;&nbsp;body.classList.add('menu-open');<br>
+}<br><br>
+<span class="comment">// Закрытие меню</span><br>
+<span class="tag">function closeMenuHandler()</span> {<br>
+&nbsp;&nbsp;mobileNav.classList.remove('active');<br>
+&nbsp;&nbsp;burgerMenu.classList.remove('active');<br>
+&nbsp;&nbsp;body.classList.remove('menu-open');<br>
+}
+    </div>
 
-      nav.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', () => {
-          toggle.setAttribute('aria-expanded', 'false');
-          nav.classList.remove('is-open');
-        });
-      });
+    <h3><i class="fas fa-lightbulb"></i> Лучшие практики</h3>
+    <div class="do-dont-grid">
+        <div class="do-card">
+            <h4><i class="fas fa-check"></i> Правильно</h4>
+            <ul>
+                <li>Используйте семантические теги button</li>
+                <li>Добавляйте aria-label для доступности</li>
+                <li>Создавайте плавные анимации</li>
+                <li>Закрывайте меню при клике на пункт</li>
+                <li>Блокируйте прокрутку страницы при открытом меню</li>
+            </ul>
+        </div>
+        
+        <div class="dont-card">
+            <h4><i class="fas fa-times"></i> Неправильно</h4>
+            <ul>
+                <li>Использовать div вместо button</li>
+                <li>Забывать про закрывающую кнопку</li>
+                <li>Создавать резкие анимации</li>
+                <li>Игнорировать мобильную оптимизацию</li>
+                <li>Не блокировать прокрутку body</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 20) {
-          header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
-        } else {
-          header.style.boxShadow = 'none';
+        <!-- Layouts и макеты -->
+        <section id="layouts">
+            <h2><i class="fas fa-th-large"></i> LAYOUTS И МАКЕТЫ</h2>
+            
+            <div class="visual-hierarchy">
+                <h3 style="color: white;"><i class="fas fa-sitemap"></i> Что такое Layout?</h3>
+                <p style="color: white; margin-bottom: 15px;">Layout (макет, вёрстка) — это структурная организация элементов на веб-странице. Это то, как вы расставляете основные блоки контента и как эти блоки взаимодействуют друг с другом при изменении размера экрана.</p>
+                <p style="color: white;"><strong>Проще говоря:</strong> макет — это архитектурный план вашего сайта.</p>
+            </div>
+
+            <h3><i class="fas fa-bullseye"></i> Цели создания макета</h3>
+            <div class="example-grid">
+                <div class="example-card">
+                    <h4><i class="fas fa-info-circle"></i> Информативность</h4>
+                    <p>Пользователь сразу видит, где что находится. Логичная структура помогает в навигации.</p>
+                </div>
+                <div class="example-card">
+                    <h4><i class="fas fa-mobile-alt"></i> Адаптивность</h4>
+                    <p>Масштабируется и выглядит хорошо на любом устройстве - от мобильного телефона до большого монитора.</p>
+                </div>
+                <div class="example-card">
+                    <h4><i class="fas fa-eye"></i> Визуальная привлекательность</h4>
+                    <p>Приятный и современный дизайн, который удерживает внимание пользователя.</p>
+                </div>
+                <div class="example-card">
+                    <h4><i class="fas fa-rocket"></i> Производительность</h4>
+                    <p>Оптимальная производительность и скорость загрузки на всех устройствах.</p>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-tools"></i> Инструменты для создания макетов</h3>
+            <div class="comparison-table">
+                <div class="comparison-card">
+                    <h4><i class="fas fa-align-justify"></i> FLEXBOX</h4>
+                    <p><strong>Для одномерных макетов</strong> - размещение элементов в одну строку или один столбец.</p>
+                    
+                    <div class="code-block">
+<span class="tag">.container</span> {<br>
+&nbsp;&nbsp;<span class="attribute">display</span>: <span class="value">flex</span>;<br>
+&nbsp;&nbsp;<span class="attribute">justify-content</span>: <span class="value">space-between</span>;<br>
+&nbsp;&nbsp;<span class="attribute">align-items</span>: <span class="value">center</span>;<br>
+&nbsp;&nbsp;<span class="attribute">flex-wrap</span>: <span class="value">wrap</span>;<br>
+}
+                    </div>
+                    
+                    <h5>Идеально для:</h5>
+                    <ul>
+                        <li>Навигационных панелей</li>
+                        <li>Выравнивания элементов</li>
+                        <li>Распределения пространства</li>
+                        <li>Одномерных списков</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-card">
+                    <h4><i class="fas fa-grip-horizontal"></i> CSS GRID</h4>
+                    <p><strong>Для двумерных макетов</strong> - одновременное управление строками и столбцами.</p>
+                    
+                    <div class="code-block">
+<span class="tag">.container</span> {<br>
+&nbsp;&nbsp;<span class="attribute">display</span>: <span class="value">grid</span>;<br>
+&nbsp;&nbsp;<span class="attribute">grid-template-columns</span>: <span class="value">1fr 300px</span>;<br>
+&nbsp;&nbsp;<span class="attribute">grid-template-rows</span>: <span class="value">auto 1fr auto</span>;<br>
+&nbsp;&nbsp;<span class="attribute">gap</span>: <span class="value">20px</span>;<br>
+}
+                    </div>
+                    
+                    <h5>Идеально для:</h5>
+                    <ul>
+                        <li>Основной структуры страницы</li>
+                        <li>Сложных сеток</li>
+                        <li>Галерей изображений</li>
+                        <li>Двумерных раскладок</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-desktop"></i> Пример типичного макета сайта</h3>
+            <div class="code-block">
+<span class="tag">&lt;body&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;header class="site-header"&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;nav class="main-nav"&gt;</span>...<span class="tag">&lt;/nav&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/header&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;main class="main-content"&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;article class="content"&gt;</span>...<span class="tag">&lt;/article&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;aside class="sidebar"&gt;</span>...<span class="tag">&lt;/aside&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/main&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;footer class="site-footer"&gt;</span>...<span class="tag">&lt;/footer&gt;</span><br>
+<span class="tag">&lt;/body&gt;</span>
+            </div>
+
+            <div class="property-details">
+                <h4><i class="fas fa-history"></i> Эволюция подходов к вёрстке</h4>
+                
+                <div class="property-group">
+                    <span class="property-name">Табличная вёрстка (устарело)</span>
+                    <span>Использование &lt;table&gt; для создания структуры страницы</span>
+                    <div class="code-block">
+<span class="tag">&lt;table&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>Header<span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>Content<span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+<span class="tag">&lt;/table&gt;</span>
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <span class="property-name">Блочная вёрстка с Float (устарело)</span>
+                    <span>Использование float для создания колонок</span>
+                    <div class="code-block">
+<span class="tag">.column</span> {<br>
+&nbsp;&nbsp;<span class="attribute">float</span>: <span class="value">left</span>;<br>
+&nbsp;&nbsp;<span class="attribute">width</span>: <span class="value">50%</span>;<br>
+}<br>
+<span class="tag">.clearfix</span> {<br>
+&nbsp;&nbsp;<span class="attribute">clear</span>: <span class="value">both</span>;<br>
+}
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <span class="property-name">Современная вёрстка</span>
+                    <span>Использование Flexbox и Grid для создания адаптивных макетов</span>
+                    <div class="code-block">
+<span class="tag">.container</span> {<br>
+&nbsp;&nbsp;<span class="attribute">display</span>: <span class="value">grid</span>;<br>
+&nbsp;&nbsp;<span class="attribute">grid-template-columns</span>: <span class="value">repeat(auto-fit, minmax(300px, 1fr))</span>;<br>
+&nbsp;&nbsp;<span class="attribute">gap</span>: <span class="value">20px</span>;<br>
+}
+                    </div>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-mobile-alt"></i> Mobile-First подход</h3>
+            <div class="code-block">
+<span class="comment">/* Стили для мобильных устройств (базовые) */</span><br>
+<span class="tag">.container</span> {<br>
+&nbsp;&nbsp;<span class="attribute">padding</span>: <span class="value">15px</span>;<br>
+&nbsp;&nbsp;<span class="attribute">display</span>: <span class="value">block</span>;<br>
+}<br><br>
+<span class="comment">/* Планшеты */</span><br>
+<span class="tag">@media (min-width: 768px)</span> {<br>
+&nbsp;&nbsp;<span class="tag">.container</span> {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">display</span>: <span class="value">grid</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">grid-template-columns</span>: <span class="value">1fr 1fr</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">gap</span>: <span class="value">20px</span>;<br>
+&nbsp;&nbsp;}<br>
+}<br><br>
+<span class="comment">/* Десктопы */</span><br>
+<span class="tag">@media (min-width: 1200px)</span> {<br>
+&nbsp;&nbsp;<span class="tag">.container</span> {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">grid-template-columns</span>: <span class="value">1fr 1fr 1fr</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">max-width</span>: <span class="value">1200px</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">margin</span>: <span class="value">0 auto</span>;<br>
+&nbsp;&nbsp;}<br>
+}
+            </div>
+        </section>
+
+        <!-- Mobile Navigation -->
+<div class="mobile-nav">
+    <button class="close-menu" aria-label="Закрыть меню">
+        <i class="fas fa-times"></i>
+    </button>
+    <ul class="mobile-nav-menu">
+        <li><a href="#html-basics">Основы HTML</a></li>
+        <li><a href="#semantic-tags">Семантика</a></li>
+        <li><a href="#structure">Структура</a></li>
+        <li><a href="#spacing">Отступы</a></li>
+        <li><a href="#css-basics">Основы CSS</a></li>
+        <li><a href="#buttons">Кнопки</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+        <li><a href="#animations">Анимации</a></li>
+        <li><a href="#inline-elements">Строчные элементы</a></li>
+        <li><a href="#layouts">Layouts</a></li>
+        <li><a href="#modern-css">Modern CSS</a></li>
+        <li><a href="#accessibility">Доступность</a></li>
+        <li><a href="#performance">Производительность</a></li>
+        <li><a href="#workflow">Рабочий процесс</a></li>
+        <li><a href="#best-practices">Лучшие практики</a></li>
+        <li><a href="#advanced-techniques">Продвинутые техники</a></li>
+    </ul>
+</div>
+
+        <footer>
+            <p><i class="fas fa-graduation-cap"></i> Надеюь, этот конспект поможет тебе перейти "на ты" с HTML и воплащать творческие мечты.</p>
+            <p>Сохрани эту страницу и используйте как справочник!</p>
+        </footer>
+    </div>
+
+
+        <script>
+                // Burger Menu Functionality
+        const burgerMenu = document.querySelector('.burger-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const closeMenu = document.querySelector('.close-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-menu a');
+        const body = document.body;
+
+        function openMenu() {
+            mobileNav.classList.add('active');
+            burgerMenu.classList.add('active');
+            body.classList.add('menu-open');
         }
-      }, { passive: true });
-    })();
 
-    // ===== REVEAL ANIMATION =====
-    const revealElements = document.querySelectorAll('.reveal:not(.is-visible)');
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
+        function closeMenuHandler() {
+            mobileNav.classList.remove('active');
+            burgerMenu.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+
+        // Вешаем обработчики событий
+        burgerMenu.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuHandler);
+
+        // Закрываем меню при клике на любой пункт
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMenuHandler);
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px' });
-      revealElements.forEach(function(el) { observer.observe(el); });
-    } else {
-      revealElements.forEach(function(el) { el.classList.add('is-visible'); });
-    }
+        // Функции для модального окна
+        function openModal() {
+            document.getElementById('feedbackModal').style.display = 'block';
+        }
 
-    // ===== YOUTUBE =====
-    function openYouTubeVideo(videoId) {
-      window.open('https://www.youtube.com/watch?v=' + videoId, '_blank');
-    }
+        function closeModal() {
+            document.getElementById('feedbackModal').style.display = 'none';
+        }
 
-    // ===== ACCORDION =====
-    function toggleSources(header) {
-      const accordion = header.parentElement;
-      accordion.classList.toggle('active');
-    }
+        // Закрытие модального окна при клике вне его
+        window.onclick = function(event) {
+            const modal = document.getElementById('feedbackModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
 
-    // ===== MODAL =====
-    function openModal(src) {
-      const modal = document.getElementById('imageModal');
-      const modalImage = document.getElementById('modalImage');
-      modalImage.src = src;
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
+        // Обработка формы
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            
+            // Здесь будет отправка данных на сервер
+            // Например, через Telegram Bot API или email
+            console.log('Отправка данных:', { name, phone });
+            
+            alert(`Спасибо, ${name}! Мы свяжемся с вами по номеру ${phone}`);
+            closeModal();
+            this.reset();
+        });
 
-    function closeModal() {
-      document.getElementById('imageModal').style.display = 'none';
-      document.body.style.overflow = '';
-    }
+        // Функция для анимаций
+        function toggleAnimation(type) {
+            const box = document.getElementById('animated-box');
+            box.className = 'demo-box';
+            
+            setTimeout(() => {
+                switch(type) {
+                    case 'hover':
+                        box.classList.add('animate-hover');
+                        break;
+                    case 'spin':
+                        box.classList.add('animate-spin');
+                        break;
+                    case 'bounce':
+                        box.classList.add('animate-bounce');
+                        break;
+                    case 'pulse':
+                        box.classList.add('animate-pulse');
+                        break;
+                }
+            }, 10);
+        }
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeModal();
-    });
-  </script>
+        // Плавная прокрутка
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Делаем секции видимыми
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.visibility = 'visible';
+            });
+            
+            // Запускаем демо-анимацию
+            setTimeout(() => {
+                toggleAnimation('pulse');
+            }, 1000);
+        });
+    </script>
+    
 </body>
 </html>
