@@ -27,8 +27,8 @@
     body {
       min-width: 320px;
       overflow-x: hidden;
-      color: #292345;
-      background: #ffffff; /* Чистый белый фон как в референсе */
+      color: #1F1D2B;
+      background: #ffffff;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       font-size: 16px;
       line-height: 1.6;
@@ -40,41 +40,41 @@
     a { color: inherit; text-decoration: none; }
     
     .container {
-      width: min(calc(100% - 32px), 1160px);
+      width: min(calc(100% - 32px), 1200px);
       margin-inline: auto;
     }
 
     /* ===== VARIABLES ===== */
     :root {
       --bg: #ffffff;
-      --ink: #1F1D2B; /* Очень темный, почти черный */
-      --muted: #6B7280; /* Серый текст */
+      --ink: #1F1D2B;
+      --muted: #6B7280;
       --violet: #7654bd;
-      --violet-light: #f3efff; /* Очень светлый фиолетовый для фонов */
-      --accent: #8B5CF6;
+      --violet-light: #f3efff;
+      --violet-soft: #e9e4f5;
       --border: rgba(0, 0, 0, 0.06);
       --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
-      --shadow-hover: 0 20px 60px -15px rgba(118, 84, 189, 0.15);
-      --radius-lg: 32px;
-      --radius-md: 20px;
-      --radius-sm: 12px;
+      --shadow-hover: 0 30px 80px -20px rgba(118, 84, 189, 0.15);
+      --radius-lg: 40px;
+      --radius-md: 24px;
+      --radius-sm: 16px;
     }
 
     /* ===== REVEAL ANIMATION ===== */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(40px);
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-    /* ===== HEADER (Glassmorphism Style) ===== */
+    /* ===== HEADER ===== */
     .site-header {
       position: fixed;
       inset: 0 0 auto;
       z-index: 100;
       height: 72px;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(0,0,0,0.04);
@@ -91,20 +91,21 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       color: var(--ink);
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14px;
       letter-spacing: -0.02em;
     }
     
     .logo-video {
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid #fff;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: #f3efff; /* Фон если видео не загрузится */
     }
 
     /* Кнопка меню (Mobile) */
@@ -184,19 +185,18 @@
       overflow: hidden;
     }
     
-    /* Декоративный элемент */
     .hero::before {
       content: '';
       position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 300px;
-      height: 300px;
+      top: -150px;
+      right: -150px;
+      width: 400px;
+      height: 400px;
       background: var(--violet-light);
       border-radius: 50%;
       z-index: 0;
-      filter: blur(60px);
-      opacity: 0.6;
+      filter: blur(80px);
+      opacity: 0.5;
     }
 
     .hero-content {
@@ -277,18 +277,19 @@
 
     /* ===== PROJECTS SECTION ===== */
     .projects-section {
-      padding: 60px 0 100px;
+      padding: 40px 0 100px;
     }
 
     .section-header {
-      margin-bottom: 48px;
+      margin-bottom: 60px;
+      text-align: center;
     }
 
     .section-header h2 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 700;
       color: var(--ink);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       letter-spacing: -0.02em;
     }
 
@@ -296,52 +297,42 @@
       color: var(--muted);
       font-size: 1rem;
       max-width: 600px;
+      margin: 0 auto;
     }
 
-    .projects-grid {
-      display: flex;
-      flex-direction: column;
+    /* ===== PROJECT CARD (Шахматный порядок) ===== */
+    .project-row {
+      display: grid;
+      grid-template-columns: 1fr; /* Mobile: одна колонка */
       gap: 32px;
-    }
-
-    /* ===== PROJECT CARD (Стиль референса) ===== */
-    .project-card {
+      margin-bottom: 80px;
+      align-items: center;
       position: relative;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 32px 24px;
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      overflow: hidden;
-    }
-
-    .project-card:hover {
-      border-color: rgba(118, 84, 189, 0.2);
-      box-shadow: var(--shadow-hover);
     }
 
     /* Огромная цифра на фоне */
     .project-number {
       position: absolute;
-      top: 10px;
-      right: 20px;
+      top: -20px;
+      left: -10px;
       font-size: 8rem;
       font-weight: 800;
       line-height: 1;
       color: var(--violet-light);
-      opacity: 0.5;
+      opacity: 0.6;
       z-index: 0;
       pointer-events: none;
       font-variant-numeric: tabular-nums;
       transition: color 0.3s ease;
     }
-    .project-card:hover .project-number {
-      color: rgba(118, 84, 189, 0.15);
+    .project-row:hover .project-number {
+      color: rgba(118, 84, 189, 0.2);
     }
 
-    .project-content {
+    .project-text {
       position: relative;
       z-index: 1;
+      padding-top: 20px; /* Отступ для цифры */
     }
 
     .project-category {
@@ -355,7 +346,7 @@
     }
 
     .project-title {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: 700;
       color: var(--ink);
       margin-bottom: 12px;
@@ -380,7 +371,12 @@
       margin-bottom: 24px;
     }
 
-    /* Медиа-контейнеры */
+    .project-media {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Медиа-сетки внутри карточек */
     .media-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -395,6 +391,7 @@
       background: #f9fafb;
       aspect-ratio: 4/3;
       position: relative;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
     }
     .media-item img {
       width: 100%;
@@ -404,7 +401,6 @@
     }
     .media-item:hover img { transform: scale(1.05); }
 
-    /* Full width media */
     .media-full {
       width: 100%;
       border-radius: var(--radius-md);
@@ -412,6 +408,7 @@
       margin-bottom: 24px;
       cursor: pointer;
       background: #f9fafb;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
     }
     .media-full img {
       width: 100%;
@@ -427,7 +424,7 @@
       margin-bottom: 24px;
       cursor: pointer;
       background: #000;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
     .youtube-thumbnail {
       width: 100%;
@@ -443,14 +440,15 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 60px;
-      height: 60px;
-      background: rgba(255,255,255,0.9);
+      width: 64px;
+      height: 64px;
+      background: rgba(255,255,255,0.95);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: transform 0.3s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
     .play-icon svg { width: 24px; height: 24px; fill: var(--violet); margin-left: 4px; }
     .youtube-preview:hover .play-icon { transform: translate(-50%, -50%) scale(1.1); }
@@ -625,7 +623,7 @@
     
     /* Планшеты и выше */
     @media (min-width: 768px) {
-      .container { width: min(calc(100% - 48px), 1160px); }
+      .container { width: min(calc(100% - 48px), 1200px); }
       
       .hero { padding: 160px 0 80px; }
       
@@ -652,19 +650,42 @@
       .nav-links a:hover { color: var(--violet); }
       .menu-toggle { display: none; }
 
-      .project-card { padding: 48px; }
-      .project-number { font-size: 12rem; top: 20px; right: 40px; }
-      .project-title { font-size: 2rem; }
+      /* Шахматный порядок */
+      .project-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 120px;
+      }
       
-      .media-grid { grid-template-columns: repeat(4, 1fr); }
+      /* Четные элементы меняют порядок */
+      .project-row:nth-child(even) .project-text {
+        order: 2;
+      }
+      .project-row:nth-child(even) .project-media {
+        order: 1;
+      }
+
+      .project-number {
+        font-size: 12rem;
+        top: -40px;
+        left: -40px;
+      }
       
-      .projects-grid { gap: 48px; }
+      .section-header { text-align: left; margin-bottom: 80px; }
+      .section-header p { margin: 0; }
     }
 
     /* Десктопы */
     @media (min-width: 1024px) {
-      .project-card { padding: 64px; }
-      .project-number { font-size: 16rem; }
+      .project-row {
+        gap: 80px;
+      }
+      .project-number {
+        font-size: 16rem;
+        top: -60px;
+        left: -60px;
+      }
+      .project-title { font-size: 2.2rem; }
     }
   </style>
 </head>
@@ -708,17 +729,26 @@
           <p>С самого начала изучения нейросетей я сознательно бралась не только за то, в чём уже разбиралась, но и за совершенно новые для себя направления. Я не прячу ранние работы — они показывают реальный путь.</p>
         </div>
 
-        <div class="projects-grid">
+        <div class="projects-list">
           
           <!-- 1. AI-фотосессии -->
-          <article class="project-card reveal">
-            <div class="project-number">01</div>
-            <div class="project-content">
+          <article class="project-row reveal">
+            <div class="project-text">
+              <div class="project-number">01</div>
               <span class="project-category">Product Photography • AI Enhancement</span>
               <h3 class="project-title">AI-фотосессии товаров</h3>
               <span class="project-year">2026</span>
               <p class="text-block">Превращаю обычные снимки в премиальные визуалы с помощью нейросетей для соцсетей и маркетплейсов.</p>
               
+              <div class="tech-tags">
+                <span class="tech-tag">Языковые модели</span>
+                <span class="tech-tag">Generative AI</span>
+                <span class="tech-tag">Adobe Photoshop</span>
+              </div>
+              
+              <a href="#contact" class="btn-primary">Заказать фотосессию</a>
+            </div>
+            <div class="project-media">
               <div class="media-grid">
                 <div class="media-item" onclick="openModal('ai-works/пост0.jpg')">
                   <img src="ai-works/пост0.jpg" alt="Товарная съёмка" loading="lazy">
@@ -733,32 +763,16 @@
                   <img src="ai-works/пост3.jpg" alt="AI-улучшение" loading="lazy">
                 </div>
               </div>
-
-              <div class="tech-tags">
-                <span class="tech-tag">Языковые модели</span>
-                <span class="tech-tag">Generative AI</span>
-                <span class="tech-tag">Adobe Photoshop</span>
-              </div>
-              
-              <a href="#contact" class="btn-primary">Заказать фотосессию</a>
             </div>
           </article>
 
           <!-- 2. Видео презентация -->
-          <article class="project-card reveal">
-            <div class="project-number">02</div>
-            <div class="project-content">
+          <article class="project-row reveal">
+            <div class="project-text">
+              <div class="project-number">02</div>
               <span class="project-category">Google AI Studios • 10+ источников</span>
               <h3 class="project-title">Видео презентация</h3>
               <span class="project-year">2025</span>
-              
-              <div class="youtube-preview" onclick="openYouTubeVideo('7rnCqhda_HA')">
-                <img src="https://img.youtube.com/vi/7rnCqhda_HA/maxresdefault.jpg" alt="Превью видео" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/7rnCqhda_HA/hqdefault.jpg'">
-                <div class="play-icon">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-
               <p class="text-block">Google AI Studios синтезирует огромные объёмы информации в готовые видео-презентации.</p>
               
               <div class="sources-accordion">
@@ -782,23 +796,23 @@
                 <span class="tech-tag">Davinci Resolve</span>
               </div>
             </div>
+            <div class="project-media">
+              <div class="youtube-preview" onclick="openYouTubeVideo('7rnCqhda_HA')">
+                <img src="https://img.youtube.com/vi/7rnCqhda_HA/maxresdefault.jpg" alt="Превью видео" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/7rnCqhda_HA/hqdefault.jpg'">
+                <div class="play-icon">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+            </div>
           </article>
 
           <!-- 3. Коммерческий сайт -->
-          <article class="project-card reveal">
-            <div class="project-number">03</div>
-            <div class="project-content">
+          <article class="project-row reveal">
+            <div class="project-text">
+              <div class="project-number">03</div>
               <span class="project-category">Frontend</span>
               <h3 class="project-title">Коммерческий сайт для рекреационного бизнеса</h3>
               <span class="project-year">2025</span>
-              
-              <div class="media-grid">
-                <div class="media-item" onclick="openModal('project2/5.png')"><img src="project2/5.png" alt="Основная панель" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project2/6.png')"><img src="project2/6.png" alt="Карусель услуг" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project2/7.png')"><img src="project2/7.png" alt="Фрейм карты" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project2/8.png')"><img src="project2/8.png" alt="Мобильная версия" loading="lazy"></div>
-              </div>
-
               <p class="text-block">Создание сайта для агроусадебного бизнеса с нуля: от скелета до хостинга и регистрации в БелГИЭ.</p>
               
               <div class="tech-tags">
@@ -810,22 +824,23 @@
 
               <a href="https://marya-kiseliova.github.io/Usadiba_U_Vodi/" class="btn-primary" target="_blank">Посмотреть сайт</a>
             </div>
+            <div class="project-media">
+              <div class="media-grid">
+                <div class="media-item" onclick="openModal('project2/5.png')"><img src="project2/5.png" alt="Основная панель" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project2/6.png')"><img src="project2/6.png" alt="Карусель услуг" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project2/7.png')"><img src="project2/7.png" alt="Фрейм карты" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project2/8.png')"><img src="project2/8.png" alt="Мобильная версия" loading="lazy"></div>
+              </div>
+            </div>
           </article>
 
           <!-- 4. Interactive book -->
-          <article class="project-card reveal">
-            <div class="project-number">04</div>
-            <div class="project-content">
+          <article class="project-row reveal">
+            <div class="project-text">
+              <div class="project-number">04</div>
               <span class="project-category">EdTech • Interactive Design</span>
               <h3 class="project-title">Interactive book</h3>
               <span class="project-year">2025</span>
-              
-              <div class="media-grid" style="grid-template-columns: repeat(3, 1fr);">
-                <div class="media-item" onclick="openModal('project3/book_cover.png')"><img src="project3/book_cover.png" alt="Обложка" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project3/book1.webp')"><img src="project3/book1.webp" alt="Мобильная версия" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project3/book2.webp')"><img src="project3/book2.webp" alt="Продолжение" loading="lazy"></div>
-              </div>
-
               <p class="text-block">Адаптация детской книги в интерактивную версию для планшета, компьютера и мобильного.</p>
               
               <div class="tech-tags">
@@ -837,23 +852,22 @@
 
               <a href="project3/mermaid/mermaid1.html" class="btn-primary" target="_blank">Читать книгу</a>
             </div>
+            <div class="project-media">
+              <div class="media-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="media-item" onclick="openModal('project3/book_cover.png')"><img src="project3/book_cover.png" alt="Обложка" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project3/book1.webp')"><img src="project3/book1.webp" alt="Мобильная версия" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project3/book2.webp')"><img src="project3/book2.webp" alt="Продолжение" loading="lazy"></div>
+              </div>
+            </div>
           </article>
 
           <!-- 5. Figma works -->
-          <article class="project-card reveal">
-            <div class="project-number">05</div>
-            <div class="project-content">
+          <article class="project-row reveal">
+            <div class="project-text">
+              <div class="project-number">05</div>
               <span class="project-category">Design</span>
               <h3 class="project-title">Почему акции Figma упали</h3>
               <span class="project-year">2025</span>
-              
-              <div class="media-grid">
-                <div class="media-item" onclick="openModal('project4/figma1.png')"><img src="project4/figma1.png" alt="Дизайн сайта" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project4/figma2.png')"><img src="project4/figma2.png" alt="Рекламный баннер" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project4/figma3.png')"><img src="project4/figma3.png" alt="Пост в Instagram" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project4/figma4.png')"><img src="project4/figma4.png" alt="Настройки" loading="lazy"></div>
-              </div>
-
               <p class="text-block">То, на что у дизайнера уходили часы, ИИ делает за минуты. В два промта я сделала для вас пример в виде веб-странички.</p>
               
               <div class="tech-tags">
@@ -864,23 +878,23 @@
 
               <a href="figma_example.html" class="btn-primary" target="_blank">Смотреть пример</a>
             </div>
+            <div class="project-media">
+              <div class="media-grid">
+                <div class="media-item" onclick="openModal('project4/figma1.png')"><img src="project4/figma1.png" alt="Дизайн сайта" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project4/figma2.png')"><img src="project4/figma2.png" alt="Рекламный баннер" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project4/figma3.png')"><img src="project4/figma3.png" alt="Пост в Instagram" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project4/figma4.png')"><img src="project4/figma4.png" alt="Настройки" loading="lazy"></div>
+              </div>
+            </div>
           </article>
 
           <!-- 6. Store app -->
-          <article class="project-card reveal">
-            <div class="project-number">06</div>
-            <div class="project-content">
+          <article class="project-row reveal">
+            <div class="project-text">
+              <div class="project-number">06</div>
               <span class="project-category">Товарный и бухгалтерский учёт</span>
               <h3 class="project-title">Store app</h3>
               <span class="project-year">2024</span>
-              
-              <div class="youtube-preview" onclick="openYouTubeVideo('evA-V66w2rY')">
-                <img src="bar.webp" alt="Превью Store App" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/evA-V66w2rY/hqdefault.jpg'">
-                <div class="play-icon">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-
               <p class="text-block">Программа для учёта товаров и формирования отчётов для малого бизнеса (Python).</p>
               
               <div class="tech-tags">
@@ -890,20 +904,23 @@
                 <span class="tech-tag">SQLite</span>
               </div>
             </div>
+            <div class="project-media">
+              <div class="youtube-preview" onclick="openYouTubeVideo('evA-V66w2rY')">
+                <img src="bar.webp" alt="Превью Store App" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/evA-V66w2rY/hqdefault.jpg'">
+                <div class="play-icon">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+            </div>
           </article>
 
           <!-- 7. HTML5 Cheatsheet -->
-          <article class="project-card reveal">
-            <div class="project-number">07</div>
-            <div class="project-content">
+          <article class="project-row reveal">
+            <div class="project-text">
+              <div class="project-number">07</div>
               <span class="project-category">Educational Resource</span>
               <h3 class="project-title">HTML5 & CSS Конспект-шпаргалка</h3>
               <span class="project-year">2024</span>
-              
-              <div class="media-full" onclick="openModal('conspect.webp')">
-                <img src="conspect.webp" alt="Шпаргалка" loading="lazy">
-              </div>
-
               <p class="text-block">Систематизированные знания по HTML5 и CSS в удобной форме.</p>
               
               <div class="tech-tags">
@@ -918,29 +935,34 @@
                 <a href="https://github.com/Marya-Kiseliova/HTML5-conspect/blob/main/Conspect.html" class="btn-outline" target="_blank">Исходный код</a>
               </div>
             </div>
+            <div class="project-media">
+              <div class="media-full" onclick="openModal('conspect.webp')">
+                <img src="conspect.webp" alt="Шпаргалка" loading="lazy">
+              </div>
+            </div>
           </article>
 
           <!-- 8. AI video short -->
-          <article class="project-card reveal">
-            <div class="project-number">08</div>
-            <div class="project-content">
+          <article class="project-row reveal">
+            <div class="project-text">
+              <div class="project-number">08</div>
               <span class="project-category">Эксперимент • Mobile</span>
               <h3 class="project-title">AI video (киберпанк)</h3>
               <span class="project-year">2025</span>
-              
-              <div class="youtube-preview" onclick="openYouTubeVideo('500ywmW3ivk')" style="max-width: 400px; margin-left: auto; margin-right: auto;">
-                <img src="project5/5.3.png" alt="Превью AI video" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/500ywmW3ivk/hqdefault.jpg'">
-                <div class="play-icon">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-
               <p class="text-block">Эксперимент в стиле киберпанка с генеративными ИИ и звуковым дизайном.</p>
               
               <div class="tech-tags">
                 <span class="tech-tag">Generative AI</span>
                 <span class="tech-tag">Cap-Cut</span>
                 <span class="tech-tag">Sound Design</span>
+              </div>
+            </div>
+            <div class="project-media">
+              <div class="youtube-preview" onclick="openYouTubeVideo('500ywmW3ivk')" style="max-width: 400px; margin-left: auto; margin-right: auto;">
+                <img src="project5/5.3.png" alt="Превью AI video" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/500ywmW3ivk/hqdefault.jpg'">
+                <div class="play-icon">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
               </div>
             </div>
           </article>
