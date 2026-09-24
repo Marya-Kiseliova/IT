@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-  <title>Проекты | Мария Киселёва</title>
-  <meta name="description" content="Промт-инженер & UI/UX Designer из Бреста. Проекты: AI-фотосессии, видео-презентации, сайты, интерактивные книги." />
+  <title>Проекты и Навыки | Мария Киселёва</title>
+  <meta name="description" content="Промт-инженер & UI/UX Designer из Бреста. Проекты: AI-фотосессии, видео-презентации, сайты, интерактивные книги. Навыки работы с ИИ." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://ваш-сайт.ru/Projects.html" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Проекты | Мария Киселёва" />
-  <meta property="og:description" content="Портфолио проектов: AI-фотосессии, веб-сайты, интерактивные книги, дизайн." />
+  <meta property="og:title" content="Проекты и Навыки | Мария Киселёва" />
+  <meta property="og:description" content="Портфолио проектов и навыки: AI-фотосессии, веб-сайты, интерактивные книги, дизайн." />
   <meta property="og:image" content="logo.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ваш-сайт.ru/Projects.html" />
@@ -105,7 +105,7 @@
       object-fit: cover;
       border: 2px solid #fff;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      background: #f3efff; /* Фон если видео не загрузится */
+      background: #f3efff;
     }
 
     /* Кнопка меню (Mobile) */
@@ -177,7 +177,7 @@
     }
     .nav-links a:last-child { border-bottom: none; }
 
-    /* ===== HERO SECTION ===== */
+    /* ===== HERO SECTION (Объединенная) ===== */
     .hero {
       padding: 120px 0 60px;
       background: #fff;
@@ -199,10 +199,17 @@
       opacity: 0.5;
     }
 
-    .hero-content {
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
       position: relative;
       z-index: 1;
-      max-width: 800px;
+    }
+
+    .hero-text {
+      max-width: 600px;
     }
 
     .eyebrow {
@@ -219,7 +226,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-size: clamp(2.5rem, 8vw, 4rem);
       font-weight: 800;
       line-height: 1.1;
       letter-spacing: -0.04em;
@@ -231,7 +238,57 @@
       font-size: 1.1rem;
       color: var(--muted);
       line-height: 1.6;
-      max-width: 600px;
+      margin-bottom: 24px;
+    }
+
+    /* Картинка справа (вместо пустого места) */
+    .hero-image {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: #f8f5f2;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .hero-image:hover img { transform: scale(1.03); }
+
+    /* ===== SKILLS (Под картинкой) ===== */
+    .skills-wrapper {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f9fafb;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .skill-tag {
+      background: #fff;
+      color: var(--ink);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .skill-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+      color: var(--violet);
     }
 
     /* ===== BUTTONS ===== */
@@ -300,7 +357,7 @@
       margin: 0 auto;
     }
 
-    /* ===== PROJECT CARD (Шахматный порядок) ===== */
+    /* ===== PROJECT ROW (Шахматный порядок) ===== */
     .project-row {
       display: grid;
       grid-template-columns: 1fr; /* Mobile: одна колонка */
@@ -332,7 +389,7 @@
     .project-text {
       position: relative;
       z-index: 1;
-      padding-top: 20px; /* Отступ для цифры */
+      padding-top: 20px;
     }
 
     .project-category {
@@ -389,14 +446,14 @@
       overflow: hidden;
       cursor: pointer;
       background: #f9fafb;
-      aspect-ratio: 4/3;
       position: relative;
       box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      /* Убрал aspect-ratio, чтобы картинки не обрезались */
     }
     .media-item img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto; /* Позволяет сохранять пропорции */
+      display: block;
       transition: transform 0.5s ease;
     }
     .media-item:hover img { transform: scale(1.05); }
@@ -512,36 +569,6 @@
     .arrow-icon { transition: transform 0.3s; }
     .sources-accordion.active .arrow-icon { transform: rotate(180deg); }
 
-    /* ===== SKILLS ===== */
-    .skills-wrapper {
-      padding: 60px 0;
-      background: #f9fafb;
-      border-radius: 40px 40px 0 0;
-    }
-    .skills-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .skill-tag {
-      background: #fff;
-      color: var(--ink);
-      padding: 10px 20px;
-      border-radius: 100px;
-      font-size: 14px;
-      font-weight: 500;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .skill-tag:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
-      color: var(--violet);
-    }
-
     /* ===== FOOTER ===== */
     .site-footer {
       background: #1F1D2B;
@@ -625,7 +652,12 @@
     @media (min-width: 768px) {
       .container { width: min(calc(100% - 48px), 1200px); }
       
-      .hero { padding: 160px 0 80px; }
+      .hero { padding: 140px 0 80px; }
+      
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+      }
       
       .nav-links {
         position: static;
@@ -704,20 +736,47 @@
         <span></span>
       </button>
       <nav class="nav-links" id="navLinks" aria-label="Навигация">
-        <a href="index.html">Главная</a>
-        <a href="Projects.html" style="color: var(--violet); font-weight: 600;">Проекты</a>
+        <!-- Ссылка "Главная" заменена на "Навыки" -->
+        <a href="#skills">Навыки</a>
+        <a href="#projects">Проекты</a>
         <a href="#contact">Контакты</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- ===== ГЕРОЙ ===== -->
+    <!-- ===== HERO SECTION (С картинкой и навыками) ===== -->
     <section class="hero">
-      <div class="container hero-content reveal is-visible">
-        <span class="eyebrow">AI-workspace</span>
-        <h1>Моя нейролаборатория</h1>
-        <p class="hero-role">Здесь собраны работы, созданные с помощью современных ИИ-инструментов. От идеи до реализации.</p>
+      <div class="container hero-grid">
+        <div class="hero-text reveal is-visible">
+          <span class="eyebrow">Prompt Engineering</span>
+          <h1>Трансформация идеи в реальность</h1>
+          <p class="hero-role">Создание сайтов, брендбуков, AI-агентов и не только — с помощью искусственного интеллекта. Без навыков программирования.</p>
+          <a href="#projects" class="btn-primary">Посмотреть портфолио</a>
+        </div>
+        
+        <!-- Картинка справа (вместо пустого места) -->
+        <div class="hero-image reveal is-visible">
+          <img src="assets/glass-sculpture.png" alt="Абстрактная стеклянная скульптура" />
+        </div>
+      </div>
+      
+      <!-- Навыки под картинкой -->
+      <div class="container" id="skills">
+        <div class="skills-wrapper reveal">
+          <div class="skills-tags">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">SEO</span>
+            <span class="skill-tag">Adaptive Design</span>
+            <span class="skill-tag">Adobe Photoshop</span>
+            <span class="skill-tag">UI/UX Design</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Canva</span>
+            <span class="skill-tag">Generative AI</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -749,6 +808,7 @@
               <a href="#contact" class="btn-primary">Заказать фотосессию</a>
             </div>
             <div class="project-media">
+              <!-- Возвращены оригинальные пропорции (удален aspect-ratio) -->
               <div class="media-grid">
                 <div class="media-item" onclick="openModal('ai-works/пост0.jpg')">
                   <img src="ai-works/пост0.jpg" alt="Товарная съёмка" loading="lazy">
@@ -970,24 +1030,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ===== НАВЫКИ ===== -->
-    <div class="skills-wrapper">
-      <div class="container">
-        <div class="skills-tags reveal">
-          <span class="skill-tag">HTML5</span>
-          <span class="skill-tag">CSS3</span>
-          <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">SEO</span>
-          <span class="skill-tag">Adaptive Design</span>
-          <span class="skill-tag">Adobe Photoshop</span>
-          <span class="skill-tag">UI/UX Design</span>
-          <span class="skill-tag">Figma</span>
-          <span class="skill-tag">Canva</span>
-          <span class="skill-tag">Generative AI</span>
-        </div>
-      </div>
-    </div>
   </main>
 
   <!-- FOOTER -->
