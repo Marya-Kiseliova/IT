@@ -285,7 +285,7 @@
       font-size: 1rem;
       color: var(--muted);
       line-height: 1.7;
-      margin-bottom: 0; /* Убрал отступ снизу, так как кнопки нет */
+      margin-bottom: 0;
     }
 
     /* ===== "ТРИ КИТА" ===== */
@@ -391,25 +391,18 @@
       padding: 20px 0 60px;
     }
 
-    /* Заголовок по центру и фиолетовый */
     .section-header {
       margin-bottom: 40px;
       text-align: center;
     }
 
     .section-header h2 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--violet); /* Фиолетовый */
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      font-weight: 800;
+      color: var(--violet);
       margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-
-    .section-header p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      max-width: 600px;
-      margin: 0 auto;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
     }
 
     /* ===== PROJECT ROW ===== */
@@ -524,6 +517,33 @@
       transition: transform 0.5s ease;
     }
     .media-item:hover img { transform: scale(1.05); }
+
+    /* Одиночное фото на всю ширину (растягивается по высоте) */
+    .media-single {
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      background: #f9fafb;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .media-single:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .media-single img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .media-single:hover img { transform: scale(1.05); }
 
     .media-full {
       width: 100%;
@@ -650,38 +670,26 @@
     .arrow-icon { transition: transform 0.3s; }
     .sources-accordion.active .arrow-icon { transform: rotate(180deg); }
 
-    /* ===== БЛОК ЦИТАТЫ (Перенесён в конец) ===== */
+    /* ===== БЛОК ЦИТАТЫ ===== */
     .quote-section {
-      padding: 60px 0 40px;
+      padding: 40px 0 60px;
       background: #fff;
     }
     .quote-block {
       position: relative;
-      padding: 32px 24px 32px 40px;
-      background: var(--violet-light);
-      border-radius: var(--radius-md);
-      border-left: 4px solid var(--violet);
-      max-width: 800px;
+      padding-left: 20px;
+      border-left: 3px solid var(--violet);
+      max-width: 700px;
       margin: 0 auto;
     }
     .quote-block p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: var(--ink);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--muted);
       font-weight: 500;
-      font-style: italic;
-    }
-    .quote-block::before {
-      content: '“';
-      position: absolute;
-      top: 0;
-      left: 12px;
-      font-size: 4rem;
-      font-weight: 800;
-      color: var(--violet);
-      opacity: 0.3;
-      line-height: 1;
-      font-family: Georgia, serif;
+      font-style: normal;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     /* ===== FOOTER ===== */
@@ -889,11 +897,16 @@
         grid-template-columns: 1fr 1fr;
         gap: 40px;
         margin-bottom: 80px;
-        align-items: center;
+        align-items: stretch;
       }
       
       .project-row:nth-child(even) .project-text { order: 2; }
       .project-row:nth-child(even) .project-media { order: 1; }
+
+      .project-row .project-media {
+        display: flex;
+        align-items: center;
+      }
 
       .project-number {
         font-size: 10rem;
@@ -902,16 +915,12 @@
       }
       
       .section-header { text-align: center; margin-bottom: 60px; }
-      .section-header p { margin: 0 auto; }
 
-      /* Quote */
       .quote-block {
-        padding: 48px 48px 48px 64px;
+        padding-left: 32px;
       }
-      .quote-block p { font-size: 1.3rem; }
-      .quote-block::before { font-size: 6rem; left: 20px; }
+      .quote-block p { font-size: 0.95rem; }
 
-      /* Footer */
       .footer-content {
         grid-template-columns: 1fr auto;
         text-align: left;
@@ -945,7 +954,7 @@
       .pillar-item h3 { font-size: 1.2rem; }
       .pillar-item p { font-size: 0.95rem; }
 
-      .section-header h2 { font-size: 2.2rem; }
+      .section-header h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); }
     }
   </style>
 </head>
@@ -1143,8 +1152,8 @@
               <h3 class="project-title">Interactive book</h3>
               <span class="project-year">2025</span>
               <div class="project-meta">
-                <p><strong>Задача:</strong> Оживить детскую книгу для цифрового поколения.</p>
-                <p><strong>Решение:</strong> Адаптировала историю в интерактивную версию для планшета, компьютера и мобильного. Добавила анимацию и звук.</p>
+                <p><strong>Задача:</strong> Придумать и создать интерактивную книгу с нуля.</p>
+                <p><strong>Решение:</strong> Разработала сюжет, дизайн и интерактивные элементы для детской книги. Адаптировала её для планшета, компьютера и мобильного. Добавила анимацию и звук.</p>
                 <p><strong>Результат:</strong> Книга, которую хочется читать снова и снова.</p>
               </div>
               
@@ -1158,10 +1167,8 @@
               <a href="project3/mermaid/mermaid1.html" class="btn-primary" target="_blank">Открыть книгу</a>
             </div>
             <div class="project-media">
-              <div class="media-grid" style="grid-template-columns: repeat(3, 1fr);">
-                <div class="media-item" onclick="openModal('project3/book_cover.png')"><img src="project3/book_cover.png" alt="Обложка" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project3/book1.webp')"><img src="project3/book1.webp" alt="Мобильная версия" loading="lazy"></div>
-                <div class="media-item" onclick="openModal('project3/book2.webp')"><img src="project3/book2.webp" alt="Продолжение" loading="lazy"></div>
+              <div class="media-single" onclick="openModal('project3/book_cover.png')">
+                <img src="project3/book_cover.png" alt="Обложка книги" loading="lazy">
               </div>
             </div>
           </article>
@@ -1253,7 +1260,8 @@
               </div>
             </div>
             <div class="project-media">
-              <div class="media-full" onclick="openModal('conspect.webp')">
+              <!-- Теперь картинка растягивается по высоте текста -->
+              <div class="media-single" onclick="openModal('conspect.webp')">
                 <img src="conspect.webp" alt="Шпаргалка" loading="lazy">
               </div>
             </div>
@@ -1292,7 +1300,7 @@
       </div>
     </section>
 
-    <!-- ===== БЛОК ЦИТАТЫ (Перенесён в конец) ===== -->
+    <!-- ===== БЛОК ЦИТАТЫ ===== -->
     <section class="quote-section">
       <div class="container reveal">
         <div class="quote-block">
