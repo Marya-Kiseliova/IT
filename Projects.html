@@ -15,842 +15,573 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ваш-сайт.ru/Projects.html" />
 
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    /* ===== ПОЛНОСТЬЮ КОПИРУЕМ СТИЛИ ИЗ INDEX ===== */
     /* ===== RESET & BASE ===== */
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     body {
       min-width: 320px;
       overflow-x: hidden;
       color: #292345;
-      background: #fffdfb;
-      font-family: Inter, "Avenir Next", "Segoe UI", Arial, sans-serif;
+      background: #ffffff; /* Чистый белый фон как в референсе */
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       font-size: 16px;
-      line-height: 1.65;
+      line-height: 1.6;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
     }
+    
     img, video { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
+    
     .container {
-      width: min(calc(100% - 24px), 1160px);
+      width: min(calc(100% - 32px), 1160px);
       margin-inline: auto;
     }
 
     /* ===== VARIABLES ===== */
     :root {
-      --paper: #fffdfb;
-      --paper-soft: #fbf7f5;
-      --ink: #292345;
-      --muted: #716b84;
+      --bg: #ffffff;
+      --ink: #1F1D2B; /* Очень темный, почти черный */
+      --muted: #6B7280; /* Серый текст */
       --violet: #7654bd;
-      --violet-dark: #553694;
-      --periwinkle: #7168d1;
-      --lilac: #a69be7;
-      --peach: #f1c8ac;
-      --line: rgba(90, 66, 144, 0.15);
-      --glass: rgba(255, 255, 255, 0.68);
-      --shadow: 0 24px 80px rgba(71, 49, 121, 0.13);
-      --content: 1160px;
+      --violet-light: #f3efff; /* Очень светлый фиолетовый для фонов */
+      --accent: #8B5CF6;
+      --border: rgba(0, 0, 0, 0.06);
+      --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 20px 60px -15px rgba(118, 84, 189, 0.15);
+      --radius-lg: 32px;
+      --radius-md: 20px;
+      --radius-sm: 12px;
     }
 
-    /* ===== REVEAL ===== */
+    /* ===== REVEAL ANIMATION ===== */
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.8,.2,1);
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-    /* ===== HEADER (fixed) ===== */
+    /* ===== HEADER (Glassmorphism Style) ===== */
     .site-header {
       position: fixed;
       inset: 0 0 auto;
-      z-index: 50;
+      z-index: 100;
       height: 72px;
-      border-bottom: 1px solid rgba(255,255,255,0.5);
-      background: rgba(255,251,247,0.88);
-      background-image: linear-gradient(115deg, rgba(255,224,205,0.88) 0%, rgba(225,210,255,0.88) 34%, rgba(255,204,187,0.86) 67%, rgba(203,215,255,0.88) 100%);
-      background-size: 420% 420%;
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      animation: header-color-flow 5s cubic-bezier(.45,0,.55,1) infinite;
-      transition: box-shadow 180ms ease, background 180ms ease;
-      padding: 0 4px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
     }
-    @keyframes header-color-flow {
-      0% { background-position: 0% 50%; }
-      25% { background-position: 50% 0%; }
-      50% { background-position: 100% 50%; }
-      75% { background-position: 50% 100%; }
-      100% { background-position: 0% 50%; }
-    }
-    .site-header.is-scrolled {
-      background-color: rgba(255,253,251,0.94);
-      box-shadow: 0 8px 32px rgba(63,43,107,0.08);
-    }
-
+    
     .nav {
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
     }
+    
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      color: var(--violet-dark);
-      font-weight: 750;
+      gap: 12px;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 15px;
       letter-spacing: -0.02em;
-      white-space: nowrap;
-      font-size: 13px;
     }
+    
     .logo-video {
-      width: 44px;
-      height: 44px;
-      flex: 0 0 44px;
-      border-radius: 50%;
-      border: 1px solid rgba(107,79,177,0.18);
-      background: #f1ecf8;
-      object-fit: cover;
-      overflow: hidden;
-    }
-    .menu-toggle {
-      display: block;
       width: 40px;
       height: 40px;
-      border: 1px solid var(--line);
       border-radius: 50%;
-      background: rgba(255,255,255,0.74);
-      color: var(--violet-dark);
-      cursor: pointer;
-      flex-shrink: 0;
+      object-fit: cover;
+      border: 2px solid #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-    .menu-toggle span,
-    .menu-toggle::before,
-    .menu-toggle::after {
-      display: block;
-      width: 16px;
-      height: 1.5px;
-      margin: 3.5px auto;
-      border-radius: 2px;
-      background: currentColor;
-      content: "";
-      transition: transform 160ms ease, opacity 160ms ease;
-    }
-    .menu-toggle[aria-expanded="true"] span { opacity: 0; }
-    .menu-toggle[aria-expanded="true"]::before { transform: translateY(5px) rotate(45deg); }
-    .menu-toggle[aria-expanded="true"]::after { transform: translateY(-5px) rotate(-45deg); }
 
+    /* Кнопка меню (Mobile) */
+    .menu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color: var(--ink);
+      padding: 0;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .menu-toggle span::before, .menu-toggle span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      transition: transform 0.3s, top 0.3s;
+    }
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+    
+    .menu-toggle[aria-expanded="true"] span { background: transparent; }
+    .menu-toggle[aria-expanded="true"] span::before { top: 0; transform: rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span::after { top: 0; transform: rotate(-45deg); }
+
+    /* Навигация */
     .nav-links {
       position: absolute;
-      top: calc(100% + 6px);
-      right: 12px;
-      left: 12px;
-      display: none;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      padding: 24px;
+      display: flex;
       flex-direction: column;
-      gap: 2px;
-      padding: 12px;
-      border: 1px solid rgba(98,73,154,0.12);
-      border-radius: 18px;
-      background: rgba(255,253,251,0.98);
-      box-shadow: 0 20px 54px rgba(63,43,107,0.14);
+      gap: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border-radius: 0 0 24px 24px;
     }
-    .nav-links.is-open { display: flex; }
+    .nav-links.is-open {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
     .nav-links a {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 999px;
-      color: #504968;
-      font-size: 13px;
-      font-weight: 650;
-      text-align: center;
-      transition: color 160ms ease, background 160ms ease;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
     }
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      color: var(--violet-dark);
-      background: rgba(118,84,189,0.09);
-      outline: none;
-    }
-    .nav-links .nav-contact {
-      margin-left: 0;
-      background: transparent;
-      box-shadow: none;
-    }
+    .nav-links a:last-child { border-bottom: none; }
 
-    /* ===== HERO ===== */
+    /* ===== HERO SECTION ===== */
     .hero {
+      padding: 120px 0 60px;
+      background: #fff;
       position: relative;
-      min-height: 100svh;
-      display: grid;
-      place-items: center;
-      isolation: isolate;
       overflow: hidden;
-      padding: 88px 0 40px;
-      background: linear-gradient(120deg, #f7d4bd 0%, #d8b8c9 48%, #7e79d7 100%);
     }
+    
+    /* Декоративный элемент */
     .hero::before {
+      content: '';
       position: absolute;
-      inset: 0;
-      z-index: -2;
-      background: linear-gradient(180deg, rgba(255,247,239,0.13), rgba(75,60,150,0.08)), url("assets/hero-wave-lines-v3.png") center / cover no-repeat;
-      content: "";
-      transform: scale(1.02);
-      animation: hero-drift 18s ease-in-out infinite alternate;
-    }
-    .hero::after {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: radial-gradient(ellipse at 50% 42%, rgba(255,247,243,0.44) 0%, rgba(255,245,240,0.2) 28%, transparent 50%),
-        linear-gradient(180deg, rgba(69,43,125,0.02) 55%, rgba(55,40,105,0.18));
-      content: "";
-    }
-    @keyframes hero-drift {
-      from { transform: scale(1.02) translate3d(-0.5%, -0.4%, 0); }
-      to { transform: scale(1.07) translate3d(0.7%, 0.4%, 0); }
-    }
-    .hero-content {
-      width: min(920px, calc(100% - 24px));
-      padding: 20px 4px;
-      text-align: center;
-    }
-    .eyebrow {
-      margin-bottom: 10px;
-      color: rgba(72,45,125,0.82);
-      font-size: 11px;
-      font-weight: 760;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-    }
-    .hero h1 {
-      max-width: 860px;
-      margin-inline: auto;
-      color: #6541a8;
-      font-size: clamp(2.2rem, 11vw, 4.5rem);
-      font-weight: 760;
-      letter-spacing: -0.052em;
-      line-height: 1.08;
-      text-wrap: balance;
-      text-shadow: 0 8px 32px rgba(255,236,224,0.22);
-    }
-    .hero-name {
-      margin-top: 12px;
-      color: #5f4199;
-      font-size: clamp(1.2rem, 5.5vw, 2rem);
-      font-weight: 740;
-      letter-spacing: -0.025em;
-    }
-    .hero-role {
-      max-width: 620px;
-      margin: 8px auto 24px; /* УВЕЛИЧЕНО РАССТОЯНИЕ ДО КНОПКИ */
-      color: rgba(74,53,116,0.82);
-      font-size: clamp(0.95rem, 1.6vw, 1.3rem);
-      font-weight: 540;
-      letter-spacing: -0.018em;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: var(--violet-light);
+      border-radius: 50%;
+      z-index: 0;
+      filter: blur(60px);
+      opacity: 0.6;
     }
 
-    /* ===== СТЕКЛЯННАЯ ГЛЯНЦЕВАЯ КНОПКА ===== */
-    .btn-glass {
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: var(--violet);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--violet-light);
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .hero-role {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-primary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 54px;
-      padding: 14px 34px;
+      padding: 14px 28px;
+      background: var(--violet);
+      color: #fff;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(118, 84, 189, 0.25);
       border: none;
-      border-radius: 999px;
-      font-size: 16px;
-      font-weight: 720;
-      letter-spacing: 0.02em;
-      color: #2a1a44;
-      background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 235, 220, 0.7) 40%, rgba(255, 210, 185, 0.6) 70%, rgba(255, 240, 230, 0.8) 100%);
-      background-size: 300% 300%;
-      box-shadow: 
-        0 12px 40px rgba(190, 120, 70, 0.30),
-        0 4px 0 rgba(255, 255, 255, 0.8) inset,
-        0 -4px 12px rgba(160, 100, 60, 0.15) inset,
-        0 0 0 1px rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      text-decoration: none;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
-      animation: glass-shimmer 3.5s ease-in-out infinite alternate;
-      position: relative;
-      overflow: hidden;
       font-family: inherit;
     }
-    .btn-glass::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 999px;
-      background: linear-gradient(105deg, 
-        rgba(255, 255, 255, 0) 0%, 
-        rgba(255, 255, 255, 0.5) 20%, 
-        rgba(255, 255, 255, 0) 40%, 
-        rgba(255, 255, 255, 0.3) 60%, 
-        rgba(255, 255, 255, 0) 80%
-      );
-      background-size: 300% 100%;
-      pointer-events: none;
-      animation: glass-sheen 4s ease-in-out infinite alternate;
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(118, 84, 189, 0.35);
+      background: #6541a8;
     }
-    @keyframes glass-sheen {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--violet);
+      border: 1.5px solid var(--violet);
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-family: inherit;
     }
-    @keyframes glass-shimmer {
-      0% { background-position: 0% 20%; box-shadow: 0 12px 40px rgba(190, 120, 70, 0.25), 0 4px 0 rgba(255,255,255,0.8) inset, 0 -4px 12px rgba(160,100,60,0.12) inset, 0 0 0 1px rgba(255,255,255,0.4); }
-      50% { background-position: 100% 80%; box-shadow: 0 16px 50px rgba(210, 140, 80, 0.40), 0 4px 0 rgba(255,255,255,0.9) inset, 0 -4px 16px rgba(180,110,70,0.20) inset, 0 0 0 1.5px rgba(255,255,255,0.6); }
-      100% { background-position: 0% 20%; box-shadow: 0 12px 40px rgba(190, 120, 70, 0.25), 0 4px 0 rgba(255,255,255,0.8) inset, 0 -4px 12px rgba(160,100,60,0.12) inset, 0 0 0 1px rgba(255,255,255,0.4); }
-    }
-    .btn-glass:hover,
-    .btn-glass:focus-visible {
-      transform: scale(1.04) translateY(-3px);
-      box-shadow: 
-        0 20px 56px rgba(200, 140, 80, 0.45),
-        0 4px 0 rgba(255, 255, 255, 0.9) inset,
-        0 -6px 20px rgba(180, 110, 70, 0.25) inset,
-        0 0 0 2px rgba(255, 255, 255, 0.7);
-      background-size: 350% 350%;
-      outline: none;
-    }
-    .btn-glass:active {
-      transform: scale(0.97) translateY(0px);
-      box-shadow: 
-        0 6px 20px rgba(160, 100, 60, 0.25),
-        0 2px 0 rgba(255, 255, 255, 0.6) inset,
-        0 -2px 8px rgba(140, 80, 40, 0.10) inset,
-        0 0 0 1px rgba(255, 255, 255, 0.3);
+    .btn-outline:hover {
+      background: var(--violet-light);
     }
 
-    /* ===== SECTION KICKER & TITLE ===== */
-    .section-kicker {
-      margin-bottom: 6px;
-      color: var(--violet);
-      font-size: 11px;
-      font-weight: 780;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .section-title {
-      color: var(--violet);
-      font-size: clamp(2rem, 9vw, 4.6rem);
-      font-weight: 760;
-      letter-spacing: -0.055em;
-      line-height: 1;
-      text-wrap: balance;
-    }
-
-    /* ===== PROJECTS CONTENT ===== */
+    /* ===== PROJECTS SECTION ===== */
     .projects-section {
-      padding: clamp(60px, 9vw, 120px) 0;
-      background: var(--paper);
+      padding: 60px 0 100px;
     }
+
+    .section-header {
+      margin-bottom: 48px;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 600px;
+    }
+
     .projects-grid {
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
-      margin-top: 2rem;
+      gap: 32px;
     }
 
+    /* ===== PROJECT CARD (Стиль референса) ===== */
     .project-card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 1.8rem;
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.04);
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    .project-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(102, 126, 234, 0.10);
-      border-color: rgba(102, 126, 234, 0.15);
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
     }
 
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 1rem;
+    .project-card:hover {
+      border-color: rgba(118, 84, 189, 0.2);
+      box-shadow: var(--shadow-hover);
     }
+
+    /* Огромная цифра на фоне */
+    .project-number {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 8rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--violet-light);
+      opacity: 0.5;
+      z-index: 0;
+      pointer-events: none;
+      font-variant-numeric: tabular-nums;
+      transition: color 0.3s ease;
+    }
+    .project-card:hover .project-number {
+      color: rgba(118, 84, 189, 0.15);
+    }
+
+    .project-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-category {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--violet);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      display: block;
+    }
+
     .project-title {
-      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--ink);
-      letter-spacing: -0.02em;
-    }
-    .project-category {
-      color: var(--violet);
-      font-weight: 600;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .project-year {
-      color: var(--periwinkle);
-      font-weight: 600;
-      font-size: 0.9rem;
-      background: rgba(113, 104, 209, 0.08);
-      padding: 0.2rem 0.8rem;
-      border-radius: 20px;
-      white-space: nowrap;
+      margin-bottom: 12px;
+      line-height: 1.2;
     }
 
-    .project-tech {
-      margin: 0.8rem 0;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .project-tech strong {
-      color: var(--ink);
-    }
-    .project-tech span {
+    .project-year {
       display: inline-block;
-      background: rgba(118, 84, 189, 0.06);
-      padding: 0.2rem 0.8rem;
-      border-radius: 20px;
-      margin: 0.2rem 0.1rem;
-      font-size: 0.85rem;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      background: #f3f4f6;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 16px;
     }
 
     .text-block {
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--ink);
-      opacity: 0.9;
-    }
-    .text-muted {
+      font-size: 0.95rem;
       color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
     }
 
-    .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 1.2rem;
-    }
-
-    /* ===== GALLERIES ===== */
-    .project-gallery {
+    /* Медиа-контейнеры */
+    .media-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.6rem;
-      margin: 1.2rem 0;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
     }
-    .gallery-item {
-      border-radius: 16px;
+
+    .media-item {
+      border-radius: var(--radius-md);
       overflow: hidden;
+      cursor: pointer;
+      background: #f9fafb;
       aspect-ratio: 4/3;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
+      position: relative;
     }
-    .gallery-item:hover {
-      transform: scale(1.04);
-      border-color: var(--violet);
-      box-shadow: 0 8px 25px rgba(118, 84, 189, 0.15);
-    }
-    .gallery-item img {
+    .media-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .gallery-item:hover img { transform: scale(1.06); }
-
-    .book-images {
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: repeat(3, 1fr);
-      margin: 1.2rem 0;
-    }
-    .book-image {
-      overflow: hidden;
-      width: 100%;
-      height: 350px;
-      border-radius: 18px;
-      background: #fff;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.8rem;
-      border: 2px solid transparent;
-      transition: all 0.3s ease;
-    }
-    .book-image:hover {
-      transform: translateY(-4px);
-      border-color: var(--violet);
-      box-shadow: 0 10px 30px rgba(118, 84, 189, 0.12);
-    }
-    .book-image img {
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: 16px;
-      object-fit: contain;
-    }
-
-    .html-gallery {
-      display: grid;
-      gap: 1.5rem;
-      margin: 1.2rem 0;
-    }
-    .html-item {
-      overflow: hidden;
-      border-radius: 18px;
-      background: #fff;
-      cursor: pointer;
-      border: 2px solid transparent;
-      padding: 0.5rem;
-      transition: all 0.3s ease;
-    }
-    .html-item:hover {
-      border-color: var(--violet);
-      box-shadow: 0 10px 30px rgba(118, 84, 189, 0.10);
-    }
-    .html-item img {
-      width: 100%;
-      height: auto;
-      max-width: 800px;
-      object-fit: contain;
-      border-radius: 12px;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .ai-gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.2rem;
-      margin: 1.2rem 0;
-    }
-    .ai-gallery-item {
-      border-radius: 18px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      background: #f8f6ff;
-      border: 2px solid rgba(118, 84, 189, 0.08);
-    }
-    .ai-gallery-item:hover {
-      transform: translateY(-6px) scale(1.01);
-      border-color: var(--violet);
-      box-shadow: 0 16px 40px rgba(118, 84, 189, 0.12);
-    }
-    .ai-gallery-item img {
-      width: 100%;
-      height: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      display: block;
       transition: transform 0.5s ease;
     }
-    .ai-gallery-item:hover img { transform: scale(1.05); }
-    .ai-gallery-caption {
-      padding: 0.6rem 1rem 1rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--ink);
-      font-weight: 500;
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(4px);
+    .media-item:hover img { transform: scale(1.05); }
+
+    /* Full width media */
+    .media-full {
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 24px;
+      cursor: pointer;
+      background: #f9fafb;
+    }
+    .media-full img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
-    /* ===== YOUTUBE PREVIEW ===== */
+    /* YouTube Preview */
     .youtube-preview {
-      max-width: 750px;
-      margin: 1.5rem auto;
       position: relative;
-      border-radius: 20px;
+      border-radius: var(--radius-md);
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
-      transition: all 0.4s ease;
-      background: #b6b3dc;
+      margin-bottom: 24px;
       cursor: pointer;
-    }
-    .youtube-preview:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 20px 50px rgba(118, 84, 189, 0.20);
+      background: #000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
     .youtube-thumbnail {
       width: 100%;
       height: auto;
       display: block;
-      transition: transform 0.5s ease;
+      opacity: 0.9;
+      transition: opacity 0.3s;
     }
-    .youtube-preview:hover .youtube-thumbnail { transform: scale(1.04); }
-    .youtube-play-button {
+    .youtube-preview:hover .youtube-thumbnail { opacity: 0.7; }
+    
+    .play-icon {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      transition: all 0.3s ease;
-      filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.4));
-      z-index: 2;
-      pointer-events: none;
+      width: 60px;
+      height: 60px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
     }
-    .youtube-preview:hover .youtube-play-button { transform: translate(-50%, -50%) scale(1.1); }
-    .youtube-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(45deg, rgba(118, 84, 189, 0.08), rgba(168, 85, 247, 0.08));
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 1;
-    }
-    .youtube-preview:hover .youtube-overlay { opacity: 0.5; }
-    .youtube-short { max-width: 350px; }
-    .youtube-short .youtube-thumbnail { aspect-ratio: 3/4; object-fit: cover; }
+    .play-icon svg { width: 24px; height: 24px; fill: var(--violet); margin-left: 4px; }
+    .youtube-preview:hover .play-icon { transform: translate(-50%, -50%) scale(1.1); }
 
-    /* ===== SOURCES ===== */
+    /* Tech Tags */
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tech-tag {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink);
+      background: #f3f4f6;
+      padding: 6px 12px;
+      border-radius: 100px;
+    }
+
+    /* Accordion */
     .sources-accordion {
-      margin: 1.2rem 0;
-      border-radius: 16px;
-      background: rgba(118, 84, 189, 0.04);
-      border: 1px solid rgba(118, 84, 189, 0.10);
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
       overflow: hidden;
     }
     .sources-header {
-      padding: 1rem 1.5rem;
-      background: transparent;
-      color: var(--violet-dark);
-      font-weight: 700;
-      cursor: pointer;
+      width: 100%;
+      padding: 12px 16px;
+      background: #f9fafb;
+      border: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.95rem;
-      border: none;
-      width: 100%;
-      text-align: left;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
       font-family: inherit;
-      transition: background 0.3s ease;
     }
-    .sources-header:hover {
-      background: rgba(118, 84, 189, 0.04);
-    }
-    .accordion-arrow {
-      transition: transform 0.3s ease;
-      flex-shrink: 0;
-      stroke: var(--violet-dark);
-    }
-    .sources-accordion.active .accordion-arrow { transform: rotate(180deg); }
     .sources-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease;
+      transition: max-height 0.3s ease;
+      background: #fff;
     }
-    .sources-accordion.active .sources-content { max-height: 500px; }
+    .sources-accordion.active .sources-content { max-height: 300px; }
     .sources-list {
-      padding: 0 1.5rem 1.2rem;
       list-style: none;
+      padding: 12px 16px;
     }
-    .sources-list li {
-      margin-bottom: 0.4rem;
-      padding: 0.4rem 0;
-      border-bottom: 1px solid rgba(118, 84, 189, 0.06);
-    }
-    .sources-list li:last-child { border-bottom: none; }
+    .sources-list li { margin-bottom: 8px; }
     .sources-list a {
-      color: var(--violet-dark);
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: color 0.3s ease;
+      font-size: 13px;
+      color: var(--violet);
+      text-decoration: underline;
+      text-decoration-color: rgba(118, 84, 189, 0.3);
     }
-    .sources-list a:hover { color: var(--violet); padding-left: 4px; }
+    
+    .arrow-icon { transition: transform 0.3s; }
+    .sources-accordion.active .arrow-icon { transform: rotate(180deg); }
 
-    /* ===== SKILLS - УЛУЧШЕННЫЙ СТЕКЛЯННЫЙ СТИЛЬ ===== */
+    /* ===== SKILLS ===== */
+    .skills-wrapper {
+      padding: 60px 0;
+      background: #f9fafb;
+      border-radius: 40px 40px 0 0;
+    }
     .skills-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.9rem;
+      gap: 12px;
       justify-content: center;
-      padding: 2.5rem 1.5rem 3rem;
-      max-width: 1200px;
+      max-width: 800px;
       margin: 0 auto;
     }
-
     .skill-tag {
-      position: relative;
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.55) 0%,
-        rgba(255, 255, 255, 0.25) 50%,
-        rgba(245, 245, 250, 0.35) 100%
-      );
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.65);
-      border-radius: 14px;
-      color: #3a3550;
-      padding: 0.65rem 1.5rem;
-      font-weight: 550;
-      font-size: 0.9rem;
-      letter-spacing: 0.01em;
-      transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
-      box-shadow: 
-        0 4px 20px rgba(0, 0, 0, 0.04),
-        0 1px 0 rgba(255, 255, 255, 0.8) inset,
-        0 -1px 0 rgba(0, 0, 0, 0.03) inset;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.6s ease forwards;
-      overflow: hidden;
+      background: #fff;
+      color: var(--ink);
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-
-    /* Блик света (эффект стекла) */
-    .skill-tag::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -50%;
-      width: 40%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.45),
-        transparent
-      );
-      transform: skewX(-20deg);
-      transition: left 0.6s ease;
-      pointer-events: none;
-    }
-
     .skill-tag:hover {
-      transform: translateY(-4px) scale(1.04);
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.75) 0%,
-        rgba(255, 255, 255, 0.4) 50%,
-        rgba(250, 250, 255, 0.5) 100%
-      );
-      border-color: rgba(255, 255, 255, 0.9);
-      box-shadow: 
-        0 12px 32px rgba(0, 0, 0, 0.08),
-        0 1px 0 rgba(255, 255, 255, 0.95) inset,
-        0 -1px 0 rgba(0, 0, 0, 0.04) inset;
-      color: #292345;
-    }
-
-    .skill-tag:hover::before {
-      left: 120%;
-    }
-
-    /* Анимация появления */
-    .skill-tag:nth-child(1) { animation-delay: 0.05s; }
-    .skill-tag:nth-child(2) { animation-delay: 0.10s; }
-    .skill-tag:nth-child(3) { animation-delay: 0.15s; }
-    .skill-tag:nth-child(4) { animation-delay: 0.20s; }
-    .skill-tag:nth-child(5) { animation-delay: 0.25s; }
-    .skill-tag:nth-child(6) { animation-delay: 0.30s; }
-    .skill-tag:nth-child(7) { animation-delay: 0.35s; }
-    .skill-tag:nth-child(8) { animation-delay: 0.40s; }
-    .skill-tag:nth-child(9) { animation-delay: 0.45s; }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+      color: var(--violet);
     }
 
     /* ===== FOOTER ===== */
     .site-footer {
-      padding: 60px 0 24px;
-      color: rgba(255,255,255,0.9);
-      background: #7455bd;
-      background-image: linear-gradient(125deg, #7048c1 0%, #586fdd 30%, #a05fc2 64%, #dd7f91 82%, #6278dd 100%);
-      background-size: 320% 320%;
-      animation: footer-color-flow 10s ease-in-out infinite;
-      position: relative;
-      overflow: hidden;
-    }
-    @keyframes footer-color-flow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .site-footer::before {
-      position: absolute;
-      inset: -80% -20% auto 42%;
-      width: 300px;
-      height: 300px;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 50%;
-      content: "";
-    }
-    .footer-main {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 28px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.18);
+      background: #1F1D2B;
+      color: #fff;
+      padding: 80px 0 40px;
+      text-align: center;
     }
     .footer-main h2 {
-      max-width: 760px;
-      color: #fff;
-      font-size: clamp(2rem, 11vw, 5.2rem);
-      font-weight: 710;
-      letter-spacing: -0.06em;
-      line-height: 0.98;
-      text-wrap: balance;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 32px;
+      letter-spacing: -0.02em;
     }
-    .footer-contact-links {
+    .footer-links {
       display: flex;
-      flex-direction: row;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 12px;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 60px;
     }
-    .footer-contact-links a {
-      padding-bottom: 2px;
-      border-bottom: 1px solid rgba(255,255,255,0.46);
-      color: #fff;
-      font-weight: 680;
-      font-size: 0.95rem;
-      transition: border-color 160ms ease, opacity 160ms ease;
+    .footer-links a {
+      padding: 12px 24px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s;
     }
-    .footer-contact-links a:hover {
+    .footer-links a:hover {
+      background: #fff;
+      color: #1F1D2B;
       border-color: #fff;
-      opacity: 0.78;
     }
     .footer-bottom {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      padding-top: 20px;
-      color: rgba(255,255,255,0.7);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
       font-size: 13px;
-    }
-    .footer-name { color: #fff; font-weight: 740; }
-    .footer-ai-credit {
-      margin-top: 8px;
-      font-size: 13px;
-      opacity: 0.7;
-      line-height: 1.5;
-      max-width: 600px;
+      color: rgba(255,255,255,0.5);
     }
 
     /* ===== MODAL ===== */
@@ -858,25 +589,17 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.92);
+      background: rgba(0,0,0,0.95);
       z-index: 9999;
       justify-content: center;
       align-items: center;
-      padding: 1.5rem;
-      animation: modalFadeIn 0.3s ease;
-      backdrop-filter: blur(8px);
-    }
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+      padding: 20px;
+      backdrop-filter: blur(5px);
     }
     .modal-content {
       position: relative;
-      max-width: 92vw;
+      max-width: 90vw;
       max-height: 90vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
     .modal-content img {
       width: auto;
@@ -884,111 +607,64 @@
       max-width: 100%;
       max-height: 90vh;
       object-fit: contain;
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border-radius: 12px;
     }
     .close-modal {
-      position: fixed;
-      top: 20px;
-      right: 25px;
-      color: white;
-      font-size: 2.8rem;
-      cursor: pointer;
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: #fff;
+      font-size: 32px;
       background: none;
       border: none;
-      z-index: 10000;
-      transition: all 0.3s ease;
-      font-family: inherit;
-      opacity: 0.7;
+      cursor: pointer;
       line-height: 1;
     }
-    .close-modal:hover {
-      opacity: 1;
-      transform: rotate(90deg);
-      color: var(--violet);
-    }
 
-    /* ===== MEDIA QUERIES ===== */
-    @media (min-width: 640px) {
-      .container { width: min(calc(100% - 40px), 1160px); }
-      .site-header { height: 80px; padding: 0 8px; }
-      .brand { font-size: 15px; gap: 10px; }
-      .logo-video { width: 52px; height: 52px; flex: 0 0 52px; }
-      .menu-toggle { display: none; }
+    /* ===== MEDIA QUERIES (Mobile First approach) ===== */
+    
+    /* Планшеты и выше */
+    @media (min-width: 768px) {
+      .container { width: min(calc(100% - 48px), 1160px); }
+      
+      .hero { padding: 160px 0 80px; }
+      
       .nav-links {
         position: static;
-        display: flex !important;
+        display: flex;
         flex-direction: row;
-        gap: 4px;
+        gap: 32px;
         padding: 0;
-        border: none;
         background: transparent;
         box-shadow: none;
-        border-radius: 0;
+        opacity: 1;
+        pointer-events: all;
+        transform: none;
         width: auto;
       }
       .nav-links a {
-        width: auto;
-        padding: 8px 14px;
-        font-size: 13px;
+        padding: 0;
+        border: none;
+        font-size: 14px;
+        color: var(--muted);
+        transition: color 0.2s;
       }
-      .nav-links .nav-contact { margin-left: 0; }
-      .footer-main {
-        grid-template-columns: 1fr auto;
-        align-items: end;
-      }
-      .footer-bottom {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .book-images { grid-template-columns: repeat(3, 1fr); }
-      .ai-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links a:hover { color: var(--violet); }
+      .menu-toggle { display: none; }
+
+      .project-card { padding: 48px; }
+      .project-number { font-size: 12rem; top: 20px; right: 40px; }
+      .project-title { font-size: 2rem; }
+      
+      .media-grid { grid-template-columns: repeat(4, 1fr); }
+      
+      .projects-grid { gap: 48px; }
     }
 
+    /* Десктопы */
     @media (min-width: 1024px) {
-      .site-header { height: 86px; }
-      .brand { font-size: 16px; }
-      .logo-video { width: 57px; height: 57px; flex: 0 0 57px; }
-      .nav-links a { font-size: 14px; padding: 10px 16px; }
-      .book-image { height: 400px; }
-      .project-gallery { grid-template-columns: repeat(4, 1fr); }
-    }
-
-    @media (max-width: 768px) {
-      .project-gallery { grid-template-columns: repeat(2, 1fr); }
-      .book-images { grid-template-columns: repeat(2, 1fr); }
-      .book-image { height: 250px; }
-      .ai-gallery-grid { grid-template-columns: 1fr 1fr; }
-      .youtube-short { max-width: 280px; margin: 1rem auto; }
-      .hero { min-height: 70vh; padding: 80px 0 30px; }
-    }
-
-    @media (max-width: 480px) {
-      .project-gallery { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
-      .book-images { grid-template-columns: 1fr; }
-      .book-image { height: 200px; }
-      .ai-gallery-grid { grid-template-columns: 1fr; }
-      .youtube-short { max-width: 250px; }
-      .btn-glass { min-height: 44px; padding: 10px 18px; font-size: 13px; }
-      .btn-group .btn-glass { min-height: 40px; padding: 8px 16px; font-size: 12px; }
-      .hero h1 { font-size: clamp(1.8rem, 10vw, 2.8rem); }
-    }
-
-    @media (max-width: 380px) {
-      .hero { padding: 76px 0 28px; min-height: 90vh; }
-      .hero h1 { font-size: clamp(1.6rem, 9vw, 2.2rem); }
-      .btn-glass { min-height: 40px; padding: 8px 14px; font-size: 12px; }
-      .section-title { font-size: clamp(1.6rem, 8vw, 2.4rem); }
-      .project-card { padding: 1rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-      .reveal { opacity: 1; transform: none; }
-      .project-card { opacity: 1; transform: none; }
-      .skill-tag { opacity: 1; transform: none; }
-      .btn-glass::before { animation: none; }
+      .project-card { padding: 64px; }
+      .project-number { font-size: 16rem; }
     }
   </style>
 </head>
@@ -996,293 +672,324 @@
   <!-- ===== ХЕДЕР ===== -->
   <header class="site-header" id="siteHeader">
     <div class="container nav">
-      <div class="brand" aria-label="Мария Киселёва">
+      <a href="index.html" class="brand" aria-label="Мария Киселёва">
         <video class="logo-video" autoplay muted loop playsinline aria-label="Логотип">
           <source src="logo.mp4" type="video/mp4" />
           <img src="logo.jpg" alt="Логотип" />
         </video>
         <span>Мария Киселёва</span>
-      </div>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Открыть меню"><span></span></button>
+      </a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Открыть меню">
+        <span></span>
+      </button>
       <nav class="nav-links" id="navLinks" aria-label="Навигация">
         <a href="index.html">Главная</a>
-        <a href="Projects.html">Проекты</a>
-        <a class="nav-contact" href="#contact">Контакты</a>
+        <a href="Projects.html" style="color: var(--violet); font-weight: 600;">Проекты</a>
+        <a href="#contact">Контакты</a>
       </nav>
     </div>
   </header>
 
   <main>
     <!-- ===== ГЕРОЙ ===== -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-content reveal is-visible">
-        <p class="eyebrow">AI-workspace</p>
-        <h1 id="hero-title">Моя нейролаборатория</h1>
-        <p class="hero-name">Мария Киселёва</p>
-        <p class="hero-role">Здесь собраны работы, созданные с помощью современных ИИ-инструментов</p>
-        <a class="btn-glass" href="#projects">Смотреть проекты</a>
+    <section class="hero">
+      <div class="container hero-content reveal is-visible">
+        <span class="eyebrow">AI-workspace</span>
+        <h1>Моя нейролаборатория</h1>
+        <p class="hero-role">Здесь собраны работы, созданные с помощью современных ИИ-инструментов. От идеи до реализации.</p>
       </div>
     </section>
 
     <!-- ===== БЛОК ПРОЕКТОВ ===== -->
     <section class="projects-section" id="projects">
       <div class="container">
-        <div class="reveal">
-          <!-- ИСПРАВЛЕННЫЙ ТЕКСТ — светло-графитовый, обычный шрифт -->
-          <p style="color: var(--muted); font-weight: 400; font-size: 1rem; line-height: 1.7; margin-bottom: 0.8em;">
-            С самого начала изучения нейросетей я сознательно бралась не только за то, в чём уже разбиралась, 
-            но и за совершенно новые для себя направления: монтаж видео, товарную фотосъёмку, программирование.
-          </p>
-          <p style="color: var(--muted); font-weight: 400; font-size: 1rem; line-height: 1.7; margin-bottom: 0.8em;">
-            Я не прячу ранние работы. Они показывают реальный путь — от долгого и мучительного к быстрому и системному.
-          </p>
-          <p style="color: var(--muted); font-weight: 400; font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem;">
-            Если хотите научиться так же превращать идеи в рабочие решения с помощью ИИ — добро пожаловать.
-          </p>
-          <h2 class="section-title" style="margin-top: 1.5rem;">Мои проекты</h2>
+        <div class="section-header reveal">
+          <h2>Мои проекты</h2>
+          <p>С самого начала изучения нейросетей я сознательно бралась не только за то, в чём уже разбиралась, но и за совершенно новые для себя направления. Я не прячу ранние работы — они показывают реальный путь.</p>
         </div>
 
         <div class="projects-grid">
+          
           <!-- 1. AI-фотосессии -->
-          <div class="project-card reveal">
-            <div class="project-header">
-              <div>
-                <h3 class="project-title">AI-фотосессии товаров</h3>
-                <div class="project-category">Product Photography • AI Enhancement</div>
+          <article class="project-card reveal">
+            <div class="project-number">01</div>
+            <div class="project-content">
+              <span class="project-category">Product Photography • AI Enhancement</span>
+              <h3 class="project-title">AI-фотосессии товаров</h3>
+              <span class="project-year">2026</span>
+              <p class="text-block">Превращаю обычные снимки в премиальные визуалы с помощью нейросетей для соцсетей и маркетплейсов.</p>
+              
+              <div class="media-grid">
+                <div class="media-item" onclick="openModal('ai-works/пост0.jpg')">
+                  <img src="ai-works/пост0.jpg" alt="Товарная съёмка" loading="lazy">
+                </div>
+                <div class="media-item" onclick="openModal('ai-works/пост1.jpg')">
+                  <img src="ai-works/пост1.jpg" alt="Креативная обработка" loading="lazy">
+                </div>
+                <div class="media-item" onclick="openModal('ai-works/пост2.jpg')">
+                  <img src="ai-works/пост2.jpg" alt="Премиум-визуал" loading="lazy">
+                </div>
+                <div class="media-item" onclick="openModal('ai-works/пост3.jpg')">
+                  <img src="ai-works/пост3.jpg" alt="AI-улучшение" loading="lazy">
+                </div>
               </div>
-              <div class="project-year">2026</div>
+
+              <div class="tech-tags">
+                <span class="tech-tag">Языковые модели</span>
+                <span class="tech-tag">Generative AI</span>
+                <span class="tech-tag">Adobe Photoshop</span>
+              </div>
+              
+              <a href="#contact" class="btn-primary">Заказать фотосессию</a>
             </div>
-            <p class="text-block">Превращаю обычные снимки в премиальные визуалы с помощью нейросетей для соцсетей и маркетплейсов.</p>
-            <div class="ai-gallery-grid">
-              <div class="ai-gallery-item" onclick="openModal('ai-works/пост0.jpg')">
-                <img src="ai-works/пост0.jpg" alt="Товарная съёмка" loading="lazy">
-                <div class="ai-gallery-caption">Товарная съёмка</div>
-              </div>
-              <div class="ai-gallery-item" onclick="openModal('ai-works/пост1.jpg')">
-                <img src="ai-works/пост1.jpg" alt="Креативная обработка" loading="lazy">
-                <div class="ai-gallery-caption">Креативная обработка</div>
-              </div>
-              <div class="ai-gallery-item" onclick="openModal('ai-works/пост2.jpg')">
-                <img src="ai-works/пост2.jpg" alt="Премиум-визуал" loading="lazy">
-                <div class="ai-gallery-caption">Премиум-визуал</div>
-              </div>
-              <div class="ai-gallery-item" onclick="openModal('ai-works/пост3.jpg')">
-                <img src="ai-works/пост3.jpg" alt="AI-улучшение" loading="lazy">
-                <div class="ai-gallery-caption">AI-улучшение</div>
-              </div>
-            </div>
-            <div class="project-tech"><strong>Инструменты:</strong> <span>Языковые модели</span> <span>Generative AI</span> <span>Adobe Photoshop</span></div>
-            <div class="btn-group"><a href="#contact" class="btn-glass">Заказать фотосессию</a></div>
-          </div>
+          </article>
 
           <!-- 2. Видео презентация -->
-          <div class="project-card reveal">
-            <div class="project-header">
-              <div>
-                <h3 class="project-title">Видео презентация</h3>
-                <div class="project-category">Google AI Studios • 10+ источников</div>
+          <article class="project-card reveal">
+            <div class="project-number">02</div>
+            <div class="project-content">
+              <span class="project-category">Google AI Studios • 10+ источников</span>
+              <h3 class="project-title">Видео презентация</h3>
+              <span class="project-year">2025</span>
+              
+              <div class="youtube-preview" onclick="openYouTubeVideo('7rnCqhda_HA')">
+                <img src="https://img.youtube.com/vi/7rnCqhda_HA/maxresdefault.jpg" alt="Превью видео" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/7rnCqhda_HA/hqdefault.jpg'">
+                <div class="play-icon">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
               </div>
-              <div class="project-year">2025</div>
-            </div>
-            <div class="youtube-preview" onclick="openYouTubeVideo('7rnCqhda_HA')">
-              <img src="https://img.youtube.com/vi/7rnCqhda_HA/maxresdefault.jpg" alt="Превью видео" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/7rnCqhda_HA/hqdefault.jpg'">
-              <div class="youtube-play-button">
-                <svg width="80" height="80" viewBox="0 0 80 80">
-                  <circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.6)" stroke="#667eea" stroke-width="2"/>
-                  <polygon points="32,24 32,56 56,40" fill="#667eea"/>
-                </svg>
+
+              <p class="text-block">Google AI Studios синтезирует огромные объёмы информации в готовые видео-презентации.</p>
+              
+              <div class="sources-accordion">
+                <button class="sources-header" onclick="toggleSources(this)">
+                  <span>Основные Источники</span>
+                  <svg class="arrow-icon" width="12" height="8" viewBox="0 0 12 8"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                </button>
+                <div class="sources-content">
+                  <ul class="sources-list">
+                    <li><a href="https://vc.ru/design/1696542-samyi-svezhii-trend-v-dizaine-2025-mocha-mousse-glavnyi-cvet-goda-dlya-sovremennogo-interera" target="_blank">Самый свежий тренд в дизайне 2025</a></li>
+                    <li><a href="https://vobox.ru/publications/idei-dlya-doma-i-dachi/japandi/" target="_blank">Джапанди — новый стиль интерьера</a></li>
+                    <li><a href="https://www.archdaily.com/1024436/pantone-announces-mocha-mousse-as-color-of-the-year-2025" target="_blank">ArchDaily Mocha Mousse</a></li>
+                    <li><a href="https://hoff.ru/blog/tsvet-goda-2025-mocha-mousse-kak-on-smotritsya-v-interere/" target="_blank">Hoff Блог</a></li>
+                  </ul>
+                </div>
               </div>
-              <div class="youtube-overlay"></div>
-            </div>
-            <p class="text-block">Google AI Studios синтезирует огромные объёмы информации в готовые видео-презентации.</p>
-            <div class="sources-accordion">
-              <button class="sources-header" onclick="toggleSources(this)">
-                <span>Основные Источники</span>
-                <svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8">
-                  <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" fill="none"/>
-                </svg>
-              </button>
-              <div class="sources-content">
-                <ul class="sources-list">
-                  <li><a href="https://vc.ru/design/1696542-samyi-svezhii-trend-v-dizaine-2025-mocha-mousse-glavnyi-cvet-goda-dlya-sovremennogo-interera" target="_blank">Самый свежий тренд в дизайне 2025</a></li>
-                  <li><a href="https://vobox.ru/publications/idei-dlya-doma-i-dachi/japandi/" target="_blank">Джапанди — новый стиль интерьера</a></li>
-                  <li><a href="https://www.archdaily.com/1024436/pantone-announces-mocha-mousse-as-color-of-the-year-2025" target="_blank">ArchDaily Mocha Mousse</a></li>
-                  <li><a href="https://hoff.ru/blog/tsvet-goda-2025-mocha-mousse-kak-on-smotritsya-v-interere/" target="_blank">Hoff Блог</a></li>
-                </ul>
+
+              <div class="tech-tags">
+                <span class="tech-tag">Google AI Studios</span>
+                <span class="tech-tag">Photoshop</span>
+                <span class="tech-tag">Davinci Resolve</span>
               </div>
             </div>
-            <div class="project-tech"><strong>Технологии:</strong> Google AI Studios, Photoshop, Davinci Resolve.</div>
-          </div>
+          </article>
 
           <!-- 3. Коммерческий сайт -->
-          <div class="project-card reveal">
-            <div class="project-header">
-              <div>
-                <h3 class="project-title">Коммерческий сайт для рекреационного бизнеса</h3>
-                <div class="project-category">Frontend</div>
+          <article class="project-card reveal">
+            <div class="project-number">03</div>
+            <div class="project-content">
+              <span class="project-category">Frontend</span>
+              <h3 class="project-title">Коммерческий сайт для рекреационного бизнеса</h3>
+              <span class="project-year">2025</span>
+              
+              <div class="media-grid">
+                <div class="media-item" onclick="openModal('project2/5.png')"><img src="project2/5.png" alt="Основная панель" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project2/6.png')"><img src="project2/6.png" alt="Карусель услуг" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project2/7.png')"><img src="project2/7.png" alt="Фрейм карты" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project2/8.png')"><img src="project2/8.png" alt="Мобильная версия" loading="lazy"></div>
               </div>
-              <div class="project-year">2025</div>
+
+              <p class="text-block">Создание сайта для агроусадебного бизнеса с нуля: от скелета до хостинга и регистрации в БелГИЭ.</p>
+              
+              <div class="tech-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Generative AI</span>
+              </div>
+
+              <a href="https://marya-kiseliova.github.io/Usadiba_U_Vodi/" class="btn-primary" target="_blank">Посмотреть сайт</a>
             </div>
-            <div class="project-gallery">
-              <div class="gallery-item" onclick="openModal('project2/5.png')"><img src="project2/5.png" alt="Основная панель" loading="lazy"></div>
-              <div class="gallery-item" onclick="openModal('project2/6.png')"><img src="project2/6.png" alt="Карусель услуг" loading="lazy"></div>
-              <div class="gallery-item" onclick="openModal('project2/7.png')"><img src="project2/7.png" alt="Фрейм карты" loading="lazy"></div>
-              <div class="gallery-item" onclick="openModal('project2/8.png')"><img src="project2/8.png" alt="Мобильная версия" loading="lazy"></div>
-            </div>
-            <p class="text-block">Создание сайта для агроусадебного бизнеса с нуля: от скелета до хостинга и регистрации в БелГИЭ.</p>
-            <div class="project-tech"><strong>Технологии:</strong> HTML5, CSS, JavaScript, Generative AI, Adobe Photoshop.</div>
-            <div class="btn-group"><a href="https://marya-kiseliova.github.io/Usadiba_U_Vodi/" class="btn-glass">Посмотреть сайт</a></div>
-          </div>
+          </article>
 
           <!-- 4. Interactive book -->
-          <div class="project-card reveal">
-            <div class="project-header">
-              <div>
-                <h3 class="project-title">Interactive book</h3>
-                <div class="project-category">EdTech • Interactive Design</div>
+          <article class="project-card reveal">
+            <div class="project-number">04</div>
+            <div class="project-content">
+              <span class="project-category">EdTech • Interactive Design</span>
+              <h3 class="project-title">Interactive book</h3>
+              <span class="project-year">2025</span>
+              
+              <div class="media-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="media-item" onclick="openModal('project3/book_cover.png')"><img src="project3/book_cover.png" alt="Обложка" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project3/book1.webp')"><img src="project3/book1.webp" alt="Мобильная версия" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project3/book2.webp')"><img src="project3/book2.webp" alt="Продолжение" loading="lazy"></div>
               </div>
-              <div class="project-year">2025</div>
+
+              <p class="text-block">Адаптация детской книги в интерактивную версию для планшета, компьютера и мобильного.</p>
+              
+              <div class="tech-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Adobe Photoshop</span>
+              </div>
+
+              <a href="project3/mermaid/mermaid1.html" class="btn-primary" target="_blank">Читать книгу</a>
             </div>
-            <div class="book-images">
-              <div class="book-image" onclick="openModal('project3/book_cover.png')"><img src="project3/book_cover.png" alt="Обложка" loading="lazy"></div>
-              <div class="book-image" onclick="openModal('project3/book1.webp')"><img src="project3/book1.webp" alt="Мобильная версия" loading="lazy"></div>
-              <div class="book-image" onclick="openModal('project3/book2.webp')"><img src="project3/book2.webp" alt="Продолжение" loading="lazy"></div>
-            </div>
-            <p class="text-block">Адаптация детской книги в интерактивную версию для планшета, компьютера и мобильного.</p>
-            <div class="project-tech"><strong>Стек:</strong> HTML5, CSS, JavaScript, Adobe Photoshop, Generative AI.</div>
-            <div class="btn-group"><a href="project3/mermaid/mermaid1.html" class="btn-glass">Читать книгу</a></div>
-          </div>
+          </article>
 
           <!-- 5. Figma works -->
-          <div class="project-card reveal">
-            <div class="project-header">
-              <div>
-                <h3 class="project-title">Почему акции Figma упали </h3>
-                <div class="project-category">Design</div>
+          <article class="project-card reveal">
+            <div class="project-number">05</div>
+            <div class="project-content">
+              <span class="project-category">Design</span>
+              <h3 class="project-title">Почему акции Figma упали</h3>
+              <span class="project-year">2025</span>
+              
+              <div class="media-grid">
+                <div class="media-item" onclick="openModal('project4/figma1.png')"><img src="project4/figma1.png" alt="Дизайн сайта" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project4/figma2.png')"><img src="project4/figma2.png" alt="Рекламный баннер" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project4/figma3.png')"><img src="project4/figma3.png" alt="Пост в Instagram" loading="lazy"></div>
+                <div class="media-item" onclick="openModal('project4/figma4.png')"><img src="project4/figma4.png" alt="Настройки" loading="lazy"></div>
               </div>
-              <div class="project-year">2025</div>
-            </div>
-            <div class="project-gallery">
-              <div class="gallery-item" onclick="openModal('project4/figma1.png')"><img src="project4/figma1.png" alt="Дизайн сайта" loading="lazy"></div>
-              <div class="gallery-item" onclick="openModal('project4/figma2.png')"><img src="project4/figma2.png" alt="Рекламный баннер" loading="lazy"></div>
-              <div class="gallery-item" onclick="openModal('project4/figma3.png')"><img src="project4/figma3.png" alt="Пост в Instagram" loading="lazy"></div>
-              <div class="gallery-item" onclick="openModal('project4/figma4.png')"><img src="project4/figma4.png" alt="Настройки" loading="lazy"></div>
-            </div>
-            <p class="text-block">То, на что у дизайнера уходили часы, ИИ делает за минуты, применяя современные приемы, ваши фото, описания товаров и фирменный стиль. Забудьте о ручной подготовке листовок к печати и их последующей адаптации под соцсети и баннеры. Вы ставите задачу, даете информацию и проверяете результат.
 
-Чтобы добиться идеала, обычно используются корректирующие промты. Как дизайнер, вносящий правки после общения с заказчиком, ИИ совершенствует результат по вашим замечаниям. В два промта я сделала для вас пример в виде веб-странички. <a href="figma_example.html"  class="btn-glass">Смотреть</a></div> </p>
-            <div class="project-tech"><strong>Технологии:</strong> Figma, Canva.</div>
-          </div>
+              <p class="text-block">То, на что у дизайнера уходили часы, ИИ делает за минуты. В два промта я сделала для вас пример в виде веб-странички.</p>
+              
+              <div class="tech-tags">
+                <span class="tech-tag">Figma</span>
+                <span class="tech-tag">Canva</span>
+                <span class="tech-tag">Generative AI</span>
+              </div>
+
+              <a href="figma_example.html" class="btn-primary" target="_blank">Смотреть пример</a>
+            </div>
+          </article>
 
           <!-- 6. Store app -->
-          <div class="project-card reveal">
-            <div class="project-header">
-              <div>
-                <h3 class="project-title">Store app</h3>
-                <div class="project-category">Товарный и бухгалтерский учёт</div>
+          <article class="project-card reveal">
+            <div class="project-number">06</div>
+            <div class="project-content">
+              <span class="project-category">Товарный и бухгалтерский учёт</span>
+              <h3 class="project-title">Store app</h3>
+              <span class="project-year">2024</span>
+              
+              <div class="youtube-preview" onclick="openYouTubeVideo('evA-V66w2rY')">
+                <img src="bar.webp" alt="Превью Store App" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/evA-V66w2rY/hqdefault.jpg'">
+                <div class="play-icon">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
               </div>
-              <div class="project-year">2024</div>
-            </div>
-            <div class="youtube-preview" onclick="openYouTubeVideo('evA-V66w2rY')">
-              <img src="bar.webp" alt="Превью Store App" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/evA-V66w2rY/hqdefault.jpg'">
-              <div class="youtube-play-button">
-                <svg width="80" height="80" viewBox="0 0 80 80">
-                  <circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.6)" stroke="#667eea" stroke-width="2"/>
-                  <polygon points="32,24 32,56 56,40" fill="#667eea"/>
-                </svg>
+
+              <p class="text-block">Программа для учёта товаров и формирования отчётов для малого бизнеса (Python).</p>
+              
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Tkinter</span>
+                <span class="tech-tag">Pandas</span>
+                <span class="tech-tag">SQLite</span>
               </div>
-              <div class="youtube-overlay"></div>
             </div>
-            <p class="text-block">Программа для учёта товаров и формирования отчётов для малого бизнеса (Python).</p>
-            <div class="project-tech"><strong>Технологии:</strong> Python, Tkinter, Pandas, SQLite.</div>
-          </div>
+          </article>
 
           <!-- 7. HTML5 Cheatsheet -->
-          <div class="project-card reveal">
-            <div class="project-header">
-              <div>
-                <h3 class="project-title">HTML5 & CSS Конспект-шпаргалка</h3>
-                <div class="project-category">Educational Resource</div>
-              </div>
-              <div class="project-year">2024</div>
-            </div>
-            <div class="html-gallery">
-              <div class="html-item" onclick="openModal('conspect.webp')">
+          <article class="project-card reveal">
+            <div class="project-number">07</div>
+            <div class="project-content">
+              <span class="project-category">Educational Resource</span>
+              <h3 class="project-title">HTML5 & CSS Конспект-шпаргалка</h3>
+              <span class="project-year">2024</span>
+              
+              <div class="media-full" onclick="openModal('conspect.webp')">
                 <img src="conspect.webp" alt="Шпаргалка" loading="lazy">
               </div>
+
+              <p class="text-block">Систематизированные знания по HTML5 и CSS в удобной форме.</p>
+              
+              <div class="tech-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Mobile-First</span>
+              </div>
+
+              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <a href="Conspect.html" class="btn-primary">Смотреть шпору</a>
+                <a href="https://github.com/Marya-Kiseliova/HTML5-conspect/blob/main/Conspect.html" class="btn-outline" target="_blank">Исходный код</a>
+              </div>
             </div>
-            <p class="text-block">Систематизированные знания по HTML5 и CSS в удобной форме.</p>
-            <div class="project-tech"><strong>Технологии:</strong> HTML5, CSS3, JavaScript, Mobile-First, Semantic Markup.</div>
-            <div class="btn-group">
-              <a href="Conspect.html" class="btn-glass">Смотреть шпору</a>
-              <a href="https://github.com/Marya-Kiseliova/HTML5-conspect/blob/main/Conspect.html" class="btn-glass" style="background: transparent; border: 2px solid rgba(255,215,200,0.5); box-shadow: none; color: #2a1a44;">Исходный код</a>
-            </div>
-          </div>
+          </article>
 
           <!-- 8. AI video short -->
-          <div class="project-card reveal">
-            <div class="project-header">
-              <div>
-                <h3 class="project-title">AI video (киберпанк)</h3>
-                <div class="project-category">Эксперимент • Mobile</div>
+          <article class="project-card reveal">
+            <div class="project-number">08</div>
+            <div class="project-content">
+              <span class="project-category">Эксперимент • Mobile</span>
+              <h3 class="project-title">AI video (киберпанк)</h3>
+              <span class="project-year">2025</span>
+              
+              <div class="youtube-preview" onclick="openYouTubeVideo('500ywmW3ivk')" style="max-width: 400px; margin-left: auto; margin-right: auto;">
+                <img src="project5/5.3.png" alt="Превью AI video" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/500ywmW3ivk/hqdefault.jpg'">
+                <div class="play-icon">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
               </div>
-              <div class="project-year">2025</div>
-            </div>
-            <div class="youtube-preview youtube-short" onclick="openYouTubeVideo('500ywmW3ivk')">
-              <img src="project5/5.3.png" alt="Превью AI video" class="youtube-thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/500ywmW3ivk/hqdefault.jpg'">
-              <div class="youtube-play-button">
-                <svg width="80" height="80" viewBox="0 0 80 80">
-                  <circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.6)" stroke="#667eea" stroke-width="2"/>
-                  <polygon points="32,24 32,56 56,40" fill="#667eea"/>
-                </svg>
+
+              <p class="text-block">Эксперимент в стиле киберпанка с генеративными ИИ и звуковым дизайном.</p>
+              
+              <div class="tech-tags">
+                <span class="tech-tag">Generative AI</span>
+                <span class="tech-tag">Cap-Cut</span>
+                <span class="tech-tag">Sound Design</span>
               </div>
-              <div class="youtube-overlay"></div>
             </div>
-            <p class="text-block">Эксперимент в стиле киберпанка с генеративными ИИ и звуковым дизайном.</p>
-            <div class="project-tech"><strong>Технологии:</strong> Generative AI, Cap-Cut, Sound Design.</div>
-          </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <!-- ===== НАВЫКИ (УЛУЧШЕННЫЙ СТЕКЛЯННЫЙ СТИЛЬ) ===== -->
-    <div class="skills-tags" id="skills-tags">
-      <span class="skill-tag">HTML5</span>
-      <span class="skill-tag">CSS3</span>
-      <span class="skill-tag">JavaScript</span>
-      <span class="skill-tag">SEO</span>
-      <span class="skill-tag">Adaptive Design</span>
-      <span class="skill-tag">Adobe Photoshop</span>
-      <span class="skill-tag">UI/UX Design</span>
-      <span class="skill-tag">Figma</span>
-      <span class="skill-tag">Canva</span>
-      <span class="skill-tag">Generative AI</span>
+    <!-- ===== НАВЫКИ ===== -->
+    <div class="skills-wrapper">
+      <div class="container">
+        <div class="skills-tags reveal">
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">SEO</span>
+          <span class="skill-tag">Adaptive Design</span>
+          <span class="skill-tag">Adobe Photoshop</span>
+          <span class="skill-tag">UI/UX Design</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Canva</span>
+          <span class="skill-tag">Generative AI</span>
+        </div>
+      </div>
     </div>
   </main>
 
   <!-- FOOTER -->
   <footer class="site-footer" id="contact">
     <div class="container">
-      <div class="footer-main">
+      <div class="footer-main reveal">
         <h2>Работа с AI — шаг в будущее</h2>
-        <div class="footer-contact-links" aria-label="Контакты">
-          <a href="mailto:m.yasinskaya12@gmail.com" class="btn-glass">Email</a>
-          <a href="https://github.com/Marya-Kiseliova" class="btn-glass">GitHub</a>
-          <a href="https://www.youtube.com/@%D0%9C%D0%B0%D1%80%D1%8F-%D0%9A%D0%B8%D1%81%D0%B5%D0%BB%D1%91%D0%B2%D0%B0/shorts" target="_blank" class="btn-glass">YouTube</a>
+        <div class="footer-links">
+          <a href="mailto:m.yasinskaya12@gmail.com">Email</a>
+          <a href="https://github.com/Marya-Kiseliova" target="_blank">GitHub</a>
+          <a href="https://www.youtube.com/@%D0%9C%D0%B0%D1%80%D1%8F-%D0%9A%D0%B8%D1%81%D0%B5%D0%BB%D1%91%D0%B2%D0%B0/shorts" target="_blank">YouTube</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <div class="footer-ai-credit">
-          Этот сайт — пример того, как можно собирать рабочие веб-страницы, опираясь на ИИ.
-        </div>
+        <p>Этот сайт — пример того, как можно собирать рабочие веб-страницы, опираясь на ИИ.</p>
+        <p style="margin-top: 8px;">&copy; 2024 Мария Киселёва</p>
       </div>
     </div>
   </footer>
 
   <!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
   <div id="imageModal" class="modal" onclick="closeModal()">
-    <button class="close-modal" onclick="event.stopPropagation(); closeModal();" aria-label="Закрыть">&times;</button>
     <div class="modal-content" onclick="event.stopPropagation();">
+      <button class="close-modal" onclick="closeModal()" aria-label="Закрыть">&times;</button>
       <img id="modalImage" src="" alt="">
     </div>
   </div>
@@ -1290,35 +997,37 @@
   <script>
     // ===== ХЕДЕР =====
     (function() {
-      const header = document.getElementById('siteHeader');
       const toggle = document.getElementById('menuToggle');
       const nav = document.getElementById('navLinks');
-
-      function closeMenu() {
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', 'Открыть меню');
-        nav.classList.remove('is-open');
-      }
+      const header = document.getElementById('siteHeader');
 
       toggle.addEventListener('click', function() {
         const isOpen = toggle.getAttribute('aria-expanded') === 'true';
         toggle.setAttribute('aria-expanded', String(!isOpen));
-        toggle.setAttribute('aria-label', isOpen ? 'Открыть меню' : 'Закрыть меню');
         nav.classList.toggle('is-open', !isOpen);
       });
 
+      // Закрываем меню при клике на ссылку
       nav.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', closeMenu);
+        link.addEventListener('click', () => {
+          toggle.setAttribute('aria-expanded', 'false');
+          nav.classList.remove('is-open');
+        });
       });
 
+      // Эффект тени при скролле
       window.addEventListener('scroll', function() {
-        header.classList.toggle('is-scrolled', window.scrollY > 16);
+        if (window.scrollY > 20) {
+          header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
+        } else {
+          header.style.boxShadow = 'none';
+        }
       }, { passive: true });
     })();
 
-    // ===== REVEAL (для блоков проектов) =====
+    // ===== REVEAL ANIMATION =====
     const revealElements = document.querySelectorAll('.reveal:not(.is-visible)');
-    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
@@ -1326,26 +1035,10 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.14, rootMargin: '0px 0px -40px' });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px' });
       revealElements.forEach(function(el) { observer.observe(el); });
     } else {
       revealElements.forEach(function(el) { el.classList.add('is-visible'); });
-    }
-
-    // ===== PROJECT CARDS =====
-    const cards = document.querySelectorAll('.project-card');
-    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const cardObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            cardObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-      cards.forEach(function(card) { cardObserver.observe(card); });
-    } else {
-      cards.forEach(function(card) { card.classList.add('visible'); });
     }
 
     // ===== YOUTUBE =====
@@ -1365,7 +1058,7 @@
       const modalImage = document.getElementById('modalImage');
       modalImage.src = src;
       modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'; // Блокируем скролл
     }
 
     function closeModal() {
@@ -1373,12 +1066,9 @@
       document.body.style.overflow = '';
     }
 
+    // Закрытие по Esc
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeModal();
-    });
-
-    document.getElementById('imageModal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
     });
   </script>
 </body>
