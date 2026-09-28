@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-/* ===== ПЕРЕМЕННЫЕ (как в индексе) ===== */
 :root{
   --ink:#1F1D2B;
   --muted:#6B7280;
@@ -28,7 +27,7 @@ body{
 }
 a{color:inherit;text-decoration:none;}
 
-/* ===== ШАПКА — 1:1 как в индексе ===== */
+/* ===== ШАПКА — 1:1 как в индексе, без подчёркиваний ===== */
 .site-header{
   position:fixed;
   inset:0 0 auto;
@@ -38,7 +37,7 @@ a{color:inherit;text-decoration:none;}
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(0,0,0,0.04);
-  transition:all .3s ease;
+  transition:box-shadow .3s ease;
 }
 .site-header .container{
   width:100%;
@@ -65,9 +64,15 @@ a{color:inherit;text-decoration:none;}
   font-size:12px;
   letter-spacing:0.08em;
   text-transform:uppercase;
+  text-decoration:none;
+  border-bottom:none;
   transition:color .3s ease;
 }
-.site-header .brand:hover{color:var(--violet);}
+.site-header .brand:hover{
+  color:var(--violet);
+  text-decoration:none;
+  border-bottom:none;
+}
 .site-header .logo-video{
   width:32px;
   height:32px;
@@ -102,9 +107,15 @@ a{color:inherit;text-decoration:none;}
   color:var(--muted);
   letter-spacing:0.08em;
   text-transform:uppercase;
+  text-decoration:none;
+  border-bottom:none;
   transition:color .2s;
 }
-.site-header .nav-links a:hover{color:var(--violet);}
+.site-header .nav-links a:hover{
+  color:var(--violet);
+  text-decoration:none;
+  border-bottom:none;
+}
 
 @media(min-width:768px){
   .site-header{height:72px;}
@@ -116,11 +127,10 @@ a{color:inherit;text-decoration:none;}
   .site-header .container{max-width:1200px;margin:0 auto;}
 }
 
-/* Отступ под фиксированную шапку */
 main{padding-top:64px;}
 @media(min-width:768px){ main{padding-top:72px;} }
 
-/* ===== ФУТЕР — 1:1 как в индексе ===== */
+/* ===== ФУТЕР (без изменений) ===== */
 .site-footer{
   padding:60px 0 30px;
   background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 50%,#eef2ff 100%);
@@ -201,6 +211,7 @@ main{padding-top:64px;}
   box-shadow:0 4px 12px rgba(0,0,0,0.02);
   width:100%;
   max-width:260px;
+  text-decoration:none;
 }
 .site-footer .footer-links a:hover{
   background:var(--violet);
@@ -208,6 +219,7 @@ main{padding-top:64px;}
   border-color:var(--violet);
   transform:translateY(-3px);
   box-shadow:0 12px 24px rgba(118,84,189,0.2);
+  text-decoration:none;
 }
 .site-footer .footer-bottom{
   margin-top:40px;
@@ -240,7 +252,7 @@ main{padding-top:64px;}
   }
 }
 
-/* ===== REVEAL (как в индексе) ===== */
+/* Reveal (как в индексе) */
 .reveal{
   opacity:0;
   transform:translateY(30px);
@@ -248,7 +260,6 @@ main{padding-top:64px;}
 }
 .reveal.is-visible{opacity:1;transform:translateY(0);}
 </style>
-</head>
 <body>
 
 <!-- ===== ШАПКА (как в индексе) ===== -->
