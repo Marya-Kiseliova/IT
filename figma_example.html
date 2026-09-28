@@ -2,10 +2,10 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Атлас стилей — памятка для бренда</title>
 <meta name="description" content="10 визуальных направлений для рекламных постеров и листовок. Примеры, характеристики и заметки для будущих проектов.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237654bd'/%3E%3Cpath d='M8 8h16v16H8zM12 8v16' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232354bd'/%3E%3Cpath d='M8 8h16v16H8zM12 8v16' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
 
 <!-- Шрифты -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,75 +13,55 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-  /* ===== RESET & BASE ===== */
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  
-  body {
-    min-width: 320px;
-    overflow-x: hidden;
-    color: #1F1D2B;
-    background: #ffffff;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-  }
-  
-  img, video { display: block; max-width: 100%; }
-  a { color: inherit; text-decoration: none; }
-  
-  .container {
-    width: 100%;
-    padding: 0 20px;
-    margin: 0 auto;
-    max-width: 1200px;
-  }
-
-  /* ===== VARIABLES ===== */
+  /* ===== ОРИГИНАЛЬНЫЕ СТИЛИ АТЛАСА ===== */
   :root {
-    --bg: #ffffff;
-    --ink: #1F1D2B;
-    --muted: #6B7280;
-    --violet: #7654bd;
-    --violet-light: #f3efff;
-    --violet-soft: #e9e4f5;
-    --border: rgba(0, 0, 0, 0.06);
-    --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.06);
-    --shadow-hover: 0 30px 80px -20px rgba(118, 84, 189, 0.12);
-    --radius-lg: 32px;
-    --radius-md: 20px;
-    --radius-sm: 12px;
+    --paper: #f6f4ef;
+    --ink: #1c1c1c;
+    --muted: #6b6b6b;
+    --line: #d9d5cc;
+    --accent: #2354bd;
+    --hand: #2b2b2b;
   }
 
-  /* ===== REVEAL ANIMATION ===== */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* ===== HEADER ===== */
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== HEADER (в стиле основной страницы) ===== */
   .site-header {
     position: fixed;
     inset: 0 0 auto;
     z-index: 100;
     height: 64px;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(246, 244, 239, 0.92);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0,0,0,0.04);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
     transition: all 0.3s ease;
   }
-  
-  .nav {
+  .site-header .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
   }
-  
   .brand {
     display: inline-flex;
     align-items: center;
@@ -93,10 +73,7 @@
     text-transform: uppercase;
     transition: color 0.3s ease;
   }
-  .brand:hover {
-    color: var(--violet);
-  }
-  
+  .brand:hover { color: var(--accent); }
   .logo-video {
     width: 32px;
     height: 32px;
@@ -105,9 +82,9 @@
     border: 2px solid #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     background: #f3efff;
+    flex-shrink: 0;
   }
 
-  /* Кнопка меню (Mobile) */
   .menu-toggle {
     display: flex;
     align-items: center;
@@ -139,18 +116,16 @@
   }
   .menu-toggle span::before { top: -5px; }
   .menu-toggle span::after { top: 5px; }
-  
   .menu-toggle[aria-expanded="true"] span { background: transparent; }
   .menu-toggle[aria-expanded="true"] span::before { top: 0; transform: rotate(45deg); }
   .menu-toggle[aria-expanded="true"] span::after { top: 0; transform: rotate(-45deg); }
 
-  /* Навигация (Mobile) */
   .nav-links {
     position: absolute;
     top: 64px;
     left: 0;
     right: 0;
-    background: #fff;
+    background: var(--paper);
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -161,6 +136,7 @@
     transform: translateY(-10px);
     transition: all 0.3s ease;
     border-radius: 0 0 20px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
   }
   .nav-links.is-open {
     opacity: 1;
@@ -172,270 +148,256 @@
     font-weight: 500;
     color: var(--muted);
     padding: 8px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.03);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--violet); }
+  .nav-links a:hover { color: var(--accent); }
   .nav-links a:last-child { border-bottom: none; }
 
-  /* ===== MAIN ===== */
+  /* ===== ОСНОВНАЯ ЧАСТЬ (оригинальные стили атласа) ===== */
   main {
     padding-top: 64px;
   }
 
-  /* ===== INTRO ===== */
+  header.orig-header {
+    display: none;
+  }
+
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 22px;
+  }
+
+  /* INTRO */
   .intro {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 48px 0 40px;
+    gap: 28px;
+    padding: 60px 0 40px;
     align-items: end;
+    border-bottom: 1px solid var(--line);
   }
   .eyebrow {
-    display: inline-block;
-    margin-bottom: 12px;
-    color: var(--violet);
     font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    position: relative;
-    padding-left: 12px;
-  }
-  .eyebrow::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 4px;
-    background: var(--violet);
-    border-radius: 50%;
+    color: var(--muted);
+    margin-bottom: 14px;
   }
   .intro h1 {
-    font-size: clamp(2rem, 8vw, 3.5rem);
-    font-weight: 800;
+    font-size: clamp(2rem, 7vw, 3.6rem);
     line-height: 1.05;
-    letter-spacing: -0.04em;
-    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
-  /* Слово "вернуться" — печатными буквами */
   .intro h1 em {
     font-style: normal;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 800;
-    color: var(--violet);
+    letter-spacing: 0.06em;
     font-size: 0.72em;
+    color: var(--accent);
   }
   .intro-note {
-    border-left: 2px solid var(--violet);
-    padding-left: 16px;
+    max-width: 320px;
   }
   .intro-note .hand {
     display: block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--violet);
-    margin-bottom: 8px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    color: var(--hand);
+    margin-bottom: 6px;
+    transform: rotate(-2deg);
   }
   .intro-note p {
-    font-size: 0.95rem;
     color: var(--muted);
-    line-height: 1.7;
+    font-size: 0.95rem;
   }
 
-  /* ===== NAV CONTENTS ===== */
+  /* CONTENTS NAV */
   nav#contents {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 4px;
-    padding: 24px 0 48px;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 48px;
+    gap: 2px;
+    padding: 28px 0 40px;
+    border-bottom: 1px solid var(--line);
   }
   nav#contents a {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 12px;
-    padding: 10px 0;
+    padding: 8px 0;
     font-size: 0.95rem;
-    font-weight: 500;
     color: var(--ink);
-    border-bottom: 1px solid rgba(0,0,0,0.03);
-    transition: color 0.2s ease, padding-left 0.2s ease;
-  }
-  nav#contents a:last-child { border-bottom: none; }
-  nav#contents a:hover {
-    color: var(--violet);
-    padding-left: 6px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
   }
   nav#contents a small {
     font-size: 11px;
-    font-weight: 700;
-    color: var(--violet);
-    letter-spacing: 0.05em;
+    color: var(--muted);
+    letter-spacing: 0.1em;
     min-width: 24px;
   }
+  nav#contents a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
 
-  /* ===== COLLECTION / SPREAD ===== */
+  /* SPREAD */
   .collection {
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
   .spread {
     display: grid;
     grid-template-columns: 1fr;
     gap: 32px;
-    padding: 48px 0;
-    border-bottom: 1px solid var(--border);
+    padding: 56px 0;
+    border-bottom: 1px solid var(--line);
     align-items: center;
   }
   .spread:last-child { border-bottom: none; }
 
-  /* Visual */
   .visual-wrap {
     position: relative;
   }
-  .paper {
+  figure.paper {
     position: relative;
     background: #fff;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    box-shadow: var(--shadow-soft);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
-  .paper:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-hover);
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,0.25);
+    border: 1px solid var(--line);
   }
   .poster {
     aspect-ratio: 3/4;
-    background: linear-gradient(135deg, #f3efff 0%, #e9e4f5 100%);
+    background: linear-gradient(160deg, #efede6, #e4e0d6);
     position: relative;
     overflow: hidden;
   }
-  /* Декоративные градиентные тайлы для каждого стиля */
   .poster::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 30% 20%, rgba(118, 84, 189, 0.15), transparent 60%);
+    background:
+      radial-gradient(circle at 30% 30%, rgba(35,84,189,0.12), transparent 55%),
+      radial-gradient(circle at 70% 75%, rgba(0,0,0,0.06), transparent 50%);
   }
-  .tile-0::after { content: '01'; position: absolute; bottom: 16px; right: 20px; font-size: 4rem; font-weight: 800; color: var(--violet); opacity: 0.2; line-height: 1; }
-  .tile-1::after { content: '02'; position: absolute; bottom: 16px; right: 20px; font-size: 4rem; font-weight: 800; color: var(--violet); opacity: 0.2; line-height: 1; }
-  .tile-2::after { content: '03'; position: absolute; bottom: 16px; right: 20px; font-size: 4rem; font-weight: 800; color: var(--violet); opacity: 0.2; line-height: 1; }
-  .tile-3::after { content: '04'; position: absolute; bottom: 16px; right: 20px; font-size: 4rem; font-weight: 800; color: var(--violet); opacity: 0.2; line-height: 1; }
-  .tile-4::after { content: '05'; position: absolute; bottom: 16px; right: 20px; font-size: 4rem; font-weight: 800; color: var(--violet); opacity: 0.2; line-height: 1; }
-  .tile-5::after { content: '06'; position: absolute; bottom: 16px; right: 20px; font-size: 4rem; font-weight: 800; color: var(--violet); opacity: 0.2; line-height: 1; }
-  .tile-6::after { content: '07'; position: absolute; bottom: 16px; right: 20px; font-size: 4rem; font-weight: 800; color: var(--violet); opacity: 0.2; line-height: 1; }
-  .tile-7::after { content: '08'; position: absolute; bottom: 16px; right: 20px; font-size: 4rem; font-weight: 800; color: var(--violet); opacity: 0.2; line-height: 1; }
-  .tile-8::after { content: '09'; position: absolute; bottom: 16px; right: 20px; font-size: 4rem; font-weight: 800; color: var(--violet); opacity: 0.2; line-height: 1; }
-  .tile-9::after { content: '10'; position: absolute; bottom: 16px; right: 20px; font-size: 4rem; font-weight: 800; color: var(--violet); opacity: 0.2; line-height: 1; }
+  .poster::after {
+    font-size: 4rem;
+    font-weight: 700;
+    color: rgba(28,28,28,0.15);
+    position: absolute;
+    bottom: 14px;
+    right: 18px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .tile-0::after { content: '01'; }
+  .tile-1::after { content: '02'; }
+  .tile-2::after { content: '03'; }
+  .tile-3::after { content: '04'; }
+  .tile-4::after { content: '05'; }
+  .tile-5::after { content: '06'; }
+  .tile-6::after { content: '07'; }
+  .tile-7::after { content: '08'; }
+  .tile-8::after { content: '09'; }
+  .tile-9::after { content: '10'; }
 
   figcaption {
     display: flex;
     justify-content: space-between;
-    padding: 12px 16px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    align-items: center;
+    padding: 10px 14px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted);
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--line);
   }
+
   .annotation {
     position: absolute;
     top: -12px;
-    right: 16px;
-    background: var(--violet);
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 100px;
+    right: 14px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: var(--hand);
+    transform: rotate(-3deg);
+    background: var(--paper);
+    padding: 0 6px;
   }
 
-  /* Copy */
+  /* COPY */
   .copy {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
   }
   .section-meta {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 12px;
     font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--violet);
+    color: var(--muted);
   }
   .section-meta .number {
-    font-size: 1.2rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0;
   }
   .copy h2 {
-    font-size: 1.6rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
     line-height: 1.15;
-    color: var(--ink);
   }
   .copy .description {
-    font-size: 0.95rem;
     color: var(--muted);
-    line-height: 1.7;
+    font-size: 0.98rem;
+    max-width: 52ch;
   }
   .use, .example {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding: 12px 16px;
-    background: var(--violet-light);
-    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    background: #fff;
+    border-left: 2px solid var(--accent);
   }
   .use .label, .example .label {
     font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--violet);
+    color: var(--accent);
+    font-weight: 600;
   }
   .use p, .example p {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     color: var(--ink);
-    line-height: 1.6;
   }
   .copy aside {
-    padding-left: 16px;
-    border-left: 2px solid var(--violet);
+    padding-left: 14px;
+    border-left: 2px solid var(--line);
   }
   .copy aside span {
     display: block;
     font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--violet);
+    color: var(--muted);
     margin-bottom: 4px;
   }
   .copy aside p {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: var(--muted);
-    font-style: italic;
-    line-height: 1.6;
+    font-family: 'Caveat', cursive;
+    font-size: 1.15rem;
+    line-height: 1.4;
   }
 
   /* ===== FOOTER ===== */
@@ -489,7 +451,7 @@
     display: inline-flex;
   }
   .footer-brand .brand .mark {
-    color: var(--violet);
+    color: var(--accent);
     font-weight: 800;
   }
   .footer-brand p {
@@ -514,18 +476,18 @@
   .sources a {
     font-size: 13px;
     font-weight: 600;
-    color: var(--violet);
-    border-bottom: 1px solid rgba(118, 84, 189, 0.3);
+    color: var(--accent);
+    border-bottom: 1px solid rgba(35,84,189,0.3);
     padding-bottom: 2px;
     transition: border-color 0.2s ease;
   }
   .sources a:hover {
-    border-color: var(--violet);
+    border-color: var(--accent);
   }
   .footer-bottom {
     margin-top: 40px;
     padding-top: 20px;
-    border-top: 1px solid rgba(118, 84, 189, 0.08);
+    border-top: 1px solid rgba(35,84,189,0.08);
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -542,24 +504,24 @@
     height: 40px;
     border-radius: 50%;
     background: #fff;
-    border: 1px solid rgba(118, 84, 189, 0.15);
-    color: var(--violet);
+    border: 1px solid rgba(35,84,189,0.15);
+    color: var(--accent);
     font-size: 18px;
     font-weight: 700;
     margin-top: 16px;
     transition: all 0.3s ease;
   }
   .top-link:hover {
-    background: var(--violet);
+    background: var(--accent);
     color: #fff;
-    border-color: var(--violet);
+    border-color: var(--accent);
     transform: translateY(-3px);
   }
 
-  /* ===== MEDIA QUERIES ===== */
+  /* ===== МЕДИА ===== */
   @media (min-width: 640px) {
-    .container { padding: 0 32px; }
     .site-header { height: 72px; }
+    .site-header .container { padding: 0 32px; }
     .brand { font-size: 13px; gap: 12px; }
     .logo-video { width: 38px; height: 38px; }
     .menu-toggle { display: none; }
@@ -575,6 +537,7 @@
       pointer-events: all;
       transform: none;
       width: auto;
+      border: none;
     }
     .nav-links a {
       padding: 0;
@@ -586,29 +549,30 @@
       text-transform: uppercase;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--violet); }
+    .nav-links a:hover { color: var(--accent); }
+
+    main { padding-top: 72px; }
 
     .intro {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr auto;
       gap: 48px;
-      padding: 72px 0 56px;
+      padding: 80px 0 48px;
     }
+    .intro-note { max-width: 340px; }
+
     nav#contents {
       grid-template-columns: repeat(2, 1fr);
-      gap: 4px 32px;
-      padding: 32px 0 56px;
+      gap: 2px 40px;
+      padding: 32px 0 48px;
     }
 
     .spread {
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      padding: 64px 0;
+      gap: 56px;
+      padding: 72px 0;
     }
     .spread.reverse .visual-wrap { order: 2; }
     .spread.reverse .copy { order: 1; }
-
-    .copy h2 { font-size: 1.8rem; }
-    .copy .description { font-size: 1rem; }
 
     .footer-content {
       grid-template-columns: 1fr auto;
@@ -625,25 +589,26 @@
   }
 
   @media (min-width: 1024px) {
-    .container { padding: 0 40px; }
-    .intro { padding: 96px 0 72px; }
-    nav#contents { grid-template-columns: repeat(2, 1fr); gap: 6px 48px; }
-    .spread { gap: 64px; padding: 80px 0; }
+    .intro { padding: 100px 0 60px; }
+    .spread { gap: 72px; padding: 88px 0; }
     .copy h2 { font-size: 2.2rem; }
-    .copy .description { font-size: 1.05rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-    .reveal { opacity: 1; transform: none; }
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
   }
 </style>
+
+<!-- Шрифт Caveat для рукописных элементов -->
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
-<!-- ===== ХЕДЕР ===== -->
+<!-- ===== ХЕДЕР (в стиле основной страницы) ===== -->
 <header class="site-header" id="siteHeader">
-  <div class="container nav">
+  <div class="container">
     <a href="Projects.html" class="brand" aria-label="Мария Киселёва — на главную">
       <video class="logo-video" autoplay muted loop playsinline aria-label="Логотип">
         <source src="logo.mp4" type="video/mp4" />
@@ -655,18 +620,17 @@
       <span></span>
     </button>
     <nav class="nav-links" id="navLinks" aria-label="Навигация">
-      <a href="index.html">Главная</a>
+      <a href="Projects.html">Главная</a>
       <a href="#contents">Все стили</a>
     </nav>
   </div>
 </header>
 
-<!-- ===== MAIN ===== -->
 <main id="top">
   <div class="container">
 
     <!-- INTRO -->
-    <div class="intro reveal">
+    <div class="intro">
       <div>
         <p class="eyebrow">ВИЗУАЛЬНЫЙ БЛОКНОТ · 01—10</p>
         <h1>Идеи, к которым<br>хочется <em>вернуться.</em></h1>
@@ -678,7 +642,7 @@
     </div>
 
     <!-- CONTENTS -->
-    <nav id="contents" aria-label="Стили дизайна" class="reveal">
+    <nav id="contents" aria-label="Стили дизайна">
       <a href="#style-1"><small>01</small> Тёплый минимализм</a>
       <a href="#style-2"><small>02</small> Журнальный стиль</a>
       <a href="#style-3"><small>03</small> Крупная типографика</a>
@@ -694,7 +658,7 @@
     <!-- COLLECTION -->
     <div class="collection">
 
-      <section class="spread reveal" id="style-1" aria-labelledby="title-1">
+      <section class="spread" id="style-1" aria-labelledby="title-1">
         <div class="visual-wrap">
           <figure class="paper">
             <div class="poster tile-0" role="img" aria-label="Пример: Сложенный джемпер, молочный фон и короткое «Сезон мягкости»."></div>
@@ -712,7 +676,7 @@
         </div>
       </section>
 
-      <section class="spread reverse reveal" id="style-2" aria-labelledby="title-2">
+      <section class="spread reverse" id="style-2" aria-labelledby="title-2">
         <div class="visual-wrap">
           <figure class="paper">
             <div class="poster tile-1" role="img" aria-label="Пример: Модель в футболке в движении; сбоку — название коллекции, внизу — логотип."></div>
@@ -730,7 +694,7 @@
         </div>
       </section>
 
-      <section class="spread reveal" id="style-3" aria-labelledby="title-3">
+      <section class="spread" id="style-3" aria-labelledby="title-3">
         <div class="visual-wrap">
           <figure class="paper">
             <div class="poster tile-2" role="img" aria-label="Пример: Крупное «−20%», небольшое фото товара и отдельный блок со сроками."></div>
@@ -748,7 +712,7 @@
         </div>
       </section>
 
-      <section class="spread reverse reveal" id="style-4" aria-labelledby="title-4">
+      <section class="spread reverse" id="style-4" aria-labelledby="title-4">
         <div class="visual-wrap">
           <figure class="paper">
             <div class="poster tile-3" role="img" aria-label="Пример: Рука касается рукава; рядом — футболка целиком и «Мягкость в каждом движении»."></div>
@@ -766,7 +730,7 @@
         </div>
       </section>
 
-      <section class="spread reveal" id="style-5" aria-labelledby="title-5">
+      <section class="spread" id="style-5" aria-labelledby="title-5">
         <div class="visual-wrap">
           <figure class="paper">
             <div class="poster tile-4" role="img" aria-label="Пример: Футболка, трикотаж и аксессуары, одна стрелка и подпись «На каждый день»."></div>
@@ -784,7 +748,7 @@
         </div>
       </section>
 
-      <section class="spread reverse reveal" id="style-6" aria-labelledby="title-6">
+      <section class="spread reverse" id="style-6" aria-labelledby="title-6">
         <div class="visual-wrap">
           <figure class="paper">
             <div class="poster tile-5" role="img" aria-label="Пример: Фотография с лёгким зерном, тонкая рамка и короткая подпись о любимой вещи."></div>
@@ -802,7 +766,7 @@
         </div>
       </section>
 
-      <section class="spread reveal" id="style-7" aria-labelledby="title-7">
+      <section class="spread" id="style-7" aria-labelledby="title-7">
         <div class="visual-wrap">
           <figure class="paper">
             <div class="poster tile-6" role="img" aria-label="Пример: Модель в голубом трикотаже среди гигантских мягких складок ткани и заголовок «В своём мире»."></div>
@@ -820,7 +784,7 @@
         </div>
       </section>
 
-      <section class="spread reverse reveal" id="style-8" aria-labelledby="title-8">
+      <section class="spread reverse" id="style-8" aria-labelledby="title-8">
         <div class="visual-wrap">
           <figure class="paper">
             <div class="poster tile-7" role="img" aria-label="Пример: Модель в лиловой пижаме на кобальтовом подиуме; голубой и фиолетовый фон поддерживают цвет изделия."></div>
@@ -838,7 +802,7 @@
         </div>
       </section>
 
-      <section class="spread reveal" id="style-9" aria-labelledby="title-9">
+      <section class="spread" id="style-9" aria-labelledby="title-9">
         <div class="visual-wrap">
           <figure class="paper">
             <div class="poster tile-8" role="img" aria-label="Пример: Вокруг модели — нарисованные цветы, повторяющие мотив принта."></div>
@@ -856,7 +820,7 @@
         </div>
       </section>
 
-      <section class="spread reverse reveal" id="style-10" aria-labelledby="title-10">
+      <section class="spread reverse" id="style-10" aria-labelledby="title-10">
         <div class="visual-wrap">
           <figure class="paper">
             <div class="poster tile-9" role="img" aria-label="Пример: Три футболки в равных блоках; под каждой — название и цена, внизу — QR-код."></div>
@@ -882,17 +846,17 @@
 <footer class="site-footer" id="contact">
   <div class="container">
     <div class="footer-content">
-      <div class="footer-brand reveal">
+      <div class="footer-brand">
         <span class="brand"><span class="mark">а.</span> атлас стилей</span>
         <p>У каждой идеи — свой характер.</p>
       </div>
-      <div class="sources reveal">
+      <div class="sources">
         <p>Визуалы — иллюстративные концепты, не готовые кампании бренда.<br>Подборка сочетает тенденции 2026 года и устойчивые приёмы дизайна.</p>
         <a href="https://www.creativebloq.com/design/graphic-design/texture-warmth-and-tactile-rebellion-the-big-graphic-design-trends-for-2026" target="_blank" rel="noopener">Обзор тенденций ↗</a>
         <a href="https://www.creativebloq.com/design/canvas-2026-trend-predictions-have-filled-me-with-hope" target="_blank" rel="noopener">Тенденции Canva ↗</a>
       </div>
     </div>
-    <div class="footer-bottom reveal">
+    <div class="footer-bottom">
       <p>Атлас стилей — памятка для бренда. Все визуалы — иллюстративные концепты.</p>
       <a class="top-link" href="#top" aria-label="Наверх">↑</a>
     </div>
@@ -900,60 +864,31 @@
 </footer>
 
 <script>
-  // ===== ХЕДЕР =====
   (function() {
     const toggle = document.getElementById('menuToggle');
     const nav = document.getElementById('navLinks');
     const header = document.getElementById('siteHeader');
 
-    toggle.addEventListener('click', function() {
-      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!isOpen));
-      nav.classList.toggle('is-open', !isOpen);
-    });
-
-    nav.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        nav.classList.remove('is-open');
+    if (toggle && nav) {
+      toggle.addEventListener('click', function() {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        nav.classList.toggle('is-open', !isOpen);
       });
-    });
+      nav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', () => {
+          toggle.setAttribute('aria-expanded', 'false');
+          nav.classList.remove('is-open');
+        });
+      });
+    }
 
     window.addEventListener('scroll', function() {
-      if (window.scrollY > 20) {
-        header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
-      } else {
-        header.style.boxShadow = 'none';
+      if (header) {
+        header.style.boxShadow = window.scrollY > 20 ? '0 4px 20px rgba(0,0,0,0.05)' : 'none';
       }
     }, { passive: true });
   })();
-
-  // ===== REVEAL =====
-  const revealElements = document.querySelectorAll('.reveal:not(.is-visible)');
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px' });
-    revealElements.forEach(function(el) { observer.observe(el); });
-  } else {
-    revealElements.forEach(function(el) { el.classList.add('is-visible'); });
-  }
-
-  // ===== SMOOTH SCROLL =====
-  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
 </script>
 
 </body>
