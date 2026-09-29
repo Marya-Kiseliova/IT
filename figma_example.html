@@ -24,6 +24,27 @@
   --violet-light:#f3efff;
   --violet-soft:#e9e4f5;
 }
+
+/* Жёсткий reset: убираем все подчёркивания и рамки в шапке */
+.site-header a,
+.site-header a:link,
+.site-header a:visited,
+.site-header a:hover,
+.site-header a:focus,
+.site-header a:active,
+.site-header .brand,
+.site-header .brand *,
+.site-header .nav-links,
+.site-header .nav-links a,
+.site-header .nav-links a *{
+  text-decoration:none !important;
+  border:none !important;
+  border-bottom:none !important;
+  border-top:none !important;
+  outline:none !important;
+  box-shadow:none !important;
+}
+
 body{
   font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   color:var(--ink);
@@ -162,7 +183,10 @@ body{
   font-weight:500 !important;
   color:var(--muted) !important;
   padding:8px 0 !important;
-  border-bottom:1px solid rgba(0,0,0,0.03) !important;
+  border:none !important;
+  border-bottom:none !important;
+  border-top:none !important;
+  outline:none !important;
   letter-spacing:0.08em !important;
   text-transform:uppercase !important;
   background:none !important;
@@ -171,7 +195,12 @@ body{
   text-decoration:none !important;
   transition:color .2s !important;
 }
-.site-header .nav-links a:hover{ color:var(--violet) !important; }
+.site-header .nav-links a:hover{
+  color:var(--violet) !important;
+  border:none !important;
+  border-bottom:none !important;
+  text-decoration:none !important;
+}
 .site-header .nav-links a:last-child{ border-bottom:none !important; }
 
 /* ===== Отступ под фиксированную шапку ===== */
