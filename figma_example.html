@@ -25,15 +25,28 @@
 body{
   font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   color:var(--ink);
+  background:#fff;
+  margin:0;
 }
-a{color:inherit;text-decoration:none;}
 
-/* ===== ШАПКА — 1:1 как в индексе, без подчёркиваний ===== */
+/* ===== ОБЩЕЕ: никаких подчёркиваний в шапке ===== */
+.site-header a,
+.site-header a:link,
+.site-header a:visited,
+.site-header a:hover,
+.site-header a:focus,
+.site-header a:active{
+  text-decoration:none !important;
+  border-bottom:none !important;
+}
+
+/* ===== ШАПКА ===== */
 .site-header{
   position:fixed;
   inset:0 0 auto;
   z-index:100;
   height:64px;
+  width:100%;
   background:rgba(255,255,255,0.92);
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
@@ -65,81 +78,146 @@ a{color:inherit;text-decoration:none;}
   font-size:12px;
   letter-spacing:0.08em;
   text-transform:uppercase;
-  text-decoration:none;
-  border-bottom:none;
   transition:color .3s ease;
 }
-.site-header .brand:hover{
-  color:var(--violet);
-  text-decoration:none;
-  border-bottom:none;
-}
+.site-header .brand:hover{color:var(--violet);}
 .site-header .logo-video{
+  display:block;
   width:32px;
   height:32px;
   border-radius:50%;
   object-fit:cover;
+  overflow:hidden;
   border:2px solid #fff;
   box-shadow:0 4px 12px rgba(0,0,0,0.08);
   background:#f3efff;
 }
-.site-header .nav-links{
-  position:static;
+
+/* ===== Бургер ===== */
+.menu-toggle{
   display:flex;
-  flex-direction:row;
   align-items:center;
-  gap:32px;
-  padding:0;
-  background:transparent;
-  box-shadow:none;
-  border-radius:0;
-  opacity:1;
-  pointer-events:auto;
-  transform:none;
-}
-.site-header .nav-links a{
-  background:none;
+  justify-content:center;
+  width:40px;
+  height:40px;
   border:none;
+  background:transparent;
+  cursor:pointer;
+  color:var(--ink);
+  padding:0;
   border-radius:0;
   box-shadow:none;
-  padding:0;
-  font-size:12px;
+}
+.menu-toggle span{
+  display:block;
+  width:18px;
+  height:2px;
+  background:currentColor;
+  position:relative;
+  transition:background .2s;
+}
+.menu-toggle span::before,
+.menu-toggle span::after{
+  content:'';
+  position:absolute;
+  left:0;
+  width:100%;
+  height:2px;
+  background:currentColor;
+  transition:transform .3s, top .3s;
+}
+.menu-toggle span::before{top:-5px;}
+.menu-toggle span::after{top:5px;}
+.menu-toggle[aria-expanded="true"] span{background:transparent;}
+.menu-toggle[aria-expanded="true"] span::before{top:0;transform:rotate(45deg);}
+.menu-toggle[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg);}
+
+/* ===== Навигация (mobile: выпадашка) ===== */
+.nav-links{
+  position:absolute;
+  top:64px;
+  left:0;
+  right:0;
+  background:#fff;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.08);
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(-10px);
+  transition:all .3s ease;
+  border-radius:0 0 20px 20px;
+}
+.nav-links.is-open{
+  opacity:1;
+  pointer-events:all;
+  transform:translateY(0);
+}
+.nav-links a{
+  font-size:13px;
   font-weight:500;
   color:var(--muted);
+  padding:8px 0;
+  border-bottom:1px solid rgba(0,0,0,0.03);
   letter-spacing:0.08em;
   text-transform:uppercase;
-  text-decoration:none;
-  border-bottom:none;
   transition:color .2s;
 }
-.site-header .nav-links a:hover{
-  color:var(--violet);
-  text-decoration:none;
-  border-bottom:none;
-}
+.nav-links a:hover{color:var(--violet);}
+.nav-links a:last-child{border-bottom:none;}
 
+/* ===== Десктоп ===== */
 @media(min-width:768px){
   .site-header{height:72px;}
   .site-header .container{padding:0 32px;}
   .site-header .brand{font-size:13px;gap:12px;}
   .site-header .logo-video{width:38px;height:38px;}
+
+  .menu-toggle{display:none;}
+  .nav-links{
+    position:static;
+    flex-direction:row;
+    gap:32px;
+    padding:0;
+    background:transparent;
+    box-shadow:none;
+    opacity:1;
+    pointer-events:all;
+    transform:none;
+    border-radius:0;
+    width:auto;
+  }
+  .nav-links a{
+    padding:0;
+    border:none;
+    border-bottom:none;
+    font-size:12px;
+  }
 }
 @media(min-width:1024px){
   .site-header .container{max-width:1200px;margin:0 auto;}
 }
 
+/* Отступ под фиксированную шапку */
 main{padding-top:64px;}
 @media(min-width:768px){ main{padding-top:72px;} }
 
-/* ===== ФУТЕР — 1:1 как в индексе ===== */
+/* ===== ФУТЕР — на всю ширину, без границ-выступов ===== */
 .site-footer{
+  display:block;
+  width:100%;
+  margin:0;
   padding:60px 0 30px;
   background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 50%,#eef2ff 100%);
+  border:none;
   border-top:1px solid rgba(118,84,189,0.08);
   color:var(--ink);
   position:relative;
   overflow:hidden;
   font-family:'Inter',sans-serif;
+  box-sizing:border-box;
 }
 .site-footer::before{
   content:'';
@@ -170,6 +248,7 @@ main{padding-top:64px;}
   padding:0 20px;
   position:relative;
   z-index:1;
+  box-sizing:border-box;
 }
 .site-footer .footer-content{
   display:grid;
@@ -181,7 +260,7 @@ main{padding-top:64px;}
   font-size:1.6rem;
   font-weight:800;
   letter-spacing:-0.03em;
-  margin-bottom:12px;
+  margin:0 0 12px;
   color:var(--ink);
 }
 .site-footer .footer-brand p{
@@ -212,7 +291,7 @@ main{padding-top:64px;}
   box-shadow:0 4px 12px rgba(0,0,0,0.02);
   width:100%;
   max-width:260px;
-  text-decoration:none;
+  text-decoration:none !important;
 }
 .site-footer .footer-links a:hover{
   background:var(--violet);
@@ -220,7 +299,7 @@ main{padding-top:64px;}
   border-color:var(--violet);
   transform:translateY(-3px);
   box-shadow:0 12px 24px rgba(118,84,189,0.2);
-  text-decoration:none;
+  text-decoration:none !important;
 }
 .site-footer .footer-bottom{
   margin-top:40px;
@@ -253,7 +332,7 @@ main{padding-top:64px;}
   }
 }
 
-/* ===== REVEAL (как в индексе) ===== */
+/* Reveal */
 .reveal{
   opacity:0;
   transform:translateY(30px);
@@ -274,7 +353,12 @@ main{padding-top:64px;}
       </video>
       <span>Мария Киселёва</span>
     </a>
-    <nav class="nav-links" aria-label="Навигация">
+
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Открыть меню">
+      <span></span>
+    </button>
+
+    <nav class="nav-links" id="navLinks" aria-label="Навигация">
       <a href="https://marya-kiseliova.github.io/IT/index.html#skills">Навыки</a>
       <a href="https://marya-kiseliova.github.io/IT/index.html#projects">Проекты</a>
       <a href="https://marya-kiseliova.github.io/IT/index.html#contact">Контакты</a>
@@ -490,8 +574,9 @@ main{padding-top:64px;}
 </section>
 
 </div>
+</main>
 
-<!-- ===== ФУТЕР ===== -->
+<!-- ===== ФУТЕР (вне <main>, чтобы тянулся на всю ширину) ===== -->
 <footer class="site-footer" id="contact">
   <div class="container">
     <div class="footer-content">
@@ -512,12 +597,28 @@ main{padding-top:64px;}
   </div>
 </footer>
 
-</main>
-
 <script>
-/* Тень шапки при скролле (как в индексе) */
+/* Шапка: бургер-меню + тень при скролле */
 (function(){
+  var toggle = document.getElementById('menuToggle');
+  var nav = document.getElementById('navLinks');
   var header = document.getElementById('siteHeader');
+
+  if (toggle && nav) {
+    toggle.addEventListener('click', function(){
+      var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      nav.classList.toggle('is-open', !isOpen);
+    });
+
+    nav.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('is-open');
+      });
+    });
+  }
+
   window.addEventListener('scroll', function(){
     if (window.scrollY > 20) {
       header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
@@ -527,7 +628,7 @@ main{padding-top:64px;}
   }, { passive: true });
 })();
 
-/* Reveal-анимация футера (как в индексе) */
+/* Reveal-анимация */
 (function(){
   var els = document.querySelectorAll('.reveal:not(.is-visible)');
   if ('IntersectionObserver' in window) {
