@@ -1,651 +1,718 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0,user-scalable=yes">
-<title>Атлас стилей — памятка для бренда</title>
-<meta name="description" content="10 визуальных направлений для рекламных постеров и листовок. Примеры, характеристики и заметки для будущих проектов.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232354bd'/%3E%3Cpath d='M8 8h16v16H8zM12 8v16' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Атлас стилей — памятка для бренда</title>
+  <meta name="description" content="10 визуальных направлений для рекламных постеров и листовок. Примеры, характеристики и заметки для будущих проектов.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232354bd'/%3E%3Cpath d='M8 8h16v16H8zM12 8v16' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<style>
-/* ===== ПЕРЕМЕННЫЕ (как в индексе) ===== */
-:root{
-  --ink:#1F1D2B;
-  --muted:#6B7280;
-  --violet:#7654bd;
-  --violet-light:#f3efff;
-  --violet-soft:#e9e4f5;
-}
-body{
-  font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  color:var(--ink);
-  background:#fff;
-  margin:0;
-}
+    :root {
+      --ink: #1F1D2B;
+      --muted: #6B7280;
+      --violet: #7654bd;
+      --violet-light: #f3efff;
+      --violet-soft: #e9e4f5;
+      --border: rgba(0, 0, 0, 0.06);
+      --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 30px 80px -20px rgba(118, 84, 189, 0.12);
+      --radius-lg: 32px;
+      --radius-md: 20px;
+      --radius-sm: 12px;
+    }
 
-/* ===== ОБЩЕЕ: никаких подчёркиваний в шапке ===== */
-.site-header a,
-.site-header a:link,
-.site-header a:visited,
-.site-header a:hover,
-.site-header a:focus,
-.site-header a:active{
-  text-decoration:none !important;
-  border-bottom:none !important;
-}
+    html { scroll-behavior: smooth; }
 
-/* ===== ШАПКА ===== */
-.site-header{
-  position:fixed;
-  inset:0 0 auto;
-  z-index:100;
-  height:64px;
-  width:100%;
-  background:rgba(255,255,255,0.92);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(0,0,0,0.04);
-  transition:box-shadow .3s ease;
-}
-.site-header .container{
-  width:100%;
-  padding:0 20px;
-  margin:0 auto;
-}
-.site-header .nav{
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.site-header .brand{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  background:none;
-  border:none;
-  border-radius:0;
-  box-shadow:none;
-  padding:0;
-  color:var(--muted);
-  font-weight:500;
-  font-size:12px;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  transition:color .3s ease;
-}
-.site-header .brand:hover{color:var(--violet);}
-.site-header .logo-video{
-  display:block;
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  object-fit:cover;
-  overflow:hidden;
-  border:2px solid #fff;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-  background:#f3efff;
-}
+    body {
+      min-width: 320px;
+      overflow-x: hidden;
+      color: var(--ink);
+      background: #ffffff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* ===== Бургер ===== */
-.menu-toggle{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:40px;
-  height:40px;
-  border:none;
-  background:transparent;
-  cursor:pointer;
-  color:var(--ink);
-  padding:0;
-  border-radius:0;
-  box-shadow:none;
-}
-.menu-toggle span{
-  display:block;
-  width:18px;
-  height:2px;
-  background:currentColor;
-  position:relative;
-  transition:background .2s;
-}
-.menu-toggle span::before,
-.menu-toggle span::after{
-  content:'';
-  position:absolute;
-  left:0;
-  width:100%;
-  height:2px;
-  background:currentColor;
-  transition:transform .3s, top .3s;
-}
-.menu-toggle span::before{top:-5px;}
-.menu-toggle span::after{top:5px;}
-.menu-toggle[aria-expanded="true"] span{background:transparent;}
-.menu-toggle[aria-expanded="true"] span::before{top:0;transform:rotate(45deg);}
-.menu-toggle[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg);}
+    img, video { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
 
-/* ===== Навигация (mobile: выпадашка) ===== */
-.nav-links{
-  position:absolute;
-  top:64px;
-  left:0;
-  right:0;
-  background:#fff;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.08);
-  opacity:0;
-  pointer-events:none;
-  transform:translateY(-10px);
-  transition:all .3s ease;
-  border-radius:0 0 20px 20px;
-}
-.nav-links.is-open{
-  opacity:1;
-  pointer-events:all;
-  transform:translateY(0);
-}
-.nav-links a{
-  font-size:13px;
-  font-weight:500;
-  color:var(--muted);
-  padding:8px 0;
-  border-bottom:1px solid rgba(0,0,0,0.03);
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  transition:color .2s;
-}
-.nav-links a:hover{color:var(--violet);}
-.nav-links a:last-child{border-bottom:none;}
+    /* ===== HEADER (как в index.html) ===== */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: 64px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
+    }
 
-/* ===== Десктоп ===== */
-@media(min-width:768px){
-  .site-header{height:72px;}
-  .site-header .container{padding:0 32px;}
-  .site-header .brand{font-size:13px;gap:12px;}
-  .site-header .logo-video{width:38px;height:38px;}
+    .site-header .container {
+      width: 100%;
+      padding: 0 20px;
+      margin: 0 auto;
+    }
 
-  .menu-toggle{display:none;}
-  .nav-links{
-    position:static;
-    flex-direction:row;
-    gap:32px;
-    padding:0;
-    background:transparent;
-    box-shadow:none;
-    opacity:1;
-    pointer-events:all;
-    transform:none;
-    border-radius:0;
-    width:auto;
-  }
-  .nav-links a{
-    padding:0;
-    border:none;
-    border-bottom:none;
-    font-size:12px;
-  }
-}
-@media(min-width:1024px){
-  .site-header .container{max-width:1200px;margin:0 auto;}
-}
+    .site-header .nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-/* Отступ под фиксированную шапку */
-main{padding-top:64px;}
-@media(min-width:768px){ main{padding-top:72px;} }
+    .site-header .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.3s ease;
+    }
+    .site-header .brand:hover { color: var(--violet); }
 
-/* ===== ФУТЕР — на всю ширину, без границ-выступов ===== */
-.site-footer{
-  display:block;
-  width:100%;
-  margin:0;
-  padding:60px 0 30px;
-  background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 50%,#eef2ff 100%);
-  border:none;
-  border-top:1px solid rgba(118,84,189,0.08);
-  color:var(--ink);
-  position:relative;
-  overflow:hidden;
-  font-family:'Inter',sans-serif;
-  box-sizing:border-box;
-}
-.site-footer::before{
-  content:'';
-  position:absolute;
-  bottom:-50px;left:-50px;
-  width:200px;height:200px;
-  background:#bae6fd;
-  border-radius:50%;
-  filter:blur(60px);
-  opacity:.4;
-  z-index:0;
-}
-.site-footer::after{
-  content:'';
-  position:absolute;
-  top:-50px;right:-50px;
-  width:200px;height:200px;
-  background:#ddd6fe;
-  border-radius:50%;
-  filter:blur(60px);
-  opacity:.4;
-  z-index:0;
-}
-.site-footer .container{
-  width:100%;
-  max-width:1200px;
-  margin:0 auto;
-  padding:0 20px;
-  position:relative;
-  z-index:1;
-  box-sizing:border-box;
-}
-.site-footer .footer-content{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:32px;
-  text-align:center;
-}
-.site-footer .footer-brand h2{
-  font-size:1.6rem;
-  font-weight:800;
-  letter-spacing:-0.03em;
-  margin:0 0 12px;
-  color:var(--ink);
-}
-.site-footer .footer-brand p{
-  color:var(--muted);
-  font-size:14px;
-  max-width:400px;
-  margin:0 auto;
-  line-height:1.7;
-}
-.site-footer .footer-links{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  align-items:center;
-}
-.site-footer .footer-links a{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:12px 24px;
-  background:#fff;
-  border:1px solid rgba(118,84,189,0.15);
-  border-radius:100px;
-  font-size:14px;
-  font-weight:600;
-  color:var(--ink);
-  transition:all .3s ease;
-  box-shadow:0 4px 12px rgba(0,0,0,0.02);
-  width:100%;
-  max-width:260px;
-  text-decoration:none !important;
-}
-.site-footer .footer-links a:hover{
-  background:var(--violet);
-  color:#fff;
-  border-color:var(--violet);
-  transform:translateY(-3px);
-  box-shadow:0 12px 24px rgba(118,84,189,0.2);
-  text-decoration:none !important;
-}
-.site-footer .footer-bottom{
-  margin-top:40px;
-  padding-top:20px;
-  border-top:1px solid rgba(118,84,189,0.08);
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  align-items:center;
-  color:var(--muted);
-  font-size:12px;
-  text-align:center;
-}
-.site-footer .footer-bottom p{margin:0;}
+    .site-header .logo-video {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: #f3efff;
+      display: block;
+      overflow: hidden;
+    }
 
-@media(min-width:768px){
-  .site-footer .container{padding:0 32px;}
-  .site-footer .footer-content{
-    grid-template-columns:1fr auto;
-    text-align:left;
-    align-items:center;
-  }
-  .site-footer .footer-brand p{margin:0;}
-  .site-footer .footer-links{flex-direction:row;align-items:flex-end;}
-  .site-footer .footer-links a{width:auto;max-width:none;}
-  .site-footer .footer-bottom{
-    flex-direction:row;
-    justify-content:space-between;
-    text-align:left;
-  }
-}
+    /* Бургер */
+    .site-header .menu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color: var(--ink);
+      padding: 0;
+    }
+    .site-header .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: currentColor;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .site-header .menu-toggle span::before,
+    .site-header .menu-toggle span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      transition: transform 0.3s, top 0.3s;
+    }
+    .site-header .menu-toggle span::before { top: -5px; }
+    .site-header .menu-toggle span::after { top: 5px; }
+    .site-header .menu-toggle[aria-expanded="true"] span { background: transparent; }
+    .site-header .menu-toggle[aria-expanded="true"] span::before { top: 0; transform: rotate(45deg); }
+    .site-header .menu-toggle[aria-expanded="true"] span::after { top: 0; transform: rotate(-45deg); }
 
-/* Reveal */
-.reveal{
-  opacity:0;
-  transform:translateY(30px);
-  transition:opacity .8s cubic-bezier(0.16,1,0.3,1), transform .8s cubic-bezier(0.16,1,0.3,1);
-}
-.reveal.is-visible{opacity:1;transform:translateY(0);}
-</style>
+    /* Навигация mobile (выпадашка) */
+    .site-header .nav-links {
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border-radius: 0 0 20px 20px;
+    }
+    .site-header .nav-links.is-open {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+    .site-header .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .site-header .nav-links a:hover { color: var(--violet); }
+    .site-header .nav-links a:last-child { border-bottom: none; }
+
+    /* Отступ под фиксированную шапку */
+    main { padding-top: 64px; }
+
+    /* ===== REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== FOOTER (как в index.html) ===== */
+    .site-footer {
+      padding: 60px 0 30px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #eef2ff 100%);
+      border-top: 1px solid rgba(118, 84, 189, 0.08);
+      color: var(--ink);
+      position: relative;
+      overflow: hidden;
+      display: block;
+      width: 100%;
+      margin: 0;
+    }
+    .site-footer::before {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: -50px;
+      width: 200px;
+      height: 200px;
+      background: #bae6fd;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.4;
+      z-index: 0;
+    }
+    .site-footer::after {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: #ddd6fe;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.4;
+      z-index: 0;
+    }
+    .site-footer .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .site-footer .footer-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      text-align: center;
+    }
+    .site-footer .footer-brand h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .site-footer .footer-brand p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 400px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .site-footer .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+    .site-footer .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      background: #fff;
+      border: 1px solid rgba(118, 84, 189, 0.15);
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      width: 100%;
+      max-width: 260px;
+      text-decoration: none;
+    }
+    .site-footer .footer-links a:hover {
+      background: var(--violet);
+      color: #fff;
+      border-color: var(--violet);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(118, 84, 189, 0.2);
+    }
+    .site-footer .footer-bottom {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(118, 84, 189, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* ===== МЕДИА-ЗАПРОСЫ ДЛЯ ХЕДЕРА/ФУТЕРА ===== */
+    @media (min-width: 768px) {
+      .site-header { height: 72px; }
+      .site-header .container { padding: 0 32px; }
+      .site-header .brand { font-size: 13px; gap: 12px; }
+      .site-header .logo-video { width: 38px; height: 38px; }
+
+      .site-header .menu-toggle { display: none; }
+      .site-header .nav-links {
+        position: static;
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+        padding: 0;
+        background: transparent;
+        box-shadow: none;
+        opacity: 1;
+        pointer-events: all;
+        transform: none;
+        border-radius: 0;
+        width: auto;
+      }
+      .site-header .nav-links a {
+        padding: 0;
+        border: none;
+        border-bottom: none;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--muted);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+      .site-header .nav-links a:hover { color: var(--violet); }
+
+      main { padding-top: 72px; }
+
+      .site-footer .container { padding: 0 32px; }
+      .site-footer .footer-content {
+        grid-template-columns: 1fr auto;
+        text-align: left;
+        align-items: center;
+      }
+      .site-footer .footer-brand p { margin: 0; }
+      .site-footer .footer-links { flex-direction: row; align-items: flex-end; }
+      .site-footer .footer-links a { width: auto; max-width: none; }
+      .site-footer .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+    @media (min-width: 1024px) {
+      .site-header .container { max-width: 1200px; margin: 0 auto; }
+      .site-footer .container { max-width: 1200px; margin: 0 auto; }
+    }
+
+    /* ===== СТИЛИ ТЕЛА АТЛАСА (сохранены как были) ===== */
+    .intro { padding: 48px 20px 24px; display: grid; gap: 24px; }
+    .eyebrow { color: var(--violet); font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; }
+    .intro h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.04em; color: var(--ink); }
+    .intro h1 em { font-style: italic; color: var(--violet); }
+    .intro-note { color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .intro-note .hand { display: inline-block; font-style: italic; color: var(--violet); margin-bottom: 8px; }
+
+    #contents { display: grid; grid-template-columns: 1fr; gap: 8px; padding: 16px 20px 40px; }
+    #contents a { display: flex; align-items: baseline; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); color: var(--ink); font-weight: 500; font-size: 14px; transition: color 0.2s; }
+    #contents a:hover { color: var(--violet); }
+    #contents a small { color: var(--violet); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; }
+
+    .collection { padding: 24px 20px 60px; display: flex; flex-direction: column; gap: 60px; }
+    .spread { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .visual-wrap { display: flex; flex-direction: column; gap: 8px; }
+    .paper { background: #f8f5f2; border-radius: var(--radius-md); padding: 12px; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 8px; }
+    .poster { aspect-ratio: 4/5; border-radius: var(--radius-sm); background: linear-gradient(135deg, #f3efff, #e9e4f5); }
+    .poster.tile-1 { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+    .poster.tile-2 { background: linear-gradient(135deg, #dbeafe, #93c5fd); }
+    .poster.tile-3 { background: linear-gradient(135deg, #fce7f3, #f9a8d4); }
+    .poster.tile-4 { background: linear-gradient(135deg, #d1fae5, #6ee7b7); }
+    .poster.tile-5 { background: linear-gradient(135deg, #e0e7ff, #a5b4fc); }
+    .poster.tile-6 { background: linear-gradient(135deg, #fef3c7, #fb923c); }
+    .poster.tile-7 { background: linear-gradient(135deg, #ddd6fe, #a78bfa); }
+    .poster.tile-8 { background: linear-gradient(135deg, #ccfbf1, #5eead4); }
+    .poster.tile-9 { background: linear-gradient(135deg, #fee2e2, #fca5a5); }
+    .paper figcaption { display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0 4px; }
+    .annotation { font-style: italic; color: var(--violet); font-size: 13px; }
+
+    .copy { display: flex; flex-direction: column; gap: 16px; }
+    .section-meta { display: flex; align-items: baseline; gap: 12px; font-size: 11px; color: var(--violet); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .section-meta .number { font-size: 32px; font-weight: 800; color: var(--violet); opacity: 0.25; line-height: 1; }
+    .copy h2 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; color: var(--ink); }
+    .description { color: var(--muted); font-size: 15px; line-height: 1.7; }
+    .use, .example { border-left: 3px solid var(--violet); padding-left: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--violet); }
+    .use p, .example p { color: var(--ink); font-size: 14px; line-height: 1.6; }
+    .copy aside { background: var(--violet-light); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+    .copy aside span { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--violet); }
+    .copy aside p { font-size: 13px; line-height: 1.6; color: var(--muted); font-style: italic; }
+
+    @media (min-width: 768px) {
+      .intro { grid-template-columns: 1fr 1fr; gap: 40px; padding: 64px 32px 32px; align-items: end; }
+      #contents { grid-template-columns: repeat(2, 1fr); gap: 4px 32px; padding: 24px 32px 48px; }
+      .collection { padding: 32px 32px 80px; gap: 100px; }
+      .spread { grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+      .spread.reverse .visual-wrap { order: 2; }
+      .spread.reverse .copy { order: 1; }
+    }
+    @media (min-width: 1024px) {
+      .intro, #contents, .collection { max-width: 1200px; margin: 0 auto; }
+      .collection { gap: 120px; }
+      .spread { gap: 60px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ===== ШАПКА ===== -->
-<header class="site-header" id="siteHeader">
-  <div class="container nav">
-    <a href="https://marya-kiseliova.github.io/IT/index.html" class="brand" aria-label="Мария Киселёва — на главную">
-      <video class="logo-video" autoplay muted loop playsinline aria-label="Логотип">
-        <source src="logo.mp4" type="video/mp4" />
-        <img src="logo.jpg" alt="Логотип" />
-      </video>
-      <span>Мария Киселёва</span>
-    </a>
+  <!-- ===== ХЕДЕР (как в index.html) ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a href="https://marya-kiseliova.github.io/IT/index.html" class="brand" aria-label="Мария Киселёва — на главную">
+        <video class="logo-video" autoplay muted loop playsinline aria-label="Логотип">
+          <source src="logo.mp4" type="video/mp4" />
+          <img src="logo.jpg" alt="Логотип" />
+        </video>
+        <span>Мария Киселёва</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Открыть меню">
+        <span></span>
+      </button>
+      <nav class="nav-links" id="navLinks" aria-label="Навигация">
+        <a href="https://marya-kiseliova.github.io/IT/index.html#skills">Навыки</a>
+        <a href="https://marya-kiseliova.github.io/IT/index.html#projects">Проекты</a>
+        <a href="https://marya-kiseliova.github.io/IT/index.html#contact">Контакты</a>
+      </nav>
+    </div>
+  </header>
 
-    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Открыть меню">
-      <span></span>
-    </button>
+  <main id="top">
 
-    <nav class="nav-links" id="navLinks" aria-label="Навигация">
-      <a href="https://marya-kiseliova.github.io/IT/index.html#skills">Навыки</a>
-      <a href="https://marya-kiseliova.github.io/IT/index.html#projects">Проекты</a>
-      <a href="https://marya-kiseliova.github.io/IT/index.html#contact">Контакты</a>
+    <!-- ===== ИНТРО ===== -->
+    <div class="intro">
+      <div>
+        <p class="eyebrow">ВИЗУАЛЬНЫЙ БЛОКНОТ · 01—10</p>
+        <h1>Идеи, к которым<br>хочется <em>вернуться.</em></h1>
+      </div>
+      <div class="intro-note">
+        <span class="hand">для следующего постера</span>
+        <p>Десять направлений для рекламы.<br>Смотрите, сравнивайте и находите<br>настроение для новой идеи.</p>
+      </div>
+    </div>
+
+    <nav id="contents" aria-label="Стили дизайна">
+      <a href="#style-1"><small>01</small> Тёплый минимализм</a>
+      <a href="#style-2"><small>02</small> Журнальный стиль</a>
+      <a href="#style-3"><small>03</small> Крупная типографика</a>
+      <a href="#style-4"><small>04</small> Тактильный дизайн</a>
+      <a href="#style-5"><small>05</small> Коллаж</a>
+      <a href="#style-6"><small>06</small> Аналоговое ретро</a>
+      <a href="#style-7"><small>07</small> Сюрреализм</a>
+      <a href="#style-8"><small>08</small> Цветовые блоки</a>
+      <a href="#style-9"><small>09</small> Фото + ручная графика</a>
+      <a href="#style-10"><small>10</small> Швейцарская сетка</a>
     </nav>
-  </div>
-</header>
 
-<main id="top">
-<div class="intro">
-  <div>
-    <p class="eyebrow">ВИЗУАЛЬНЫЙ БЛОКНОТ · 01—10</p>
-    <h1>Идеи, к которым<br>хочется <em>вернуться.</em></h1>
-  </div>
-  <div class="intro-note">
-    <span class="hand">для следующего постера</span>
-    <p>Десять направлений для рекламы.<br>Смотрите, сравнивайте и находите<br>настроение для новой идеи.</p>
-  </div>
-</div>
+    <div class="collection">
 
-<nav id="contents" aria-label="Стили дизайна">
-  <a href="#style-1"><small>01</small> Тёплый минимализм</a>
-  <a href="#style-2"><small>02</small> Журнальный стиль</a>
-  <a href="#style-3"><small>03</small> Крупная типографика</a>
-  <a href="#style-4"><small>04</small> Тактильный дизайн</a>
-  <a href="#style-5"><small>05</small> Коллаж</a>
-  <a href="#style-6"><small>06</small> Аналоговое ретро</a>
-  <a href="#style-7"><small>07</small> Сюрреализм</a>
-  <a href="#style-8"><small>08</small> Цветовые блоки</a>
-  <a href="#style-9"><small>09</small> Фото + ручная графика</a>
-  <a href="#style-10"><small>10</small> Швейцарская сетка</a>
-</nav>
+      <section class="spread" id="style-1" aria-labelledby="title-1">
+        <div class="visual-wrap">
+          <figure class="paper">
+            <div class="poster tile-0" role="img" aria-label="Пример: Сложенный джемпер, молочный фон и короткое «Сезон мягкости»."></div>
+            <figcaption><span>ЭТЮД 01</span><span>Warm minimalism</span></figcaption>
+          </figure>
+          <span class="annotation">больше воздуха</span>
+        </div>
+        <div class="copy">
+          <div class="section-meta"><span class="number">01</span><span>Warm minimalism</span></div>
+          <h2 id="title-1">Тёплый минимализм</h2>
+          <p class="description">Много воздуха, мягкий свет и одна выразительная деталь. Ощущение тепла здесь создаёт фактура ткани, а палитра остаётся прохладной и светлой.</p>
+          <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для базовых коллекций и спокойной имиджевой рекламы.</p></div>
+          <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Сложенный джемпер, молочный фон и короткое «Сезон мягкости».</p></div>
+          <aside><span>На полях</span><p>Не заполняйте свободное место: именно оно делает товар главным.</p></aside>
+        </div>
+      </section>
 
-<div class="collection">
+      <section class="spread reverse" id="style-2" aria-labelledby="title-2">
+        <div class="visual-wrap">
+          <figure class="paper">
+            <div class="poster tile-1" role="img" aria-label="Пример: Модель в футболке в движении; сбоку — название коллекции, внизу — логотип."></div>
+            <figcaption><span>ЭТЮД 02</span><span>Fashion editorial</span></figcaption>
+          </figure>
+          <span class="annotation">кадр решает всё</span>
+        </div>
+        <div class="copy">
+          <div class="section-meta"><span class="number">02</span><span>Fashion editorial</span></div>
+          <h2 id="title-2">Журнальный стиль</h2>
+          <p class="description">Выразительная фотография, элегантный шрифт и асимметрия. Кадр задаёт настроение, а текст работает как аккуратная журнальная подпись.</p>
+          <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для запуска коллекции и рекламы образа целиком.</p></div>
+          <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Модель в футболке в движении; сбоку — название коллекции, внизу — логотип.</p></div>
+          <aside><span>На полях</span><p>Выберите один сильный кадр и оставьте рисунок футболки открытым.</p></aside>
+        </div>
+      </section>
 
-<section class="spread" id="style-1" aria-labelledby="title-1">
-  <div class="visual-wrap">
-    <figure class="paper">
-      <div class="poster tile-0" role="img" aria-label="Пример: Сложенный джемпер, молочный фон и короткое «Сезон мягкости»."></div>
-      <figcaption><span>ЭТЮД 01</span><span>Warm minimalism</span></figcaption>
-    </figure>
-    <span class="annotation">больше воздуха</span>
-  </div>
-  <div class="copy">
-    <div class="section-meta"><span class="number">01</span><span>Warm minimalism</span></div>
-    <h2 id="title-1">Тёплый минимализм</h2>
-    <p class="description">Много воздуха, мягкий свет и одна выразительная деталь. Ощущение тепла здесь создаёт фактура ткани, а палитра остаётся прохладной и светлой.</p>
-    <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для базовых коллекций и спокойной имиджевой рекламы.</p></div>
-    <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Сложенный джемпер, молочный фон и короткое «Сезон мягкости».</p></div>
-    <aside><span>На полях</span><p>Не заполняйте свободное место: именно оно делает товар главным.</p></aside>
-  </div>
-</section>
+      <section class="spread" id="style-3" aria-labelledby="title-3">
+        <div class="visual-wrap">
+          <figure class="paper">
+            <div class="poster tile-2" role="img" aria-label="Пример: Крупное «−20%», небольшое фото товара и отдельный блок со сроками."></div>
+            <figcaption><span>ЭТЮД 03</span><span>Type first</span></figcaption>
+          </figure>
+          <span class="annotation">слова — тоже форма</span>
+        </div>
+        <div class="copy">
+          <div class="section-meta"><span class="number">03</span><span>Type first</span></div>
+          <h2 id="title-3">Крупная типографика</h2>
+          <p class="description">Буквы и цифры становятся главным изображением. Контраст масштаба помогает сразу увидеть предложение, даже издалека.</p>
+          <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для распродаж, акций и витринных постеров.</p></div>
+          <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Крупное «−20%», небольшое фото товара и отдельный блок со сроками.</p></div>
+          <aside><span>На полях</span><p>Один главный акцент. Условия акции должны оставаться читаемыми.</p></aside>
+        </div>
+      </section>
 
-<section class="spread reverse" id="style-2" aria-labelledby="title-2">
-  <div class="visual-wrap">
-    <figure class="paper">
-      <div class="poster tile-1" role="img" aria-label="Пример: Модель в футболке в движении; сбоку — название коллекции, внизу — логотип."></div>
-      <figcaption><span>ЭТЮД 02</span><span>Fashion editorial</span></figcaption>
-    </figure>
-    <span class="annotation">кадр решает всё</span>
-  </div>
-  <div class="copy">
-    <div class="section-meta"><span class="number">02</span><span>Fashion editorial</span></div>
-    <h2 id="title-2">Журнальный стиль</h2>
-    <p class="description">Выразительная фотография, элегантный шрифт и асимметрия. Кадр задаёт настроение, а текст работает как аккуратная журнальная подпись.</p>
-    <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для запуска коллекции и рекламы образа целиком.</p></div>
-    <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Модель в футболке в движении; сбоку — название коллекции, внизу — логотип.</p></div>
-    <aside><span>На полях</span><p>Выберите один сильный кадр и оставьте рисунок футболки открытым.</p></aside>
-  </div>
-</section>
+      <section class="spread reverse" id="style-4" aria-labelledby="title-4">
+        <div class="visual-wrap">
+          <figure class="paper">
+            <div class="poster tile-3" role="img" aria-label="Пример: Рука касается рукава; рядом — футболка целиком и «Мягкость в каждом движении»."></div>
+            <figcaption><span>ЭТЮД 04</span><span>Texture & touch</span></figcaption>
+          </figure>
+          <span class="annotation">почти на ощупь</span>
+        </div>
+        <div class="copy">
+          <div class="section-meta"><span class="number">04</span><span>Texture & touch</span></div>
+          <h2 id="title-4">Тактильный дизайн</h2>
+          <p class="description">Макросъёмка и мягкий объём помогают почти физически почувствовать материал. Фактура становится аргументом в пользу товара.</p>
+          <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для трикотажа, домашней одежды и рекламы комфорта.</p></div>
+          <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Рука касается рукава; рядом — футболка целиком и «Мягкость в каждом движении».</p></div>
+          <aside><span>На полях</span><p>Покажите реальную фактуру изделия без чрезмерного увеличения волокон.</p></aside>
+        </div>
+      </section>
 
-<section class="spread" id="style-3" aria-labelledby="title-3">
-  <div class="visual-wrap">
-    <figure class="paper">
-      <div class="poster tile-2" role="img" aria-label="Пример: Крупное «−20%», небольшое фото товара и отдельный блок со сроками."></div>
-      <figcaption><span>ЭТЮД 03</span><span>Type first</span></figcaption>
-    </figure>
-    <span class="annotation">слова — тоже форма</span>
-  </div>
-  <div class="copy">
-    <div class="section-meta"><span class="number">03</span><span>Type first</span></div>
-    <h2 id="title-3">Крупная типографика</h2>
-    <p class="description">Буквы и цифры становятся главным изображением. Контраст масштаба помогает сразу увидеть предложение, даже издалека.</p>
-    <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для распродаж, акций и витринных постеров.</p></div>
-    <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Крупное «−20%», небольшое фото товара и отдельный блок со сроками.</p></div>
-    <aside><span>На полях</span><p>Один главный акцент. Условия акции должны оставаться читаемыми.</p></aside>
-  </div>
-</section>
+      <section class="spread" id="style-5" aria-labelledby="title-5">
+        <div class="visual-wrap">
+          <figure class="paper">
+            <div class="poster tile-4" role="img" aria-label="Пример: Футболка, трикотаж и аксессуары, одна стрелка и подпись «На каждый день»."></div>
+            <figcaption><span>ЭТЮД 05</span><span>Scrapbook</span></figcaption>
+          </figure>
+          <span class="annotation">собрать настроение</span>
+        </div>
+        <div class="copy">
+          <div class="section-meta"><span class="number">05</span><span>Scrapbook</span></div>
+          <h2 id="title-5">Коллаж</h2>
+          <p class="description">Вырезанные фотографии, бумажные слои и рукописные пометки складываются в личную подборку. Небольшая неровность добавляет живости.</p>
+          <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для подборок образов, подарков и молодёжных коллекций.</p></div>
+          <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Футболка, трикотаж и аксессуары, одна стрелка и подпись «На каждый день».</p></div>
+          <aside><span>На полях</span><p>Пусть слои поддерживают товар, а не превращаются в визуальный шум.</p></aside>
+        </div>
+      </section>
 
-<section class="spread reverse" id="style-4" aria-labelledby="title-4">
-  <div class="visual-wrap">
-    <figure class="paper">
-      <div class="poster tile-3" role="img" aria-label="Пример: Рука касается рукава; рядом — футболка целиком и «Мягкость в каждом движении»."></div>
-      <figcaption><span>ЭТЮД 04</span><span>Texture & touch</span></figcaption>
-    </figure>
-    <span class="annotation">почти на ощупь</span>
-  </div>
-  <div class="copy">
-    <div class="section-meta"><span class="number">04</span><span>Texture & touch</span></div>
-    <h2 id="title-4">Тактильный дизайн</h2>
-    <p class="description">Макросъёмка и мягкий объём помогают почти физически почувствовать материал. Фактура становится аргументом в пользу товара.</p>
-    <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для трикотажа, домашней одежды и рекламы комфорта.</p></div>
-    <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Рука касается рукава; рядом — футболка целиком и «Мягкость в каждом движении».</p></div>
-    <aside><span>На полях</span><p>Покажите реальную фактуру изделия без чрезмерного увеличения волокон.</p></aside>
-  </div>
-</section>
+      <section class="spread reverse" id="style-6" aria-labelledby="title-6">
+        <div class="visual-wrap">
+          <figure class="paper">
+            <div class="poster tile-5" role="img" aria-label="Пример: Фотография с лёгким зерном, тонкая рамка и короткая подпись о любимой вещи."></div>
+            <figcaption><span>ЭТЮД 06</span><span>Analog nostalgia</span></figcaption>
+          </figure>
+          <span class="annotation">немного ностальгии</span>
+        </div>
+        <div class="copy">
+          <div class="section-meta"><span class="number">06</span><span>Analog nostalgia</span></div>
+          <h2 id="title-6">Аналоговое ретро</h2>
+          <p class="description">Плёночное настроение, печатная фактура и винтажная типографика. Для этой подборки ретро показано в прохладной сине-белой гамме.</p>
+          <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для уютных сезонных историй и эмоциональной рекламы.</p></div>
+          <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Фотография с лёгким зерном, тонкая рамка и короткая подпись о любимой вещи.</p></div>
+          <aside><span>На полях</span><p>Фактуру используйте деликатно: товар и текст должны оставаться ясными.</p></aside>
+        </div>
+      </section>
 
-<section class="spread" id="style-5" aria-labelledby="title-5">
-  <div class="visual-wrap">
-    <figure class="paper">
-      <div class="poster tile-4" role="img" aria-label="Пример: Футболка, трикотаж и аксессуары, одна стрелка и подпись «На каждый день»."></div>
-      <figcaption><span>ЭТЮД 05</span><span>Scrapbook</span></figcaption>
-    </figure>
-    <span class="annotation">собрать настроение</span>
-  </div>
-  <div class="copy">
-    <div class="section-meta"><span class="number">05</span><span>Scrapbook</span></div>
-    <h2 id="title-5">Коллаж</h2>
-    <p class="description">Вырезанные фотографии, бумажные слои и рукописные пометки складываются в личную подборку. Небольшая неровность добавляет живости.</p>
-    <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для подборок образов, подарков и молодёжных коллекций.</p></div>
-    <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Футболка, трикотаж и аксессуары, одна стрелка и подпись «На каждый день».</p></div>
-    <aside><span>На полях</span><p>Пусть слои поддерживают товар, а не превращаются в визуальный шум.</p></aside>
-  </div>
-</section>
+      <section class="spread" id="style-7" aria-labelledby="title-7">
+        <div class="visual-wrap">
+          <figure class="paper">
+            <div class="poster tile-6" role="img" aria-label="Пример: Модель в голубом трикотаже среди гигантских мягких складок ткани и заголовок «В своём мире»."></div>
+            <figcaption><span>ЭТЮД 07</span><span>Reality, with a twist</span></figcaption>
+          </figure>
+          <span class="annotation">чуть-чуть невозможного</span>
+        </div>
+        <div class="copy">
+          <div class="section-meta"><span class="number">07</span><span>Reality, with a twist</span></div>
+          <h2 id="title-7">Сюрреализм</h2>
+          <p class="description">Знакомый товар оказывается в невозможном масштабе или неожиданной обстановке. Один необычный сюжет делает постер запоминающимся.</p>
+          <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для ярких имиджевых кампаний и подарочных коллекций.</p></div>
+          <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Модель в голубом трикотаже среди гигантских мягких складок ткани и заголовок «В своём мире».</p></div>
+          <aside><span>На полях</span><p>Меняйте окружение, сохраняя узнаваемые детали самого товара.</p></aside>
+        </div>
+      </section>
 
-<section class="spread reverse" id="style-6" aria-labelledby="title-6">
-  <div class="visual-wrap">
-    <figure class="paper">
-      <div class="poster tile-5" role="img" aria-label="Пример: Фотография с лёгким зерном, тонкая рамка и короткая подпись о любимой вещи."></div>
-      <figcaption><span>ЭТЮД 06</span><span>Analog nostalgia</span></figcaption>
-    </figure>
-    <span class="annotation">немного ностальгии</span>
-  </div>
-  <div class="copy">
-    <div class="section-meta"><span class="number">06</span><span>Analog nostalgia</span></div>
-    <h2 id="title-6">Аналоговое ретро</h2>
-    <p class="description">Плёночное настроение, печатная фактура и винтажная типографика. Для этой подборки ретро показано в прохладной сине-белой гамме.</p>
-    <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для уютных сезонных историй и эмоциональной рекламы.</p></div>
-    <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Фотография с лёгким зерном, тонкая рамка и короткая подпись о любимой вещи.</p></div>
-    <aside><span>На полях</span><p>Фактуру используйте деликатно: товар и текст должны оставаться ясными.</p></aside>
-  </div>
-</section>
+      <section class="spread reverse" id="style-8" aria-labelledby="title-8">
+        <div class="visual-wrap">
+          <figure class="paper">
+            <div class="poster tile-7" role="img" aria-label="Пример: Модель в лиловой пижаме на кобальтовом подиуме; голубой и фиолетовый фон поддерживают цвет изделия."></div>
+            <figcaption><span>ЭТЮД 08</span><span>Color blocking</span></figcaption>
+          </figure>
+          <span class="annotation">смелее с цветом</span>
+        </div>
+        <div class="copy">
+          <div class="section-meta"><span class="number">08</span><span>Color blocking</span></div>
+          <h2 id="title-8">Цветовые блоки</h2>
+          <p class="description">Два-три насыщенных цвета и крупные плоскости создают энергичную композицию. Цвет товара связывает все части макета.</p>
+          <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для домашней одежды, пижам и смелых сезонных запусков.</p></div>
+          <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Модель в лиловой пижаме на кобальтовом подиуме; голубой и фиолетовый фон поддерживают цвет изделия.</p></div>
+          <aside><span>На полях</span><p>Проверьте контраст текста и не добавляйте лишних оттенков.</p></aside>
+        </div>
+      </section>
 
-<section class="spread" id="style-7" aria-labelledby="title-7">
-  <div class="visual-wrap">
-    <figure class="paper">
-      <div class="poster tile-6" role="img" aria-label="Пример: Модель в голубом трикотаже среди гигантских мягких складок ткани и заголовок «В своём мире»."></div>
-      <figcaption><span>ЭТЮД 07</span><span>Reality, with a twist</span></figcaption>
-    </figure>
-    <span class="annotation">чуть-чуть невозможного</span>
-  </div>
-  <div class="copy">
-    <div class="section-meta"><span class="number">07</span><span>Reality, with a twist</span></div>
-    <h2 id="title-7">Сюрреализм</h2>
-    <p class="description">Знакомый товар оказывается в невозможном масштабе или неожиданной обстановке. Один необычный сюжет делает постер запоминающимся.</p>
-    <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для ярких имиджевых кампаний и подарочных коллекций.</p></div>
-    <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Модель в голубом трикотаже среди гигантских мягких складок ткани и заголовок «В своём мире».</p></div>
-    <aside><span>На полях</span><p>Меняйте окружение, сохраняя узнаваемые детали самого товара.</p></aside>
-  </div>
-</section>
+      <section class="spread" id="style-9" aria-labelledby="title-9">
+        <div class="visual-wrap">
+          <figure class="paper">
+            <div class="poster tile-8" role="img" aria-label="Пример: Вокруг модели — нарисованные цветы, повторяющие мотив принта."></div>
+            <figcaption><span>ЭТЮД 09</span><span>A human touch</span></figcaption>
+          </figure>
+          <span class="annotation">живая линия</span>
+        </div>
+        <div class="copy">
+          <div class="section-meta"><span class="number">09</span><span>A human touch</span></div>
+          <h2 id="title-9">Фото + ручная графика</h2>
+          <p class="description">Реальную фотографию дополняют тонкими рисунками и свободными линиями. Получается лёгкий, дружелюбный и индивидуальный образ.</p>
+          <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для футболок с принтами и небольших эмоциональных кампаний.</p></div>
+          <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Вокруг модели — нарисованные цветы, повторяющие мотив принта.</p></div>
+          <aside><span>На полях</span><p>Графика должна дополнять фотографию, оставляя изделие хорошо видимым.</p></aside>
+        </div>
+      </section>
 
-<section class="spread reverse" id="style-8" aria-labelledby="title-8">
-  <div class="visual-wrap">
-    <figure class="paper">
-      <div class="poster tile-7" role="img" aria-label="Пример: Модель в лиловой пижаме на кобальтовом подиуме; голубой и фиолетовый фон поддерживают цвет изделия."></div>
-      <figcaption><span>ЭТЮД 08</span><span>Color blocking</span></figcaption>
-    </figure>
-    <span class="annotation">смелее с цветом</span>
-  </div>
-  <div class="copy">
-    <div class="section-meta"><span class="number">08</span><span>Color blocking</span></div>
-    <h2 id="title-8">Цветовые блоки</h2>
-    <p class="description">Два-три насыщенных цвета и крупные плоскости создают энергичную композицию. Цвет товара связывает все части макета.</p>
-    <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для домашней одежды, пижам и смелых сезонных запусков.</p></div>
-    <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Модель в лиловой пижаме на кобальтовом подиуме; голубой и фиолетовый фон поддерживают цвет изделия.</p></div>
-    <aside><span>На полях</span><p>Проверьте контраст текста и не добавляйте лишних оттенков.</p></aside>
-  </div>
-</section>
+      <section class="spread reverse" id="style-10" aria-labelledby="title-10">
+        <div class="visual-wrap">
+          <figure class="paper">
+            <div class="poster tile-9" role="img" aria-label="Пример: Три футболки в равных блоках; под каждой — название и цена, внизу — QR-код."></div>
+            <figcaption><span>ЭТЮД 10</span><span>Swiss grid</span></figcaption>
+          </figure>
+          <span class="annotation">порядок тоже красив</span>
+        </div>
+        <div class="copy">
+          <div class="section-meta"><span class="number">10</span><span>Swiss grid</span></div>
+          <h2 id="title-10">Швейцарская сетка</h2>
+          <p class="description">Чёткое выравнивание, простые шрифты и понятная иерархия. Устойчивый подход для макетов, где нужно красиво упорядочить много информации.</p>
+          <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для листовок с ассортиментом, ценами и адресами.</p></div>
+          <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Три футболки в равных блоках; под каждой — название и цена, внизу — QR-код.</p></div>
+          <aside><span>На полях</span><p>Сначала выстройте сетку и размеры текста, затем добавляйте изображения.</p></aside>
+        </div>
+      </section>
 
-<section class="spread" id="style-9" aria-labelledby="title-9">
-  <div class="visual-wrap">
-    <figure class="paper">
-      <div class="poster tile-8" role="img" aria-label="Пример: Вокруг модели — нарисованные цветы, повторяющие мотив принта."></div>
-      <figcaption><span>ЭТЮД 09</span><span>A human touch</span></figcaption>
-    </figure>
-    <span class="annotation">живая линия</span>
-  </div>
-  <div class="copy">
-    <div class="section-meta"><span class="number">09</span><span>A human touch</span></div>
-    <h2 id="title-9">Фото + ручная графика</h2>
-    <p class="description">Реальную фотографию дополняют тонкими рисунками и свободными линиями. Получается лёгкий, дружелюбный и индивидуальный образ.</p>
-    <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для футболок с принтами и небольших эмоциональных кампаний.</p></div>
-    <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Вокруг модели — нарисованные цветы, повторяющие мотив принта.</p></div>
-    <aside><span>На полях</span><p>Графика должна дополнять фотографию, оставляя изделие хорошо видимым.</p></aside>
-  </div>
-</section>
+    </div>
+  </main>
 
-<section class="spread reverse" id="style-10" aria-labelledby="title-10">
-  <div class="visual-wrap">
-    <figure class="paper">
-      <div class="poster tile-9" role="img" aria-label="Пример: Три футболки в равных блоках; под каждой — название и цена, внизу — QR-код."></div>
-      <figcaption><span>ЭТЮД 10</span><span>Swiss grid</span></figcaption>
-    </figure>
-    <span class="annotation">порядок тоже красив</span>
-  </div>
-  <div class="copy">
-    <div class="section-meta"><span class="number">10</span><span>Swiss grid</span></div>
-    <h2 id="title-10">Швейцарская сетка</h2>
-    <p class="description">Чёткое выравнивание, простые шрифты и понятная иерархия. Устойчивый подход для макетов, где нужно красиво упорядочить много информации.</p>
-    <div class="use"><span class="label">КОГДА ВЫБРАТЬ</span><p>Для листовок с ассортиментом, ценами и адресами.</p></div>
-    <div class="example"><span class="label">ИДЕЯ ДЛЯ БРЕНДА</span><p>Три футболки в равных блоках; под каждой — название и цена, внизу — QR-код.</p></div>
-    <aside><span>На полях</span><p>Сначала выстройте сетку и размеры текста, затем добавляйте изображения.</p></aside>
-  </div>
-</section>
-
-</div>
-</main>
-
-<!-- ===== ФУТЕР (вне <main>, чтобы тянулся на всю ширину) ===== -->
-<footer class="site-footer" id="contact">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-brand reveal">
-        <h2>Давайте создавать будущее вместе</h2>
-        <p>Помогаю бизнесу и творческим людям использовать нейросети для роста. Без сложных терминов, с фокусом на результат.</p>
+  <!-- ===== ФУТЕР (как в index.html) ===== -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand reveal">
+          <h2>Давайте создавать будущее вместе</h2>
+          <p>Помогаю бизнесу и творческим людям использовать нейросети для роста. Без сложных терминов, с фокусом на результат.</p>
+        </div>
+        <div class="footer-links reveal">
+          <a href="mailto:m.yasinskaya12@gmail.com">Email</a>
+          <a href="https://github.com/Marya-Kiseliova" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.youtube.com/@%D0%9C%D0%B0%D1%80%D1%8F-%D0%9A%D0%B8%D1%81%D0%B5%D0%BB%D1%91%D0%B2%D0%B0/shorts" target="_blank" rel="noopener">YouTube</a>
+        </div>
       </div>
-      <div class="footer-links reveal">
-        <a href="mailto:m.yasinskaya12@gmail.com">Email</a>
-        <a href="https://github.com/Marya-Kiseliova" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.youtube.com/@%D0%9C%D0%B0%D1%80%D1%8F-%D0%9A%D0%B8%D1%81%D0%B5%D0%BB%D1%91%D0%B2%D0%B0/shorts" target="_blank" rel="noopener">YouTube</a>
+      <div class="footer-bottom reveal">
+        <p>Этот сайт — пример того, как можно собирать рабочие веб-страницы, опираясь на ИИ.</p>
+        <p>&copy; 2024 Мария Киселёва</p>
       </div>
     </div>
-    <div class="footer-bottom reveal">
-      <p>Этот сайт — пример того, как можно собирать рабочие веб-страницы, опираясь на ИИ.</p>
-      <p>&copy; 2024 Мария Киселёва</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<script>
-/* Шапка: бургер-меню + тень при скролле */
-(function(){
-  var toggle = document.getElementById('menuToggle');
-  var nav = document.getElementById('navLinks');
-  var header = document.getElementById('siteHeader');
+  <script>
+    /* ===== ХЕДЕР: бургер + тень при скролле ===== */
+    (function() {
+      var toggle = document.getElementById('menuToggle');
+      var nav = document.getElementById('navLinks');
+      var header = document.getElementById('siteHeader');
 
-  if (toggle && nav) {
-    toggle.addEventListener('click', function(){
-      var isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!isOpen));
-      nav.classList.toggle('is-open', !isOpen);
-    });
+      if (toggle && nav) {
+        toggle.addEventListener('click', function() {
+          var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!isOpen));
+          nav.classList.toggle('is-open', !isOpen);
+        });
 
-    nav.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click', function(){
-        toggle.setAttribute('aria-expanded', 'false');
-        nav.classList.remove('is-open');
-      });
-    });
-  }
+        nav.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            toggle.setAttribute('aria-expanded', 'false');
+            nav.classList.remove('is-open');
+          });
+        });
+      }
 
-  window.addEventListener('scroll', function(){
-    if (window.scrollY > 20) {
-      header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
-    } else {
-      header.style.boxShadow = 'none';
-    }
-  }, { passive: true });
-})();
-
-/* Reveal-анимация */
-(function(){
-  var els = document.querySelectorAll('.reveal:not(.is-visible)');
-  if ('IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) {
-          e.target.classList.add('is-visible');
-          obs.unobserve(e.target);
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 20) {
+          header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
+        } else {
+          header.style.boxShadow = 'none';
         }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px' });
-    els.forEach(function(el){ obs.observe(el); });
-  } else {
-    els.forEach(function(el){ el.classList.add('is-visible'); });
-  }
-})();
-</script>
+      }, { passive: true });
+    })();
 
+    /* ===== REVEAL ANIMATION ===== */
+    (function() {
+      var els = document.querySelectorAll('.reveal:not(.is-visible)');
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              obs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px' });
+        els.forEach(function(el) { obs.observe(el); });
+      } else {
+        els.forEach(function(el) { el.classList.add('is-visible'); });
+      }
+    })();
+  </script>
 </body>
 </html>
